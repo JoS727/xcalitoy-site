@@ -38,13 +38,18 @@ function Navigation() {
       <div className="container site-nav">
         <div className="site-nav__brand">
           <NavLink href="/" label="Joseph Calitoy" className="site-nav__brand-mark" />
-          <span className="site-nav__brand-sub">xcalitoy.com</span>
+          <span className="site-nav__brand-sub">Dark pop / California / xcalitoy.com</span>
         </div>
         <nav className="site-nav__links" aria-label="Primary">
           {navLinks.map((link) => (
             <NavLink key={link.href} href={link.href} label={link.label} />
           ))}
-          <a href="https://open.spotify.com/album/5P8XnbH0PEqtNq9bRed1I1?si=12vIiVzeRrqGoqY7Qr_8HQ" target="_blank" rel="noreferrer" className="btn btn--accent site-nav__cta">
+          <a
+            href="https://open.spotify.com/album/5P8XnbH0PEqtNq9bRed1I1?si=12vIiVzeRrqGoqY7Qr_8HQ"
+            target="_blank"
+            rel="noreferrer"
+            className="site-nav__cta"
+          >
             Stream Lioness Lost
           </a>
         </nav>
@@ -74,7 +79,7 @@ export default function App() {
         </Route>
       </Switch>
       <footer>
-        <div className="container" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: '.75rem', alignItems: 'center' }}>
+        <div className="container">
           <span>© {new Date().getFullYear()} Joseph Calitoy · Wicked Youth Goods</span>
           <span style={{ display: 'flex', gap: '.9rem', flexWrap: 'wrap' }}>
             <NavLink href="/about" label="About" className="footer-link" />

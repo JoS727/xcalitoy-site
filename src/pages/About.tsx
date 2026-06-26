@@ -2,76 +2,63 @@ import { artistProfile, galleryImages, links } from '../data';
 
 export default function About() {
   return (
-    <div className="container section">
-      <a href="#/" className="back-link">← Home</a>
-      <div className="eyebrow-row" style={{ marginBottom: '1.5rem' }}>
-        <span className="badge badge--accent">About</span>
-        <span className="section-rule" />
-      </div>
-
-      <div className="grid grid--sidebar" style={{ alignItems: 'start' }}>
-        <div className="card" style={{ overflow: 'hidden' }}>
-          <img src="/calitoy-cover.jpg" alt="Calitoy cover art" className="cover-img" />
-          <div style={{ padding: '1.75rem' }}>
-          <p className="statement-kicker">Joseph Calitoy / CaliToy</p>
-          <h1 style={{ fontSize: 'clamp(2rem,5vw,3.5rem)', marginBottom: '1rem' }}>{artistProfile.name}</h1>
-          <p style={{ color: 'var(--muted)', lineHeight: 1.9, marginBottom: '1.25rem' }}>
-            Joseph Calitoy is a California artist, songwriter, and world-builder making music that lives in the space between pressure and
-            vulnerability. Under the CaliToy name, he leans into mood, melody, and narrative — records that feel personal enough to whisper in
-            your ear and widescreen enough to fill the whole night.
-          </p>
-          <p style={{ color: 'var(--muted)', lineHeight: 1.9 }}>
-            His catalog moves through ambition, memory, tension, devotion, and escape without locking itself into one lane. The throughline is
-            voice: intimate writing, cinematic atmosphere, and a point of view that treats every song like a scene with consequences.
-          </p>
-          </div>
-        </div>
-
-        <div style={{ display: 'grid', gap: '1rem' }}>
-
-          <div className="card" style={{ padding: '1.5rem' }}>
-            <p className="badge badge--accent" style={{ marginBottom: '.9rem' }}>Live gallery</p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '.75rem' }}>
-              {galleryImages.slice(0, 4).map((image) => (
-                <img key={image.src} src={image.src} alt={image.alt} style={{ width: '100%', aspectRatio: '3 / 4', objectFit: 'cover', borderRadius: '1rem', border: '1px solid var(--border)' }} />
+    <div className="section">
+      <div className="container">
+        <a href="#/" className="back-link">
+          ← Home
+        </a>
+        <span className="section__label">About</span>
+        <div className="about-grid">
+          <div>
+            <img src="/calitoy-cover.jpg" alt="Joseph Calitoy portrait" className="about-photo" />
+            <div className="gallery" style={{ marginTop: '3px' }}>
+              {galleryImages.slice(1, 4).map((image) => (
+                <div key={image.src} className="gallery__item">
+                  <img src={image.src} alt={image.alt} />
+                </div>
               ))}
             </div>
           </div>
-          <div className="card" style={{ padding: '1.5rem' }}>
-            <p className="badge badge--accent" style={{ marginBottom: '.9rem' }}>The world</p>
-            <h3 style={{ fontSize: '1.3rem', marginBottom: '.75rem' }}>More than a discography</h3>
-            <p style={{ color: 'var(--muted)', fontSize: '.92rem', lineHeight: 1.8 }}>
-              xcalitoy.com is the home for the music and everything around it — lyrics, visual language, archive pieces, future drops, and the
-              shape of the larger story still unfolding.
-            </p>
-          </div>
 
-          <div className="card" style={{ padding: '1.5rem' }}>
-            <p className="badge badge--accent" style={{ marginBottom: '.9rem' }}>Links</p>
-            <div className="links-grid" style={{ gridTemplateColumns: '1fr' }}>
-              <a href={links.spotifyAlbum} target="_blank" rel="noreferrer" className="link-card">
-                <div className="link-card__title">Spotify · Lioness Lost</div>
-                <div className="link-card__sub">Open the featured album</div>
+          <div className="about-text">
+            <h1>{artistProfile.name}</h1>
+            <p>
+              Joseph Calitoy makes records like scenes from a crime romance: dark pop confessionals, pressure-heavy melodies,
+              and lyrics that stay intimate even when the world around them widens into cinema.
+            </p>
+            <p>
+              Under the CaliToy name, he moves through ambition, obsession, devotion, fallout, and survival without sanding the
+              edges down. The point is mood with consequence — songs that feel bruised, dressed up, and dangerous enough to keep.
+            </p>
+            <p>
+              This site exists as the real home for the catalog: music, visuals, lyrics, press materials, and the larger world
+              that keeps unfolding around the releases. Nothing here is meant to feel polite. It is built to feel lived in.
+            </p>
+            <div className="hero__actions">
+              <a href={links.spotifyAlbum} target="_blank" rel="noreferrer" className="btn btn--kill">
+                Hear {artistProfile.featuredRelease}
               </a>
-              <a href={links.soundcloud} target="_blank" rel="noreferrer" className="link-card">
-                <div className="link-card__title">SoundCloud</div>
-                <div className="link-card__sub">soundcloud.com/calitoy</div>
-              </a>
-              <a href={links.instagram} target="_blank" rel="noreferrer" className="link-card">
-                <div className="link-card__title">Instagram</div>
-                <div className="link-card__sub">@josephcalitoy</div>
-              </a>
-              <a href="https://www.tiktok.com/@that.joemad" target="_blank" rel="noreferrer" className="link-card">
-                <div className="link-card__title">TikTok</div>
-                <div className="link-card__sub">@that.joemad</div>
-              </a>
-              <a href={links.book} className="link-card">
-                <div className="link-card__title">Booking / Contact</div>
-                <div className="link-card__sub">joseph@tarosyn.com</div>
+              <a href={links.book} className="btn">
+                Contact
               </a>
             </div>
           </div>
         </div>
+
+        <section className="section" style={{ paddingBottom: 0 }}>
+          <span className="section__label">More frames</span>
+          <h2 className="section__title">Grain, sweat, velvet, static.</h2>
+          <p className="section__subtitle">
+            The visual language stays raw: full bleed where it counts, tight gaps, and no softening around the edges.
+          </p>
+          <div className="gallery">
+            {galleryImages.slice(4, 10).map((image) => (
+              <div key={image.src} className="gallery__item">
+                <img src={image.src} alt={image.alt} />
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );
