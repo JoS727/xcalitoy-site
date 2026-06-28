@@ -74,11 +74,14 @@ export default function Home() {
           <p className="section__subtitle">
             A strip of proof from the Calitoy world — sweat, shadow, and the part of the night that stains your shirt.
           </p>
-          <div className="gallery">
-            {galleryImages.slice(0, 6).map((image) => (
-              <div key={image.src} className="gallery__item">
+          <div className="gallery gallery--editorial">
+            {galleryImages.slice(0, 6).map((image, index) => (
+              <figure
+                key={image.src}
+                className={`gallery__item gallery__item--${index + 1}`}
+              >
                 <img src={image.src} alt={image.alt} />
-              </div>
+              </figure>
             ))}
           </div>
         </div>
