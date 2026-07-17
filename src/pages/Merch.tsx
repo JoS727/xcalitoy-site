@@ -1,3 +1,17 @@
+import { useMemo, useState } from 'react';
+
+type Product = {
+  id: string;
+  name: string;
+  subtitle: string;
+  price: number;
+  priceLabel: string;
+  copy: string;
+  details: string[];
+};
+
+type CartItem = Product & { quantity: number };
+
 const occasionTiles = [
   {
     title: 'Birthday Boards',
@@ -21,25 +35,31 @@ const occasionTiles = [
   },
 ];
 
-const featuredBoards = [
+const featuredBoards: Product[] = [
   {
+    id: 'signature-photo-board',
     name: 'Signature Photo Board',
     subtitle: 'Best seller',
-    price: 'From $189',
+    price: 189,
+    priceLabel: 'From $189',
     copy: 'Full custom deck with one hero photo, custom name lockup, event line, and gift-ready layout.',
     details: ['3 design directions', '48-hour mockup', 'wall-ready or skate-ready'],
   },
   {
+    id: 'story-collage-deck',
     name: 'Story Collage Deck',
     subtitle: 'For milestones',
-    price: 'From $229',
+    price: 229,
+    priceLabel: 'From $229',
     copy: 'A richer composition with multiple images, message copy, layered texture, and a more editorial treatment.',
     details: ['up to 6 images', 'custom back story panel', 'premium print finish'],
   },
   {
+    id: 'event-party-run',
     name: 'Event Party Run',
     subtitle: 'For groups',
-    price: 'From $690',
+    price: 690,
+    priceLabel: 'From $690',
     copy: 'Small-batch board run for birthdays, brand events, bachelor weekends, or launches where everyone gets one.',
     details: ['minimum 4 boards', 'shared art system', 'quantity pricing'],
   },
@@ -116,7 +136,43 @@ const assurances = [
   'Built for birthdays, weddings, memorials, baby showers, holidays, and brand moments',
 ];
 
+function formatPrice(value: number) {
+  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
+}
+
 export default function Merch() {
+  const [cart, setCart] = useState<CartItem[]>([]);
+
+  const addToCart = (product: Product) => {
+    setCart((current) => {
+      const existing = current.find((item) => item.id === product.id);
+      if (existing) {
+        return current.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item,
+        );
+      }
+      return [...current, { ...product, quantity: 1 }];
+    });
+  };
+
+  const updateQuantity = (productId: string, delta: number) => {
+    setCart((current) =>
+      current
+        .map((item) =>
+          item.id === productId ? { ...item, quantity: Math.max(0, item.quantity + delta) } : item,
+        )
+        .filter((item) => item.quantity > 0),
+    );
+  };
+
+  const cartCount = useMemo(() => cart.reduce((sum, item) => sum + item.quantity, 0), [cart]);
+  const subtotal = useMemo(() => cart.reduce((sum, item) => sum + item.price * item.quantity, 0), [cart]);
+  const inquiryBody = useMemo(() => {
+    if (!cart.length) return 'Hi Joseph,%0D%0A%0D%0AI want to start a custom skateboard order.';
+    const lines = cart.map((item) => `- ${item.name} x${item.quantity} (${formatPrice(item.price)} each)`);
+    return `Hi Joseph,%0D%0A%0D%0AI want to start a custom skateboard order for:%0D%0A${lines.join('%0D%0A')}%0D%0A%0D%0ASubtotal starting point: ${formatPrice(subtotal)}%0D%0A%0D%0AOccasion:%0D%0ADeadline:%0D%0ANotes:`;
+  }, [cart, subtotal]);
+
   return (
     <div className="store-page">
       <section className="store-hero section">
@@ -189,6 +245,27 @@ export default function Merch() {
         </div>
       </section>
 
+      <section className="section store-example-section">
+        <div className="container store-example-grid">
+          <div className="store-example-media">
+            <img
+              src="/decks/xcalitoy-skateboard-examples-cutout.png"
+              alt="Four custom skateboard decks displayed vertically side by side, featuring bold graffiti-style lettering in green, purple, pink, and blue."
+            />
+          </div>
+          <div className="store-example-copy">
+            <span className="section__label">Deck examples</span>
+            <h2 className="section__title">Use the deck itself as the emotional centerpiece.</h2>
+            <p className="section__subtitle">
+              These example decks make the idea click fast: bold color systems, strong type, collectible energy, and enough personality that the board feels like the gift — not just the packaging.
+            </p>
+            <div className="store-example-note">
+              Great references for birthdays, artist drops, event runs, memorial pieces, or any custom board that needs to feel graphic and unforgettable.
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="section store-band">
         <div className="container store-band__grid">
           <div>
@@ -208,26 +285,98 @@ export default function Merch() {
 
       <section className="section">
         <div className="container">
-          <span className="section__label">Featured formats</span>
-          <h2 className="section__title">Three easy ways to order.</h2>
-          <p className="section__subtitle">
-            Keep it simple if you want speed. Go bigger if the moment deserves more weight.
-          </p>
-          <div className="product-grid">
-            {featuredBoards.map((board) => (
-              <article key={board.name} className="product-card">
-                <div className="product-card__subtitle">{board.subtitle}</div>
-                <h3>{board.name}</h3>
-                <div className="product-card__price">{board.price}</div>
-                <p>{board.copy}</p>
-                <ul>
-                  {board.details.map((detail) => (
-                    <li key={detail}>{detail}</li>
+          <div className="store-section-head">
+            <div>
+              <span className="section__label">Featured formats</span>
+              <h2 className="section__title">Three easy ways to order.</h2>
+              <p className="section__subtitle">
+                Keep it simple if you want speed. Go bigger if the moment deserves more weight.
+              </p>
+            </div>
+            <div className="cart-pill" aria-live="polite">
+              <span>Cart</span>
+              <strong>{cartCount}</strong>
+            </div>
+          </div>
+
+          <div className="store-shop-grid">
+            <div className="product-grid product-grid--shop">
+              {featuredBoards.map((board) => (
+                <article key={board.id} className="product-card">
+                  <div className="product-card__visual">
+                    <img
+                      src="/decks/xcalitoy-skateboard-examples-cutout.png"
+                      alt="Example custom XCalitoy skateboard decks"
+                    />
+                  </div>
+                  <div className="product-card__subtitle">{board.subtitle}</div>
+                  <h3>{board.name}</h3>
+                  <div className="product-card__price">{board.priceLabel}</div>
+                  <p>{board.copy}</p>
+                  <ul>
+                    {board.details.map((detail) => (
+                      <li key={detail}>{detail}</li>
+                    ))}
+                  </ul>
+                  <div className="product-card__actions">
+                    <button type="button" className="btn btn--kill product-card__cta" onClick={() => addToCart(board)}>
+                      Add to cart
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <aside className="cart-card">
+              <div className="cart-card__eyebrow">Cart</div>
+              <h3>Your custom board draft</h3>
+              <p className="cart-card__copy">
+                This is the lightweight pre-cart. It lets people build interest and reach a real inquiry with specifics already packed in.
+              </p>
+
+              {cart.length ? (
+                <div className="cart-list">
+                  {cart.map((item) => (
+                    <div key={item.id} className="cart-item">
+                      <div>
+                        <div className="cart-item__name">{item.name}</div>
+                        <div className="cart-item__price">{formatPrice(item.price)}</div>
+                      </div>
+                      <div className="cart-item__controls">
+                        <button type="button" onClick={() => updateQuantity(item.id, -1)} aria-label={`Remove one ${item.name}`}>
+                          −
+                        </button>
+                        <span>{item.quantity}</span>
+                        <button type="button" onClick={() => updateQuantity(item.id, 1)} aria-label={`Add one ${item.name}`}>
+                          +
+                        </button>
+                      </div>
+                    </div>
                   ))}
-                </ul>
-                <a href="mailto:joseph@tarosyn.com?subject=Custom%20Skateboard%20Order" className="btn btn--kill product-card__cta">Request this</a>
-              </article>
-            ))}
+                </div>
+              ) : (
+                <div className="cart-empty">No boards in cart yet. Add one of the featured formats to start shaping the order.</div>
+              )}
+
+              <div className="cart-summary">
+                <div>
+                  <span>Subtotal</span>
+                  <strong>{formatPrice(subtotal)}</strong>
+                </div>
+                <p>Final pricing still depends on quantity, art complexity, deck format, and turnaround.</p>
+              </div>
+
+              <a
+                href={`mailto:joseph@tarosyn.com?subject=Custom%20Skateboard%20Cart&body=${inquiryBody}`}
+                className={`btn btn--kill cart-card__cta ${cart.length ? '' : 'cart-card__cta--disabled'}`}
+                aria-disabled={!cart.length}
+                onClick={(event) => {
+                  if (!cart.length) event.preventDefault();
+                }}
+              >
+                Continue from cart
+              </a>
+            </aside>
           </div>
         </div>
       </section>
