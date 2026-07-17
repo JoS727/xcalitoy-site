@@ -9,10 +9,10 @@ import EPK from './pages/EPK';
 
 const navLinks = [
   { href: '/', label: 'Music' },
+  { href: '/merch', label: 'Custom Boards' },
   { href: '/about', label: 'About' },
   { href: '/epk', label: 'EPK' },
   { href: '/blog', label: 'Journal' },
-  { href: '/merch', label: 'Merch' },
 ];
 
 function NavLink({ href, label, className = 'site-nav__link' }: { href: string; label: string; className?: string }) {
@@ -44,14 +44,7 @@ function Navigation() {
           {navLinks.map((link) => (
             <NavLink key={link.href} href={link.href} label={link.label} />
           ))}
-          <a
-            href="https://open.spotify.com/album/5P8XnbH0PEqtNq9bRed1I1?si=12vIiVzeRrqGoqY7Qr_8HQ"
-            target="_blank"
-            rel="noreferrer"
-            className="site-nav__cta"
-          >
-            Stream Lioness Lost
-          </a>
+          <NavLink href="/merch" label="Order a Custom Board" className="site-nav__cta" />
         </nav>
       </div>
     </header>
@@ -85,7 +78,7 @@ export default function App() {
             <NavLink href="/about" label="About" className="footer-link" />
             <NavLink href="/epk" label="EPK" className="footer-link" />
             <NavLink href="/blog" label="Journal" className="footer-link" />
-            <NavLink href="/merch" label="Merch" className="footer-link" />
+            <NavLink href="/merch" label="Custom Boards" className="footer-link" />
           </span>
         </div>
       </footer>

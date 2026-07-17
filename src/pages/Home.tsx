@@ -16,17 +16,42 @@ export default function Home() {
             {artistProfile.tagline} {artistProfile.bio}
           </p>
           <div className="hero__actions">
-            <a href={links.spotifyAlbum} target="_blank" rel="noreferrer" className="btn btn--kill">
-              Stream {artistProfile.featuredRelease}
+            <a href="#/merch" className="btn btn--kill">
+              Shop custom boards
             </a>
-            <a href="#tracks" className="btn">
-              Enter the track list
+            <a href={links.spotifyAlbum} target="_blank" rel="noreferrer" className="btn">
+              Stream {artistProfile.featuredRelease}
             </a>
             <a href={links.epk} className="btn">
               Open press kit
             </a>
           </div>
           <div className="hero__scroll">Scroll for the evidence</div>
+        </div>
+      </section>
+
+      <section className="section store-feature">
+        <div className="container store-feature__grid">
+          <div>
+            <span className="section__label">New storefront</span>
+            <h2 className="section__title">Custom skateboards for every occasion.</h2>
+            <p className="section__subtitle">
+              We built the merch side into a real gift-first store: birthdays, weddings, memorials, baby gifts, event runs, and one-off decks that hit harder than flowers.
+            </p>
+            <div className="store-feature__actions">
+              <a href="#/merch" className="btn btn--kill">Enter the board shop</a>
+              <a href="mailto:joseph@tarosyn.com?subject=Custom%20Skateboard%20Order" className="btn">Start a custom order</a>
+            </div>
+          </div>
+          <div className="store-feature__panel">
+            <div className="store-feature__card">
+              <div className="store-feature__eyebrow">What it feels like</div>
+              <h3>1800Flowers energy. Custom board execution.</h3>
+              <p>
+                Occasion-led gifting, but with something people actually keep: personalized decks built around names, photos, milestones, and story.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
