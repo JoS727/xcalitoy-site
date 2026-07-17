@@ -150,6 +150,10 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
 
 /* STORE */
 .store-page .section::before{left:0;right:0;opacity:.55}
+.store-page{background:
+  radial-gradient(circle at top right, rgba(196,85,58,.12), transparent 22%),
+  radial-gradient(circle at 15% 10%, rgba(212,160,82,.08), transparent 18%),
+  linear-gradient(180deg, rgba(13,10,14,.96), rgba(5,3,4,1));}
 .store-hero{padding-top:11rem}
 .store-hero__grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:2rem;align-items:start}
 .store-hero__title{font-size:clamp(3rem,6vw,5.5rem);max-width:12ch;margin-bottom:1.25rem}
@@ -158,6 +162,11 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
 .store-trustbar{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
 .store-trustbar span{font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;padding:.55rem .8rem;border:1px solid rgba(255,255,255,.08);color:var(--muted)}
 .store-hero__panel{position:sticky;top:7rem}
+.store-proofband{padding-top:1rem}
+.proof-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.proof-card{padding:1.25rem 1rem;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);text-align:center}
+.proof-card__stat{font-family:var(--display);font-size:2rem;color:var(--fg)}
+.proof-card__label{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.35rem}
 .store-hero__card,.store-cta__card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);padding:2rem;box-shadow:0 24px 80px rgba(0,0,0,.25)}
 .store-hero__eyebrow,.store-cta__eyebrow,.product-card__subtitle,.occasion-card__badge{font-size:.64rem;text-transform:uppercase;letter-spacing:.28em;color:var(--accent)}
 .store-hero__card h2,.store-cta__card h3,.product-card h3,.occasion-card h3,.process-card h3{font-size:1.8rem;margin:.75rem 0}
@@ -187,7 +196,7 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
   .occasion-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .product-grid{grid-template-columns:1fr}
   .process-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .usecase-grid,.faq-grid{grid-template-columns:1fr}
+  .usecase-grid,.faq-grid,.proof-grid{grid-template-columns:1fr}
   .store-hero__grid,.store-band__grid,.store-cta{grid-template-columns:1fr}
   .store-hero__panel{position:static}
 }

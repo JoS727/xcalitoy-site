@@ -83,6 +83,13 @@ const useCases = [
   },
 ];
 
+const proofs = [
+  { stat: '48 hrs', label: 'Typical first mockup window' },
+  { stat: '1 of 1', label: 'Personalized design direction per order' },
+  { stat: '4+', label: 'Occasion types already productized' },
+  { stat: '∞', label: 'Ways to make the story feel personal' },
+];
+
 const faqs = [
   {
     question: 'Do I need to know exactly what I want?',
@@ -146,6 +153,19 @@ export default function Merch() {
               <div className="store-hero__price">From $189</div>
             </div>
           </aside>
+        </div>
+      </section>
+
+      <section className="section store-proofband">
+        <div className="container">
+          <div className="proof-grid">
+            {proofs.map((proof) => (
+              <div key={proof.label} className="proof-card">
+                <div className="proof-card__stat">{proof.stat}</div>
+                <div className="proof-card__label">{proof.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
