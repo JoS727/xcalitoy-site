@@ -7,7 +7,10 @@ export default function Home() {
     <>
       <section className="hero">
         <div className="hero__bg" aria-hidden="true">
-          <img src={artistProfile.featuredReleaseArt} alt="" />
+          <picture>
+            <source media="(max-width: 768px)" srcSet="/xcalitoy-hero-mobile.jpg" />
+            <img src="/xcalitoy-hero-desktop.jpg" alt="" />
+          </picture>
         </div>
         <div className="hero__content container">
           <span className="hero__tagline">{artistProfile.siteName}</span>
@@ -27,31 +30,6 @@ export default function Home() {
             </a>
           </div>
           <div className="hero__scroll">Scroll for the evidence</div>
-        </div>
-      </section>
-
-      <section className="section store-feature">
-        <div className="container store-feature__grid">
-          <div>
-            <span className="section__label">New storefront</span>
-            <h2 className="section__title">Custom skateboards for every occasion.</h2>
-            <p className="section__subtitle">
-              We built the merch side into a real gift-first store: birthdays, weddings, memorials, baby gifts, event runs, and one-off decks that hit harder than flowers.
-            </p>
-            <div className="store-feature__actions">
-              <a href="#/merch" className="btn btn--kill">Enter the board shop</a>
-              <a href="mailto:joseph@tarosyn.com?subject=Custom%20Skateboard%20Order" className="btn">Start a custom order</a>
-            </div>
-          </div>
-          <div className="store-feature__panel">
-            <div className="store-feature__card">
-              <div className="store-feature__eyebrow">What it feels like</div>
-              <h3>1800Flowers energy. Custom board execution.</h3>
-              <p>
-                Occasion-led gifting, but with something people actually keep: personalized decks built around names, photos, milestones, and story.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 

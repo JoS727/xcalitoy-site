@@ -184,7 +184,7 @@ export default function Merch() {
               XCalitoy turns names, photos, milestones, and inside stories into custom skateboard gifts that feel personal, collectible, and built to keep. Birthday boards. Wedding boards. Memorial boards. Baby boards. Holiday boards. Event boards. Same emotional job as flowers — way harder to forget.
             </p>
             <div className="store-hero__actions">
-              <a href="mailto:joseph@tarosyn.com?subject=Custom%20Skateboard%20Order" className="btn btn--kill">Start a custom order</a>
+              <a href="mailto:joseph@xcalitoy.com?subject=Custom%20Skateboard%20Order" className="btn btn--kill">Start a custom order</a>
               <a href="#collections" className="btn">Shop by occasion</a>
             </div>
             <div className="store-trustbar">

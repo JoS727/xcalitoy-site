@@ -9,7 +9,7 @@ import EPK from './pages/EPK';
 
 const navLinks = [
   { href: '/', label: 'Music' },
-  { href: '/merch', label: 'Custom Boards' },
+  { href: '/merch', label: 'Boards' },
   { href: '/about', label: 'About' },
   { href: '/epk', label: 'EPK' },
   { href: '/blog', label: 'Journal' },
@@ -44,7 +44,7 @@ function Navigation() {
           {navLinks.map((link) => (
             <NavLink key={link.href} href={link.href} label={link.label} />
           ))}
-          <NavLink href="/merch" label="Order a Custom Board" className="site-nav__cta" />
+          <NavLink href="/merch" label="Boards" className="site-nav__cta" />
         </nav>
       </div>
     </header>
@@ -78,7 +78,7 @@ export default function App() {
             <NavLink href="/about" label="About" className="footer-link" />
             <NavLink href="/epk" label="EPK" className="footer-link" />
             <NavLink href="/blog" label="Journal" className="footer-link" />
-            <NavLink href="/merch" label="Custom Boards" className="footer-link" />
+            <NavLink href="/merch" label="Boards" className="footer-link" />
           </span>
         </div>
       </footer>
