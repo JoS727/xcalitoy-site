@@ -13,7 +13,7 @@ export default function Home() {
           <span className="hero__tagline">{artistProfile.siteName}</span>
           <h1>{artistProfile.name}</h1>
           <p className="hero__sub">
-            {artistProfile.tagline} {artistProfile.bio}
+            {artistProfile.tagline} {artistProfile.bio} Lioness Lost and Two Shirts are the SoundCloud bookends for the new album XCalitoy coming in August.
           </p>
           <div className="hero__actions">
             <a href="#tracks" className="btn btn--kill">
@@ -58,9 +58,9 @@ export default function Home() {
       <section className="section" id="tracks">
         <div className="container">
           <span className="section__label">Track list</span>
-          <h2 className="section__title">Songs for beautiful damage.</h2>
+          <h2 className="section__title">Lioness Lost and Two Shirts lead the August rollout.</h2>
           <p className="section__subtitle">
-            No cards. No filler. Just the records, the pressure they carry, and the door straight into the sound.
+            The new SoundCloud highlights now frame XCalitoy from both ends — then the rest of the catalog fills in the pressure between them.
           </p>
 
           <div className="tracks">

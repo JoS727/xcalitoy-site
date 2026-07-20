@@ -64,7 +64,7 @@ export const artistProfile = {
   featuredReleaseArt: '/xcalitoy-hero.jpg',
   bio: 'Joseph Calitoy is a California artist shaping moody, melodic records that sit somewhere between confession, cinema, ambition, and aftermath. Under the CaliToy name, he builds songs that feel intimate on first listen and larger every time you come back.',
   intro: 'The official home for the music, visuals, lyrics, and the world that keeps unfolding around the catalog.',
-  featuredReleaseNote: 'Current featured release: Lioness Lost by Calitoy.',
+  featuredReleaseNote: 'Now highlighting Lioness Lost and Two Shirts as the bookends of XCalitoy, arriving in August.',
   knownSourceNote: 'Start with the featured songs, move through the archive, then stay for the playlists, lyrics, and press-ready materials.',
   location: 'California',
   contactEmail: 'joseph@xcalitoy.com',
@@ -73,6 +73,29 @@ export const artistProfile = {
 const placeholder = `Lyrics coming soon.`;
 
 export const songs: Song[] = [
+  {
+    slug: 'lioness-lost',
+    title: 'Lioness Lost',
+    era: 'XCalitoy · August bookend',
+    status: 'ready',
+    summary: 'One side of the new album’s frame: bruised, cinematic, and built to open the emotional world of XCalitoy.',
+    themes: ['xcalitoy', 'bookend', 'cinematic'],
+    coverArt: '/xcalitoy-hero.jpg',
+    spotifyUrl: 'https://open.spotify.com/album/5P8XnbH0PEqtNq9bRed1I1?si=12vIiVzeRrqGoqY7Qr_8HQ',
+    soundcloudUrl: 'https://soundcloud.com/calitoy',
+    lyrics: placeholder,
+  },
+  {
+    slug: 'two-shirts',
+    title: 'Two Shirts',
+    era: 'XCalitoy · August bookend',
+    status: 'ready',
+    summary: 'The other end of the XCalitoy frame — intimate, direct, and positioned as a key new SoundCloud highlight for the album rollout.',
+    themes: ['xcalitoy', 'bookend', 'new release'],
+    coverArt: '/xcalitoy-hero.jpg',
+    soundcloudUrl: 'https://soundcloud.com/calitoy',
+    lyrics: placeholder,
+  },
   {
     slug: 'snow',
     title: 'Snow',
@@ -211,6 +234,7 @@ export const journalEntries: JournalEntry[] = [
     excerpt: 'A proper home for the songs, the lyrics, the visuals, and the pieces around the releases.',
     body: [
       'This site is meant to feel like the actual front door to the Calitoy world, not just a list of links.',
+      'Right now, Lioness Lost and Two Shirts are the highlighted SoundCloud bookends for XCalitoy, the new album coming in August.',
       'The music stays at the center, but the archive matters too: lyrics, visuals, notes, and the shape of what each release is trying to say.',
       'If you are new here, start with the featured songs, then move through the playlists and track pages. The rest will keep opening up from there.',
     ],
