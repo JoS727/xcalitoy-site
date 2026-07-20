@@ -10,7 +10,7 @@ export default function About() {
         <span className="section__label">About</span>
         <div className="about-grid">
           <div>
-            <img src="/xcalitoy-hero.jpg" alt="Joseph Calitoy performance portrait" className="about-photo" />
+            <img src="/about-performance.jpg" alt="Joseph Calitoy performance portrait" className="about-photo" />
           </div>
 
           <div className="about-text">
