@@ -234,7 +234,14 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
 
 /* RESPONSIVE */
 @media(max-width:768px){
-  .hero h1{font-size:clamp(3rem,14vw,5rem)}
+  .site-nav-wrap{padding:1rem 0;background:linear-gradient(180deg,rgba(5,3,4,0.98),rgba(5,3,4,0.82) 72%,transparent)}
+  .site-nav{align-items:flex-start}
+  .site-nav__brand-mark{font-size:1.55rem}
+  .site-nav__brand-sub{font-size:.5rem;letter-spacing:.24em;line-height:1.5;max-width:12rem}
+  .hero{min-height:100svh;padding-top:8.75rem;align-items:flex-start}
+  .hero__content{padding:0 1.25rem}
+  .hero h1{font-size:clamp(2.6rem,13vw,4.6rem);line-height:.92}
+  .hero__sub{font-size:1rem;max-width:100%;line-height:1.7}
   .store-feature__grid{grid-template-columns:1fr}
   .store-section-head{flex-direction:column;align-items:start}
   .gallery--editorial{grid-template-columns:repeat(2,1fr);gap:1rem}
@@ -249,7 +256,7 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
   .occasion-grid,.process-grid,.usecase-grid,.faq-grid{grid-template-columns:1fr}
 }
 @media(max-width:480px){
-  .hero{min-height:90vh}
+  .hero{min-height:100svh;padding-top:8.5rem}
   .hero__actions{flex-direction:column}
   .btn{width:100%;justify-content:center}
   .gallery--editorial{grid-template-columns:1fr}
