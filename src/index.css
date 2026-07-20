@@ -45,6 +45,7 @@ p{font-size:1rem;line-height:1.75}
 .hero__tagline{font-size:.7rem;text-transform:uppercase;letter-spacing:.5em;color:var(--accent);margin-bottom:1.5rem;display:block}
 .hero h1{font-size:clamp(4rem,12vw,9rem);color:var(--fg);font-style:italic;text-shadow:0 4px 60px rgba(196,85,58,0.3)}
 .hero__sub{margin-top:1.5rem;font-size:1.15rem;color:rgba(242,232,223,0.7);max-width:550px;line-height:1.8}
+.hero__sub--mobile{display:none}
 .hero__actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.5rem}
 .hero__scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-size:.65rem;text-transform:uppercase;letter-spacing:.4em;color:var(--muted);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
@@ -244,6 +245,9 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
   .hero__content{padding:0 1rem;max-width:100%}
   .hero h1{font-size:clamp(2.05rem,10vw,3.2rem);line-height:.9;max-width:8ch}
   .hero__sub{margin-top:.8rem;font-size:.92rem;max-width:92%;line-height:1.55}
+  .hero__sub--desktop{display:none}
+  .hero__sub--mobile{display:block;max-width:18rem}
+  .hero__scroll{display:none}
   .hero__actions{margin-top:1.25rem;gap:.65rem;flex-direction:column;align-items:stretch}
   .btn{width:100%;justify-content:center}
   .store-feature__grid{grid-template-columns:1fr}

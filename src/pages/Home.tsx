@@ -15,8 +15,11 @@ export default function Home() {
         <div className="hero__content container">
           <span className="hero__tagline">{artistProfile.siteName}</span>
           <h1>{artistProfile.name}</h1>
-          <p className="hero__sub">
+          <p className="hero__sub hero__sub--desktop">
             {artistProfile.tagline} {artistProfile.bio} Lioness Lost and Two Shirts are the SoundCloud bookends for the new album XCalitoy coming in August.
+          </p>
+          <p className="hero__sub hero__sub--mobile">
+            Lioness Lost and Two Shirts frame the new album XCalitoy, coming in August.
           </p>
           <div className="hero__actions">
             <a href="#tracks" className="btn btn--kill">
