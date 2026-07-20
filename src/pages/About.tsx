@@ -1,4 +1,4 @@
-import { artistProfile, galleryImages, links } from '../data';
+import { artistProfile, links } from '../data';
 
 export default function About() {
   return (
@@ -10,14 +10,7 @@ export default function About() {
         <span className="section__label">About</span>
         <div className="about-grid">
           <div>
-            <img src="/calitoy-cover.jpg" alt="Joseph Calitoy portrait" className="about-photo" />
-            <div className="gallery" style={{ marginTop: '3px' }}>
-              {galleryImages.slice(1, 4).map((image) => (
-                <div key={image.src} className="gallery__item">
-                  <img src={image.src} alt={image.alt} />
-                </div>
-              ))}
-            </div>
+            <img src="/xcalitoy-hero.jpg" alt="Joseph Calitoy performance portrait" className="about-photo" />
           </div>
 
           <div className="about-text">
@@ -44,21 +37,6 @@ export default function About() {
             </div>
           </div>
         </div>
-
-        <section className="section" style={{ paddingBottom: 0 }}>
-          <span className="section__label">More frames</span>
-          <h2 className="section__title">Grain, sweat, velvet, static.</h2>
-          <p className="section__subtitle">
-            The visual language stays raw: full bleed where it counts, tight gaps, and no softening around the edges.
-          </p>
-          <div className="gallery">
-            {galleryImages.slice(4, 10).map((image) => (
-              <div key={image.src} className="gallery__item">
-                <img src={image.src} alt={image.alt} />
-              </div>
-            ))}
-          </div>
-        </section>
       </div>
     </div>
   );

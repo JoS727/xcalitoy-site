@@ -47,7 +47,7 @@ export const links = {
   soundcloud: 'https://soundcloud.com/calitoy',
   spotifyAlbum: 'https://open.spotify.com/album/5P8XnbH0PEqtNq9bRed1I1?si=12vIiVzeRrqGoqY7Qr_8HQ',
   merch: '#/merch',
-  book: 'mailto:joseph@tarosyn.com?subject=Book%20Joseph%20Calitoy',
+  book: 'mailto:joseph@xcalitoy.com?subject=Book%20Joseph%20Calitoy',
   blog: '#/blog',
   epk: '#/epk',
   about: '#/about',
@@ -67,7 +67,7 @@ export const artistProfile = {
   featuredReleaseNote: 'Current featured release: Lioness Lost by Calitoy.',
   knownSourceNote: 'Start with the featured songs, move through the archive, then stay for the playlists, lyrics, and press-ready materials.',
   location: 'California',
-  contactEmail: 'joseph@tarosyn.com',
+  contactEmail: 'joseph@xcalitoy.com',
 };
 
 const placeholder = `Lyrics coming soon.`;
