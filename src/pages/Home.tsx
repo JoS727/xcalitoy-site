@@ -1,4 +1,4 @@
-import { artistProfile, galleryImages, highlights, links, playlists, songs } from '../data';
+import { artistProfile, highlights, links, playlists, songs } from '../data';
 
 const statement = highlights[1]?.description ?? artistProfile.intro;
 
@@ -16,8 +16,8 @@ export default function Home() {
             {artistProfile.tagline} {artistProfile.bio}
           </p>
           <div className="hero__actions">
-            <a href="#/merch" className="btn btn--kill">
-              Shop custom boards
+            <a href="#tracks" className="btn btn--kill">
+              Enter the music
             </a>
             <a href={links.spotifyAlbum} target="_blank" rel="noreferrer" className="btn">
               Stream {artistProfile.featuredRelease}
@@ -87,26 +87,6 @@ export default function Home() {
                 </div>
                 <div className="track__play">Play / Read</div>
               </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <span className="section__label">Gallery</span>
-          <h2 className="section__title">Raw frames. Stage heat. Aftermath.</h2>
-          <p className="section__subtitle">
-            A strip of proof from the Calitoy world — sweat, shadow, and the part of the night that stains your shirt.
-          </p>
-          <div className="gallery gallery--editorial">
-            {galleryImages.slice(0, 6).map((image, index) => (
-              <figure
-                key={image.src}
-                className={`gallery__item gallery__item--${index + 1}`}
-              >
-                <img src={image.src} alt={image.alt} />
-              </figure>
             ))}
           </div>
         </div>
