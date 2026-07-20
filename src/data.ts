@@ -61,7 +61,7 @@ export const artistProfile = {
   siteName: 'xcalitoy.com',
   tagline: 'Dark pop, night-drive confessionals, and pressure-heavy records built to linger.',
   featuredRelease: 'Lioness Lost',
-  featuredReleaseArt: '/calitoy-cover.jpg',
+  featuredReleaseArt: '/xcalitoy-hero.jpg',
   bio: 'Joseph Calitoy is a California artist shaping moody, melodic records that sit somewhere between confession, cinema, ambition, and aftermath. Under the CaliToy name, he builds songs that feel intimate on first listen and larger every time you come back.',
   intro: 'The official home for the music, visuals, lyrics, and the world that keeps unfolding around the catalog.',
   featuredReleaseNote: 'Current featured release: Lioness Lost by Calitoy.',
