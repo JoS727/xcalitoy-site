@@ -1,6 +1,7 @@
 import { artistProfile, highlights, links, playlists, songs } from '../data';
 
 const statement = highlights[1]?.description ?? artistProfile.intro;
+const featuredSongs = songs.filter((song) => song.slug === 'lioness-lost' || song.slug === 'two-shirts');
 
 export default function Home() {
   return (
@@ -16,10 +17,10 @@ export default function Home() {
           <span className="hero__tagline">{artistProfile.siteName}</span>
           <h1>{artistProfile.name}</h1>
           <p className="hero__sub hero__sub--desktop">
-            {artistProfile.tagline} {artistProfile.bio} Lioness Lost and Two Shirts are the SoundCloud bookends for the new album XCalitoy coming in August.
+            {artistProfile.tagline} {artistProfile.bio} XCalitoy is the upcoming album, and it will be available on vinyl this August. Lioness Lost and Two Shirts are the first songs framing the release.
           </p>
           <p className="hero__sub hero__sub--mobile">
-            Lioness Lost and Two Shirts frame the new album XCalitoy, coming in August.
+            XCalitoy arrives on vinyl this August. Lioness Lost and Two Shirts are out front now.
           </p>
           <div className="hero__actions">
             <a href={links.soundcloud} target="_blank" rel="noreferrer" className="btn btn--kill">
@@ -38,14 +39,14 @@ export default function Home() {
 
       <section className="section" id="tracks">
         <div className="container">
-          <span className="section__label">Track list</span>
-          <h2 className="section__title">Lioness Lost and Two Shirts lead the August rollout.</h2>
+          <span className="section__label">Now playing</span>
+          <h2 className="section__title">Two songs out front. Vinyl in August.</h2>
           <p className="section__subtitle">
-            The new SoundCloud highlights now frame XCalitoy from both ends — then the rest of the catalog fills in the pressure between them.
+            For now, the focus stays on Lioness Lost and Two Shirts while XCalitoy lines up for its vinyl release this August.
           </p>
 
           <div className="tracks">
-            {songs.map((song, index) => (
+            {featuredSongs.map((song, index) => (
               <a
                 key={song.slug}
                 href={song.soundcloudUrl ?? `#/music/${song.slug}`}
