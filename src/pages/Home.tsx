@@ -44,9 +44,6 @@ export default function Home() {
           <p className="section__subtitle">
             For now, the focus stays on Lioness Lost and Two Shirts while XCalitoy lines up for its vinyl release this August.
           </p>
-          <p className="section__subtitle" style={{ maxWidth: '52rem' }}>
-            Stop drowning from chaos and gloom, let love take over don't let hate consume.
-          </p>
 
           <div className="album-cover-callout">
             <img src={artistProfile.featuredReleaseArt} alt="XCalitoy album cover" className="album-cover-callout__image" />
@@ -125,6 +122,9 @@ export default function Home() {
           <h2 className="section__title">If it matters, reach out directly.</h2>
           <p className="section__subtitle">
             Booking, press, playlists, collaborations, or just following the trail — everything important stays stripped and clear.
+          </p>
+          <p className="section__subtitle" style={{ maxWidth: '44rem' }}>
+            Stop drowning from chaos and gloom, let love take over don't let hate consume.
           </p>
           <div className="contact-grid">
             <a href={links.book} className="contact-item">
