@@ -1,6 +1,6 @@
 import { artistProfile, highlights, links, playlists, songs } from '../data';
 
-const statement = "Stop drowning from chaos and gloom, let love take over don't let hate consume.";
+const statement = "From Two to One I Shall Become, Must Sacrifice one to Give, Die I Must for I to live";
 const featuredSongs = songs.filter((song) => song.slug === 'lioness-lost' || song.slug === 'two-shirts');
 
 export default function Home() {
