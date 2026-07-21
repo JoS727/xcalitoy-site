@@ -240,7 +240,7 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
   .site-nav__brand{gap:.35rem}
   .site-nav__brand-mark{font-size:1.35rem}
   .site-nav__brand-sub{display:none}
-  .hero{min-height:auto;padding-top:10rem;padding-bottom:2.5rem;align-items:flex-start}
+  .hero{min-height:100vh;padding-top:6rem;padding-bottom:2.5rem;align-items:flex-end}
   .hero__bg img{object-position:center 12%}
   .hero__content{padding:0 1rem;max-width:100%}
   .hero h1{font-size:clamp(2.05rem,10vw,3.2rem);line-height:.9;max-width:8ch}
@@ -264,7 +264,7 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
   .occasion-grid,.process-grid,.usecase-grid,.faq-grid{grid-template-columns:1fr}
 }
 @media(max-width:480px){
-  .hero{min-height:auto;padding-top:9.25rem;padding-bottom:2rem}
+  .hero{min-height:100vh;padding-top:5.5rem;padding-bottom:2rem}
   .hero__bg img{object-position:center 10%}
   .hero h1{font-size:clamp(1.75rem,9.5vw,2.5rem);max-width:7.5ch}
   .hero__actions{flex-direction:column}
