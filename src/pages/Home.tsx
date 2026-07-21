@@ -1,6 +1,6 @@
 import { artistProfile, highlights, links, playlists, songs } from '../data';
 
-const statement = highlights[1]?.description ?? artistProfile.intro;
+const statement = "Stop drowning from chaos and gloom, let love take over don't let hate consume.";
 const featuredSongs = songs.filter((song) => song.slug === 'lioness-lost' || song.slug === 'two-shirts');
 
 export default function Home() {
@@ -84,9 +84,7 @@ export default function Home() {
 
       <section className="statement">
         <div className="container">
-          <div className="statement__text">
-            {statement} Every release belongs to the same bruised universe — romance, ambition, fallout, and whatever survives the morning.
-          </div>
+          <div className="statement__text">{statement}</div>
           <div className="statement__credit">{artistProfile.name} / {artistProfile.alias}</div>
         </div>
       </section>
