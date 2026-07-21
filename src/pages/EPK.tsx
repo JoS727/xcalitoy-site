@@ -54,7 +54,7 @@ export default function EPK() {
               </a>
               <a href={links.instagram} target="_blank" rel="noreferrer" className="link-card">
                 <div className="link-card__title">Instagram</div>
-                <div className="link-card__sub">@josephcalitoy</div>
+                <div className="link-card__sub">@XCalitoy</div>
               </a>
             </div>
           </div>

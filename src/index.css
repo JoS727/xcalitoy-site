@@ -73,6 +73,10 @@ p{font-size:1rem;line-height:1.75}
 .store-feature__card p{color:rgba(242,232,223,.72)}
 
 /* TRACK GRID — raw, asymmetric */
+.album-cover-callout{display:grid;grid-template-columns:minmax(220px,320px) minmax(0,1fr);gap:1.5rem;align-items:center;margin:2rem 0 2.5rem;padding:1.25rem;border:1px solid var(--border);background:rgba(242,232,223,0.03)}
+.album-cover-callout__image{width:100%;aspect-ratio:1 / 1;object-fit:cover}
+.album-cover-callout__eyebrow{font-size:.68rem;text-transform:uppercase;letter-spacing:.28em;color:var(--accent);margin-bottom:.75rem}
+.album-cover-callout__copy h3{font-size:clamp(1.8rem,4vw,3rem);margin:0}
 .tracks{display:grid;gap:2px}
 .track{position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:2rem;padding:2rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.04);transition:all .3s;cursor:pointer}
 .track:hover{background:rgba(196,85,58,0.04);border-color:rgba(196,85,58,0.15)}
@@ -255,6 +259,7 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
   .gallery--editorial{grid-template-columns:repeat(2,1fr);gap:1rem}
   .gallery__item{transform:none !important;aspect-ratio:3 / 4}
   .gallery__item--1,.gallery__item--2,.gallery__item--3,.gallery__item--4,.gallery__item--5,.gallery__item--6{grid-column:auto / span 1}
+  .album-cover-callout{grid-template-columns:1fr}
   .track{grid-template-columns:1fr;gap:1rem;padding:1.5rem 1rem}
   .track__number{display:none}
   .track__play{opacity:1}

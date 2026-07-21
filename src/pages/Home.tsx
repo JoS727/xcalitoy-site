@@ -45,6 +45,14 @@ export default function Home() {
             For now, the focus stays on Lioness Lost and Two Shirts while XCalitoy lines up for its vinyl release this August.
           </p>
 
+          <div className="album-cover-callout">
+            <img src={artistProfile.featuredReleaseArt} alt="XCalitoy album cover" className="album-cover-callout__image" />
+            <div className="album-cover-callout__copy">
+              <div className="album-cover-callout__eyebrow">Upcoming on vinyl</div>
+              <h3>XCalitoy arrives this August.</h3>
+            </div>
+          </div>
+
           <div className="tracks">
             {featuredSongs.map((song, index) => (
               <a
@@ -130,7 +138,7 @@ export default function Home() {
             </a>
             <a href={links.instagram} target="_blank" rel="noreferrer" className="contact-item">
               <div className="contact-item__label">Instagram</div>
-              <div className="contact-item__value">@josephcalitoy</div>
+              <div className="contact-item__value">@XCalitoy</div>
               <div className="contact-item__sub">Visual fragments, drops, and the dark romance in motion.</div>
             </a>
             <a href={links.spotifyAlbum} target="_blank" rel="noreferrer" className="contact-item">

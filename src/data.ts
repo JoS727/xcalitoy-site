@@ -42,7 +42,7 @@ export interface JournalEntry {
 }
 
 export const links = {
-  instagram: 'https://www.instagram.com/josephcalitoy/',
+  instagram: 'https://www.instagram.com/xcalitoy/',
   tiktok: 'https://www.tiktok.com/@that.joemad',
   soundcloud: 'https://soundcloud.com/calitoy',
   spotifyAlbum: 'https://open.spotify.com/album/5P8XnbH0PEqtNq9bRed1I1?si=12vIiVzeRrqGoqY7Qr_8HQ',
