@@ -3,12 +3,14 @@ import { useHashLocation } from 'wouter/use-hash-location';
 import Home from './pages/Home';
 import SongPage from './pages/SongPage';
 import Merch from './pages/Merch';
+import Skateboards from './pages/Skateboards';
 import About from './pages/About';
 import EPK from './pages/EPK';
 
 const navLinks = [
   { href: '/', label: 'Music' },
-  { href: '/merch', label: 'Boards' },
+  { href: '/boards', label: 'Boards' },
+  { href: '/merch', label: 'Merch' },
   { href: '/about', label: 'About' },
   { href: '/epk', label: 'EPK' },
 ];
@@ -42,7 +44,7 @@ function Navigation() {
           {navLinks.map((link) => (
             <NavLink key={link.href} href={link.href} label={link.label} />
           ))}
-          <NavLink href="/merch" label="Boards" className="site-nav__cta" />
+          <a href="https://custom.xcalitoy.com" target="_blank" rel="noreferrer" className="site-nav__cta">Custom</a>
         </nav>
       </div>
     </header>
@@ -59,6 +61,7 @@ export default function App() {
         <Route path="/epk" component={EPK} />
         <Route path="/music/:slug" component={SongPage} />
         <Route path="/lyrics/:slug" component={SongPage} />
+        <Route path="/boards" component={Skateboards} />
         <Route path="/merch" component={Merch} />
         <Route>
           <div className="container section" style={{ textAlign: 'center' }}>
@@ -74,7 +77,8 @@ export default function App() {
           <span style={{ display: 'flex', gap: '.9rem', flexWrap: 'wrap' }}>
             <NavLink href="/about" label="About" className="footer-link" />
             <NavLink href="/epk" label="EPK" className="footer-link" />
-            <NavLink href="/merch" label="Boards" className="footer-link" />
+            <NavLink href="/boards" label="Boards" className="footer-link" />
+            <NavLink href="/merch" label="Merch" className="footer-link" />
           </span>
         </div>
       </footer>
