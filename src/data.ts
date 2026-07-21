@@ -263,7 +263,6 @@ export function getJournalEntry(slug: string): JournalEntry | undefined {
 
 export const galleryImages: GalleryImage[] = [
   { src: '/gallery/joseph-calitoy-graffiti-portrait.jpg', alt: 'Joseph Calitoy in a red hoodie seated in front of graffiti' },
-  { src: '/calitoy-cover.jpg', alt: 'Joseph Calitoy portrait' },
   { src: '/gallery/performance-01.jpg', alt: 'Calitoy performing live under blue stage light' },
   { src: '/gallery/performance-02.jpg', alt: 'Calitoy live performance portrait under red lighting' },
   { src: '/gallery/performance-03.jpg', alt: 'Calitoy singing into microphone on stage' },
