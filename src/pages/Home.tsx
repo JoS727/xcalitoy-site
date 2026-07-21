@@ -22,8 +22,8 @@ export default function Home() {
             Lioness Lost and Two Shirts frame the new album XCalitoy, coming in August.
           </p>
           <div className="hero__actions">
-            <a href="#tracks" className="btn btn--kill">
-              Enter the music
+            <a href={links.soundcloud} target="_blank" rel="noreferrer" className="btn btn--kill">
+              Open SoundCloud
             </a>
             <a href={links.spotifyAlbum} target="_blank" rel="noreferrer" className="btn">
               Stream {artistProfile.featuredRelease}
