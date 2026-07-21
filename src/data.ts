@@ -218,7 +218,7 @@ export const highlights: Highlight[] = [
   },
   {
     title: 'A real artist world',
-    description: 'Music, lyrics, playlists, visuals, and story threads built to feel like one universe instead of disconnected uploads.',
+    description: 'From Two to One',
   },
   {
     title: 'Independent and intentional',
