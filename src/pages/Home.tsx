@@ -44,6 +44,9 @@ export default function Home() {
           <p className="section__subtitle">
             For now, the focus stays on Lioness Lost and Two Shirts while XCalitoy lines up for its vinyl release this August.
           </p>
+          <p className="section__subtitle" style={{ maxWidth: '52rem' }}>
+            Stop drowning from chaos and gloom, let love take over don't let hate consume.
+          </p>
 
           <div className="album-cover-callout">
             <img src={artistProfile.featuredReleaseArt} alt="XCalitoy album cover" className="album-cover-callout__image" />
