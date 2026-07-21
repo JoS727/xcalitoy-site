@@ -3,7 +3,6 @@ import { useHashLocation } from 'wouter/use-hash-location';
 import Home from './pages/Home';
 import SongPage from './pages/SongPage';
 import Merch from './pages/Merch';
-import Blog from './pages/Blog';
 import About from './pages/About';
 import EPK from './pages/EPK';
 
@@ -12,7 +11,6 @@ const navLinks = [
   { href: '/merch', label: 'Boards' },
   { href: '/about', label: 'About' },
   { href: '/epk', label: 'EPK' },
-  { href: '/blog', label: 'Journal' },
 ];
 
 function NavLink({ href, label, className = 'site-nav__link' }: { href: string; label: string; className?: string }) {
@@ -62,7 +60,6 @@ export default function App() {
         <Route path="/music/:slug" component={SongPage} />
         <Route path="/lyrics/:slug" component={SongPage} />
         <Route path="/merch" component={Merch} />
-        <Route path="/blog" component={Blog} />
         <Route>
           <div className="container section" style={{ textAlign: 'center' }}>
             <h1>404</h1>
@@ -77,7 +74,6 @@ export default function App() {
           <span style={{ display: 'flex', gap: '.9rem', flexWrap: 'wrap' }}>
             <NavLink href="/about" label="About" className="footer-link" />
             <NavLink href="/epk" label="EPK" className="footer-link" />
-            <NavLink href="/blog" label="Journal" className="footer-link" />
             <NavLink href="/merch" label="Boards" className="footer-link" />
           </span>
         </div>
