@@ -196,6 +196,7 @@ export default function Merch() {
 
           <aside className="store-hero__panel">
             <div className="store-hero__card">
+              <img src="/calitoy-custom-mark.jpg" alt="Calitoy Custom Skateboards mark" style={{ width: '88px', marginBottom: '1rem' }} />
               <div className="store-hero__eyebrow">Most requested</div>
               <h2>Photo + Name + Occasion Board</h2>
               <p>
