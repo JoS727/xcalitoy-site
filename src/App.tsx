@@ -72,7 +72,7 @@ export default function App() {
       </Switch>
       <footer>
         <div className="container">
-          <span>© {new Date().getFullYear()} Calitoy · Wicked Youth Goods</span>
+          <span>© {new Date().getFullYear()} Calitoy</span>
           <span style={{ display: 'flex', gap: '.9rem', flexWrap: 'wrap' }}>
             <NavLink href="/about" label="About" className="footer-link" />
             <NavLink href="/epk" label="EPK" className="footer-link" />
