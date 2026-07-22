@@ -11,7 +11,7 @@ export default function Merch() {
             </p>
             <div className="store-hero__actions">
               <a href="https://soundcloud.com/calitoy" target="_blank" rel="noreferrer" className="btn btn--kill">Open SoundCloud</a>
-              <a href="https://custom.xcalitoy.com" target="_blank" rel="noreferrer" className="btn">Custom Boards</a>
+              <a href="#/boards" className="btn">View Custom Boards</a>
             </div>
             <div className="store-trustbar">
               <span>Separate from custom boards</span>

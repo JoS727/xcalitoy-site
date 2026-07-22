@@ -43,7 +43,6 @@ function Navigation() {
           {navLinks.map((link) => (
             <NavLink key={link.href} href={link.href} label={link.label} />
           ))}
-          <a href="https://custom.xcalitoy.com" target="_blank" rel="noreferrer" className="site-nav__cta">Custom Boards</a>
         </nav>
       </div>
     </header>
