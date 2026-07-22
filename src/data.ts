@@ -262,14 +262,5 @@ export function getJournalEntry(slug: string): JournalEntry | undefined {
 
 
 export const galleryImages: GalleryImage[] = [
-  { src: '/gallery/joseph-calitoy-graffiti-portrait.jpg', alt: 'Calitoy in a red hoodie seated in front of graffiti' },
-  { src: '/gallery/performance-01.jpg', alt: 'Calitoy performing live under blue stage light' },
-  { src: '/gallery/performance-02.jpg', alt: 'Calitoy live performance portrait under red lighting' },
-  { src: '/gallery/performance-03.jpg', alt: 'Calitoy singing into microphone on stage' },
-  { src: '/gallery/performance-05.jpg', alt: 'Calitoy side-angle live performance photo' },
-  { src: '/gallery/performance-06.jpg', alt: 'Calitoy performing with eyes closed under violet light' },
-  { src: '/gallery/performance-07.jpg', alt: 'Calitoy intense live vocal performance portrait' },
-  { src: '/gallery/performance-08.jpg', alt: 'Calitoy singing with both hands on the mic' },
-  { src: '/gallery/performance-09.jpg', alt: 'Calitoy emotional live performance close-up' },
-  { src: '/gallery/performance-10.jpg', alt: 'Calitoy performing in front of a crowd' },
+  { src: '/gallery/epk-01.jpg', alt: 'Calitoy on stage singing into a microphone under blue and purple light' },
 ];
