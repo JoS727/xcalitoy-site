@@ -56,13 +56,13 @@ export const links = {
 };
 
 export const artistProfile = {
-  name: 'Joseph Calitoy',
+  name: 'Calitoy',
   alias: 'CaliToy',
   siteName: 'xcalitoy.com',
   tagline: 'Dark pop, night-drive confessionals, and pressure-heavy records built to linger.',
   featuredRelease: 'XCalitoy',
   featuredReleaseArt: '/xcalitoy-album-cover.jpg',
-  bio: 'Joseph Calitoy is a California artist shaping moody, melodic records that sit somewhere between confession, cinema, ambition, and aftermath. Under the CaliToy name, he builds songs that feel intimate on first listen and larger every time you come back.',
+  bio: 'Calitoy is a California artist shaping moody, melodic records that sit somewhere between confession, cinema, ambition, and aftermath. He builds songs that feel intimate on first listen and larger every time you come back.',
   intro: 'The official home for the music, visuals, lyrics, and the world that keeps unfolding around the catalog.',
   featuredReleaseNote: 'Upcoming album: XCalitoy. Lioness Lost and Two Shirts are the first bookends framing the release.',
   knownSourceNote: 'Start with the featured songs, move through the archive, then stay for the playlists, lyrics, and press-ready materials.',
@@ -262,7 +262,7 @@ export function getJournalEntry(slug: string): JournalEntry | undefined {
 
 
 export const galleryImages: GalleryImage[] = [
-  { src: '/gallery/joseph-calitoy-graffiti-portrait.jpg', alt: 'Joseph Calitoy in a red hoodie seated in front of graffiti' },
+  { src: '/gallery/joseph-calitoy-graffiti-portrait.jpg', alt: 'Calitoy in a red hoodie seated in front of graffiti' },
   { src: '/gallery/performance-01.jpg', alt: 'Calitoy performing live under blue stage light' },
   { src: '/gallery/performance-02.jpg', alt: 'Calitoy live performance portrait under red lighting' },
   { src: '/gallery/performance-03.jpg', alt: 'Calitoy singing into microphone on stage' },

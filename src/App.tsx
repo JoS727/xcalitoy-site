@@ -9,7 +9,6 @@ import EPK from './pages/EPK';
 
 const navLinks = [
   { href: '/', label: 'Music' },
-  { href: '/boards', label: 'Boards' },
   { href: '/merch', label: 'Merch' },
   { href: '/about', label: 'About' },
   { href: '/epk', label: 'EPK' },
@@ -37,14 +36,14 @@ function Navigation() {
     <header className="site-nav-wrap">
       <div className="container site-nav">
         <div className="site-nav__brand">
-          <NavLink href="/" label="Joseph Calitoy" className="site-nav__brand-mark" />
+          <NavLink href="/" label="Calitoy" className="site-nav__brand-mark" />
           <span className="site-nav__brand-sub">Dark pop / California / xcalitoy.com</span>
         </div>
         <nav className="site-nav__links" aria-label="Primary">
           {navLinks.map((link) => (
             <NavLink key={link.href} href={link.href} label={link.label} />
           ))}
-          <a href="https://custom.xcalitoy.com" target="_blank" rel="noreferrer" className="site-nav__cta">Custom</a>
+          <a href="https://custom.xcalitoy.com" target="_blank" rel="noreferrer" className="site-nav__cta">Custom Boards</a>
         </nav>
       </div>
     </header>
@@ -73,7 +72,7 @@ export default function App() {
       </Switch>
       <footer>
         <div className="container">
-          <span>© {new Date().getFullYear()} Joseph Calitoy · Wicked Youth Goods</span>
+          <span>© {new Date().getFullYear()} Calitoy · Wicked Youth Goods</span>
           <span style={{ display: 'flex', gap: '.9rem', flexWrap: 'wrap' }}>
             <NavLink href="/about" label="About" className="footer-link" />
             <NavLink href="/epk" label="EPK" className="footer-link" />

@@ -14,7 +14,7 @@ export default function EPK() {
           <p className="statement-kicker">Electronic press kit</p>
           <h1 style={{ fontSize: 'clamp(2rem,5vw,3.4rem)', marginBottom: '1rem' }}>{artistProfile.name}</h1>
           <p style={{ color: 'var(--muted)', maxWidth: '44rem', lineHeight: 1.9 }}>
-            Joseph Calitoy is a California recording artist and world-builder creating moody, melodic records under the CaliToy name. His music
+            Calitoy is a California recording artist and world-builder creating moody, melodic records with a dark, melodic pulse. His music
             blends confession, tension, ambition, and atmosphere into songs that feel both intimate and cinematic.
           </p>
         </div>
