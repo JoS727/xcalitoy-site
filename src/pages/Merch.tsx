@@ -10,8 +10,8 @@ export default function Merch() {
               XCalitoy merch is being split out from the custom skateboard work. This page is the start of the dedicated merch storefront, built to support Printful-powered drops, apparel, posters, and limited-run pieces.
             </p>
             <div className="store-hero__actions">
-              <a href="https://printful.com" target="_blank" rel="noreferrer" className="btn btn--kill">Printful integration in progress</a>
-              <a href="mailto:joseph@xcalitoy.com?subject=XCalitoy%20Merch" className="btn">Ask about merch drops</a>
+              <a href="https://soundcloud.com/calitoy" target="_blank" rel="noreferrer" className="btn btn--kill">Open SoundCloud</a>
+              <a href="https://custom.xcalitoy.com" target="_blank" rel="noreferrer" className="btn">Custom Boards</a>
             </div>
             <div className="store-trustbar">
               <span>Separate from custom boards</span>
