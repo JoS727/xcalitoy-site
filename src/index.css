@@ -264,7 +264,9 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
   .track__number{display:none}
   .track__play{opacity:1}
   .contact-grid{grid-template-columns:1fr}
-  .site-nav__links{display:none}
+  .site-nav{flex-wrap:wrap;gap:.9rem}
+  .site-nav__links{display:flex;width:100%;flex-wrap:wrap;gap:.6rem;justify-content:flex-start}
+  .site-nav__link,.site-nav__cta{font-size:.68rem;padding:.55rem .85rem;letter-spacing:.16em}
   .epk-grid{grid-template-columns:1fr}
   .occasion-grid,.process-grid,.usecase-grid,.faq-grid{grid-template-columns:1fr}
 }
