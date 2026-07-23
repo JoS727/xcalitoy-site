@@ -150,6 +150,16 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
 .about-text p{color:rgba(242,232,223,0.7);margin-bottom:1.25rem;line-height:1.9}
 
 /* EPK */
+.epk-page__eyebrow{margin-bottom:1.5rem}
+.epk-page__grid{gap:1rem;margin-top:1rem}
+.epk-hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:1.5rem;padding:1.5rem;align-items:center}
+.epk-hero__title{font-size:clamp(2rem,5vw,3.4rem);margin-bottom:1rem}
+.epk-hero__text,.epk-copy{color:var(--muted);line-height:1.9;max-width:44rem}
+.epk-hero__image{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:1rem;border:1px solid var(--border)}
+.epk-card{padding:1.5rem}
+.epk-card__badge{margin-bottom:.9rem}
+.epk-links{grid-template-columns:1fr}
+.epk-row{box-shadow:none}
 .epk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;margin:3rem 0}
 .epk-grid img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:saturate(.9) contrast(1.1)}
 
@@ -267,6 +277,7 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
   .site-nav{flex-wrap:wrap;gap:.9rem}
   .site-nav__links{display:flex;width:100%;flex-wrap:wrap;gap:.6rem;justify-content:flex-start}
   .site-nav__link,.site-nav__cta{font-size:.68rem;padding:.55rem .85rem;letter-spacing:.16em}
+  .epk-hero{grid-template-columns:1fr}
   .epk-grid{grid-template-columns:1fr}
   .occasion-grid,.process-grid,.usecase-grid,.faq-grid{grid-template-columns:1fr}
 }
