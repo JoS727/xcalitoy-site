@@ -5,7 +5,6 @@ const epkSongs = songs.filter((song) => song.slug === 'lioness-lost' || song.slu
 export default function EPK() {
   return (
     <div className="container section epk-page">
-      <a href="#/" className="back-link">← Home</a>
       <div className="eyebrow-row epk-page__eyebrow">
         <span className="badge badge--accent">EPK</span>
         <span className="section-rule" />

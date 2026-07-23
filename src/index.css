@@ -278,10 +278,13 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
   .track__number{display:none}
   .track__play{opacity:1}
   .contact-grid{grid-template-columns:1fr}
-  .site-nav{flex-wrap:wrap;gap:.9rem}
-  .site-nav__links{display:flex;width:100%;flex-wrap:wrap;gap:.6rem;justify-content:flex-start}
-  .site-nav__link,.site-nav__cta{font-size:.68rem;padding:.55rem .85rem;letter-spacing:.16em}
-  .epk-hero{grid-template-columns:1fr}
+  .site-nav{flex-wrap:wrap;gap:.6rem}
+  .site-nav__links{display:flex;width:100%;flex-wrap:nowrap;gap:.35rem;justify-content:space-between;overflow-x:auto;padding-bottom:.15rem}
+  .site-nav__link,.site-nav__cta{font-size:.62rem;padding:.45rem .55rem;letter-spacing:.12em;white-space:nowrap}
+  .epk-page{padding-top:1rem}
+  .epk-page__eyebrow{margin-bottom:1rem}
+  .epk-hero{grid-template-columns:1fr;padding:1.1rem}
+  .epk-card{padding:1.1rem}
   .epk-grid{grid-template-columns:1fr}
   .epk-facts{grid-template-columns:1fr}
   .occasion-grid,.process-grid,.usecase-grid,.faq-grid{grid-template-columns:1fr}
