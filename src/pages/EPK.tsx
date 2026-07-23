@@ -13,7 +13,14 @@ export default function EPK() {
       <section className="epk-hero card">
         <div className="epk-hero__copy">
           <p className="statement-kicker">Electronic press kit</p>
-          <h1 className="epk-hero__title">{artistProfile.name}</h1>
+          <div className="epk-hero__topline">
+            <h1 className="epk-hero__title">{artistProfile.name}</h1>
+            <div className="epk-inline-links">
+              <a href={links.soundcloud} target="_blank" rel="noreferrer">SoundCloud</a>
+              <a href={links.instagram} target="_blank" rel="noreferrer">Instagram</a>
+              <a href={links.book}>Booking</a>
+            </div>
+          </div>
           <p className="epk-hero__text">
             Calitoy is a California recording artist and world-builder creating moody, melodic records with a dark, melodic pulse. His music
             blends confession, tension, ambition, and atmosphere into songs that feel both intimate and cinematic.
@@ -44,14 +51,6 @@ export default function EPK() {
             <a href={links.book} className="link-card">
               <div className="link-card__title">Booking / Collaboration</div>
               <div className="link-card__sub">{artistProfile.contactEmail}</div>
-            </a>
-            <a href={links.soundcloud} target="_blank" rel="noreferrer" className="link-card">
-              <div className="link-card__title">SoundCloud</div>
-              <div className="link-card__sub">soundcloud.com/calitoy</div>
-            </a>
-            <a href={links.instagram} target="_blank" rel="noreferrer" className="link-card">
-              <div className="link-card__title">Instagram</div>
-              <div className="link-card__sub">@XCalitoy</div>
             </a>
             <a href={links.spotifyAlbum} target="_blank" rel="noreferrer" className="link-card">
               <div className="link-card__title">Spotify</div>
