@@ -160,6 +160,10 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
 .epk-card__badge{margin-bottom:.9rem}
 .epk-links{grid-template-columns:1fr}
 .epk-row{box-shadow:none}
+.epk-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin-top:1.25rem}
+.epk-fact{padding:1rem;border:1px solid var(--border);background:rgba(242,232,223,0.03)}
+.epk-fact span{display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.22em;color:var(--muted);margin-bottom:.45rem}
+.epk-fact strong{display:block;font-size:.95rem;line-height:1.5}
 .epk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;margin:3rem 0}
 .epk-grid img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:saturate(.9) contrast(1.1)}
 
@@ -279,6 +283,7 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
   .site-nav__link,.site-nav__cta{font-size:.68rem;padding:.55rem .85rem;letter-spacing:.16em}
   .epk-hero{grid-template-columns:1fr}
   .epk-grid{grid-template-columns:1fr}
+  .epk-facts{grid-template-columns:1fr}
   .occasion-grid,.process-grid,.usecase-grid,.faq-grid{grid-template-columns:1fr}
 }
 @media(max-width:480px){

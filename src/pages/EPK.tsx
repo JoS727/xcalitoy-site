@@ -1,5 +1,7 @@
 import { artistProfile, galleryImages, links, songs, playlists } from '../data';
 
+const epkSongs = songs.filter((song) => song.slug === 'lioness-lost' || song.slug === 'two-shirts');
+
 export default function EPK() {
   return (
     <div className="container section epk-page">
@@ -27,21 +29,22 @@ export default function EPK() {
         <div className="card epk-card">
           <p className="badge badge--accent epk-card__badge">Short bio</p>
           <p className="epk-copy">
-            Calitoy builds songs like scenes: emotionally direct, sonically immersive, and grounded in a strong visual identity. xcalitoy.com
-            serves as the official home for releases, lyrics, archive material, and future drops.
+            Calitoy builds songs like scenes: emotionally direct, sonically immersive, and grounded in a strong visual identity. Xcalitoy.com
+            serves as the official home for releases, visuals, archive material, and future drops.
           </p>
+          <div className="epk-facts">
+            <div className="epk-fact"><span>Location</span><strong>California</strong></div>
+            <div className="epk-fact"><span>Current focus</span><strong>XCalitoy on vinyl this August</strong></div>
+            <div className="epk-fact"><span>Lead songs</span><strong>Lioness Lost · Two Shirts</strong></div>
+          </div>
         </div>
 
         <div className="card epk-card">
-          <p className="badge badge--accent epk-card__badge">Contact</p>
+          <p className="badge badge--accent epk-card__badge">Contact + links</p>
           <div className="links-grid epk-links">
             <a href={links.book} className="link-card">
               <div className="link-card__title">Booking / Collaboration</div>
               <div className="link-card__sub">{artistProfile.contactEmail}</div>
-            </a>
-            <a href={links.spotifyAlbum} target="_blank" rel="noreferrer" className="link-card">
-              <div className="link-card__title">Spotify · Lioness Lost</div>
-              <div className="link-card__sub">Official album link</div>
             </a>
             <a href={links.soundcloud} target="_blank" rel="noreferrer" className="link-card">
               <div className="link-card__title">SoundCloud</div>
@@ -51,15 +54,19 @@ export default function EPK() {
               <div className="link-card__title">Instagram</div>
               <div className="link-card__sub">@XCalitoy</div>
             </a>
+            <a href={links.spotifyAlbum} target="_blank" rel="noreferrer" className="link-card">
+              <div className="link-card__title">Spotify</div>
+              <div className="link-card__sub">Lioness Lost</div>
+            </a>
           </div>
         </div>
       </div>
 
       <div className="grid grid--2 epk-page__grid">
         <div className="card epk-card">
-          <p className="badge badge--accent epk-card__badge">Selected tracks</p>
+          <p className="badge badge--accent epk-card__badge">Featured songs</p>
           <div className="archive-list">
-            {songs.map((song) => (
+            {epkSongs.map((song) => (
               <a key={song.slug} href={song.soundcloudUrl} target="_blank" rel="noreferrer" className="archive-row card epk-row">
                 <div>
                   <p className="archive-row__title">{song.title}</p>
