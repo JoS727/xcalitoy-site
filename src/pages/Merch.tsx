@@ -22,12 +22,12 @@ export default function Merch() {
 
           <aside className="store-hero__panel">
             <div className="store-hero__card love-louder-feature">
-              <img src="/love-calityoy-louder-art.jpg" alt="Love Calitoy Louder rose artwork" />
+              <img src="/love-calityoy-louder-mark.png" alt="Love Calitoy Louder rose-and-wordmark badge" />
               <div>
                 <div className="store-hero__eyebrow">New design capsule</div>
                 <h2>Love Calitoy Louder</h2>
                 <p>
-                  The gold-rose artwork is now the shared graphic system for apparel, accessories, wall art, and small goods.
+                  The Love Calitoy Louder rose-and-wordmark badge is now the shared imprint for apparel, accessories, wall art, and small goods.
                 </p>
                 <span className="love-louder-status">Design lineup · not yet a checkout listing</span>
               </div>
@@ -44,7 +44,7 @@ export default function Merch() {
           <div className="love-louder-products">
             {['Classic tee', 'Heavyweight tee', 'Hoodie', 'Crewneck', 'Tank top', 'Tote bag', 'Dad hat', 'Beanie', 'Art print', 'Sticker sheet', 'Phone case', 'Mug'].map((product) => (
               <article className="love-louder-product" key={product}>
-                <img src="/love-calityoy-louder-art.jpg" alt="" aria-hidden="true" />
+                <img src="/love-calityoy-louder-mark.png" alt="" aria-hidden="true" />
                 <span>Love Calitoy Louder</span>
                 <h3>{product}</h3>
                 <small>Artwork placement ready</small>
