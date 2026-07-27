@@ -1,0 +1,36 @@
+name: ChatGPT Agent Pilot Access Check
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  pilot-access-check:
+    name: Validate non-production OIDC access
+    runs-on: ubuntu-latest
+    environment: nonprod-chatgpt-pilot
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials (OIDC)
+        if: ${{ secrets.AWS_CHATGPT_PILOT_ROLE_ARN != '' }}
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_CHATGPT_PILOT_ROLE_ARN }}
+          aws-region: us-east-1
+
+      - name: Show assumed identity
+        if: ${{ secrets.AWS_CHATGPT_PILOT_ROLE_ARN != '' }}
+        run: aws sts get-caller-identity
+
+      - name: Run read-only infrastructure check
+        if: ${{ secrets.AWS_CHATGPT_PILOT_ROLE_ARN != '' }}
+        run: aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE
+
+      - name: Skip when pilot role is not configured
+        if: ${{ secrets.AWS_CHATGPT_PILOT_ROLE_ARN == '' }}
+        run: echo "Set AWS_CHATGPT_PILOT_ROLE_ARN in the nonprod-chatgpt-pilot environment to run this pilot."
