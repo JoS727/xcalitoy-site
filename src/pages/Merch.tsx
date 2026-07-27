@@ -5,9 +5,9 @@ export default function Merch() {
         <div className="container store-hero__grid">
           <div>
             <span className="section__label">Merch</span>
-            <h1 className="store-hero__title">Wearables, prints, and drops are getting their own lane.</h1>
+            <h1 className="store-hero__title">Love Calitoy Louder—across every format.</h1>
             <p className="store-hero__copy">
-              XCalitoy merch is being split out from the custom skateboard work. This page is the start of the dedicated merch storefront, built to support Printful-powered drops, apparel, posters, and limited-run pieces.
+              The Love Calitoy Louder rose artwork now anchors the dedicated merch lane: apparel, accessories, prints, and small goods, separate from the custom skateboard work.
             </p>
             <div className="store-hero__actions">
               <a href="https://soundcloud.com/calitoy" target="_blank" rel="noreferrer" className="btn btn--kill">Open SoundCloud</a>
@@ -21,20 +21,36 @@ export default function Merch() {
           </div>
 
           <aside className="store-hero__panel">
-            <div className="store-hero__card">
-              <img src="/calitoy-custom-mark.jpg" alt="Calitoy Custom Skateboards mark" style={{ width: '88px', marginBottom: '1rem' }} />
-              <div className="store-hero__eyebrow">Coming next</div>
-              <h2>Printful-powered merch</h2>
-              <p>
-                The merch side is being built as its own storefront so apparel and accessories can live separately from the custom board workflow.
-              </p>
-              <ul>
-                <li>Apparel and wearable drops</li>
-                <li>Poster and print runs</li>
-                <li>Printful product syncing</li>
-              </ul>
+            <div className="store-hero__card love-louder-feature">
+              <img src="/love-calityoy-louder-art.jpg" alt="Love Calitoy Louder rose artwork" />
+              <div>
+                <div className="store-hero__eyebrow">New design capsule</div>
+                <h2>Love Calitoy Louder</h2>
+                <p>
+                  The gold-rose artwork is now the shared graphic system for apparel, accessories, wall art, and small goods.
+                </p>
+                <span className="love-louder-status">Design lineup · not yet a checkout listing</span>
+              </div>
             </div>
           </aside>
+        </div>
+      </section>
+
+      <section className="section love-louder-section">
+        <div className="container">
+          <span className="section__label">Love Calitoy Louder capsule</span>
+          <h2 className="section__title">One artwork. Every kind of merch.</h2>
+          <p className="section__subtitle">This design is now staged across the complete merch format lineup. These are product directions ready for artwork placement and Printful setup—not live inventory or checkout claims.</p>
+          <div className="love-louder-products">
+            {['Classic tee', 'Heavyweight tee', 'Hoodie', 'Crewneck', 'Tank top', 'Tote bag', 'Dad hat', 'Beanie', 'Art print', 'Sticker sheet', 'Phone case', 'Mug'].map((product) => (
+              <article className="love-louder-product" key={product}>
+                <img src="/love-calityoy-louder-art.jpg" alt="" aria-hidden="true" />
+                <span>Love Calitoy Louder</span>
+                <h3>{product}</h3>
+                <small>Artwork placement ready</small>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
