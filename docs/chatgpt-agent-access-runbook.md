@@ -29,6 +29,13 @@ For a GitHub App installation, start with:
 
 Install only on required repositories. Add write scopes only after a reviewed need.
 
+For private repositories, ensure all of the following are true:
+
+- The GitHub App is installed on each required private repository (or selected private repos in the org install flow).
+- Organization third-party app restrictions allow this App installation.
+- If using a bot account instead of an App, the bot is an explicit collaborator on each required private repository with minimum permissions.
+- If your organization enforces SAML SSO, the machine identity is SSO-authorized for repository access.
+
 ## 4) Use short-lived infrastructure credentials
 
 - Use GitHub OIDC + cloud IAM role assumption.
@@ -65,5 +72,6 @@ Use one non-production environment first:
 1. Configure `nonprod-chatgpt-pilot` GitHub Environment.
 2. Add `AWS_CHATGPT_PILOT_ROLE_ARN` as an environment secret.
 3. Run `ChatGPT Agent Pilot Access Check` manually.
-4. Verify logs, least-privilege behavior, and revoke flow.
-5. Expand to additional repos/environments only after sign-off.
+4. Confirm the machine identity can read one target private repository and cannot access non-approved private repositories.
+5. Verify logs, least-privilege behavior, and revoke flow.
+6. Expand to additional repos/environments only after sign-off.
