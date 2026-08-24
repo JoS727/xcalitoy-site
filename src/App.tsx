@@ -6,6 +6,7 @@ import Merch from './pages/Merch';
 import Skateboards from './pages/Skateboards';
 import About from './pages/About';
 import EPK from './pages/EPK';
+import MerchModal from './components/MerchModal';
 
 const navLinks = [
   { href: '/', label: 'Music' },
@@ -53,6 +54,7 @@ export default function App() {
   return (
     <Router hook={useHashLocation}>
       <Navigation />
+      <MerchModal />
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/about" component={About} />

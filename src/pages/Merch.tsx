@@ -1,15 +1,19 @@
-const DESIGN_FAMILIES = [
-  { name: 'Love Calitoy Louder', statement: 'The rose badge turned all the way up.', formats: ['Heavyweight tee', 'Hoodie', 'Dad hat', '18×24 print'], art: '/love-calitoy-louder.jpg' },
-  { name: 'X Marks the Calitoy', statement: 'Crossed out, crossed over, impossible to erase.', formats: ['Black tee', 'Zip hoodie', 'Tote', 'Sticker sheet'], art: '/xcalitoy-album-cover.jpg' },
-  { name: 'Kill Me Now', statement: 'Dark-pop melodrama in a clean brutal lockup.', formats: ['Washed tee', 'Crewneck', 'Beanie', '12×12 print'], art: '/kill-me-now-cover.png' },
-  { name: 'Not You', statement: 'A rejection letter you can wear.', formats: ['Baby tee', 'Long sleeve', 'Cap', 'Mini poster'], art: '/not-you-cover.png' },
-  { name: 'Half Gone', statement: 'For the part of you that never came home.', formats: ['Garment-dyed tee', 'Hoodie', 'Tote', 'Art print'], art: '/half-gone-cover.png' },
-  { name: 'Stole From', statement: 'Borrowed hearts. Permanent evidence.', formats: ['Classic tee', 'Work jacket', 'Bandana', 'Sticker pack'], art: '/stole-from-cover.png' },
-  { name: 'Always There', statement: 'The ghost in every room gets its own uniform.', formats: ['Ringer tee', 'Crewneck', 'Embroidered cap', 'Wall flag'], art: '/always-there-cover.png' },
-  { name: 'Home From Your Shadows', statement: 'A little light dragged through the dark.', formats: ['Premium tee', 'Pullover hoodie', 'Tote', '18×24 print'], art: '/home-from-your-shadows-cover.png' },
-  { name: 'Inflicted', statement: 'Beauty, damage, and the choice to keep both.', formats: ['Black tee', 'Zip hoodie', 'Beanie', 'Square print'], art: '/inflicted-cover.png' },
-  { name: 'Ain’t Proud', statement: 'No apology. No clean ending.', formats: ['Heavy tee', 'Coach jacket', 'Cap', 'Sticker sheet'], art: '/aint-proud-cover.png' },
+const PRODUCTS = [
+  // Calitoy Merch (Printful store 18518390)
+  { name: 'Heartbeats & Music', brand: 'Calitoy', type: 'Black Tee', price: '$36', art: '/calitoy-heartbeats.png', priceId: 'price_1U4xwpISCKHDtOuF4V6JEHW4', sizes: ['S','M','L','XL','2XL'], desc: 'Black cotton tee with Heartbeats & Music artwork. Unisex.' },
+  { name: 'Create or Die', brand: 'Calitoy', type: 'Black Hoodie', price: '$64', art: '/calitoy-create-or-die.png', priceId: 'price_1U4xwqISCKHDtOuF7SjCBJQK', sizes: ['S','M','L','XL','2XL'], desc: 'Heavyweight black hoodie with Create or Die artwork. Unisex.' },
+  { name: 'CY/M', brand: 'Calitoy', type: 'Eco Tote', price: '$30', art: '/calitoy-cym.png', priceId: 'price_1U4xwqISCKHDtOuFlmHREl9Q', sizes: ['One size'], desc: 'Black eco tote with CY/M monogram.' },
+  { name: 'Calitoy Signature', brand: 'Calitoy', type: 'White Tee', price: '$30', art: '/calitoy-signature.png', priceId: 'price_1U4xwqISCKHDtOuFCSmkA8LW', sizes: ['S','M','L','XL','2XL'], desc: 'White cotton tee with Calitoy Signature wordmark. Unisex.' },
+  { name: 'Create or Die', brand: 'Calitoy', type: '8x10 Poster', price: '$22', art: '/calitoy-create-or-die.png', priceId: 'price_1U4xwrISCKHDtOuFyqvN28Bt', sizes: ['8x10'], desc: '8x10 matte poster with Create or Die artwork. Frame-ready.' },
+  // Kurced Merch (Printful store 18520025)
+  { name: 'Locked Out', brand: 'Kurced', type: 'Black Tee', price: '$32', art: '/kurced-locked-out.jpg', priceId: 'price_1U4xwrISCKHDtOuFf9uj4gR5', sizes: ['S','M','L','XL','2XL'], desc: 'Black cotton tee with Locked Out cover art. Unisex.' },
+  { name: 'All-American Boys', brand: 'Kurced', type: 'Black Tee', price: '$32', art: '/kurced-all-american-boys.jpg', priceId: 'price_1U4xwrISCKHDtOuFwJP3dlNz', sizes: ['S','M','L','XL','2XL'], desc: 'Black cotton tee with All-American Boys cover art. Unisex.' },
+  { name: 'Overdose', brand: 'Kurced', type: '10x10 Poster', price: '$24', art: '/kurced-overdose.jpg', priceId: 'price_1U4xwsISCKHDtOuFD4VzB0UD', sizes: ['10x10'], desc: '10x10 matte poster with Overdose cover art. Frame-ready.' },
+  { name: 'Last Seen', brand: 'Kurced', type: 'Black Hoodie', price: '$62', art: '/kurced-last-seen.jpg', priceId: 'price_1U4xwsISCKHDtOuFbnReedWh', sizes: ['S','M','L','XL','2XL'], desc: 'Heavyweight black hoodie with Last Seen cover art. Unisex.' },
+  { name: 'Medicine', brand: 'Kurced', type: 'Black Tote', price: '$30', art: '/kurced-medicine.jpg', priceId: 'price_1U4xwsISCKHDtOuFgCWSJ5d5', sizes: ['One size'], desc: 'Black canvas tote with Medicine cover art.' },
 ];
+
+const LIONESS_URL = 'https://elasticstage.com/soundcloud/releases/calitoy-lioness-album';
 
 export default function Merch() {
   return (
@@ -17,49 +21,81 @@ export default function Merch() {
       <section className="store-hero section">
         <div className="container store-hero__grid">
           <div>
-            <span className="section__label">XCalitoy store / design preview</span>
-            <h1 className="store-hero__title">Ten ways to wear the damage.</h1>
+            <span className="section__label">XCalitoy store / official goods</span>
+            <h1 className="store-hero__title">Wear the music.</h1>
             <p className="store-hero__copy">
-              Ten original design families built from the XCalitoy music and visual world. Each family spans apparel, accessories, and wall art—not one logo repeated ten times.
+              Official Calitoy and Kurced merchandise. Printed and shipped via Printful. Stripe checkout with auto-fulfillment. Every order goes straight to production.
             </p>
             <div className="store-trustbar" aria-label="Store status">
-              <span>10 design families</span><span>40 product directions</span><span>No placeholder checkout</span>
+              <span>10 products live</span><span>Stripe checkout</span><span>Printful fulfillment</span>
             </div>
-            <div className="store-hero__actions"><a href="#design-families" className="btn btn--kill">Preview the families</a><a href="#/boards" className="btn">Custom boards</a></div>
+            <div className="store-hero__actions">
+              <a href="#products" className="btn btn--kill">Shop now</a>
+              <a href={LIONESS_URL} target="_blank" rel="noreferrer" className="btn">Get Lioness on vinyl</a>
+            </div>
           </div>
-          <aside className="store-hero__panel">
-            <div className="store-hero__card love-louder-feature">
-              <img src="/love-calitoy-louder.jpg" alt="Love Calitoy Louder campaign artwork" />
-              <div><div className="store-hero__eyebrow">Production status</div><h2>Design ready. Printful mapping next.</h2><p>These families are not yet purchasable. Product records, variants, and final retail pricing will appear only after verification.</p><span className="love-louder-status">Coming next · no charge controls</span></div>
-            </div>
-          </aside>
         </div>
       </section>
 
-      <section className="section design-family-section" id="design-families">
+      <section className="section" id="products">
         <div className="container">
-          <span className="section__label">The complete ten</span>
-          <h2 className="section__title">Design families</h2>
-          <p className="section__subtitle">Every family has a distinct visual source and a multi-product plan. All are clearly staged as design previews until production setup is complete.</p>
+          <span className="section__label">Official merchandise</span>
+          <h2 className="section__title">All products</h2>
+          <p className="section__subtitle">Every item is printed on demand and shipped directly from Printful. Tap any product to choose size and checkout.</p>
+
           <div className="design-family-grid">
-            {DESIGN_FAMILIES.map((family, index) => (
-              <article className="design-family-card" key={family.name}>
-                <div className="design-family-card__art"><img src={family.art} alt={`${family.name} artwork`} loading="lazy" /><span>{String(index + 1).padStart(2, '0')}</span></div>
-                <div className="design-family-card__copy"><div className="design-family-card__status">DESIGN READY / COMING NEXT</div><h3>{family.name}</h3><p>{family.statement}</p><ul aria-label={`${family.name} planned formats`}>{family.formats.map(format => <li key={format}>{format}</li>)}</ul><small>Not yet purchasable</small></div>
+            {PRODUCTS.map((product, index) => (
+              <article
+                className="design-family-card"
+                key={`${product.name}-${index}`}
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  const event = new CustomEvent('open-merch-modal', {
+                    detail: {
+                      name: product.name,
+                      brand: product.brand,
+                      type: product.type,
+                      price: product.price,
+                      art: product.art,
+                      priceId: product.priceId,
+                      sizes: product.sizes,
+                      desc: product.desc,
+                    }
+                  });
+                  window.dispatchEvent(event);
+                }}
+              >
+                <div className="design-family-card__art">
+                  <img src={product.art} alt={`${product.name} artwork`} loading="lazy" />
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                </div>
+                <div className="design-family-card__copy">
+                  <div className="design-family-card__status" style={{ color: '#c9a96e' }}>{product.brand.toUpperCase()} / {product.type.toUpperCase()}</div>
+                  <h3>{product.name}</h3>
+                  <p>{product.desc}</p>
+                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginTop: '8px' }}>
+                    <strong style={{ fontSize: '1.1rem', color: '#c9a96e' }}>{product.price}</strong>
+                    <span style={{ fontSize: '0.7rem', color: '#8a7e6f', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Tap to buy</span>
+                  </div>
+                </div>
               </article>
             ))}
           </div>
+
+          <div style={{ marginTop: '32px', padding: '20px', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', textAlign: 'center' }}>
+            <div style={{ fontSize: '0.6rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: '#8a7e6f', marginBottom: '8px' }}>Payment options</div>
+            <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <span style={{ padding: '8px 16px', background: 'rgba(201,169,110,0.15)', border: '1px solid rgba(201,169,110,0.3)', borderRadius: '4px', fontSize: '0.7rem', color: '#c9a96e', fontWeight: 600 }}>STRIPE CARD</span>
+              <span style={{ padding: '8px 16px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '4px', fontSize: '0.7rem', color: '#8a7e6f' }}>Cash App</span>
+              <span style={{ padding: '8px 16px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '4px', fontSize: '0.7rem', color: '#8a7e6f' }}>Venmo</span>
+              <span style={{ padding: '8px 16px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '4px', fontSize: '0.7rem', color: '#8a7e6f' }}>Zelle</span>
+            </div>
+            <p style={{ fontSize: '0.65rem', color: '#8a7e6f', marginTop: '8px' }}>All card payments auto-fulfill through Printful. Manual payments (Cash App, Venmo, Zelle) require product name and size in the note.</p>
+          </div>
         </div>
       </section>
 
-      <section className="section store-readiness">
-        <div className="container process-grid">
-          <article className="process-card"><div className="process-card__step">01</div><h3>Artwork lock</h3><p>Final print files and safe zones for every product format.</p></article>
-          <article className="process-card"><div className="process-card__step">02</div><h3>Printful mapping</h3><p>Real products, colors, sizes, costs, and mockups—not invented SKUs.</p></article>
-          <article className="process-card"><div className="process-card__step">03</div><h3>Commerce activation</h3><p>Server-owned pricing, durable orders, Stripe, fulfillment, and tracking.</p></article>
-          <article className="process-card"><div className="process-card__step">04</div><h3>Store launch</h3><p>Only verified products receive price, cart, and checkout controls.</p></article>
-        </div>
-      </section>
+      <div id="merch-modal-root"></div>
     </div>
   );
 }
