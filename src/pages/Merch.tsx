@@ -1,16 +1,16 @@
 const PRODUCTS = [
   // Calitoy Merch (Printful store 18518390)
-  { name: 'Heartbeats & Music', brand: 'Calitoy', type: 'Black Tee', price: '$36', art: '/calitoy-heartbeats.png', priceId: 'price_1U4xwpISCKHDtOuF4V6JEHW4', sizes: ['S','M','L','XL','2XL'], desc: 'Black cotton tee with Heartbeats & Music artwork. Unisex.' },
-  { name: 'Create or Die', brand: 'Calitoy', type: 'Black Hoodie', price: '$64', art: '/calitoy-create-or-die.png', priceId: 'price_1U4xwqISCKHDtOuF7SjCBJQK', sizes: ['S','M','L','XL','2XL'], desc: 'Heavyweight black hoodie with Create or Die artwork. Unisex.' },
-  { name: 'CY/M', brand: 'Calitoy', type: 'Eco Tote', price: '$30', art: '/calitoy-cym.png', priceId: 'price_1U4xwqISCKHDtOuFlmHREl9Q', sizes: ['One size'], desc: 'Black eco tote with CY/M monogram.' },
-  { name: 'Calitoy Signature', brand: 'Calitoy', type: 'White Tee', price: '$30', art: '/calitoy-signature.png', priceId: 'price_1U4xwqISCKHDtOuFCSmkA8LW', sizes: ['S','M','L','XL','2XL'], desc: 'White cotton tee with Calitoy Signature wordmark. Unisex.' },
-  { name: 'Create or Die', brand: 'Calitoy', type: '8x10 Poster', price: '$22', art: '/calitoy-create-or-die.png', priceId: 'price_1U4xwrISCKHDtOuFyqvN28Bt', sizes: ['8x10'], desc: '8x10 matte poster with Create or Die artwork. Frame-ready.' },
+  { name: 'Heartbeats & Music', brand: 'Calitoy', type: 'Black Tee', price: '$36', art: '/custom/assets/merch/calitoy-heartbeats.png', priceId: 'price_1U4xwpISCKHDtOuF4V6JEHW4', sizes: ['S','M','L','XL','2XL'], desc: 'Black cotton tee with Heartbeats & Music artwork. Unisex.' },
+  { name: 'Create or Die', brand: 'Calitoy', type: 'Black Hoodie', price: '$64', art: '/custom/assets/merch/calitoy-create-or-die.png', priceId: 'price_1U4xwqISCKHDtOuF7SjCBJQK', sizes: ['S','M','L','XL','2XL'], desc: 'Heavyweight black hoodie with Create or Die artwork. Unisex.' },
+  { name: 'CY/M', brand: 'Calitoy', type: 'Eco Tote', price: '$30', art: '/custom/assets/merch/calitoy-cym.png', priceId: 'price_1U4xwqISCKHDtOuFlmHREl9Q', sizes: ['One size'], desc: 'Black eco tote with CY/M monogram.' },
+  { name: 'Calitoy Signature', brand: 'Calitoy', type: 'White Tee', price: '$30', art: '/custom/assets/merch/calitoy-signature.png', priceId: 'price_1U4xwqISCKHDtOuFCSmkA8LW', sizes: ['S','M','L','XL','2XL'], desc: 'White cotton tee with Calitoy Signature wordmark. Unisex.' },
+  { name: 'Create or Die', brand: 'Calitoy', type: '8x10 Poster', price: '$22', art: '/custom/assets/merch/calitoy-create-or-die.png', priceId: 'price_1U4xwrISCKHDtOuFyqvN28Bt', sizes: ['8x10'], desc: '8x10 matte poster with Create or Die artwork. Frame-ready.' },
   // Kurced Merch (Printful store 18520025)
-  { name: 'Locked Out', brand: 'Kurced', type: 'Black Tee', price: '$32', art: '/kurced-locked-out.jpg', priceId: 'price_1U4xwrISCKHDtOuFf9uj4gR5', sizes: ['S','M','L','XL','2XL'], desc: 'Black cotton tee with Locked Out cover art. Unisex.' },
-  { name: 'All-American Boys', brand: 'Kurced', type: 'Black Tee', price: '$32', art: '/kurced-all-american-boys.jpg', priceId: 'price_1U4xwrISCKHDtOuFwJP3dlNz', sizes: ['S','M','L','XL','2XL'], desc: 'Black cotton tee with All-American Boys cover art. Unisex.' },
-  { name: 'Overdose', brand: 'Kurced', type: '10x10 Poster', price: '$24', art: '/kurced-overdose.jpg', priceId: 'price_1U4xwsISCKHDtOuFD4VzB0UD', sizes: ['10x10'], desc: '10x10 matte poster with Overdose cover art. Frame-ready.' },
-  { name: 'Last Seen', brand: 'Kurced', type: 'Black Hoodie', price: '$62', art: '/kurced-last-seen.jpg', priceId: 'price_1U4xwsISCKHDtOuFbnReedWh', sizes: ['S','M','L','XL','2XL'], desc: 'Heavyweight black hoodie with Last Seen cover art. Unisex.' },
-  { name: 'Medicine', brand: 'Kurced', type: 'Black Tote', price: '$30', art: '/kurced-medicine.jpg', priceId: 'price_1U4xwsISCKHDtOuFgCWSJ5d5', sizes: ['One size'], desc: 'Black canvas tote with Medicine cover art.' },
+  { name: 'Locked Out', brand: 'Kurced', type: 'Black Tee', price: '$32', art: '/custom/assets/merch/kurced-locked-out.jpg', priceId: 'price_1U4xwrISCKHDtOuFf9uj4gR5', sizes: ['S','M','L','XL','2XL'], desc: 'Black cotton tee with Locked Out cover art. Unisex.' },
+  { name: 'All-American Boys', brand: 'Kurced', type: 'Black Tee', price: '$32', art: '/custom/assets/merch/kurced-all-american-boys.jpg', priceId: 'price_1U4xwrISCKHDtOuFwJP3dlNz', sizes: ['S','M','L','XL','2XL'], desc: 'Black cotton tee with All-American Boys cover art. Unisex.' },
+  { name: 'Overdose', brand: 'Kurced', type: '10x10 Poster', price: '$24', art: '/custom/assets/merch/kurced-overdose.jpg', priceId: 'price_1U4xwsISCKHDtOuFD4VzB0UD', sizes: ['10x10'], desc: '10x10 matte poster with Overdose cover art. Frame-ready.' },
+  { name: 'Last Seen', brand: 'Kurced', type: 'Black Hoodie', price: '$62', art: '/custom/assets/merch/kurced-last-seen.jpg', priceId: 'price_1U4xwsISCKHDtOuFbnReedWh', sizes: ['S','M','L','XL','2XL'], desc: 'Heavyweight black hoodie with Last Seen cover art. Unisex.' },
+  { name: 'Medicine', brand: 'Kurced', type: 'Black Tote', price: '$30', art: '/custom/assets/merch/kurced-medicine.jpg', priceId: 'price_1U4xwsISCKHDtOuFgCWSJ5d5', sizes: ['One size'], desc: 'Black canvas tote with Medicine cover art.' },
 ];
 
 const LIONESS_URL = 'https://elasticstage.com/soundcloud/releases/calitoy-lioness-album';
