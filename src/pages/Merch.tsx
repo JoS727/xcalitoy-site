@@ -180,10 +180,11 @@ export default function Merch() {
               >
                 <div className="design-family-card__art">
                   <img
-                    src={product.variants[0]?.product_image || product.thumbnail || product.image}
+                    src={product.image || product.thumbnail}
                     alt={product.name}
                     loading="lazy"
                     style={{ width: '100%', aspectRatio: '1', objectFit: 'cover', borderRadius: '4px' }}
+                    onError={(e) => { (e.target as HTMLImageElement).src = product.thumbnail; }}
                   />
                   <span>{String(index + 1).padStart(2, '0')}</span>
                 </div>
@@ -241,11 +242,12 @@ export default function Merch() {
               x
             </button>
 
-            {/* Real Printful product image */}
+            {/* Product image - use artwork thumbnail, not blank Printful product image */}
             <img
-              src={selectedVariant?.product_image || selectedProduct.image}
+              src={selectedProduct.image || selectedProduct.thumbnail}
               alt={selectedProduct.name}
               style={{ width: '100%', borderRadius: '4px', marginBottom: '16px' }}
+              onError={(e) => { (e.target as HTMLImageElement).src = selectedProduct.thumbnail; }}
             />
 
             <div style={{ fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#8a7e6f', marginBottom: '4px' }}>
