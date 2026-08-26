@@ -3,6 +3,42 @@ import { artistProfile, highlights, links, playlists, songs } from '../data';
 const statement = "From Two to One I Shall Become, Must Sacrifice one to Give, Die I Must for I to live";
 const featuredSongs = songs.filter((song) => song.slug === 'lioness-lost' || song.slug === 'two-shirts');
 
+const releases = [
+  {
+    title: 'Lioness',
+    type: 'Vinyl Single',
+    description: 'The lead single from the XCalitoy era. Dark, bruised, and cinematic. Pressed on heavyweight vinyl.',
+    artwork: '/lioness-cover.png',
+    links: [
+      { label: 'Buy Vinyl', url: 'https://elasticstage.com/soundcloud/releases/calitoy-lioness-album', primary: true },
+      { label: 'Stream on SoundCloud', url: 'https://soundcloud.com/calitoy/snow' },
+      { label: 'Stream on Spotify', url: 'https://open.spotify.com/artist/1EKZspXmE10a4NU0p1OAqG' },
+    ],
+  },
+  {
+    title: 'XCalitoy',
+    type: 'Vinyl LP',
+    description: 'The debut album. Night-drive confessionals, pressure-heavy records, and the full dark-pop world. Pressed on heavyweight vinyl.',
+    artwork: '/xcalitoy-album-cover.jpg',
+    links: [
+      { label: 'Buy Vinyl', url: 'https://elasticstage.com/soundcloud/releases/calitoy-xcalitoy-album', primary: true },
+      { label: 'Stream on Spotify', url: 'https://open.spotify.com/album/5P8XnbH0PEqtNq9bRed1I1' },
+      { label: 'Stream on SoundCloud', url: 'https://soundcloud.com/calitoy' },
+    ],
+  },
+  {
+    title: 'XCalitoy',
+    type: 'Digital Album',
+    description: 'The full album available digitally. Stream everywhere or download directly. Includes Lioness Lost, Two Shirts, and the complete XCalitoy catalog.',
+    artwork: '/xcalitoy-album-cover.jpg',
+    links: [
+      { label: 'Stream on Spotify', url: 'https://open.spotify.com/album/5P8XnbH0PEqtNq9bRed1I1', primary: true },
+      { label: 'Stream on SoundCloud', url: 'https://soundcloud.com/calitoy' },
+      { label: 'Stream on Apple Music', url: 'https://music.apple.com/artist/calitoy/1EKZspXmE10a4NU0p1OAqG' },
+    ],
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -34,6 +70,54 @@ export default function Home() {
             </a>
           </div>
           <div className="hero__scroll">Scroll for the evidence</div>
+        </div>
+      </section>
+
+      <section className="section" id="releases">
+        <div className="container">
+          <span className="section__label">Releases</span>
+          <h2 className="section__title">Three ways to hear it.</h2>
+          <p className="section__subtitle">
+            Two vinyl pressings and the full digital album. Pick your format.
+          </p>
+          <div className="tracks" style={{ flexDirection: 'column', gap: '2rem' }}>
+            {releases.map((release, index) => (
+              <div key={`${release.title}-${index}`} className="track" style={{ flexDirection: 'row', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1.5rem', padding: '1.5rem 0' }}>
+                <div style={{ flexShrink: 0, width: 'clamp(100px, 25vw, 160px)' }}>
+                  <img
+                    src={release.artwork}
+                    alt={`${release.title} artwork`}
+                    style={{ width: '100%', aspectRatio: '1', objectFit: 'cover', borderRadius: '4px' }}
+                  />
+                </div>
+                <div style={{ flex: 1, minWidth: '200px' }}>
+                  <div className="track__number" style={{ fontSize: '0.7rem', color: 'var(--gold, #c9a96e)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+                    {release.type}
+                  </div>
+                  <div className="track__title" style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>
+                    {release.title}
+                  </div>
+                  <p className="track__desc" style={{ marginBottom: '1rem', maxWidth: '40rem' }}>
+                    {release.description}
+                  </p>
+                  <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                    {release.links.map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={link.primary ? 'btn btn--kill btn-sm' : 'btn btn-sm'}
+                        style={link.primary ? {} : { background: 'transparent', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.7)' }}
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
