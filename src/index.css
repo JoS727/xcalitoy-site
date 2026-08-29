@@ -149,6 +149,34 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
 .about-text h1{font-size:clamp(2.5rem,5vw,4rem);font-style:italic;margin-bottom:1.5rem}
 .about-text p{color:rgba(242,232,223,0.7);margin-bottom:1.25rem;line-height:1.9}
 
+/* === About: Musical Style === */
+.about-section{margin-top:4rem;padding-top:3rem;border-top:1px solid var(--border)}
+.about-heading{font-size:clamp(1.8rem,4vw,3rem);font-style:italic;margin-bottom:1.5rem;color:var(--fg)}
+.about-section p{color:rgba(242,232,223,0.65);margin-bottom:1.25rem;line-height:1.9;max-width:680px;font-size:1rem}
+.about-section .section__label{display:block;margin-bottom:1rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+
+/* Voice Modes */
+.voice-modes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2rem 0}
+@media(max-width:768px){.voice-modes{grid-template-columns:1fr}}
+.voice-mode{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1.5rem;transition:border-color .2s,transform .2s}
+.voice-mode:hover{border-color:rgba(196,85,58,.3);transform:translateY(-2px)}
+.voice-mode__label{font-family:var(--font);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;font-weight:600}
+.voice-mode p{color:rgba(242,232,223,.55);font-size:.9rem;line-height:1.6;margin:0}
+
+/* Style + Theme Tags */
+.style-tags,.theme-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.5rem 0}
+.style-tag{display:inline-block;padding:.4rem .9rem;border-radius:100px;font-size:.7rem;letter-spacing:.05em;color:var(--accent);background:rgba(196,85,58,.08);border:1px solid rgba(196,85,58,.2);text-transform:uppercase;font-weight:500}
+.theme-tag{display:inline-block;padding:.4rem .9rem;border-radius:100px;font-size:.7rem;letter-spacing:.05em;color:rgba(212,160,82,.7);background:rgba(212,160,82,.04);border:1px solid rgba(212,160,82,.15);text-transform:uppercase;font-weight:500}
+
+/* Production Grid */
+.production-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0}
+@media(max-width:768px){.production-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.production-grid{grid-template-columns:1fr}}
+.production-item{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1.25rem;transition:border-color .2s}
+.production-item:hover{border-color:rgba(196,85,58,.2)}
+.production-item__label{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;font-weight:600}
+.production-item p{color:rgba(242,232,223,.5);font-size:.85rem;line-height:1.5;margin:0}
+
 /* EPK */
 .epk-page__eyebrow{margin-bottom:1.5rem}
 .epk-page__grid{gap:1rem;margin-top:1rem}
