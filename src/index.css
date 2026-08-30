@@ -213,6 +213,11 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
 .dj-np__progress{height:3px;background:rgba(255,255,255,.05);border-radius:100px;margin-top:1rem;overflow:hidden}
 .dj-np__player{margin:1.25rem 0;overflow:hidden;border-radius:8px;border:1px solid var(--border)}
 .dj-np__player iframe{display:block;width:100%;border:0}
+.dj-stream-placeholder{padding:2rem 1.5rem;text-align:center;background:rgba(0,0,0,.2);border-radius:8px}
+.dj-stream-status{display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:1rem;font-size:.8rem;color:var(--muted)}
+.dj-stream-note{font-size:.8rem;color:rgba(242,232,223,.45);line-height:1.6;margin-bottom:1rem;max-width:400px;margin-left:auto;margin-right:auto}
+.dj-stream-link{font-size:.75rem;color:var(--accent);text-decoration:none}
+.dj-stream-link:hover{text-decoration:underline}
 .dj-np__progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-glow));transition:width 1s linear}
 /* Mode Cards */
 .dj-modes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}

@@ -134,18 +134,22 @@ export default function DJ() {
                 </p>
               </div>
             </div>
-            {/* Real SoundCloud player */}
+            {/* Live stream player - Icecast stream when available */}
             <div className="dj-np__player">
-              <iframe
-                ref={iframeRef}
-                width="100%"
-                height="166"
-                scrolling="no"
-                frameBorder="no"
-                allow="autoplay"
-                src={`https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fcalitoy%2Ftracks&color=%23c4553a&auto_play=true&buying=false&sharing=false&download=false&show_artwork=true&show_playcount=false&show_user=true&hide_related=true&visual=false`}
-                title="XCalitoy Live DJ Stream"
-              />
+              <div className="dj-stream-placeholder">
+                <div className="dj-stream-status">
+                  <span className="dj-np__live-dot" />
+                  <span>Stream initializing...</span>
+                </div>
+                <p className="dj-stream-note">
+                  The AI DJ engine is processing stems. When live, this becomes a real-time
+                  audio stream: Demucs-separated vocals chopped and layered over instrumental
+                  beds, evolving with the set mode. Not a playlist. A living remix.
+                </p>
+                <a href="https://github.com/JoS727/CalitoyStamp/issues/56" target="_blank" rel="noreferrer" className="dj-stream-link">
+                  Track the build →
+                </a>
+              </div>
             </div>
             <div className="dj-np__progress">
               <div className="dj-np__progress-bar" style={{ width: `${(elapsed / 180) * 100}%` }} />
