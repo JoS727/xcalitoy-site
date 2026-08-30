@@ -134,17 +134,18 @@ export default function DJ() {
                 </p>
               </div>
             </div>
-            {/* Live stream player - Icecast stream when available */}
+            {/* Live stream player - connects to DJ server */}
             <div className="dj-np__player">
-              <div className="dj-stream-placeholder">
-                <div className="dj-stream-status">
-                  <span className="dj-np__live-dot" />
-                  <span>Stream initializing...</span>
-                </div>
+              <div className="dj-stream-live">
+                <audio
+                  controls
+                  autoPlay
+                  src="https://making-number-son-housing.trycloudflare.com/api/stream/night_drive"
+                  style={{ width: '100%', height: '50px' }}
+                />
                 <p className="dj-stream-note">
-                  The AI DJ engine is processing stems. When live, this becomes a real-time
-                  audio stream: Demucs-separated vocals chopped and layered over instrumental
-                  beds, evolving with the set mode. Not a playlist. A living remix.
+                  Live AI remix: Demucs-separated vocals, chopped and time-stretched to
+                  95 BPM. Layered over a Night Drive instrumental bed. Not a playlist. A living remix.
                 </p>
                 <a href="https://github.com/JoS727/CalitoyStamp/issues/56" target="_blank" rel="noreferrer" className="dj-stream-link">
                   Track the build →
