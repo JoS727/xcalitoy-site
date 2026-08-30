@@ -140,7 +140,7 @@ export default function DJ() {
                 <audio
                   controls
                   autoPlay
-                  src="https://making-number-son-housing.trycloudflare.com/api/stream/night_drive"
+                  src="/night_drive_mix.wav"
                   style={{ width: '100%', height: '50px' }}
                 />
                 <p className="dj-stream-note">
