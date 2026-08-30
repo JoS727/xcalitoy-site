@@ -7,9 +7,11 @@ import Skateboards from './pages/Skateboards';
 import About from './pages/About';
 import EPK from './pages/EPK';
 import MerchModal from './components/MerchModal';
+import DJ from './pages/DJ';
 
 const navLinks = [
   { href: '/', label: 'Music' },
+  { href: '/dj', label: 'Live DJ' },
   { href: '/merch', label: 'Merch' },
   { href: '/about', label: 'About' },
   { href: '/epk', label: 'EPK' },
@@ -63,6 +65,7 @@ export default function App() {
         <Route path="/lyrics/:slug" component={SongPage} />
         <Route path="/boards" component={Skateboards} />
         <Route path="/merch" component={Merch} />
+        <Route path="/dj" component={DJ} />
         <Route>
           <div className="container section" style={{ textAlign: 'center' }}>
             <h1>404</h1>
