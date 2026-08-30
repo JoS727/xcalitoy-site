@@ -143,7 +143,7 @@ export default function DJ() {
                 scrolling="no"
                 frameBorder="no"
                 allow="autoplay"
-                src={`https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks&color=%23c4553a&auto_play=true&buying=false&sharing=false&download=false&show_artwork=true&show_playcount=false&show_user=true&hide_related=true&visual=false`}
+                src={`https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fcalitoy%2Ftracks&color=%23c4553a&auto_play=true&buying=false&sharing=false&download=false&show_artwork=true&show_playcount=false&show_user=true&hide_related=true&visual=false`}
                 title="XCalitoy Live DJ Stream"
               />
             </div>
