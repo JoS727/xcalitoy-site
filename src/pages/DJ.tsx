@@ -27,6 +27,7 @@ export default function DJ() {
   const [isLive, setIsLive] = useState(false);
   const [currentTrack, setCurrentTrack] = useState(0);
   const [elapsed, setElapsed] = useState(0);
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const intervalRef = useRef<number | null>(null);
 
   // Simulate the 24hr rotation
@@ -132,6 +133,19 @@ export default function DJ() {
                   Lyrics used sparingly. The words become texture, not narrative.
                 </p>
               </div>
+            </div>
+            {/* Real SoundCloud player */}
+            <div className="dj-np__player">
+              <iframe
+                ref={iframeRef}
+                width="100%"
+                height="166"
+                scrolling="no"
+                frameBorder="no"
+                allow="autoplay"
+                src={`https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks&color=%23c4553a&auto_play=true&buying=false&sharing=false&download=false&show_artwork=true&show_playcount=false&show_user=true&hide_related=true&visual=false`}
+                title="XCalitoy Live DJ Stream"
+              />
             </div>
             <div className="dj-np__progress">
               <div className="dj-np__progress-bar" style={{ width: `${(elapsed / 180) * 100}%` }} />

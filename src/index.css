@@ -211,6 +211,8 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
 .dj-np__track-era{font-size:.75rem;color:var(--muted);font-family:var(--font)}
 .dj-np__track-note{font-size:.85rem;color:rgba(242,232,223,.5);margin-top:.5rem;line-height:1.5}
 .dj-np__progress{height:3px;background:rgba(255,255,255,.05);border-radius:100px;margin-top:1rem;overflow:hidden}
+.dj-np__player{margin:1.25rem 0;overflow:hidden;border-radius:8px;border:1px solid var(--border)}
+.dj-np__player iframe{display:block;width:100%;border:0}
 .dj-np__progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-glow));transition:width 1s linear}
 /* Mode Cards */
 .dj-modes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
