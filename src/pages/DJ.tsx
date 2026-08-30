@@ -213,8 +213,10 @@ export default function DJ() {
           <span className="section__label">Source Material</span>
           <h2 className="dj-heading">The catalog.</h2>
           <p className="dj-section__desc">
-            {songs.length} tracks in the source pool. Each one contributes vocal fragments,
-            melodic motifs, and lyrical textures to the live sets.
+            {songs.length} tracks in the source pool (86 total on SoundCloud). Each one
+            contributes vocal fragments, melodic motifs, and lyrical textures to the live sets.
+            The full SoundCloud catalog feeds the DJ. What is listed here are the key tracks
+            currently driving the rotation.
           </p>
           <div className="dj-catalog">
             {songs.map((song, i) => (
@@ -224,6 +226,9 @@ export default function DJ() {
                 <span className="dj-catalog__era">{song.era}</span>
               </div>
             ))}
+            <a href={links.soundcloud} target="_blank" rel="noreferrer" className="dj-catalog__all">
+              View all 86 tracks on SoundCloud →
+            </a>
           </div>
         </div>
 
@@ -254,7 +259,7 @@ export default function DJ() {
         <div className="dj-cta">
           <h2 className="dj-heading">The DJ never stops.</h2>
           <p className="dj-cta__desc">
-            24 hours. 6 set modes. {songs.length} source tracks. Endless recombination.
+            24 hours. 6 set modes. 86 source tracks. Endless recombination.
             The XCalitoy AI DJ runs nonstop so the party never has to.
           </p>
           <div className="dj-cta__actions">

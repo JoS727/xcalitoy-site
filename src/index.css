@@ -242,6 +242,8 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
 .dj-catalog__num{font-family:var(--font);font-size:.7rem;color:var(--accent)}
 .dj-catalog__title{font-size:.9rem}
 .dj-catalog__era{font-size:.6rem;font-family:var(--font);color:var(--muted)}
+.dj-catalog__all{display:block;margin-top:1rem;text-align:center;font-size:.8rem;color:var(--accent);text-decoration:none;padding:.5rem;border:1px solid var(--border);border-radius:6px;transition:border-color .2s}
+.dj-catalog__all:hover{border-color:var(--accent)}
 /* Distribution */
 .dj-distribution{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 @media(max-width:768px){.dj-distribution{grid-template-columns:1fr}}
