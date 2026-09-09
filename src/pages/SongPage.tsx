@@ -43,7 +43,7 @@ export default function SongPage() {
               <a href={links.book} className="btn" style={{ justifyContent: 'space-between' }}>
                 <span>Booking / Collaborate</span><span>↗</span>
               </a>
-              <a href="#/merch" className="btn" style={{ justifyContent: 'space-between' }}>
+              <a href="https://merch.calitoy.com" target="_blank" rel="noreferrer" className="btn" style={{ justifyContent: 'space-between' }}>
                 <span>Merchandise</span><span>↗</span>
               </a>
             </div>

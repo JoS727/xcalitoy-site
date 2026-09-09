@@ -9,16 +9,28 @@ import EPK from './pages/EPK';
 import MerchModal from './components/MerchModal';
 import DJ from './pages/DJ';
 
+const MERCH_URL = 'https://merch.calitoy.com';
+
 const navLinks = [
   { href: '/', label: 'Music' },
   { href: '/dj', label: 'Live DJ' },
-  { href: '/merch', label: 'Merch' },
+  { href: MERCH_URL, label: 'Merch' },
   { href: '/about', label: 'About' },
   { href: '/epk', label: 'EPK' },
 ];
 
 function NavLink({ href, label, className = 'site-nav__link' }: { href: string; label: string; className?: string }) {
   const [, navigate] = useLocation();
+
+  const isExternal = /^https?:\/\//.test(href);
+
+  if (isExternal) {
+    return (
+      <a href={href} className={className} target="_blank" rel="noreferrer">
+        {label}
+      </a>
+    );
+  }
 
   return (
     <a
@@ -81,7 +93,7 @@ export default function App() {
             <NavLink href="/about" label="About" className="footer-link" />
             <NavLink href="/epk" label="EPK" className="footer-link" />
             <NavLink href="/boards" label="Boards" className="footer-link" />
-            <NavLink href="/merch" label="Merch" className="footer-link" />
+            <NavLink href={MERCH_URL} label="Merch" className="footer-link" />
           </span>
         </div>
       </footer>

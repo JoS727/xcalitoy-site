@@ -46,7 +46,7 @@ export const links = {
   tiktok: 'https://www.tiktok.com/@that.joemad',
   soundcloud: 'https://soundcloud.com/calitoy',
   spotifyAlbum: 'https://open.spotify.com/album/5P8XnbH0PEqtNq9bRed1I1?si=12vIiVzeRrqGoqY7Qr_8HQ',
-  merch: '#/merch',
+  merch: 'https://merch.calitoy.com',
   book: 'mailto:joseph@xcalitoy.com?subject=Book%20Joseph%20Calitoy',
   blog: '#/blog',
   epk: '#/epk',
