@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calitoy Creative Agency</title>
+<link rel="icon" type="image/png" href="assets/calitoy-creative-logo.png">
+<meta name="description" content="Calitoy Creative Agency — brand strategy, content, copy, casting, media, and web. The full creative stack under one roof.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --accent:#8B5CF6; --gold:#F59E0B; --bg:#0A0A0A; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:var(--bg);color:#fff;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:10;backdrop-filter:blur(12px);background:rgba(10,10,10,.75);border-bottom:1px solid rgba(255,255,255,.06)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand img{height:34px;width:auto}
+  .brand span{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:var(--accent);letter-spacing:-.02em}
+  .nav-link{font-size:14px;color:rgba(255,255,255,.55);transition:.2s}
+  .nav-link:hover{color:#fff}
+
+  /* HERO */
+  .hero{position:relative;padding:110px 0 80px;text-align:center;overflow:hidden}
+  .glow{position:absolute;inset:0;background:radial-gradient(700px circle at 50% 0%,#8B5CF61a,transparent 70%);pointer-events:none}
+  .pill{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border:1px solid #8B5CF644;border-radius:999px;padding:7px 16px;margin-bottom:28px}
+  h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(38px,7vw,78px);line-height:1.01;letter-spacing:-.03em}
+  h1 .g{background:linear-gradient(120deg,var(--accent),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{max-width:640px;margin:26px auto 0;font-size:18px;line-height:1.65;color:rgba(255,255,255,.58)}
+  .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+  .btn{font-weight:600;font-size:15px;border-radius:12px;padding:14px 28px;transition:.2s;cursor:pointer}
+  .btn.primary{background:var(--accent);color:#0A0A0A}
+  .btn.primary:hover{filter:brightness(1.1);transform:translateY(-1px)}
+  .btn.ghost{border:1px solid rgba(255,255,255,.15);color:#fff}
+  .btn.ghost:hover{border-color:rgba(255,255,255,.4)}
+
+  /* DIVISIONS */
+  .divisions{padding:20px 0 100px}
+  .section-label{font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.06)}
+  .div-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+  .div-card{background:#111113;border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:28px 30px 30px;display:flex;flex-direction:column;gap:14px;transition:.25s;position:relative;overflow:hidden}
+  .div-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#8B5CF60a,transparent 60%);opacity:0;transition:.3s}
+  .div-card:hover{border-color:#8B5CF555;transform:translateY(-3px)}
+  .div-card:hover::before{opacity:1}
+  .div-code{font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.15em;color:var(--accent);text-transform:uppercase}
+  .div-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.02em}
+  .div-desc{font-size:14px;line-height:1.6;color:rgba(255,255,255,.5);flex:1}
+  .div-link{margin-top:6px;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--accent);transition:.2s}
+  .div-link:hover{gap:10px}
+  .div-link::after{content:'→'}
+
+  /* PITCH */
+  .pitch{padding:0 0 100px;text-align:center}
+  .pitch h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,4vw,42px);letter-spacing:-.025em}
+  .pitch p{color:rgba(255,255,255,.5);margin:14px auto 32px;max-width:560px;font-size:17px;line-height:1.6}
+  .pitch a.btn{display:inline-block}
+
+  /* FOOTER */
+  footer{border-top:1px solid rgba(255,255,255,.06);padding:40px 0}
+  .fnav{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;font-size:13px;color:rgba(255,255,255,.38)}
+  .fnav a:hover{color:#fff}
+  .copyr{text-align:center;color:rgba(255,255,255,.24);font-size:12px;margin-top:20px}
+
+  @media(max-width:600px){.div-grid{grid-template-columns:1fr}.hero{padding:72px 0 60px}.sub{font-size:16px}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap nav">
+  <a href="https://agency.calitoy.com" class="brand">
+    <img src="assets/calitoy-creative-logo.png" alt="Calitoy Creative Agency">
+    <span>Agency</span>
+  </a>
+  <a class="nav-link" href="https://calitoy.com">← calitoy.com</a>
+</div></header>
+
+<section class="hero"><div class="glow"></div><div class="wrap">
+  <span class="pill">Calitoy Creative Agency</span>
+  <h1>The Full<br><span class="g">Creative Stack.</span></h1>
+  <p class="sub">Brand, content, copy, casting, media, and web — all six divisions built to move together. One agency. Every angle.</p>
+  <div class="cta-row">
+    <a href="mailto:joseph@xcalitoy.com" class="btn primary">Work With Us</a>
+    <a href="https://calitoy.com" class="btn ghost">← All Worlds</a>
+  </div>
+</div></section>
+
+<section class="divisions"><div class="wrap">
+  <div class="section-label">The Six Divisions</div>
+  <div class="div-grid">
+
+    <a class="div-card" href="https://creative.calitoy.com" target="_blank" rel="noreferrer">
+      <div class="div-code">CR / 01</div>
+      <div class="div-name">Creative</div>
+      <div class="div-desc">Brand strategy, creative direction, screenwriting, and visual identity. The idea starts here.</div>
+      <span class="div-link">creative.calitoy.com</span>
+    </a>
+
+    <a class="div-card" href="https://content.calitoy.com" target="_blank" rel="noreferrer">
+      <div class="div-code">CN / 02</div>
+      <div class="div-name">Content</div>
+      <div class="div-desc">SEO, content systems, and search-driven publishing. Built to rank and built to convert.</div>
+      <span class="div-link">content.calitoy.com</span>
+    </a>
+
+    <a class="div-card" href="https://copy.calitoy.com" target="_blank" rel="noreferrer">
+      <div class="div-code">CP / 03</div>
+      <div class="div-name">Copy</div>
+      <div class="div-desc">Brand voice, copywriting, and conversion-first messaging. Words that actually work.</div>
+      <span class="div-link">copy.calitoy.com</span>
+    </a>
+
+    <a class="div-card" href="https://casting.calitoy.com" target="_blank" rel="noreferrer">
+      <div class="div-code">CS / 04</div>
+      <div class="div-name">Casting</div>
+      <div class="div-desc">Talent sourcing, casting direction, and creative placements. Right people, right projects.</div>
+      <span class="div-link">casting.calitoy.com</span>
+    </a>
+
+    <a class="div-card" href="https://media.calitoy.com" target="_blank" rel="noreferrer">
+      <div class="div-code">MD / 05</div>
+      <div class="div-name">Media</div>
+      <div class="div-desc">Media production, campaign strategy, and paid distribution. Reach built to scale.</div>
+      <span class="div-link">media.calitoy.com</span>
+    </a>
+
+    <a class="div-card" href="https://clone.calitoy.com" target="_blank" rel="noreferrer">
+      <div class="div-code">CL / 06</div>
+      <div class="div-name">Clone</div>
+      <div class="div-desc">Web builds, digital replication, and rapid site deployment. Done fast, done right.</div>
+      <span class="div-link">clone.calitoy.com</span>
+    </a>
+
+  </div>
+</div></section>
+
+<section class="pitch"><div class="wrap">
+  <h2>Ready to build something?</h2>
+  <p>One message gets you in front of the full agency. Tell us what you're working on.</p>
+  <a href="mailto:joseph@xcalitoy.com" class="btn primary">Get in Touch</a>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="fnav">
+    <a href="https://creative.calitoy.com">Creative</a>
+    <a href="https://content.calitoy.com">Content</a>
+    <a href="https://copy.calitoy.com">Copy</a>
+    <a href="https://casting.calitoy.com">Casting</a>
+    <a href="https://media.calitoy.com">Media</a>
+    <a href="https://clone.calitoy.com">Clone</a>
+    <a href="https://calitoy.com">Calitoy.com</a>
+  </div>
+  <div class="copyr">© <span id="yr"></span> Calitoy Creative Agency</div>
+</div></footer>
+
+<script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
+</body>
+</html>
