@@ -24,17 +24,21 @@ const SCHEDULE = [
 
 export default function DJ() {
   const [currentMode, setCurrentMode] = useState('night-drive');
+  // isLive = the stream section is engaged (user clicked Go Live).
+  // isPlaying = the audio element is actually playing right now.
   const [isLive, setIsLive] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState(0);
   const [elapsed, setElapsed] = useState(0);
-  const iframeRef = useRef<HTMLIFrameElement | null>(null);
-  const intervalRef = useRef<number | null>(null);
+  const [duration, setDuration] = useState(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const lastTimeRef = useRef(0);
 
   // Simulate the 24hr rotation
   useEffect(() => {
     const now = new Date();
     const hour = now.getHours();
-    
+
     // Map hour to current mode based on schedule
     if (hour >= 18 || hour < 2) setCurrentMode('night-drive');
     else if (hour >= 2 && hour < 4) setCurrentMode('warehouse');
@@ -45,20 +49,52 @@ export default function DJ() {
     else if (hour >= 16 && hour < 18) setCurrentMode('turn-up');
   }, []);
 
-  // Simulate track progression
+  // Sync the LIVE timer and status to the ACTUAL audio element playback state.
+  // The timer only advances while the audio is genuinely playing; it stops on
+  // pause and resets when the stream is stopped. The track advances each time
+  // the looping audio wraps back to the start, so the display never claims to
+  // be live when the sound has stopped.
   useEffect(() => {
-    if (!isLive) return;
-    intervalRef.current = window.setInterval(() => {
-      setElapsed((e) => {
-        if (e >= 180) {
-          setCurrentTrack((t) => (t + 1) % songs.length);
-          return 0;
-        }
-        return e + 1;
-      });
-    }, 1000);
+    if (!isLive) {
+      setIsPlaying(false);
+      setElapsed(0);
+      lastTimeRef.current = 0;
+      return;
+    }
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const handleTimeUpdate = () => {
+      const t = audio.currentTime;
+      // Detect a loop restart (currentTime jumps back to ~0) and rotate track.
+      if (t < lastTimeRef.current - 0.5) {
+        setCurrentTrack((prev) => (prev + 1) % songs.length);
+      }
+      lastTimeRef.current = t;
+      setElapsed(Math.floor(t));
+    };
+    const handlePlay = () => setIsPlaying(true);
+    const handlePause = () => setIsPlaying(false);
+    const handleEnded = () => {
+      // With loop enabled this rarely fires, but guard anyway: stop the timer.
+      setIsPlaying(false);
+    };
+    const handleLoaded = () => setDuration(audio.duration || 0);
+
+    audio.addEventListener('timeupdate', handleTimeUpdate);
+    audio.addEventListener('play', handlePlay);
+    audio.addEventListener('playing', handlePlay);
+    audio.addEventListener('pause', handlePause);
+    audio.addEventListener('ended', handleEnded);
+    audio.addEventListener('loadedmetadata', handleLoaded);
+
     return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
+      audio.removeEventListener('timeupdate', handleTimeUpdate);
+      audio.removeEventListener('play', handlePlay);
+      audio.removeEventListener('playing', handlePlay);
+      audio.removeEventListener('pause', handlePause);
+      audio.removeEventListener('ended', handleEnded);
+      audio.removeEventListener('loadedmetadata', handleLoaded);
     };
   }, [isLive]);
 
@@ -66,12 +102,24 @@ export default function DJ() {
   const track = songs[currentTrack];
   const minutes = Math.floor(elapsed / 60);
   const seconds = (elapsed % 60).toString().padStart(2, '0');
+  const progressPct = duration > 0 ? Math.min((elapsed / duration) * 100, 100) : 0;
 
   return (
     <div className="section">
       <div className="container">
         <a href="#/" className="back-link">← Home</a>
         <span className="section__label">XCalitoy Live DJ</span>
+
+        {/* Honest status banner — the 24/7 AI DJ is still being built.
+            What plays today is a single looping demo mix, not a live stream. */}
+        <div className="dj-demo-banner" role="status">
+          <span className="dj-demo-banner__badge">Demo Mode</span>
+          <span className="dj-demo-banner__text">
+            The 24/7 AI DJ is still being built. For now, hit <strong>Go Live</strong> to
+            hear a looping preview mix — the always-on stream and YouTube channel are
+            launching soon.
+          </span>
+        </div>
 
         {/* Hero */}
         <div className="dj-hero">
@@ -84,11 +132,11 @@ export default function DJ() {
           </div>
           <div className="dj-hero__content">
             <h1 className="dj-title">XCALITOY</h1>
-            <p className="dj-subtitle">24/7 AI DJ. Live now.</p>
+            <p className="dj-subtitle">24/7 AI DJ — demo preview.</p>
             <p className="dj-description">
               Calitoy's lyrics, repurposed into instrumental sets for parties, late drives,
-              and the hours between. Streaming nonstop through the site and YouTube.
-              No two sets are the same.
+              and the hours between. The always-on stream is on its way — right now you can
+              press play on a looping preview mix. No two sets will be the same.
             </p>
             <div className="dj-hero__actions">
               <button
@@ -97,14 +145,14 @@ export default function DJ() {
               >
                 {isLive ? '■ Stop Stream' : '▶ Go Live'}
               </button>
-              <a
-                href="https://www.youtube.com/@thatjoemad"
-                target="_blank"
-                rel="noreferrer"
-                className="btn"
-              >
-                Watch on YouTube
-              </a>
+              <span className="dj-tooltip">
+                <button type="button" className="btn btn--disabled" disabled aria-disabled="true">
+                  YouTube — Coming Soon
+                </button>
+                <span className="dj-tooltip__text">
+                  The XCalitoy YouTube channel is being set up. Check back soon!
+                </span>
+              </span>
             </div>
           </div>
         </div>
@@ -113,8 +161,8 @@ export default function DJ() {
         {isLive && (
           <div className="dj-now-playing">
             <div className="dj-np__header">
-              <span className="dj-np__live-dot" />
-              <span className="dj-np__live-text">LIVE</span>
+              <span className={`dj-np__live-dot ${isPlaying ? '' : 'paused'}`} />
+              <span className="dj-np__live-text">{isPlaying ? 'PREVIEW PLAYING' : 'PAUSED'}</span>
               <span className="dj-np__time">{minutes}:{seconds}</span>
             </div>
             <div className="dj-np__content">
@@ -138,14 +186,17 @@ export default function DJ() {
             <div className="dj-np__player">
               <div className="dj-stream-live">
                 <audio
+                  ref={audioRef}
                   controls
                   autoPlay
+                  loop
                   src="/night_drive_mix.wav"
                   style={{ width: '100%', height: '50px' }}
                 />
                 <p className="dj-stream-note">
-                  Live AI remix: Demucs-separated vocals, chopped and time-stretched to
-                  95 BPM. Layered over a Night Drive instrumental bed. Not a playlist. A living remix.
+                  Preview mix: Demucs-separated vocals, chopped and time-stretched to
+                  95 BPM, layered over a Night Drive instrumental bed. This demo loops
+                  continuously while the full 24/7 AI stream is being built.
                 </p>
                 <a href="https://github.com/JoS727/CalitoyStamp/issues/56" target="_blank" rel="noreferrer" className="dj-stream-link">
                   Track the build →
@@ -153,7 +204,7 @@ export default function DJ() {
               </div>
             </div>
             <div className="dj-np__progress">
-              <div className="dj-np__progress-bar" style={{ width: `${(elapsed / 180) * 100}%` }} />
+              <div className="dj-np__progress-bar" style={{ width: `${progressPct}%` }} />
             </div>
           </div>
         )}
@@ -222,7 +273,7 @@ export default function DJ() {
             <div className="dj-process__step">
               <div className="dj-process__num">04</div>
               <div className="dj-process__label">Stream</div>
-              <p>The set streams live 24/7 through xcalitoy.com and YouTube. No two sets repeat. The catalog recombines endlessly.</p>
+              <p>The set will stream 24/7 through xcalitoy.com and YouTube. No two sets repeat — the catalog recombines endlessly. (Currently in demo preview.)</p>
             </div>
           </div>
         </div>
@@ -263,8 +314,8 @@ export default function DJ() {
             </div>
             <div className="dj-dist-card">
               <div className="dj-dist-card__icon">▶</div>
-              <div className="dj-dist-card__name">YouTube Live</div>
-              <p>24/7 live stream on YouTube. The visualizer runs as a continuous video feed. Viewers can chat, request modes, and share.</p>
+              <div className="dj-dist-card__name">YouTube Live <span className="dj-dist-card__soon">Coming Soon</span></div>
+              <p>A 24/7 live stream on YouTube is planned. The visualizer will run as a continuous video feed where viewers can chat, request modes, and share.</p>
             </div>
             <div className="dj-dist-card">
               <div className="dj-dist-card__icon">♪</div>
@@ -288,14 +339,14 @@ export default function DJ() {
             >
               {isLive ? '■ Stop Stream' : '▶ Go Live'}
             </button>
-            <a
-              href="https://www.youtube.com/@thatjoemad"
-              target="_blank"
-              rel="noreferrer"
-              className="btn"
-            >
-              YouTube Live
-            </a>
+            <span className="dj-tooltip">
+              <button type="button" className="btn btn--disabled" disabled aria-disabled="true">
+                YouTube — Coming Soon
+              </button>
+              <span className="dj-tooltip__text">
+                The XCalitoy YouTube channel is being set up. Check back soon!
+              </span>
+            </span>
             <a
               href={links.soundcloud}
               target="_blank"
