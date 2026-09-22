@@ -8,11 +8,13 @@ import About from './pages/About';
 import EPK from './pages/EPK';
 import MerchModal from './components/MerchModal';
 import DJ from './pages/DJ';
+import Lyrics from './pages/Lyrics';
 
 const MERCH_URL = 'https://merch.calitoy.com';
 
 const navLinks = [
   { href: '/', label: 'Music' },
+  { href: '/lyrics', label: 'Lyrics' },
   { href: '/dj', label: 'Live DJ' },
   { href: MERCH_URL, label: 'Merch' },
   { href: '/about', label: 'About' },
@@ -73,6 +75,7 @@ export default function App() {
         <Route path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/epk" component={EPK} />
+        <Route path="/lyrics" component={Lyrics} />
         <Route path="/music/:slug" component={SongPage} />
         <Route path="/lyrics/:slug" component={SongPage} />
         <Route path="/boards" component={Skateboards} />
