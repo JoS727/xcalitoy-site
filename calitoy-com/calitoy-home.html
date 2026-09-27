@@ -506,6 +506,29 @@
     /* ============================================================
        TABLET ≥ 720px
        ============================================================ */
+
+    /* MOBILE FULL-BLEED HERO — image touches screen edges, copy overlays it */
+    @media (max-width: 719px) {
+      .hero .visual { margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); }
+      .frame { border-radius: 0; }
+      .frame-inner { border-radius: 0; aspect-ratio: 4 / 5; max-height: min(88vh, 760px); }
+      .tick { display: none; }
+      /* overlay the hero copy on the lower part of the image */
+      .hero { position: relative; }
+      .hero-copy {
+        margin-top: clamp(-86px, -15vw, -60px);
+        padding-bottom: 0.5rem;
+      }
+      /* gradient floor so the overlaid text stays readable over the photo */
+      .frame-inner::after {
+        background:
+          linear-gradient(to bottom, rgba(8,9,18,0) 40%, rgba(8,9,18,0.55) 68%, rgba(8,9,18,0.94) 92%, #080912 100%),
+          linear-gradient(to right, rgba(8,9,18,0.35), rgba(8,9,18,0) 20% 80%, rgba(8,9,18,0.35));
+      }
+      /* caption hidden on mobile — the full-bleed image carries the frame */
+      .caption { display: none; }
+    }
+
     @media (min-width: 720px) {
       .rules { opacity: 1; }
       .hero-copy { margin-top: -3.2rem; }
