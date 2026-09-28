@@ -250,6 +250,21 @@ export const journalEntries: JournalEntry[] = [
       'More drops, more lyrics, and more visual material will keep stacking here over time.',
     ],
   },
+  {
+    slug: 'king-cobretti-timbaland-vote',
+    title: 'King Cobretti in the Timbaland Global Search',
+    date: 'September 27, 2026',
+    excerpt: 'King Cobretti is competing in the Timbaland x Orbiiit Global Talent Search 2026 for $100,000 and a studio session with Timbaland. Here is how to vote.',
+    body: [
+      'King Cobretti — originally from San Jose, now living in San Diego — has entered the Timbaland x Orbiiit Global Talent Search 2026.',
+      'The stakes are serious: $100,000 in cash prizes, a studio master class session with Timbaland, a live showcase invitation, and a chance to be featured on Timbaland\'s next album.',
+      'Ten winners get invited to the live show. Five of those five secure album spots. Travel and accommodation are not included.',
+      'Every vote also earns the voter fan prize entries — so voting is a two-for-one: you help the artist and you enter yourself to win.',
+      'No purchase necessary to vote. Visit King Cobretti\'s participant page on Orbiiit and cast your vote in seconds.',
+      'King Cobretti\'s bio says it all: "California is my home. And Music is my life, Im ready to cook and inspire."',
+      'Vote here: https://orbiiit.com/en/participants/0d31d7de-98a9-4dad-a0fe-0c05f5332cb3?contestId=f85717be-ba9b-4857-b885-ccbbb9a45757',
+    ],
+  },
 ];
 
 export function getSong(slug: string): Song | undefined {
