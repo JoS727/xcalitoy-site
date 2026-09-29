@@ -182,6 +182,11 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
 @media(min-width:900px){.dj-hero{grid-template-columns:1fr 1fr;gap:3rem}}
 .dj-title{font-size:clamp(3rem,10vw,7rem);font-style:italic;letter-spacing:-.06em;line-height:.85;margin-bottom:1rem}
 .dj-subtitle{font-size:1.2rem;color:var(--accent);font-weight:600;margin-bottom:1rem;letter-spacing:.05em}
+.dj-demo-banner{padding:.9rem 1rem;margin:0 0 1rem;border:1px solid var(--border);border-radius:8px;background:rgba(0,0,0,.2);font-size:.85rem;color:rgba(242,232,223,.7);line-height:1.5}
+.dj-demo-banner strong{color:var(--accent);letter-spacing:.1em}
+.dj-coming-soon{display:inline-flex}
+.dj-coming-soon .btn:disabled{cursor:not-allowed;opacity:.65}
+.dj-coming-soon .btn:disabled:hover{border-color:var(--border);color:var(--fg);transform:none}
 .dj-description{color:rgba(242,232,223,.65);font-size:1rem;line-height:1.8;margin-bottom:1.5rem;max-width:520px}
 .dj-hero__actions{display:flex;gap:.75rem;flex-wrap:wrap}
 .dj-visualizer{display:flex;align-items:flex-end;justify-content:center;gap:3px;height:200px;padding:1rem;background:rgba(0,0,0,.3);border-radius:12px;border:1px solid var(--border)}
@@ -196,6 +201,7 @@ footer span:first-child{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
 .dj-now-playing{background:rgba(196,85,58,.05);border:1px solid rgba(196,85,58,.15);border-radius:12px;padding:1.5rem;margin:2rem 0}
 .dj-np__header{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem}
 .dj-np__live-dot{width:8px;height:8px;border-radius:50%;background:#e63946;animation:djPulse 1.5s ease-in-out infinite}
+.dj-np__live-dot.paused{background:var(--muted);animation:none}
 @keyframes djPulse{0%,100%{opacity:1}50%{opacity:.3}}
 .dj-np__live-text{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:#e63946;font-weight:700}
 .dj-np__time{font-family:var(--font);font-size:.7rem;color:var(--muted);margin-left:auto}
