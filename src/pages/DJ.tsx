@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, type SyntheticEvent } from 'react';
 import { links, songs } from '../data';
 
 const DJ_SET_MODES = [
@@ -25,12 +25,14 @@ const SCHEDULE = [
 export default function DJ() {
   const [currentMode, setCurrentMode] = useState('night-drive');
   const [isLive, setIsLive] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState(0);
   const [elapsed, setElapsed] = useState(0);
-  const iframeRef = useRef<HTMLIFrameElement | null>(null);
-  const intervalRef = useRef<number | null>(null);
+  const [duration, setDuration] = useState(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const previousTimeRef = useRef(0);
 
-  // Simulate the 24hr rotation
+  // Select the scheduled mode for the current hour.
   useEffect(() => {
     const now = new Date();
     const hour = now.getHours();
@@ -45,27 +47,42 @@ export default function DJ() {
     else if (hour >= 16 && hour < 18) setCurrentMode('turn-up');
   }, []);
 
-  // Simulate track progression
-  useEffect(() => {
-    if (!isLive) return;
-    intervalRef.current = window.setInterval(() => {
-      setElapsed((e) => {
-        if (e >= 180) {
-          setCurrentTrack((t) => (t + 1) % songs.length);
-          return 0;
-        }
-        return e + 1;
-      });
-    }, 1000);
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-  }, [isLive]);
+  const stopPreview = () => {
+    audioRef.current?.pause();
+    setIsLive(false);
+    setIsPlaying(false);
+    setCurrentTrack(0);
+    setElapsed(0);
+    setDuration(0);
+    previousTimeRef.current = 0;
+  };
+
+  const handleTimeUpdate = (event: SyntheticEvent<HTMLAudioElement>) => {
+    const audio = event.currentTarget;
+    const currentTime = audio.currentTime;
+    if (
+      Number.isFinite(audio.duration) &&
+      previousTimeRef.current >= audio.duration - 1.5 &&
+      currentTime < 1.5
+    ) {
+      setCurrentTrack((trackIndex) => (trackIndex + 1) % songs.length);
+    }
+    previousTimeRef.current = currentTime;
+    setElapsed(currentTime);
+    if (Number.isFinite(audio.duration)) setDuration(audio.duration);
+  };
+
+  const handleEnded = () => {
+    setIsPlaying(false);
+    setElapsed(0);
+    previousTimeRef.current = 0;
+  };
 
   const mode = DJ_SET_MODES.find((m) => m.id === currentMode) || DJ_SET_MODES[0];
   const track = songs[currentTrack];
   const minutes = Math.floor(elapsed / 60);
   const seconds = (elapsed % 60).toString().padStart(2, '0');
+  const progress = duration ? Math.min((elapsed / duration) * 100, 100) : 0;
 
   return (
     <div className="section">
@@ -76,7 +93,7 @@ export default function DJ() {
         {/* Hero */}
         <div className="dj-hero">
           <div className="dj-hero__visualizer">
-            <div className={`dj-visualizer ${isLive ? 'live' : ''}`}>
+            <div className={`dj-visualizer ${isPlaying ? 'live' : ''}`}>
               {[...Array(32)].map((_, i) => (
                 <span key={i} style={{ animationDelay: `${i * 0.05}s` }} />
               ))}
@@ -84,27 +101,24 @@ export default function DJ() {
           </div>
           <div className="dj-hero__content">
             <h1 className="dj-title">XCALITOY</h1>
-            <p className="dj-subtitle">24/7 AI DJ. Live now.</p>
+            <p className="dj-subtitle">AI DJ preview. Full stream launching soon.</p>
+            <p className="dj-demo-banner">
+              <strong>DEMO MODE</strong> — Previewing one local mix; the 24/7 stream and YouTube channel are coming soon.
+            </p>
             <p className="dj-description">
               Calitoy's lyrics, repurposed into instrumental sets for parties, late drives,
-              and the hours between. Streaming nonstop through the site and YouTube.
-              No two sets are the same.
+              and the hours between. The full stream and YouTube channel are launching soon.
             </p>
             <div className="dj-hero__actions">
               <button
                 className={`btn ${isLive ? 'btn--kill' : ''}`}
-                onClick={() => setIsLive(!isLive)}
+                onClick={() => isLive ? stopPreview() : setIsLive(true)}
               >
-                {isLive ? '■ Stop Stream' : '▶ Go Live'}
+                {isLive ? '■ Stop Preview' : '▶ Play Preview'}
               </button>
-              <a
-                href="https://www.youtube.com/@thatjoemad"
-                target="_blank"
-                rel="noreferrer"
-                className="btn"
-              >
-                Watch on YouTube
-              </a>
+              <span className="dj-coming-soon" title="Our YouTube channel is launching soon.">
+                <button type="button" className="btn" disabled>YouTube — Coming Soon</button>
+              </span>
             </div>
           </div>
         </div>
@@ -113,8 +127,8 @@ export default function DJ() {
         {isLive && (
           <div className="dj-now-playing">
             <div className="dj-np__header">
-              <span className="dj-np__live-dot" />
-              <span className="dj-np__live-text">LIVE</span>
+              <span className={`dj-np__live-dot ${isPlaying ? '' : 'paused'}`} />
+              <span className="dj-np__live-text">{isPlaying ? 'PREVIEW PLAYING' : 'PAUSED'}</span>
               <span className="dj-np__time">{minutes}:{seconds}</span>
             </div>
             <div className="dj-np__content">
@@ -134,18 +148,24 @@ export default function DJ() {
                 </p>
               </div>
             </div>
-            {/* Live stream player - connects to DJ server */}
+            {/* Local looping demo preview */}
             <div className="dj-np__player">
               <div className="dj-stream-live">
                 <audio
+                  ref={audioRef}
                   controls
                   autoPlay
+                  loop
                   src="/night_drive_mix.wav"
+                  onPlay={() => setIsPlaying(true)}
+                  onPause={() => setIsPlaying(false)}
+                  onTimeUpdate={handleTimeUpdate}
+                  onDurationChange={(event) => setDuration(event.currentTarget.duration)}
+                  onEnded={handleEnded}
                   style={{ width: '100%', height: '50px' }}
                 />
                 <p className="dj-stream-note">
-                  Live AI remix: Demucs-separated vocals, chopped and time-stretched to
-                  95 BPM. Layered over a Night Drive instrumental bed. Not a playlist. A living remix.
+                  Demo preview: one local Night Drive mix loops here. The full site stream and YouTube channel are launching soon.
                 </p>
                 <a href="https://github.com/JoS727/CalitoyStamp/issues/56" target="_blank" rel="noreferrer" className="dj-stream-link">
                   Track the build →
@@ -153,7 +173,7 @@ export default function DJ() {
               </div>
             </div>
             <div className="dj-np__progress">
-              <div className="dj-np__progress-bar" style={{ width: `${(elapsed / 180) * 100}%` }} />
+              <div className="dj-np__progress-bar" style={{ width: `${progress}%` }} />
             </div>
           </div>
         )}
@@ -161,10 +181,10 @@ export default function DJ() {
         {/* Set Modes */}
         <div className="dj-section">
           <span className="section__label">Set Modes</span>
-          <h2 className="dj-heading">Six states. One continuous stream.</h2>
+          <h2 className="dj-heading">Six states. One future stream.</h2>
           <p className="dj-section__desc">
-            The AI rotates through six mood-based set modes across 24 hours. Each mode
-            reshapes the same catalog into a different energy, tempo, and texture.
+            The planned 24-hour rotation spans six mood-based set modes. Each mode will
+            reshape the same catalog into a different energy, tempo, and texture.
           </p>
           <div className="dj-modes-grid">
             {DJ_SET_MODES.map((m) => (
@@ -183,11 +203,11 @@ export default function DJ() {
 
         {/* Schedule */}
         <div className="dj-section">
-          <span className="section__label">24hr Schedule</span>
+          <span className="section__label">Planned 24hr Schedule</span>
           <h2 className="dj-heading">The rotation.</h2>
           <p className="dj-section__desc">
-            The DJ follows a 24-hour cycle, shifting energy with the hours. Peak times
-            hit hard. Off-hours get atmospheric. The schedule runs automatically.
+            The planned DJ schedule follows a 24-hour cycle, shifting energy with the hours.
+            Peak times hit hard. Off-hours get atmospheric.
           </p>
           <div className="dj-schedule">
             {SCHEDULE.map((s, i) => (
@@ -222,7 +242,7 @@ export default function DJ() {
             <div className="dj-process__step">
               <div className="dj-process__num">04</div>
               <div className="dj-process__label">Stream</div>
-              <p>The set streams live 24/7 through xcalitoy.com and YouTube. No two sets repeat. The catalog recombines endlessly.</p>
+              <p>The full 24/7 stream through xcalitoy.com and YouTube is launching soon. No two sets are planned to repeat.</p>
             </div>
           </div>
         </div>
@@ -233,9 +253,9 @@ export default function DJ() {
           <h2 className="dj-heading">The catalog.</h2>
           <p className="dj-section__desc">
             {songs.length} tracks in the source pool (86 total on SoundCloud). Each one
-            contributes vocal fragments, melodic motifs, and lyrical textures to the live sets.
-            The full SoundCloud catalog feeds the DJ. What is listed here are the key tracks
-            currently driving the rotation.
+            can contribute vocal fragments, melodic motifs, and lyrical textures to planned sets.
+            The full SoundCloud catalog is planned to feed the DJ. What is listed here are
+            key tracks for the planned rotation.
           </p>
           <div className="dj-catalog">
             {songs.map((song, i) => (
@@ -259,43 +279,38 @@ export default function DJ() {
             <div className="dj-dist-card">
               <div className="dj-dist-card__icon">●</div>
               <div className="dj-dist-card__name">xcalitoy.com</div>
-              <p>Embedded live stream player. The DJ plays directly on the site with the visualizer, current track info, and set mode display.</p>
+              <p>A looping audio demo is available now. The full site stream, visualizer, and live set display are launching soon.</p>
             </div>
             <div className="dj-dist-card">
               <div className="dj-dist-card__icon">▶</div>
-              <div className="dj-dist-card__name">YouTube Live</div>
-              <p>24/7 live stream on YouTube. The visualizer runs as a continuous video feed. Viewers can chat, request modes, and share.</p>
+              <div className="dj-dist-card__name">YouTube — Coming Soon</div>
+              <p>The YouTube channel and 24/7 live stream are launching soon.</p>
             </div>
             <div className="dj-dist-card">
               <div className="dj-dist-card__icon">♪</div>
               <div className="dj-dist-card__name">SoundCloud</div>
-              <p>Recorded sets uploaded as continuous mixes. The best moments from each 24-hour cycle get archived as listenable episodes.</p>
+              <p>Recorded sets and listenable episodes are planned for SoundCloud.</p>
             </div>
           </div>
         </div>
 
         {/* CTA */}
         <div className="dj-cta">
-          <h2 className="dj-heading">The DJ never stops.</h2>
+          <h2 className="dj-heading">The DJ is warming up.</h2>
           <p className="dj-cta__desc">
-            24 hours. 6 set modes. 86 source tracks. Endless recombination.
-            The XCalitoy AI DJ runs nonstop so the party never has to.
+            6 planned set modes. 86 source tracks. Endless recombination.
+            The full XCalitoy AI DJ stream is launching soon.
           </p>
           <div className="dj-cta__actions">
             <button
               className={`btn ${isLive ? 'btn--kill' : ''}`}
-              onClick={() => setIsLive(!isLive)}
+              onClick={() => isLive ? stopPreview() : setIsLive(true)}
             >
-              {isLive ? '■ Stop Stream' : '▶ Go Live'}
+              {isLive ? '■ Stop Preview' : '▶ Play Preview'}
             </button>
-            <a
-              href="https://www.youtube.com/@thatjoemad"
-              target="_blank"
-              rel="noreferrer"
-              className="btn"
-            >
-              YouTube Live
-            </a>
+            <span className="dj-coming-soon" title="Our YouTube channel is launching soon.">
+              <button type="button" className="btn" disabled>YouTube — Coming Soon</button>
+            </span>
             <a
               href={links.soundcloud}
               target="_blank"
