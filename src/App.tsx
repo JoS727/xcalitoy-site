@@ -16,7 +16,7 @@ const MERCH_URL = 'https://merch.calitoy.com';
 const navLinks = [
   { href: '/', label: 'Music' },
   { href: '/lyrics', label: 'Lyrics' },
-  { href: '/dj', label: 'Live DJ' },
+  { href: '/dj', label: 'AI DJ' },
   { href: '/desmu5', label: 'Desmu5' },
   { href: MERCH_URL, label: 'Merch' },
   { href: '/about', label: 'About' },
