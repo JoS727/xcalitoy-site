@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef, type SyntheticEvent } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { links, songs } from '../data';
+import { loadSoundCloudApi, soundCloudEmbedUrl, type SCProgress, type SCSound, type SCWidget } from '../lib/soundcloudWidget';
 
 type ModeId = 'night-drive' | 'warehouse' | 'after-hours' | 'come-down' | 'turn-up' | 'golden-hour';
 
@@ -25,19 +26,50 @@ const SCHEDULE: { start: number; time: string; mode: ModeId; label: string }[] =
   { start: 16, time: '4:00 PM', mode: 'turn-up', label: 'Turn Up (Pre-Game)' },
 ];
 
-// The one pre-generated mix that actually exists today (public/night_drive_mix.*).
-const DEMO_MIX = {
-  name: 'Night Drive Mix',
-  mode: 'night-drive' as ModeId,
-  bpm: 95,
-  sourceTitle: 'Locked Out',
-  sourceCredit: 'Kurced · SoundCloud',
-  sourceUrl: 'https://soundcloud.com/calitoy/locked-out-wav',
-  files: [
-    { src: '/night_drive_mix.mp3', type: 'audio/mpeg' },
-    { src: '/night_drive_mix.wav', type: 'audio/wav' },
-  ],
+// Preview audio streams from the real SoundCloud catalog through a hidden Widget API embed.
+const CATALOG_URL = links.soundcloud;
+const CATALOG_EMBED_SRC = soundCloudEmbedUrl(CATALOG_URL);
+
+// Rough mood hints per set mode, matched against SoundCloud genre / tags / title.
+// Tracks with more hits are queued first; the rest follow in a stable per-mode shuffle,
+// so every mode can play the whole catalog but each opens with a different feel.
+const MODE_KEYWORDS: Record<ModeId, string[]> = {
+  'night-drive': ['night', 'drive', 'dark', 'synth', 'r&b', 'rnb', 'moody', 'slow', 'alone', 'shadow'],
+  warehouse: ['industrial', 'techno', 'electronic', 'edm', 'house', 'heavy', 'distort', 'bass', 'dance'],
+  'after-hours': ['trip', 'lofi', 'lo-fi', 'atmospheric', 'chill', 'soul', 'jazz', 'late', 'dream'],
+  'come-down': ['ambient', 'piano', 'acoustic', 'strings', 'ballad', 'classical', 'soft', 'sad', 'home'],
+  'turn-up': ['hip hop', 'hip-hop', 'rap', 'trap', 'drill', 'hard', 'rock', 'punk', 'metal', 'rich'],
+  'golden-hour': ['pop', 'indie', 'sun', 'gold', 'happy', 'love', 'summer', 'warm', 'world', 'cinematic'],
 };
+
+function hashString(input: string): number {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < input.length; i++) {
+    h ^= input.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return h >>> 0;
+}
+
+/** Widget sound indices in play order for a set mode. */
+function buildModeQueue(sounds: SCSound[], mode: ModeId): number[] {
+  const keywords = MODE_KEYWORDS[mode];
+  return sounds
+    .map((sound, i) => {
+      const hay = `${sound.genre ?? ''} ${sound.tag_list ?? ''} ${sound.title ?? ''}`.toLowerCase();
+      const score = keywords.reduce((acc, k) => acc + (hay.includes(k) ? 1 : 0), 0);
+      return { i, score, h: hashString(`${mode}:${sound.id ?? i}`) };
+    })
+    .sort((a, b) => b.score - a.score || a.h - b.h)
+    .map((x) => x.i);
+}
+
+interface NowTrack {
+  title: string;
+  artist: string;
+  url: string;
+  genre?: string;
+}
 
 const VISUALIZER_BARS = Array.from({ length: 32 }, (_, i) => ({
   // Negative delays start each bar mid-cycle, so paused bars still show a staggered waveform.
@@ -99,6 +131,9 @@ const STATUS_LABEL: Record<PlaybackStatus, string> = {
   error: 'AUDIO UNAVAILABLE',
 };
 
+// If the widget hasn't reported PLAY this long after a play request, the browser most likely blocked it.
+const PLAY_TIMEOUT_MS = 8000;
+
 export default function DJ() {
   const [now, setNow] = useState(() => new Date());
   const scheduledIndex = scheduleIndexForHour(now.getHours());
@@ -108,8 +143,22 @@ export default function DJ() {
   const [status, setStatus] = useState<PlaybackStatus>('idle');
   const [elapsed, setElapsed] = useState(0);
   const [duration, setDuration] = useState(0);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [track, setTrack] = useState<NowTrack | null>(null);
+  const [catalogSize, setCatalogSize] = useState(0);
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
+  // Widget callbacks are bound once, so everything they read lives in refs.
+  const widgetRef = useRef<SCWidget | null>(null);
+  const widgetReadyRef = useRef(false);
+  const apiFailedRef = useRef(false);
+  const soundsRef = useRef<SCSound[]>([]);
+  const queueRef = useRef<number[]>([]);
+  const queuePosRef = useRef(0);
+  const currentIndexRef = useRef(-1);
+  const isLiveRef = useRef(false);
+  const modeRef = useRef<ModeId>(selectedMode);
+  const pendingPlayRef = useRef(false);
+  const playTimerRef = useRef<number | null>(null);
 
   const isPlaying = status === 'playing';
   const scheduledSlot = SCHEDULE[scheduledIndex];
@@ -134,74 +183,227 @@ export default function DJ() {
   // Lock-screen / notification metadata on supporting browsers.
   useEffect(() => {
     if (!isLive || !('mediaSession' in navigator) || typeof MediaMetadata === 'undefined') return;
+    const mode = DJ_SET_MODES.find((m) => m.id === selectedMode) ?? DJ_SET_MODES[0];
     navigator.mediaSession.metadata = new MediaMetadata({
-      title: DEMO_MIX.name,
-      artist: 'XCalitoy AI DJ',
-      album: `${DEMO_MIX.sourceTitle} · ${DEMO_MIX.bpm} BPM`,
+      title: track?.title ?? `${mode.name} set`,
+      artist: track?.artist ?? 'XCalitoy AI DJ',
+      album: `XCalitoy AI DJ · ${mode.name}`,
       artwork: [{ src: '/xcalitoy-album-cover.jpg', sizes: '512x512', type: 'image/jpeg' }],
     });
-  }, [isLive]);
+  }, [isLive, track, selectedMode]);
 
-  // Stop audio if the user navigates away from the page.
-  useEffect(() => () => audioRef.current?.pause(), []);
+  const clearPlayTimer = () => {
+    if (playTimerRef.current !== null) window.clearTimeout(playTimerRef.current);
+    playTimerRef.current = null;
+  };
 
-  const startPreview = () => {
-    const audio = audioRef.current;
-    setIsLive(true);
-    if (!audio) return;
-    setStatus('loading');
-    // play() is called synchronously inside the click handler so mobile browsers treat it as user-initiated.
-    // Bring the panel into view on small screens, where it renders below the fold.
-    window.requestAnimationFrame(() => panelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }));
-    audio.play().catch((err: unknown) => {
-      const name = err instanceof DOMException ? err.name : '';
-      if (name === 'AbortError') return; // stopped before playback began
-      setStatus(name === 'NotAllowedError' ? 'blocked' : 'error');
+  const armPlayTimer = () => {
+    clearPlayTimer();
+    playTimerRef.current = window.setTimeout(() => {
+      if (isLiveRef.current) setStatus('blocked');
+    }, PLAY_TIMEOUT_MS);
+  };
+
+  /** Pull title / artist / duration for whatever the widget is on now. */
+  const refreshTrack = () => {
+    const w = widgetRef.current;
+    if (!w) return;
+    w.getCurrentSound((sound) => {
+      if (!sound) return;
+      setTrack({
+        title: sound.title || 'Untitled',
+        artist: sound.publisher_metadata?.artist || sound.user?.username || 'Calitoy',
+        url: sound.permalink_url || CATALOG_URL,
+        genre: sound.genre || undefined,
+      });
+      if (sound.duration) setDuration(sound.duration / 1000);
+    });
+    w.getDuration((ms) => ms > 0 && setDuration(ms / 1000));
+    w.getCurrentSoundIndex((index) => {
+      currentIndexRef.current = index;
+      const pos = queueRef.current.indexOf(index);
+      if (pos >= 0) queuePosRef.current = pos;
     });
   };
 
+  /** Play the sound at `pos` in the current mode queue. */
+  const playQueuePos = (pos: number) => {
+    const w = widgetRef.current;
+    const queue = queueRef.current;
+    if (!w) return;
+    armPlayTimer();
+    if (!queue.length) {
+      w.play();
+      return;
+    }
+    const safePos = ((pos % queue.length) + queue.length) % queue.length;
+    queuePosRef.current = safePos;
+    const index = queue[safePos];
+    setElapsed(0);
+    if (index === currentIndexRef.current) {
+      w.play();
+    } else {
+      currentIndexRef.current = index;
+      w.skip(index);
+      w.play();
+    }
+  };
+
+  const advanceTrack = () => playQueuePos(queuePosRef.current + 1);
+
+  // Load the Widget API and wire SoundCloud events into React state.
+  useEffect(() => {
+    let cancelled = false;
+    let events: string[] = [];
+    let syncTimer: number | undefined;
+    loadSoundCloudApi()
+      .then((SC) => {
+        if (cancelled || !iframeRef.current) return;
+        const w = SC.Widget(iframeRef.current);
+        widgetRef.current = w;
+        const E = SC.Widget.Events;
+        events = [E.READY, E.PLAY, E.PAUSE, E.FINISH, E.PLAY_PROGRESS, E.ERROR];
+
+        // A profile URL loads its track list in batches (first ~6 at READY, the rest a few
+        // seconds later), so keep re-reading it until the count settles.
+        const syncSounds = (attempt: number) => {
+          if (cancelled) return;
+          w.getSounds((sounds) => {
+            if (cancelled) return;
+            const list = sounds || [];
+            const grew = list.length > soundsRef.current.length;
+            if (grew || attempt === 0) {
+              soundsRef.current = list;
+              setCatalogSize(list.length);
+              queueRef.current = buildModeQueue(list, modeRef.current);
+              // Keep the queue position on the track that's already playing.
+              const pos = queueRef.current.indexOf(currentIndexRef.current);
+              queuePosRef.current = isLiveRef.current && pos >= 0 ? pos : 0;
+            }
+            if (attempt === 0) {
+              widgetReadyRef.current = true;
+              if (pendingPlayRef.current && isLiveRef.current) {
+                pendingPlayRef.current = false;
+                playQueuePos(0);
+              }
+            }
+            if (attempt < 10) syncTimer = window.setTimeout(() => syncSounds(attempt + 1), 2000);
+          });
+        };
+
+        w.bind(E.READY, () => {
+          w.getCurrentSoundIndex((i) => { currentIndexRef.current = i; });
+          syncSounds(0);
+        });
+        w.bind(E.PLAY, () => {
+          clearPlayTimer();
+          if (!isLiveRef.current) {
+            w.pause();
+            return;
+          }
+          setStatus('playing');
+          refreshTrack();
+        });
+        w.bind(E.PAUSE, () => {
+          // stopPreview() clears isLiveRef first, so its own pause doesn't flip us to "paused".
+          if (isLiveRef.current) setStatus('paused');
+        });
+        w.bind(E.FINISH, () => {
+          if (isLiveRef.current) advanceTrack();
+        });
+        w.bind(E.PLAY_PROGRESS, (data) => {
+          const p = data as SCProgress | undefined;
+          if (p && Number.isFinite(p.currentPosition)) setElapsed(p.currentPosition / 1000);
+        });
+        w.bind(E.ERROR, () => {
+          if (isLiveRef.current) setStatus('error');
+        });
+      })
+      .catch(() => {
+        apiFailedRef.current = true;
+        if (!cancelled && isLiveRef.current) setStatus('error');
+      });
+
+    return () => {
+      cancelled = true;
+      clearPlayTimer();
+      window.clearTimeout(syncTimer);
+      const w = widgetRef.current;
+      if (w) {
+        try {
+          w.pause();
+          events.forEach((e) => w.unbind(e));
+        } catch {
+          /* iframe already gone */
+        }
+      }
+      widgetRef.current = null;
+      widgetReadyRef.current = false;
+    };
+    // Bound once; handlers read refs only.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Changing the set mode rebuilds the rotation; if a preview is running, jump to the new mode's first track.
+  useEffect(() => {
+    if (modeRef.current === selectedMode) return;
+    modeRef.current = selectedMode;
+    if (!soundsRef.current.length) return;
+    queueRef.current = buildModeQueue(soundsRef.current, selectedMode);
+    queuePosRef.current = 0;
+    if (isLiveRef.current) playQueuePos(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedMode]);
+
+  const startPreview = () => {
+    isLiveRef.current = true;
+    setIsLive(true);
+    setStatus('loading');
+    // Bring the panel into view on small screens, where it renders below the fold.
+    window.requestAnimationFrame(() => panelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }));
+    if (apiFailedRef.current) {
+      setStatus('error');
+      return;
+    }
+    if (!widgetRef.current || !widgetReadyRef.current) {
+      // Widget still loading: start as soon as READY fires.
+      pendingPlayRef.current = true;
+      armPlayTimer();
+      return;
+    }
+    // play() goes out synchronously inside the click handler so mobile browsers treat it as user-initiated.
+    playQueuePos(queuePosRef.current);
+  };
+
   const stopPreview = () => {
-    const audio = audioRef.current;
-    if (audio) {
-      audio.pause();
-      audio.currentTime = 0;
+    isLiveRef.current = false;
+    pendingPlayRef.current = false;
+    clearPlayTimer();
+    const w = widgetRef.current;
+    if (w) {
+      w.pause();
+      w.seekTo(0);
     }
     setIsLive(false);
     setStatus('idle');
     setElapsed(0);
   };
 
-  const handleTimeUpdate = (event: SyntheticEvent<HTMLAudioElement>) => {
-    const audio = event.currentTarget;
-    setElapsed(audio.currentTime);
-    if (Number.isFinite(audio.duration)) setDuration(audio.duration);
-  };
-
-  const handleDuration = (event: SyntheticEvent<HTMLAudioElement>) => {
-    const d = event.currentTarget.duration;
-    if (Number.isFinite(d)) setDuration(d);
-  };
-
-  const handlePause = (event: SyntheticEvent<HTMLAudioElement>) => {
-    // A pause fired by stopPreview() resets to idle there; only mark "paused" while the panel is open.
-    if (isLive && !event.currentTarget.ended) setStatus('paused');
-  };
-
-  const handleError = () => setStatus('error');
-
   const togglePreview = () => (isLive ? stopPreview() : startPreview());
 
   const togglePause = () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    if (audio.paused) {
-      audio.play().catch(() => setStatus('blocked'));
+    const w = widgetRef.current;
+    if (!w) return;
+    if (isPlaying) {
+      w.pause();
     } else {
-      audio.pause();
+      armPlayTimer();
+      w.play();
     }
   };
 
-  const mixMode = DJ_SET_MODES.find((m) => m.id === DEMO_MIX.mode) ?? DJ_SET_MODES[0];
+  const mixMode = DJ_SET_MODES.find((m) => m.id === selectedMode) ?? DJ_SET_MODES[0];
+  const trackUrl = track?.url ?? CATALOG_URL;
   const progress = duration ? Math.min((elapsed / duration) * 100, 100) : 0;
 
   const previewButton = (
@@ -236,8 +438,8 @@ export default function DJ() {
             <p className="dj-subtitle">AI DJ preview. Full stream launching soon.</p>
             <p className="dj-demo-banner">
               <span className="dj-live-soon"><span className="dj-live-soon__dot" aria-hidden="true" />Live soon</span>
-              <strong>DEMO MODE</strong> — One pre-generated Night Drive mix is available to preview.
-              The 24/7 stream and YouTube channel are coming soon.
+              <strong>DEMO MODE</strong> — Preview real tracks from the Kurced SoundCloud catalog,
+              rotated by set mode. The 24/7 stream and YouTube channel are coming soon.
             </p>
             <p className="dj-description">
               Calitoy's catalog, repurposed into instrumental sets for parties, late drives,
@@ -272,7 +474,22 @@ export default function DJ() {
           </div>
         </div>
 
-        {/* Now Playing — kept mounted so the <audio> element exists when Play is clicked */}
+        {/* Hidden SoundCloud player: the actual audio source. Its native UI is never shown;
+            the custom controls below drive it through the Widget API. */}
+        <iframe
+          ref={iframeRef}
+          className="dj-sc-frame"
+          src={CATALOG_EMBED_SRC}
+          title="SoundCloud catalog player"
+          allow="autoplay; encrypted-media"
+          aria-hidden="true"
+          tabIndex={-1}
+          height={0}
+          width={1}
+          style={{ position: 'absolute', left: '-9999px', width: 1, height: 0, border: 0, opacity: 0, pointerEvents: 'none' }}
+        />
+
+        {/* Now Playing — kept mounted so the panel can be scrolled into view as soon as Play is clicked */}
         <div className="dj-now-playing" hidden={!isLive} ref={panelRef}>
           <div className="dj-np__header">
             <span className={`dj-np__live-dot ${isPlaying ? '' : 'paused'}`} />
@@ -287,58 +504,37 @@ export default function DJ() {
           <div className="dj-np__content">
             <div className="dj-np__mode">
               <span className="dj-np__mode-label">Now Previewing</span>
-              <span className="dj-np__mode-name">{DEMO_MIX.name}</span>
+              <span className="dj-np__mode-name">{mixMode.name} Set</span>
               <span className="dj-np__mode-desc">{mixMode.desc}</span>
-              <span className="dj-np__mode-bpm">{DEMO_MIX.bpm} BPM · {mixMode.name} mode</span>
+              <span className="dj-np__mode-bpm">{mixMode.bpms} BPM · {mixMode.name} mode</span>
             </div>
             <div className="dj-np__track">
-              <span className="dj-np__track-label">Repurposed from</span>
-              <a className="dj-np__track-title" href={DEMO_MIX.sourceUrl} target="_blank" rel="noreferrer">
-                {DEMO_MIX.sourceTitle}
+              <span className="dj-np__track-label">Now Playing</span>
+              <a className="dj-np__track-title" href={trackUrl} target="_blank" rel="noreferrer">
+                {track?.title ?? (status === 'error' ? 'Unavailable' : 'Loading track…')}
               </a>
-              <span className="dj-np__track-era">{DEMO_MIX.sourceCredit}</span>
+              <span className="dj-np__track-era">
+                {track ? `${track.artist}${track.genre ? ` · ${track.genre}` : ''} · SoundCloud` : 'Kurced · SoundCloud'}
+              </span>
               <p className="dj-np__track-note">
-                A {DEMO_MIX.bpm} BPM Night Drive remix of {DEMO_MIX.sourceTitle}, generated as the first
-                AI DJ demo. It loops until you stop it.
+                Rotating through {catalogSize ? `${catalogSize} tracks from ` : ''}the catalog for the {mixMode.name} set.
+                When a track ends, the next one starts automatically.
               </p>
             </div>
           </div>
           <div className="dj-np__player">
             <div className="dj-stream-live">
-              <audio
-                ref={audioRef}
-                controls
-                loop
-                preload="none"
-                onPlaying={() => setStatus('playing')}
-                onWaiting={() => setStatus('loading')}
-                onPause={handlePause}
-                onTimeUpdate={handleTimeUpdate}
-                onDurationChange={handleDuration}
-                onLoadedMetadata={handleDuration}
-                onError={handleError}
-              >
-                {DEMO_MIX.files.map((file, i) => (
-                  <source
-                    key={file.src}
-                    src={file.src}
-                    type={file.type}
-                    onError={i === DEMO_MIX.files.length - 1 ? handleError : undefined}
-                  />
-                ))}
-                Your browser does not support HTML audio.
-              </audio>
               {status === 'error' ? (
                 <p className="dj-stream-note dj-stream-note--error">
-                  The demo mix could not be loaded. Please refresh and try again.
+                  The SoundCloud catalog could not be loaded. Please refresh and try again.
                 </p>
               ) : (
                 <p className="dj-stream-note">
-                  Demo preview: this single mix loops on repeat. The full site stream and YouTube channel are launching soon.
+                  Streaming from the real Kurced SoundCloud catalog. Full 24/7 stream launching soon.
                 </p>
               )}
-              <a href={DEMO_MIX.sourceUrl} target="_blank" rel="noreferrer" className="dj-stream-link">
-                Hear the original on SoundCloud →
+              <a href={trackUrl} target="_blank" rel="noreferrer" className="dj-stream-link">
+                {track ? 'Hear this track on SoundCloud →' : 'Open the catalog on SoundCloud →'}
               </a>
             </div>
           </div>
@@ -354,7 +550,7 @@ export default function DJ() {
           <p className="dj-section__desc">
             The planned 24-hour rotation spans six mood-based set modes. Each mode will
             reshape the same catalog into a different energy, tempo, and texture.
-            Only Night Drive has a demo mix today.
+            Pick a mode to preview it with real tracks from the catalog.
           </p>
           <div className="dj-modes-grid">
             {DJ_SET_MODES.map((m) => (
@@ -367,7 +563,7 @@ export default function DJ() {
               >
                 <span className="dj-mode-card__tags">
                   {scheduledSlot.mode === m.id && <span className="dj-tag dj-tag--now">Scheduled now</span>}
-                  {DEMO_MIX.mode === m.id && <span className="dj-tag">Demo available</span>}
+                  {isLive && selectedMode === m.id && <span className="dj-tag">Previewing</span>}
                 </span>
                 <span className="dj-mode-card__name">{m.name}</span>
                 <span className="dj-mode-card__desc">{m.desc}</span>
@@ -468,7 +664,7 @@ export default function DJ() {
             <div className="dj-dist-card">
               <div className="dj-dist-card__icon">●</div>
               <div className="dj-dist-card__name">xcalitoy.com</div>
-              <p>A looping Night Drive demo is available now. The full site stream and live set display are launching soon.</p>
+              <p>A preview player streaming the real SoundCloud catalog is available now. The full site stream and live set display are launching soon.</p>
             </div>
             <div className="dj-dist-card">
               <div className="dj-dist-card__icon">▶</div>
@@ -505,7 +701,7 @@ export default function DJ() {
         <div className="dj-mini" role="region" aria-label="Mini player">
           <span className={`dj-np__live-dot ${isPlaying ? '' : 'paused'}`} aria-hidden="true" />
           <div className="dj-mini__info">
-            <span className="dj-mini__title">{DEMO_MIX.name}</span>
+            <span className="dj-mini__title">{track ? `${track.title} — ${track.artist}` : `${mixMode.name} Set`}</span>
             <span className="dj-mini__meta">{STATUS_LABEL[status]} · {formatTime(elapsed)}</span>
           </div>
           <button type="button" className="dj-mini__btn" onClick={togglePause} aria-label={isPlaying ? 'Pause' : 'Play'}>
