@@ -10,6 +10,7 @@ import MerchModal from './components/MerchModal';
 import DJ from './pages/DJ';
 import Desmu5 from './pages/Desmu5';
 import Lyrics from './pages/Lyrics';
+import Tarosyn from './pages/Tarosyn';
 
 const MERCH_URL = 'https://merch.calitoy.com';
 
@@ -17,6 +18,7 @@ const navLinks = [
   { href: '/', label: 'Music' },
   { href: '/lyrics', label: 'Lyrics' },
   { href: '/dj', label: 'AI DJ' },
+  { href: '/tarosyn', label: 'Tarosyn' },
   { href: '/desmu5', label: 'Desmu5' },
   { href: MERCH_URL, label: 'Merch' },
   { href: '/about', label: 'About' },
@@ -84,6 +86,7 @@ export default function App() {
         <Route path="/boards" component={Skateboards} />
         <Route path="/merch" component={Merch} />
         <Route path="/dj" component={DJ} />
+        <Route path="/tarosyn" component={Tarosyn} />
         <Route>
           <div className="container section" style={{ textAlign: 'center' }}>
             <h1>404</h1>

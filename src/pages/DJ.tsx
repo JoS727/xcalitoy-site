@@ -58,6 +58,33 @@ function scheduleIndexForHour(hour: number): number {
   return SCHEDULE.reduce((acc, slot, i) => (slot.start > SCHEDULE[acc].start ? i : acc), 0);
 }
 
+/** Slot index that follows `index` in chronological (wrap-around) order. */
+function nextScheduleIndex(index: number): number {
+  const order = SCHEDULE.map((slot, i) => ({ start: slot.start, i })).sort((a, b) => a.start - b.start);
+  const pos = order.findIndex((o) => o.i === index);
+  return order[(pos + 1) % order.length].i;
+}
+
+function formatHour(hour: number): string {
+  const h = hour % 12 === 0 ? 12 : hour % 12;
+  return `${h}:00 ${hour < 12 ? 'AM' : 'PM'}`;
+}
+
+function formatClock(date: Date): string {
+  return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+}
+
+/** "1h 25m" until the given hour (today or tomorrow). */
+function timeUntilHour(now: Date, hour: number): string {
+  const target = new Date(now);
+  target.setHours(hour, 0, 0, 0);
+  if (target <= now) target.setDate(target.getDate() + 1);
+  const mins = Math.max(1, Math.round((target.getTime() - now.getTime()) / 60_000));
+  const h = Math.floor(mins / 60);
+  const m = mins % 60;
+  return h ? `${h}h ${m}m` : `${m}m`;
+}
+
 function formatTime(totalSeconds: number): string {
   const safe = Number.isFinite(totalSeconds) && totalSeconds > 0 ? Math.floor(totalSeconds) : 0;
   return `${Math.floor(safe / 60)}:${String(safe % 60).padStart(2, '0')}`;
@@ -73,22 +100,47 @@ const STATUS_LABEL: Record<PlaybackStatus, string> = {
 };
 
 export default function DJ() {
-  const [scheduledIndex, setScheduledIndex] = useState(() => scheduleIndexForHour(new Date().getHours()));
+  const [now, setNow] = useState(() => new Date());
+  const scheduledIndex = scheduleIndexForHour(now.getHours());
   const [selectedMode, setSelectedMode] = useState<ModeId>(() => SCHEDULE[scheduledIndex].mode);
+  const [panelInView, setPanelInView] = useState(true);
   const [isLive, setIsLive] = useState(false);
   const [status, setStatus] = useState<PlaybackStatus>('idle');
   const [elapsed, setElapsed] = useState(0);
   const [duration, setDuration] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const panelRef = useRef<HTMLDivElement | null>(null);
 
   const isPlaying = status === 'playing';
   const scheduledSlot = SCHEDULE[scheduledIndex];
+  const nextSlot = SCHEDULE[nextScheduleIndex(scheduledIndex)];
+  const scheduledMode = DJ_SET_MODES.find((m) => m.id === scheduledSlot.mode) ?? DJ_SET_MODES[0];
 
-  // Keep the "scheduled now" marker accurate if the page stays open across an hour boundary.
+  // Local clock drives the "on air" block; refresh every 30s so it flips right at the hour.
   useEffect(() => {
-    const id = window.setInterval(() => setScheduledIndex(scheduleIndexForHour(new Date().getHours())), 60_000);
+    const id = window.setInterval(() => setNow(new Date()), 30_000);
     return () => window.clearInterval(id);
   }, []);
+
+  // Show the floating mini-player only while the Now Playing panel is scrolled out of view.
+  useEffect(() => {
+    const el = panelRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') return;
+    const io = new IntersectionObserver(([entry]) => setPanelInView(entry.isIntersecting), { threshold: 0.15 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [isLive]);
+
+  // Lock-screen / notification metadata on supporting browsers.
+  useEffect(() => {
+    if (!isLive || !('mediaSession' in navigator) || typeof MediaMetadata === 'undefined') return;
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: DEMO_MIX.name,
+      artist: 'XCalitoy AI DJ',
+      album: `${DEMO_MIX.sourceTitle} · ${DEMO_MIX.bpm} BPM`,
+      artwork: [{ src: '/xcalitoy-album-cover.jpg', sizes: '512x512', type: 'image/jpeg' }],
+    });
+  }, [isLive]);
 
   // Stop audio if the user navigates away from the page.
   useEffect(() => () => audioRef.current?.pause(), []);
@@ -99,6 +151,8 @@ export default function DJ() {
     if (!audio) return;
     setStatus('loading');
     // play() is called synchronously inside the click handler so mobile browsers treat it as user-initiated.
+    // Bring the panel into view on small screens, where it renders below the fold.
+    window.requestAnimationFrame(() => panelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }));
     audio.play().catch((err: unknown) => {
       const name = err instanceof DOMException ? err.name : '';
       if (name === 'AbortError') return; // stopped before playback began
@@ -137,6 +191,16 @@ export default function DJ() {
 
   const togglePreview = () => (isLive ? stopPreview() : startPreview());
 
+  const togglePause = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (audio.paused) {
+      audio.play().catch(() => setStatus('blocked'));
+    } else {
+      audio.pause();
+    }
+  };
+
   const mixMode = DJ_SET_MODES.find((m) => m.id === DEMO_MIX.mode) ?? DJ_SET_MODES[0];
   const progress = duration ? Math.min((elapsed / duration) * 100, 100) : 0;
 
@@ -171,6 +235,7 @@ export default function DJ() {
             <h1 className="dj-title">XCALITOY</h1>
             <p className="dj-subtitle">AI DJ preview. Full stream launching soon.</p>
             <p className="dj-demo-banner">
+              <span className="dj-live-soon"><span className="dj-live-soon__dot" aria-hidden="true" />Live soon</span>
               <strong>DEMO MODE</strong> — One pre-generated Night Drive mix is available to preview.
               The 24/7 stream and YouTube channel are coming soon.
             </p>
@@ -185,11 +250,36 @@ export default function DJ() {
           </div>
         </div>
 
+        {/* On-air clock: which block of the planned rotation matches the visitor's local time */}
+        <div className="dj-onair">
+          <div className="dj-onair__block">
+            <span className="dj-onair__label">Your local time</span>
+            <span className="dj-onair__value">{formatClock(now)}</span>
+          </div>
+          <div className="dj-onair__block dj-onair__block--main">
+            <span className="dj-onair__label">
+              <span className="dj-onair__dot" aria-hidden="true" /> Scheduled now
+            </span>
+            <span className="dj-onair__value dj-onair__value--accent">{scheduledSlot.label}</span>
+            <span className="dj-onair__meta">
+              {formatHour(scheduledSlot.start)} – {formatHour(nextSlot.start)} · {scheduledMode.bpms} BPM
+            </span>
+          </div>
+          <div className="dj-onair__block">
+            <span className="dj-onair__label">Up next</span>
+            <span className="dj-onair__value">{nextSlot.label}</span>
+            <span className="dj-onair__meta">in {timeUntilHour(now, nextSlot.start)}</span>
+          </div>
+        </div>
+
         {/* Now Playing — kept mounted so the <audio> element exists when Play is clicked */}
-        <div className="dj-now-playing" hidden={!isLive} aria-live="polite">
+        <div className="dj-now-playing" hidden={!isLive} ref={panelRef}>
           <div className="dj-np__header">
             <span className={`dj-np__live-dot ${isPlaying ? '' : 'paused'}`} />
-            <span className={`dj-np__live-text ${isPlaying ? '' : 'is-idle'}`}>{STATUS_LABEL[status]}</span>
+            {/* Only the status is announced — announcing the ticking timer would spam screen readers. */}
+            <span className={`dj-np__live-text ${isPlaying ? '' : 'is-idle'}`} role="status" aria-live="polite">
+              {STATUS_LABEL[status]}
+            </span>
             <span className="dj-np__time">
               {formatTime(elapsed)}{duration ? ` / ${formatTime(duration)}` : ''}
             </span>
@@ -271,7 +361,7 @@ export default function DJ() {
               <button
                 type="button"
                 key={m.id}
-                className={`dj-mode-card ${selectedMode === m.id ? 'active' : ''}`}
+                className={`dj-mode-card ${selectedMode === m.id ? 'active' : ''} ${scheduledSlot.mode === m.id ? 'is-now' : ''}`}
                 onClick={() => setSelectedMode(m.id)}
                 aria-pressed={selectedMode === m.id}
               >
@@ -303,8 +393,12 @@ export default function DJ() {
                 <div
                   key={s.time}
                   className={`dj-schedule__row ${isNow ? 'is-now' : ''} ${isSelected ? 'is-selected' : ''}`}
+                  aria-current={isNow ? 'time' : undefined}
                 >
-                  <span className="dj-schedule__time">{s.time}</span>
+                  <span className="dj-schedule__time">
+                    {s.time}
+                    <span className="dj-schedule__until"> – {formatHour(SCHEDULE[nextScheduleIndex(i)].start)}</span>
+                  </span>
                   <span className="dj-schedule__mode">
                     {s.label}
                     {isNow && <span className="dj-tag dj-tag--now">Scheduled now</span>}
@@ -405,6 +499,24 @@ export default function DJ() {
           </div>
         </div>
       </div>
+
+      {/* Floating mini-player while the Now Playing panel is off-screen */}
+      {isLive && !panelInView && (
+        <div className="dj-mini" role="region" aria-label="Mini player">
+          <span className={`dj-np__live-dot ${isPlaying ? '' : 'paused'}`} aria-hidden="true" />
+          <div className="dj-mini__info">
+            <span className="dj-mini__title">{DEMO_MIX.name}</span>
+            <span className="dj-mini__meta">{STATUS_LABEL[status]} · {formatTime(elapsed)}</span>
+          </div>
+          <button type="button" className="dj-mini__btn" onClick={togglePause} aria-label={isPlaying ? 'Pause' : 'Play'}>
+            {isPlaying ? '❚❚' : '▶'}
+          </button>
+          <button type="button" className="dj-mini__btn dj-mini__btn--stop" onClick={stopPreview} aria-label="Stop preview">
+            ■
+          </button>
+          <span className="dj-mini__progress" style={{ width: `${progress}%` }} aria-hidden="true" />
+        </div>
+      )}
     </div>
   );
 }
