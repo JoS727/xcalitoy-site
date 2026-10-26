@@ -12,6 +12,8 @@ import Desmu5 from './pages/Desmu5';
 import Lyrics from './pages/Lyrics';
 import Tarosyn from './pages/Tarosyn';
 
+import { artistProfile } from './data';
+
 const MERCH_URL = 'https://merch.calitoy.com';
 
 const navLinks = [
@@ -98,6 +100,7 @@ export default function App() {
       <footer>
         <div className="container">
           <span>© {new Date().getFullYear()} Calitoy</span>
+          <p>{artistProfile.creativeCredit}</p>
           <span style={{ display: 'flex', gap: '.9rem', flexWrap: 'wrap' }}>
             <NavLink href="/about" label="About" className="footer-link" />
             <NavLink href="/epk" label="EPK" className="footer-link" />

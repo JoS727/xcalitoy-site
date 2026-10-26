@@ -56,7 +56,7 @@ export default function Home() {
             {artistProfile.tagline} {artistProfile.bio} XCalitoy is the upcoming album, and it will be available on vinyl this August. Lioness Lost and Two Shirts are the first songs framing the release.
           </p>
           <p className="hero__sub hero__sub--mobile">
-            XCalitoy arrives on vinyl this August. Lioness Lost and Two Shirts are out front now.
+            {artistProfile.creativeCredit} XCalitoy arrives on vinyl this August. Lioness Lost and Two Shirts are out front now.
           </p>
           <div className="hero__actions">
             <a href={links.soundcloud} target="_blank" rel="noreferrer" className="btn btn--kill">

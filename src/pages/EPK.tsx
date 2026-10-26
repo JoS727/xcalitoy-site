@@ -22,7 +22,7 @@ export default function EPK() {
             </div>
           </div>
           <p className="epk-hero__text">
-            Calitoy is a California recording artist and world-builder creating moody, melodic records with a dark, melodic pulse. His music
+            {artistProfile.creativeCredit} A California recording artist and world-builder creating moody, melodic records with a dark, melodic pulse. His music
             blends confession, tension, ambition, and atmosphere into songs that feel both intimate and cinematic.
           </p>
         </div>
@@ -35,7 +35,7 @@ export default function EPK() {
         <div className="card epk-card">
           <p className="badge badge--accent epk-card__badge">Short bio</p>
           <p className="epk-copy">
-            Calitoy builds songs like scenes: emotionally direct, sonically immersive, and grounded in a strong visual identity. Xcalitoy.com
+            {artistProfile.creativeCredit} Calitoy builds songs like scenes: emotionally direct, sonically immersive, and grounded in a strong visual identity. Xcalitoy.com
             serves as the official home for releases, visuals, archive material, and future drops.
           </p>
           <div className="epk-facts">

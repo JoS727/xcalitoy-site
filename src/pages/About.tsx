@@ -15,6 +15,8 @@ export default function About() {
 
           <div className="about-text">
             <h1>{artistProfile.name}</h1>
+            <p>{artistProfile.creativeCredit}</p>
+            <p>{artistProfile.kurcedCredit}</p>
             <p>
               Calitoy makes records like scenes from a crime romance: dark pop confessionals, pressure-heavy melodies,
               and lyrics that stay intimate even when the world around them widens into cinema.
