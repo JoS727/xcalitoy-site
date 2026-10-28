@@ -105,6 +105,16 @@
     .card-go .arrow { transition: transform 200ms var(--e-standard); }
     .card:hover .card-go .arrow { transform: translateX(4px); }
 
+
+    /* HERO PORTRAIT */
+    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; align-items: end; }
+    @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.4fr 1fr; } }
+    .hero-photo { position: relative; border-radius: 18px; overflow: hidden; border: 1px solid var(--line);
+      box-shadow: 0 24px 60px -30px rgba(122,74,255,0.5); max-width: 420px; justify-self: center; }
+    .hero-photo img { display: block; width: 100%; height: auto; }
+    .hero-photo figcaption { position: absolute; left: 0.8rem; bottom: 0.8rem; font-size: 0.66rem; letter-spacing: 0.28em;
+      text-transform: uppercase; color: rgba(255,255,255,0.85); background: rgba(8,9,18,0.6); padding: 0.35rem 0.7rem;
+      border-radius: 999px; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.12); }
     .hint { margin-top: 2rem; text-align: center; color: rgba(255,255,255,0.35); font-size: 0.78rem; }
     .hint a { color: rgba(255,255,255,0.55); }
 
@@ -132,10 +142,18 @@
   <main class="wrap">
     <!-- ============ ABOVE THE FOLD: the six doors ============ -->
     <section class="hero">
-      <span class="eyebrow">CALITOY Agency</span>
-      <h1 class="wordmark">Calitoy</h1>
-      <p class="tagline">One name. <em>Three worlds.</em> Every door from here.</p>
-      <p class="lede">Music, agency, and product under a single roof — written, designed, and directed by Joseph Calitoy. Pick a door.</p>
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">CALITOY Agency</span>
+          <h1 class="wordmark">Calitoy</h1>
+          <p class="tagline">One name. <em>Three worlds.</em> Every door from here.</p>
+          <p class="lede">Music, agency, and product under a single roof — written, designed, and directed by Joseph Calitoy. Pick a door.</p>
+        </div>
+        <figure class="hero-photo">
+          <img src="/assets/portrait.jpg" alt="Joseph Calitoy in a black suit" loading="eager">
+          <figcaption>Joseph Calitoy</figcaption>
+        </figure>
+      </div>
 
       <!-- ROW 1 -->
       <h2 class="row-title"><span class="n">01</span> The Company &amp; The Artist</h2>
@@ -181,6 +199,12 @@
           <span class="card-desc">The gateway — every capability, every property, tunneled into one platform.</span>
           <span class="card-go">Enter CORE <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
+        <a href="https://calitoy.com/stamp/" class="card">
+          <span class="card-kind">The Platform</span>
+          <span class="card-name">Calitoy Stamp <span class="dom">calitoy.com/stamp</span></span>
+          <span class="card-desc">A musician's fastest access to an online living — the platform for the artist's own economy.</span>
+          <span class="card-go">Open Stamp <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
       </div>
 
       <p class="hint">Looking for the full cinematic hub? <a href="/full.html">Calitoy.com/full</a></p>
@@ -190,11 +214,6 @@
     <section class="projects-below">
       <h2 class="row-title"><span class="n">03</span> Projects</h2>
       <div class="cards row-more">
-        <a href="https://calitoy.com/stamp/" class="card">
-          <span class="card-kind">Music</span>
-          <span class="card-name">Calitoy Stamp</span>
-          <span class="card-desc">A musician's fastest access to an online living.</span>
-        </a>
         <a href="https://calitoy.com/casting/" class="card">
           <span class="card-kind">Film</span>
           <span class="card-name">Calitoy Casting</span>
