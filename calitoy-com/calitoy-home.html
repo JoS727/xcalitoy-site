@@ -126,6 +126,76 @@
     .card-wide { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 1rem; }
     .card-wide .card-desc { flex: 1; }
     .card-wide { max-width: 100%; }
+
+    /* ===== SECTIONED HOME (Music → Research) ===== */
+    body { padding-bottom: env(safe-area-inset-bottom); }
+    .nav-inner { padding-left: max(var(--gutter), env(safe-area-inset-left)); padding-right: max(var(--gutter), env(safe-area-inset-right)); }
+    .sec-nav {
+      position: sticky; top: 52px; z-index: 30; margin: 1.4rem calc(var(--gutter) * -1) 0;
+      padding: 0.55rem var(--gutter); background: rgba(8,9,18,0.82); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex; gap: 0.45rem; overflow-x: auto; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    }
+    .sec-nav::-webkit-scrollbar { display: none; }
+    .sec-nav a {
+      flex: 0 0 auto; scroll-snap-align: start; min-height: 36px; display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0 0.85rem; border-radius: 999px; border: 1px solid var(--line); background: var(--panel);
+      color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.78rem; white-space: nowrap;
+    }
+    .sec-nav a b { color: var(--gold); font-weight: 700; font-size: 0.68rem; }
+    .sec-nav a:hover, .sec-nav a:focus-visible { color: #fff; border-color: rgba(169,112,255,0.5); }
+
+    .sec { scroll-margin-top: 110px; margin-top: 2.6rem; content-visibility: auto; contain-intrinsic-size: 1px 900px; }
+    .sec-hero {
+      position: relative; margin: 0 0 0.9rem; border-radius: 18px; overflow: hidden; isolation: isolate;
+      border: 1px solid var(--line); aspect-ratio: 16 / 9; max-height: 340px; width: 100%;
+      background: radial-gradient(90% 120% at 15% 0%, rgba(122,74,255,0.35), transparent 60%), radial-gradient(80% 100% at 100% 100%, rgba(214,166,59,0.22), transparent 65%), var(--ink2);
+    }
+    @media (max-width: 639px) { .sec-hero { aspect-ratio: 4 / 3; border-radius: 14px; } }
+    .sec-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+    .sec-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(8,9,18,0.05) 25%, rgba(8,9,18,0.88) 100%); }
+    .sec-hero figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 1rem 1.1rem; }
+    .sec-hero .n { color: var(--gold); font-family: var(--display); font-weight: 700; letter-spacing: 0.3em; font-size: 0.72rem; }
+    .sec-hero h2 { font-family: var(--display); font-size: clamp(1.45rem, 5vw, 2.3rem); line-height: 1.05; letter-spacing: -0.02em; margin-top: 0.2rem; }
+    .sec-hero p { color: rgba(255,255,255,0.72); font-size: 0.86rem; max-width: 60ch; margin-top: 0.25rem; }
+    .sec-hero.tri { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .sec-hero.tri img { position: relative; inset: auto; z-index: -2; height: 100%; }
+
+    .cards.grid3 { grid-template-columns: 1fr; }
+    @media (min-width: 640px) { .cards.grid3 { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .cards.grid3 { grid-template-columns: repeat(3, 1fr); } .cards.grid4 { grid-template-columns: repeat(4, 1fr); } }
+    .card { min-height: 44px; }
+    .card.has-media { padding-top: 0; }
+    .card-media {
+      display: block; width: calc(100% + 2.1rem); max-width: none; height: auto; margin: 0 -1.05rem 0.6rem; aspect-ratio: 16 / 9; object-fit: cover;
+      background: var(--ink2); border-bottom: 1px solid var(--line);
+    }
+    .card-media.contain { object-fit: contain; background: #0c0d18; }
+    .card-static { cursor: default; }
+    .card-static:hover { transform: none; }
+    .card-status { align-self: flex-start; margin-top: 0.35rem; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); border: 1px dashed rgba(255,255,255,0.22); border-radius: 999px; padding: 0.2rem 0.6rem; }
+    .heart-m { display: inline-grid; place-items: center; width: 1.25em; height: 1.15em; margin: 0 0.1em; color: #111; font-weight: 800; font-size: 0.85em;
+      background: #ff8a1f; clip-path: path('M10 18 C 2 12, 0 8, 0 5 A 5 5 0 0 1 10 3 A 5 5 0 0 1 20 5 C 20 8, 18 12, 10 18 Z'); vertical-align: -0.15em; }
+    .card-wide.book { flex-direction: column; align-items: stretch; }
+    @media (min-width: 640px) {
+      .card-wide.book { flex-direction: row; align-items: center; gap: 1.2rem; padding-top: 1rem; }
+      .card-wide.book .card-media { width: 140px; height: auto; flex: 0 0 140px; margin: 0; aspect-ratio: 2 / 3; border: 1px solid var(--line); border-radius: 8px; }
+    }
+    .card-wide.book .card-body { display: flex; flex-direction: column; gap: 0.28rem; flex: 1; }
+    .placeholder { border: 1px dashed rgba(255,255,255,0.18); border-radius: 16px; padding: 1.2rem; color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+    .placeholder a { color: var(--gold); }
+    .to-top { display: inline-block; margin-top: 0.8rem; font-size: 0.72rem; color: rgba(255,255,255,0.4); text-decoration: none; letter-spacing: 0.2em; text-transform: uppercase; }
+
+    @media (max-width: 639px) {
+      .nav-links { gap: 0.8rem; }
+      .nav-links a { font-size: 0.8rem; }
+      .brand small { display: none; }
+      .hero { padding-top: 1.4rem; }
+      .hero-photo { max-width: 100%; }
+      .card-wide { flex-direction: column; align-items: stretch; }
+      .card-name { flex-wrap: wrap; }
+    }
+    @media (hover: none) { .card:hover { transform: none; } }
   </style>
 </head>
 <body>
@@ -142,8 +212,7 @@
     </div>
   </header>
 
-  <main class="wrap">
-    <!-- ============ ABOVE THE FOLD: the six doors ============ -->
+  <main class="wrap" id="top">
     <section class="hero">
       <div class="hero-grid">
         <div>
@@ -153,138 +222,377 @@
           <p class="lede">Music, agency, and product under a single roof — written, designed, and directed by Joseph Calitoy. Pick a door.</p>
         </div>
         <figure class="hero-photo">
-          <img src="/assets/portrait.jpg" alt="Joseph Calitoy in a black suit" loading="eager">
+          <img src="/assets/portrait.jpg" alt="Joseph Calitoy in a black suit" loading="eager" fetchpriority="high">
           <figcaption>Joseph Calitoy</figcaption>
         </figure>
       </div>
+    </section>
 
-      <!-- ROW 1 -->
-      <h2 class="row-title"><span class="n">01</span> The Company &amp; The Artist</h2>
-      <div class="cards row-first">
-        <a href="https://agency.calitoy.com" class="card card-primary">
-          <span class="card-kind">The Agency</span>
-          <span class="card-name">CALITOY.ORG <span class="dom">calitoy.org</span></span>
-          <span class="card-desc">Brand strategy, content, copy, casting, media, and web — the full agency stack under one roof.</span>
-          <span class="card-go">Enter <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
-        </a>
-        <a href="https://xcalitoy.com" class="card">
+    <nav class="sec-nav" aria-label="Sections">
+      <a href="#music"><b>01</b> Music</a>
+      <a href="#books"><b>02</b> Books</a>
+      <a href="#companies"><b>03</b> Companies</a>
+      <a href="#media"><b>04</b> Media Network Blogs</a>
+      <a href="#clients"><b>05</b> Clients</a>
+      <a href="#jd-spax-fieldtrip"><b>06</b> JeremyDean • SpaXOB • FieldTrip</a>
+      <a href="#research"><b>07</b> Research</a>
+    </nav>
+
+    <!-- ============ 01 MUSIC ============ -->
+    <section class="sec" id="music" aria-labelledby="h-music">
+      <figure class="sec-hero">
+        <img src="/assets/img/hero-music.webp" alt="Xcalitoy, Joseph Calitoy's music project" width="896" height="1195" loading="lazy" style="object-position: 50% 22%">
+        <figcaption><span class="n">01</span><h2 id="h-music">Music</h2><p>Voice, beat, tempo, structure, and writing by Joseph Calitoy. Words first, always.</p></figcaption>
+      </figure>
+      <div class="cards grid3">
+        <a href="https://xcalitoy.com" class="card card-primary has-media">
+          <img class="card-media" src="/assets/img/xcalitoy.webp" alt="Xcalitoy album cover" width="640" height="640" loading="lazy">
           <span class="card-kind">The Music</span>
           <span class="card-name">XCALITOY.COM <span class="dom">xcalitoy.com</span></span>
-          <span class="card-desc">Voice, Beat, Tempo, Structure, and Writing by Joseph Calitoy — words first, always.</span>
+          <span class="card-desc">Voice, Beat, Tempo, Structure, and Writing by Joseph Calitoy. Words first, always.</span>
           <span class="card-go">Listen <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
-        <a href="https://josephcalitoy.com" class="card">
-          <span class="card-kind">The Consultant</span>
-          <span class="card-name">JosephCalitoy.com <span class="dom">josephcalitoy.com</span></span>
-          <span class="card-desc">AI, product, and growth strategy for founders who need execution — Fractional CTO.</span>
-          <span class="card-go">Work with Joseph <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        <a href="https://soundcloud.com/calitoy" class="card has-media" target="_blank" rel="noreferrer">
+          <img class="card-media" src="/assets/img/soundcloud.webp" alt="Calitoy on SoundCloud" width="500" height="500" loading="lazy">
+          <span class="card-kind">Catalog</span>
+          <span class="card-name">Calitoy on SoundCloud <span class="dom">soundcloud.com</span></span>
+          <span class="card-desc">The released Calitoy catalog, streaming free.</span>
+          <span class="card-go">Stream <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
-        <a href="https://www.amazon.com/dp/B0HQ5KVQDW" class="card card-wide" target="_blank" rel="noreferrer">
-          <span class="card-kind">The Book</span>
-          <span class="card-name">PAUSE. DON'T KILL YOURSELF <span class="dom">amazon.com</span></span>
-          <span class="card-desc">727 Things You HAVE to Do First — a checklist for staying alive (for now), by Joseph Calitoy. Kindle $4.99, free with Kindle Unlimited.</span>
-          <span class="card-go">Read the book <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
-        </a>
-      </div>
-
-      <!-- ROW 2 -->
-      <h2 class="row-title"><span class="n">02</span> Platforms</h2>
-      <div class="cards row-second">
-        <a href="https://kalistoi.com" class="card">
-          <span class="card-kind">The Comedy</span>
-          <span class="card-name">JossefKalistoi.com <span class="dom">kalistoi.com</span></span>
-          <span class="card-desc">The Calitoy Comedy Empire — AI-powered comedy; finding the funniest moments so you don't have to.</span>
-          <span class="card-go">Laugh <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
-        </a>
-        <a href="https://tarosyn.com" class="card">
-          <span class="card-kind">The Product</span>
-          <span class="card-name">Tarosyn.com <span class="dom">tarosyn.com</span></span>
-          <span class="card-desc">Personalized tarot that remembers you — daily rituals, chants, and a living card vault.</span>
-          <span class="card-go">Draw <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
-        </a>
-        <a href="https://calitoycore.com" class="card">
-          <span class="card-kind">The Core</span>
-          <span class="card-name">CalitoyCore.com <span class="dom">calitoycore.com</span></span>
-          <span class="card-desc">The gateway — every capability, every property, tunneled into one platform.</span>
-          <span class="card-go">Enter CORE <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        <a href="https://kurced.com" class="card has-media">
+          <img class="card-media" src="/assets/img/kurced.webp" alt="KURCED Locked Out cover" width="640" height="640" loading="lazy">
+          <span class="card-kind">Artist</span>
+          <span class="card-name">KURCED <span class="dom">kurced.com</span></span>
+          <span class="card-desc">Dark-pop music project: "Locked Out," September 2026. Songs, lyrics, visuals, journal, and merch.</span>
+          <span class="card-go">Enter <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
         <a href="https://calitoy.com/stamp/" class="card">
           <span class="card-kind">The Platform</span>
           <span class="card-name">Calitoy Stamp <span class="dom">calitoy.com/stamp</span></span>
-          <span class="card-desc">A musician's fastest access to an online living — the platform for the artist's own economy.</span>
+          <span class="card-desc">A musician's fastest access to an online living. A 3D punk world engine for artists, with Kurced and Xcalitoy first.</span>
           <span class="card-go">Open Stamp <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
+        <a href="https://calitoy.com/merch/" class="card has-media">
+          <img class="card-media" src="/assets/img/love-louder.webp" alt="Love Calitoy Louder artwork" width="640" height="960" loading="lazy" style="object-position: 50% 30%">
+          <span class="card-kind">Merch</span>
+          <span class="card-name">Calitoy Merch: Love Louder <span class="dom">calitoy.com/merch</span></span>
+          <span class="card-desc">The official Calitoy merch store.</span>
+          <span class="card-go">Shop <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <a href="https://mvapp-calitoy.abacusai.cloud" class="card" target="_blank" rel="noreferrer">
+          <span class="card-kind">Music Video</span>
+          <span class="card-name">Calitoy Create <span class="dom">The Calitoy Experience</span></span>
+          <span class="card-desc">Music video treatments for the Calitoy catalog. Formerly the Music Video Maker.</span>
+          <span class="card-go">Open <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <div class="card card-static">
+          <span class="card-kind">Album</span>
+          <span class="card-name">Love Harder: Secure USB Album</span>
+          <span class="card-desc">A premium encrypted USB album edition with its own fan launcher.</span>
+          <span class="card-status">In production</span>
+        </div>
+        <div class="card card-static">
+          <span class="card-kind">Writing</span>
+          <span class="card-name">The Writing of JosC7</span>
+          <span class="card-desc">Lyrics and poetry by Joseph Calitoy, archived with origin dates and provenance. Every word is his.</span>
+          <span class="card-status">Private archive</span>
+        </div>
       </div>
-
-      <p class="hint">Looking for the full cinematic hub? <a href="/full.html">Calitoy.com/full</a></p>
+      <a class="to-top" href="#top">Back to top &uarr;</a>
     </section>
 
-    <!-- ============ BELOW THE FOLD: projects, 5 columns ============ -->
-    <section class="projects-below">
-      <h2 class="row-title"><span class="n">03</span> Projects</h2>
-      <div class="cards row-more">
+    <!-- ============ 02 BOOKS ============ -->
+    <section class="sec" id="books" aria-labelledby="h-books">
+      <figure class="sec-hero">
+        <img src="/assets/img/book-727.webp" alt="Cover of PAUSE. DON'T KILL YOURSELF by Joseph Calitoy" width="800" height="1184" loading="lazy" style="object-position: 50% 30%">
+        <figcaption><span class="n">02</span><h2 id="h-books">Books</h2><p>Books by Joseph Calitoy.</p></figcaption>
+      </figure>
+      <div class="cards grid3">
+        <a href="https://www.amazon.com/dp/B0HQ5KVQDW" class="card card-wide book card-primary" target="_blank" rel="noreferrer">
+          <img class="card-media contain" src="/assets/img/book-727.webp" alt="PAUSE. DON'T KILL YOURSELF book cover" width="800" height="1184" loading="lazy">
+          <span class="card-body">
+            <span class="card-kind">The Book</span>
+            <span class="card-name">PAUSE. DON'T KILL YOURSELF <span class="dom">amazon.com</span></span>
+            <span class="card-desc">727 Things You HAVE to Do First: a checklist for staying alive (for now), by Joseph Calitoy. Kindle $4.99, free with Kindle Unlimited.</span>
+            <span class="card-go">Read the book <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+          </span>
+        </a>
+        <div class="card card-static">
+          <span class="card-kind">Novel</span>
+          <span class="card-name">Wolf Moon</span>
+          <span class="card-desc">A full-length manuscript by Joseph Calitoy.</span>
+          <span class="card-status">Coming soon</span>
+        </div>
+        <div class="card card-static">
+          <span class="card-kind">Novel</span>
+          <span class="card-name">Paper Boy</span>
+          <span class="card-desc">A 27-chapter novel with full-color chapter illustrations, by Joseph <span class="heart-m" role="img" aria-label="M inside an orange heart">M</span> Calitoy. Published by Calitoy.</span>
+          <span class="card-status">Coming soon</span>
+        </div>
+      </div>
+      <a class="to-top" href="#top">Back to top &uarr;</a>
+    </section>
+
+    <!-- ============ 03 COMPANIES ============ -->
+    <section class="sec" id="companies" aria-labelledby="h-companies">
+      <figure class="sec-hero">
+        <img src="/assets/img/corp.webp" alt="Calitoy Corp mark" width="1200" height="1200" loading="lazy">
+        <figcaption><span class="n">03</span><h2 id="h-companies">Companies</h2><p>Calitoy Corp and the ventures it runs, plus Tarosyn LLC, a separate company.</p></figcaption>
+      </figure>
+      <div class="cards grid3">
+        <a href="https://jos727.github.io/CalitoyCorp/" class="card card-primary">
+          <span class="card-kind">Holding Company</span>
+          <span class="card-name">Calitoy Corp</span>
+          <span class="card-desc">The umbrella company. Owns CalitoyCore and the Calitoy products and brands.</span>
+          <span class="card-go">Portfolio <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <a href="https://calitoycore.com" class="card">
+          <span class="card-kind">The Core</span>
+          <span class="card-name">CalitoyCore <span class="dom">calitoycore.com</span></span>
+          <span class="card-desc">The gateway: an AI platform for entrepreneurs, covering automation, sales, user acquisition, and branding. Owned by Calitoy Corp.</span>
+          <span class="card-go">Enter CORE <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <a href="https://tarosyn.com" class="card has-media">
+          <img class="card-media" src="/assets/img/tarosyn.webp" alt="Tarosyn brand artwork" width="800" height="533" loading="lazy">
+          <span class="card-kind">Tarosyn LLC</span>
+          <span class="card-name">Tarosyn <span class="dom">tarosyn.com</span></span>
+          <span class="card-desc">Personalized tarot that remembers you: a spiritual community and journaling app for self-realization. A separate company from CalitoyCore.</span>
+          <span class="card-go">Draw <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <a href="https://agency.calitoy.com" class="card">
+          <span class="card-kind">The Agency</span>
+          <span class="card-name">CALITOY.ORG <span class="dom">calitoy.org</span></span>
+          <span class="card-desc">Brand strategy, content, copy, casting, media, and web: the full agency stack under one roof.</span>
+          <span class="card-go">Enter <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <a href="https://josephcalitoy.com" class="card has-media">
+          <img class="card-media" src="/assets/img/joseph.webp" alt="Joseph Calitoy" width="800" height="1000" loading="lazy" style="object-position: 50% 20%">
+          <span class="card-kind">The Consultant</span>
+          <span class="card-name">JosephCalitoy.com <span class="dom">josephcalitoy.com</span></span>
+          <span class="card-desc">AI, product, and growth strategy for founders who need execution. Fractional CTO.</span>
+          <span class="card-go">Work with Joseph <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <a href="https://kalistoi.com" class="card">
+          <span class="card-kind">The Comedy</span>
+          <span class="card-name">JossefKalistoi.com <span class="dom">kalistoi.com</span></span>
+          <span class="card-desc">The Calitoy Comedy Empire: AI-powered comedy that finds the funniest moments so you don't have to.</span>
+          <span class="card-go">Laugh <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <a href="https://clone.calitoy.com" class="card">
+          <span class="card-kind">Calitoy Clone</span>
+          <span class="card-name">Your Digital Twin <span class="dom">clone.calitoy.com</span></span>
+          <span class="card-desc">Digital clones, built with consent, for models, entrepreneurs, and companies.</span>
+          <span class="card-go">Enter <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <a href="https://copy.calitoy.com" class="card">
+          <span class="card-kind">Calitoy Copy</span>
+          <span class="card-name">The Copywriting Lab <span class="dom">copy.calitoy.com</span></span>
+          <span class="card-desc">Copywriting from the Calitoy Creative Agency.</span>
+          <span class="card-go">Enter <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <a href="https://content.calitoy.com" class="card">
+          <span class="card-kind">Calitoy Content</span>
+          <span class="card-name">Content Engine <span class="dom">content.calitoy.com</span></span>
+          <span class="card-desc">Content production for entrepreneurs and brands.</span>
+          <span class="card-go">Enter <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <a href="https://creative.calitoy.com" class="card">
+          <span class="card-kind">Calitoy Creative</span>
+          <span class="card-name">Screenwriting &amp; Storytelling <span class="dom">creative.calitoy.com</span></span>
+          <span class="card-desc">Story development from the Calitoy Creative Agency.</span>
+          <span class="card-go">Enter <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
         <a href="https://calitoy.com/casting/" class="card">
-          <span class="card-kind">Film</span>
-          <span class="card-name">Calitoy Casting</span>
+          <span class="card-kind">Calitoy Casting</span>
+          <span class="card-name">AI Casting Studio <span class="dom">calitoy.com/casting</span></span>
           <span class="card-desc">AI casting studio for film and movies.</span>
+          <span class="card-go">Enter <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <a href="https://carnalveil.com" class="card" rel="noreferrer">
+          <span class="card-kind">Calitoy Consent · 25+</span>
+          <span class="card-name">CarnalVeil <span class="dom">carnalveil.com</span></span>
+          <span class="card-desc">A private-first AI image and video platform for adults 25+.</span>
+          <span class="card-go">Enter <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
         <a href="https://calitoymuse.com" class="card">
           <span class="card-kind">Fashion</span>
-          <span class="card-name">Calitoy Muse</span>
+          <span class="card-name">Calitoy Muse <span class="dom">calitoymuse.com</span></span>
           <span class="card-desc">Evening wear &amp; lingerie.</span>
+          <span class="card-go">Shop <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
         <a href="https://calitoywares.com" class="card">
           <span class="card-kind">Goods</span>
-          <span class="card-name">Calitoy Wares</span>
-          <span class="card-desc">Objects and wares from the studio.</span>
+          <span class="card-name">Calitoy Wares <span class="dom">calitoywares.com</span></span>
+          <span class="card-desc">Gemstone jewelry: necklaces, bracelets, anklets, and earrings.</span>
+          <span class="card-go">Shop <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
-        <a href="https://calitoy.com/merch/" class="card">
-          <span class="card-kind">Merch</span>
-          <span class="card-name">Calitoy Merch</span>
-          <span class="card-desc">The official merch store.</span>
+        <a href="https://wickedyouth.com" class="card">
+          <span class="card-kind">Skin</span>
+          <span class="card-name">Wicked Youth Goods <span class="dom">wickedyouth.com</span></span>
+          <span class="card-desc">Skin products with flare.</span>
+          <span class="card-go">Shop <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <a href="https://endof8.com" class="card">
+          <span class="card-kind">Ocean Beach</span>
+          <span class="card-name">Endof8 <span class="dom">endof8.com</span></span>
+          <span class="card-desc">Ocean Beach, San Diego merchandise for OB Lore.</span>
+          <span class="card-go">Shop <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
         <a href="https://run2play.app" class="card">
           <span class="card-kind">Play</span>
-          <span class="card-name">Run2Play</span>
+          <span class="card-name">Run2Play <span class="dom">run2play.app</span></span>
           <span class="card-desc">Hatch a dragon named Run with every step.</span>
+          <span class="card-go">Play <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
-        <a href="https://girlnextup.com" class="card">
-          <span class="card-kind">Stories</span>
-          <span class="card-name">Girl Next Up</span>
-          <span class="card-desc">Empowering stories of incredible women.</span>
+        <div class="card card-static">
+          <span class="card-kind">Advertising</span>
+          <span class="card-name">Calitoy Mobile Billboard</span>
+          <span class="card-desc">A custom-painted, single-advertiser mobile billboard campaign in San Diego.</span>
+          <span class="card-status">Launching soon</span>
+        </div>
+        <div class="card card-static">
+          <span class="card-kind">Boards</span>
+          <span class="card-name">Calitoy Custom</span>
+          <span class="card-desc">Art skateboards and fashion.</span>
+          <span class="card-status">In development</span>
+        </div>
+      </div>
+      <a class="to-top" href="#top">Back to top &uarr;</a>
+    </section>
+
+    <!-- ============ 04 MEDIA NETWORK BLOGS ============ -->
+    <section class="sec" id="media" aria-labelledby="h-media">
+      <figure class="sec-hero">
+        <img src="/assets/img/hero-media.webp" alt="Digital art creation, from Brushed Past" width="1024" height="576" loading="lazy">
+        <figcaption><span class="n">04</span><h2 id="h-media">Media Network Blogs</h2><p>The Calitoy Media Network: editorial sites on music, spirituality, art, and tech.</p></figcaption>
+      </figure>
+      <div class="cards grid3">
+        <a href="https://media.calitoy.com" class="card card-primary">
+          <span class="card-kind">Directory</span>
+          <span class="card-name">Calitoy Media Network <span class="dom">media.calitoy.com</span></span>
+          <span class="card-desc">The master directory of every property in the network.</span>
+          <span class="card-go">Browse <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
-        <a href="https://brushedpast.com" class="card">
-          <span class="card-kind">Art</span>
-          <span class="card-name">Brushed Past</span>
-          <span class="card-desc">Art, artists &amp; the stories behind the canvas.</span>
+        <a href="https://ctmn.calitoy.com" class="card">
+          <span class="card-kind">Network</span>
+          <span class="card-name">CTMN <span class="dom">ctmn.calitoy.com</span></span>
+          <span class="card-desc">The CaliToy Media Network: independent editorial properties, each published in 10 languages.</span>
+          <span class="card-go">Enter <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
-        <a href="https://spoofdaily.com" class="card">
-          <span class="card-kind">News</span>
-          <span class="card-name">Spoof Daily</span>
-          <span class="card-desc">The news, but funnier.</span>
-        </a>
-        <a href="https://risentoday.com" class="card">
-          <span class="card-kind">Spirit</span>
-          <span class="card-name">Risen Today</span>
-          <span class="card-desc">A meditation on modern spirituality &amp; ancient wisdom.</span>
-        </a>
-        <a href="https://openedterminal.com" class="card">
+        <a href="https://openedterminal.com" class="card has-media">
+          <img class="card-media" src="/assets/img/openedterminal.webp" alt="Opened Terminal header art" width="800" height="450" loading="lazy">
           <span class="card-kind">Tech</span>
-          <span class="card-name">Opened Terminal</span>
+          <span class="card-name">Opened Terminal <span class="dom">openedterminal.com</span></span>
           <span class="card-desc">Tech news for builders, hackers &amp; engineers.</span>
+          <span class="card-go">Read <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
-        <a href="https://calitoy.com/full.html" class="card">
-          <span class="card-kind">Archive</span>
-          <span class="card-name">Full Hub</span>
-          <span class="card-desc">The complete cinematic calitoy.com experience.</span>
+        <a href="https://brushedpast.com" class="card has-media">
+          <img class="card-media" src="/assets/img/brushedpast.webp" alt="Artist at work in a studio" width="800" height="450" loading="lazy">
+          <span class="card-kind">Art</span>
+          <span class="card-name">Brushed Past <span class="dom">brushedpast.com</span></span>
+          <span class="card-desc">Art, artists &amp; the stories behind the canvas.</span>
+          <span class="card-go">Read <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <a href="https://girlnextup.com" class="card has-media">
+          <img class="card-media" src="/assets/img/girlnextup.webp" alt="Businesswoman leading a meeting" width="800" height="450" loading="lazy">
+          <span class="card-kind">Stories</span>
+          <span class="card-name">Girl Next Up <span class="dom">girlnextup.com</span></span>
+          <span class="card-desc">Empowering stories of incredible women.</span>
+          <span class="card-go">Read <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <a href="https://spoofdaily.com" class="card has-media">
+          <img class="card-media" src="/assets/img/spoofdaily.webp" alt="Spoof Daily header art" width="800" height="450" loading="lazy">
+          <span class="card-kind">News</span>
+          <span class="card-name">Spoof Daily <span class="dom">spoofdaily.com</span></span>
+          <span class="card-desc">The news, but funnier.</span>
+          <span class="card-go">Read <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <a href="https://risentoday.com" class="card has-media">
+          <img class="card-media" src="/assets/img/risentoday.webp" alt="Risen Today meditation header art" width="800" height="450" loading="lazy">
+          <span class="card-kind">Spirit</span>
+          <span class="card-name">Risen Today <span class="dom">risentoday.com</span></span>
+          <span class="card-desc">A meditation on modern spirituality &amp; ancient wisdom.</span>
+          <span class="card-go">Read <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
       </div>
+      <a class="to-top" href="#top">Back to top &uarr;</a>
     </section>
+
+    <!-- ============ 05 CLIENTS ============ -->
+    <section class="sec" id="clients" aria-labelledby="h-clients">
+      <figure class="sec-hero">
+        <figcaption><span class="n">05</span><h2 id="h-clients">Clients</h2><p>Brands and founders we build for.</p></figcaption>
+      </figure>
+      <!-- PLACEHOLDER: no client roster found in the GitHub repos. Add client names/logos here. -->
+      <div class="placeholder">Client roster coming soon. Want to be on it? <a href="https://josephcalitoy.com">Work with Joseph &rsaquo;</a></div>
+      <a class="to-top" href="#top">Back to top &uarr;</a>
+    </section>
+
+    <!-- ============ 06 JEREMYDEAN • SPAXOB • FIELDTRIP ============ -->
+    <section class="sec" id="jd-spax-fieldtrip" aria-labelledby="h-jsf">
+      <figure class="sec-hero tri">
+        <img src="/assets/img/jeremydean.webp" alt="Jeremy Dean performing live" width="960" height="1280" loading="lazy">
+        <img src="/assets/img/spaxob.webp" alt="SPA X OB storefront in Ocean Beach" width="1000" height="562" loading="lazy">
+        <img src="/assets/img/fieldtrip.webp" alt="Field Trip outdoor wellness" width="1000" height="1503" loading="lazy">
+        <figcaption><span class="n">06</span><h2 id="h-jsf">JeremyDean • SpaXOB • FieldTrip</h2><p>Music, wellness, and adventure from Ocean Beach, San Diego.</p></figcaption>
+      </figure>
+      <div class="cards grid3">
+        <a href="https://jeremydeanmusic.com" class="card has-media">
+          <img class="card-media" src="/assets/img/jeremydean.webp" alt="Jeremy Dean live" width="960" height="1280" loading="lazy" style="object-position: 50% 30%">
+          <span class="card-kind">Singer-Songwriter</span>
+          <span class="card-name">Jeremy Dean <span class="dom">jeremydeanmusic.com</span></span>
+          <span class="card-desc">Jeremy Dean's music site, with merch and checkout.</span>
+          <span class="card-go">Listen <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <a href="https://spaxob.com" class="card has-media">
+          <img class="card-media" src="/assets/img/spaxob.webp" alt="SPA X OB storefront" width="1000" height="562" loading="lazy">
+          <span class="card-kind">Spa + Wellness</span>
+          <span class="card-name">SPA X OB <span class="dom">spaxob.com</span></span>
+          <span class="card-desc">Spa + wellness in Ocean Beach, San Diego.</span>
+          <span class="card-go">Book <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <a href="https://haveafieldtrip.com" class="card has-media">
+          <img class="card-media" src="/assets/img/fieldtrip.webp" alt="Field Trip outdoor wellness" width="1000" height="1503" loading="lazy" style="object-position: 50% 40%">
+          <span class="card-kind">Wellness · Adventure</span>
+          <span class="card-name">Field Trip <span class="dom">haveafieldtrip.com</span></span>
+          <span class="card-desc">Outdoor wellness experiences in San Diego.</span>
+          <span class="card-go">Go <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+      </div>
+      <a class="to-top" href="#top">Back to top &uarr;</a>
+    </section>
+
+    <!-- ============ 07 RESEARCH ============ -->
+    <section class="sec" id="research" aria-labelledby="h-research">
+      <figure class="sec-hero">
+        <img src="/assets/img/research.webp" alt="AI agent orchestration architecture illustration" width="1200" height="675" loading="lazy">
+        <figcaption><span class="n">07</span><h2 id="h-research">Research</h2><p>Long-form research by Joseph Calitoy, published on Opened Terminal.</p></figcaption>
+      </figure>
+      <div class="cards grid3">
+        <a href="https://openedterminal.com/articles/research-mobile-ua-ai-ecosystems.html" class="card card-primary has-media">
+          <img class="card-media" src="/assets/img/research.webp" alt="Research series header art" width="1200" height="675" loading="lazy">
+          <span class="card-kind">12-Part Series</span>
+          <span class="card-name">Mobile UA &amp; AI Ecosystems</span>
+          <span class="card-desc">Mobile user acquisition and the impact of AI ecosystems: economics, privacy and attribution, Apple Intelligence, Gemini, generative AI apps, and frameworks for founders.</span>
+          <span class="card-go">Read the series <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <a href="https://openedterminal.com/zero-day/" class="card has-media">
+          <img class="card-media" src="/assets/img/zeroday.webp" alt="Zero trust security header art" width="800" height="450" loading="lazy">
+          <span class="card-kind">Timeline</span>
+          <span class="card-name">Zero Day Timeline</span>
+          <span class="card-desc">Landmark vulnerabilities, mapped.</span>
+          <span class="card-go">Explore <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+      </div>
+      <a class="to-top" href="#top">Back to top &uarr;</a>
+    </section>
+
+    <p class="hint">Looking for the full cinematic hub? <a href="/full.html">Calitoy.com/full</a></p>
   </main>
 
   <footer class="site">
     <div class="wrap">
-      <span>CALITOY Agency — written, designed, and directed by Joseph Calitoy.</span>
+      <span>CALITOY Agency, written, designed, and directed by Joseph Calitoy. &copy; 2026 Calitoy Corp</span>
       <span><a href="https://agency.calitoy.com">Agency</a> · <a href="https://calitoycore.com">Core</a> · <a href="/full.html">Full Hub</a></span>
     </div>
   </footer>
