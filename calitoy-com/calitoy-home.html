@@ -123,6 +123,9 @@
     footer.site a { color: rgba(255,255,255,0.6); text-decoration: none; }
     footer.site a:hover { color: #fff; }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .card, .card::after, .card-go .arrow { transition: none !important; } }
+    .card-wide { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 1rem; }
+    .card-wide .card-desc { flex: 1; }
+    .card-wide { max-width: 100%; }
   </style>
 </head>
 <body>
@@ -175,6 +178,12 @@
           <span class="card-name">JosephCalitoy.com <span class="dom">josephcalitoy.com</span></span>
           <span class="card-desc">AI, product, and growth strategy for founders who need execution — Fractional CTO.</span>
           <span class="card-go">Work with Joseph <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <a href="https://www.amazon.com/dp/B0HQ5KVQDW" class="card card-wide" target="_blank" rel="noreferrer">
+          <span class="card-kind">The Book</span>
+          <span class="card-name">PAUSE. DON'T KILL YOURSELF <span class="dom">amazon.com</span></span>
+          <span class="card-desc">727 Things You HAVE to Do First — a checklist for staying alive (for now), by Joseph Calitoy. Kindle $4.99, free with Kindle Unlimited.</span>
+          <span class="card-go">Read the book <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
       </div>
 
