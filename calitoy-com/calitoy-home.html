@@ -150,6 +150,14 @@
     .book-sub { font-size: 0.82rem; color: rgba(255,255,255,0.66); }
     .book-buy { font-size: 0.8rem; color: rgba(228,196,116,0.95); }
     @media (max-width: 480px) { .book-cover { width: 104px; } .book-title { font-size: 0.94rem; } }
+    /* card thumbs */
+    .card-thumb { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 12px;
+      border: 1px solid var(--line); filter: saturate(0.92); transition: transform var(--t-hover) var(--e-standard),
+      filter var(--t-hover) var(--e-standard); margin-bottom: 0.55rem; }
+    .card:hover .card-thumb { transform: scale(1.015); filter: saturate(1.12); }
+    /* book card keeps its own layout (cover + copy) */
+    .book-card .card-thumb { display: none; }
+
     /* MOBILE FIT: clip decorative layers + let the identity bars compress */
     .aurora { max-width: 100vw; overflow: hidden; }
     .nav { max-width: 100vw; overflow-x: clip; }
@@ -197,11 +205,11 @@
           <p class="lede">Agency, music, consulting, the book, and the artist's stage — the same hands did all of it. Pick a door above.</p>
         </div>
         <div class="id-strip" role="list" aria-label="The five crafts — click a door">
-          <a class="id-tile" href="https://calitoy.org" role="listitem"><img src="/assets/id-agency.jpg" alt="Painting — Agency"><span class="id-name">AGENCY</span></a>
+          <a class="id-tile" href="https://calitoy.org" role="listitem"><img src="/assets/id-agency.jpg" alt="At the computer — Agency"><span class="id-name">AGENCY</span></a>
           <a class="id-tile" href="https://xcalitoy.com" role="listitem"><img src="/assets/id-songwriter.jpg" alt="Singing — Songwriter"><span class="id-name">SONGWRITER</span></a>
           <a class="id-tile" href="https://josephcalitoy.com" role="listitem"><img src="/assets/id-consultant.jpg" alt="Suited — Consultant"><span class="id-name">CONSULTANT</span></a>
-          <a class="id-tile" href="https://author.calitoy.com" role="listitem"><img src="/assets/id-author.jpg" alt="At desk — Author"><span class="id-name">AUTHOR</span></a>
-          <a class="id-tile" href="https://art.calitoy.com" role="listitem"><img src="/assets/id-artist.jpg" alt="Writing — Artist"><span class="id-name">ARTIST</span></a>
+          <a class="id-tile" href="https://author.calitoy.com" role="listitem"><img src="/assets/id-artist.jpg" alt="Writing — Author"><span class="id-name">AUTHOR</span></a>
+          <a class="id-tile" href="https://art.calitoy.com" role="listitem"><img src="/assets/id-artist-spray.jpg" alt="Spray painting — Artist"><span class="id-name">ARTIST</span></a>
         </div>
       </div>
 
@@ -209,18 +217,21 @@
       <h2 class="row-title"><span class="n">01</span> The Company &amp; The Artist</h2>
       <div class="cards row-first">
         <a href="https://agency.calitoy.com" class="card card-primary">
+          <img class="card-thumb" src="/assets/cards/agency.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">The Agency</span>
           <span class="card-name">CALITOY.ORG <span class="dom">calitoy.org</span></span>
           <span class="card-desc">Brand strategy, content, copy, casting, media, and web — the full agency stack under one roof.</span>
           <span class="card-go">Enter <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
         <a href="https://xcalitoy.com" class="card">
+          <img class="card-thumb" src="/assets/id-songwriter.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">The Music</span>
           <span class="card-name">XCALITOY.COM <span class="dom">xcalitoy.com</span></span>
           <span class="card-desc">Voice, Beat, Tempo, Structure, and Writing by Joseph Calitoy — words first, always.</span>
           <span class="card-go">Listen <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
         <a href="https://josephcalitoy.com" class="card">
+          <img class="card-thumb" src="/assets/id-consultant.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">The Consultant</span>
           <span class="card-name">JosephCalitoy.com <span class="dom">josephcalitoy.com</span></span>
           <span class="card-desc">AI, product, and growth strategy for founders who need execution — Fractional CTO.</span>
@@ -242,24 +253,28 @@
       <h2 class="row-title"><span class="n">02</span> Platforms</h2>
       <div class="cards row-second">
         <a href="https://kalistoi.com" class="card">
+          <img class="card-thumb" src="/assets/cards/kalistoi.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">The Comedy</span>
           <span class="card-name">JossefKalistoi.com <span class="dom">kalistoi.com</span></span>
           <span class="card-desc">The Calitoy Comedy Empire — AI-powered comedy; finding the funniest moments so you don't have to.</span>
           <span class="card-go">Laugh <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
         <a href="https://tarosyn.com" class="card">
+          <img class="card-thumb" src="/assets/cards/tarosyn.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">The Product</span>
           <span class="card-name">Tarosyn.com <span class="dom">tarosyn.com</span></span>
           <span class="card-desc">Personalized tarot that remembers you — daily rituals, chants, and a living card vault.</span>
           <span class="card-go">Draw <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
         <a href="https://calitoycore.com" class="card">
+          <img class="card-thumb" src="/assets/cards/agency.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">The Core</span>
           <span class="card-name">CalitoyCore.com <span class="dom">calitoycore.com</span></span>
           <span class="card-desc">The gateway — every capability, every property, tunneled into one platform.</span>
           <span class="card-go">Enter CORE <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
         <a href="https://calitoy.com/stamp/" class="card">
+          <img class="card-thumb" src="/assets/cards/stamp.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">The Platform</span>
           <span class="card-name">Calitoy Stamp <span class="dom">calitoy.com/stamp</span></span>
           <span class="card-desc">A musician's fastest access to an online living — the platform for the artist's own economy.</span>
@@ -275,56 +290,67 @@
       <h2 class="row-title"><span class="n">03</span> Projects</h2>
       <div class="cards row-more">
         <a href="https://calitoy.com/casting/" class="card">
+          <img class="card-thumb" src="/assets/cards/casting.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">Film</span>
           <span class="card-name">Calitoy Casting</span>
           <span class="card-desc">AI casting studio for film and movies.</span>
         </a>
         <a href="https://calitoymuse.com" class="card">
+          <img class="card-thumb" src="/assets/cards/muse.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">Fashion</span>
           <span class="card-name">Calitoy Muse</span>
           <span class="card-desc">Evening wear &amp; lingerie.</span>
         </a>
         <a href="https://calitoywares.com" class="card">
+          <img class="card-thumb" src="/assets/cards/wares.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">Goods</span>
           <span class="card-name">Calitoy Wares</span>
           <span class="card-desc">Objects and wares from the studio.</span>
         </a>
         <a href="https://calitoy.com/merch/" class="card">
+          <img class="card-thumb" src="/assets/cards/merch.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">Merch</span>
           <span class="card-name">Calitoy Merch</span>
           <span class="card-desc">The official merch store.</span>
         </a>
         <a href="https://run2play.app" class="card">
+          <img class="card-thumb" src="/assets/cards/run2play.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">Play</span>
           <span class="card-name">Run2Play</span>
           <span class="card-desc">Hatch a dragon named Run with every step.</span>
         </a>
         <a href="https://girlnextup.com" class="card">
+          <img class="card-thumb" src="/assets/cards/girlnextup.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">Stories</span>
           <span class="card-name">Girl Next Up</span>
           <span class="card-desc">Empowering stories of incredible women.</span>
         </a>
         <a href="https://brushedpast.com" class="card">
+          <img class="card-thumb" src="/assets/cards/brushedpast.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">Art</span>
           <span class="card-name">Brushed Past</span>
           <span class="card-desc">Art, artists &amp; the stories behind the canvas.</span>
         </a>
         <a href="https://spoofdaily.com" class="card">
+          <img class="card-thumb" src="/assets/cards/spoofdaily.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">News</span>
           <span class="card-name">Spoof Daily</span>
           <span class="card-desc">The news, but funnier.</span>
         </a>
         <a href="https://risentoday.com" class="card">
+          <img class="card-thumb" src="/assets/cards/risentoday.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">Spirit</span>
           <span class="card-name">Risen Today</span>
           <span class="card-desc">A meditation on modern spirituality &amp; ancient wisdom.</span>
         </a>
         <a href="https://openedterminal.com" class="card">
+          <img class="card-thumb" src="/assets/cards/openedterminal.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">Tech</span>
           <span class="card-name">Opened Terminal</span>
           <span class="card-desc">Tech news for builders, hackers &amp; engineers.</span>
         </a>
         <a href="https://calitoy.com/full.html" class="card">
+          <img class="card-thumb" src="/assets/cards/agency.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">Archive</span>
           <span class="card-name">Full Hub</span>
           <span class="card-desc">The complete cinematic calitoy.com experience.</span>
