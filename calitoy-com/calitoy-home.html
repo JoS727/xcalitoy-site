@@ -157,6 +157,8 @@
     .card:hover .card-thumb { transform: scale(1.015); filter: saturate(1.12); }
     /* book card keeps its own layout (cover + copy) */
     .book-card .card-thumb { display: none; }
+    /* FACE LAW: people-thumbs keep the head in frame */
+    .card-thumb { object-position: 50% 30%; }
 
     /* MOBILE FIT: clip decorative layers + let the identity bars compress */
     .aurora { max-width: 100vw; overflow: hidden; }
@@ -224,14 +226,14 @@
           <span class="card-go">Enter <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
         <a href="https://xcalitoy.com" class="card">
-          <img class="card-thumb" src="/assets/id-songwriter.jpg" alt="" loading="lazy" aria-hidden="true">
+          <img class="card-thumb" src="/assets/cards/xcalitoy.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">The Music</span>
           <span class="card-name">XCALITOY.COM <span class="dom">xcalitoy.com</span></span>
           <span class="card-desc">Voice, Beat, Tempo, Structure, and Writing by Joseph Calitoy — words first, always.</span>
           <span class="card-go">Listen <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
         <a href="https://josephcalitoy.com" class="card">
-          <img class="card-thumb" src="/assets/id-consultant.jpg" alt="" loading="lazy" aria-hidden="true">
+          <img class="card-thumb" src="/assets/cards/consultant.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">The Consultant</span>
           <span class="card-name">JosephCalitoy.com <span class="dom">josephcalitoy.com</span></span>
           <span class="card-desc">AI, product, and growth strategy for founders who need execution — Fractional CTO.</span>
@@ -247,6 +249,13 @@
             <span class="card-go">Get it on Amazon <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
           </span>
         </a>
+        <a href="https://tarosyn.com" class="card">
+          <img class="card-thumb" src="/assets/cards/tarosyn.jpg" alt="" loading="lazy" aria-hidden="true">
+          <span class="card-kind">The Product</span>
+          <span class="card-name">Tarosyn.com <span class="dom">tarosyn.com</span></span>
+          <span class="card-desc">Personalized tarot that remembers you — daily rituals, chants, and a living card vault.</span>
+          <span class="card-go">Draw <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
       </div>
 
       <!-- ROW 2 -->
@@ -258,13 +267,6 @@
           <span class="card-name">JossefKalistoi.com <span class="dom">kalistoi.com</span></span>
           <span class="card-desc">The Calitoy Comedy Empire — AI-powered comedy; finding the funniest moments so you don't have to.</span>
           <span class="card-go">Laugh <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
-        </a>
-        <a href="https://tarosyn.com" class="card">
-          <img class="card-thumb" src="/assets/cards/tarosyn.jpg" alt="" loading="lazy" aria-hidden="true">
-          <span class="card-kind">The Product</span>
-          <span class="card-name">Tarosyn.com <span class="dom">tarosyn.com</span></span>
-          <span class="card-desc">Personalized tarot that remembers you — daily rituals, chants, and a living card vault.</span>
-          <span class="card-go">Draw <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
         <a href="https://calitoycore.com" class="card">
           <img class="card-thumb" src="/assets/cards/agency.jpg" alt="" loading="lazy" aria-hidden="true">
