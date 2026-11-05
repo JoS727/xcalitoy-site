@@ -18,6 +18,7 @@ export default function Desmu5() {
         <span className="section__label">Desmu5</span>
 
         <div className="desmu5-hero">
+          <img src="/desmu5-collective.png" alt="The Desmu5 collective — Kurced, Calitoy, PieZ, KingTrx, and JDx" loading="eager" className="desmu5-photo" />
           <p className="statement-kicker">Collective announcement</p>
           <h1>Five. <em>Joined.</em></h1>
           <p className="desmu5-sub">

@@ -5,7 +5,7 @@ import '../tarosyn.css';
 /** Waitlist entries live in localStorage until a backend exists. */
 const STORAGE_KEY = 'tarosyn-card-back-waitlist-v1';
 const TAROSYN_JOIN_URL =
-  'https://tarosyn.app/join?utm_source=xcalitoy&utm_medium=referral&utm_campaign=card_back';
+  'https://tarosyn.app/?utm_source=xcalitoy&utm_medium=referral&utm_campaign=card_back';
 
 const STEPS = ['Energy', 'Preview', 'Claim', 'Sealed'] as const;
 

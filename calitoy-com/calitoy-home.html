@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>CALITOY — One Name. Every Door.</title>
-  <meta name="description" content="CALITOY Agency — the Company, the Artist, and the platform, routed from one hub.">
+  <meta name="description" content="CALITOY — the Company, the Artist, and the platform, routed from one hub.">
   <meta name="theme-color" content="#080912">
   <link rel="icon" type="image/svg+xml" href="https://calitoy-agency.abacusai.app/favicon.svg">
   <link rel="canonical" href="https://calitoy.com/">
@@ -18,6 +18,7 @@
       --line: rgba(255,255,255,0.09);
       --violet: hsl(264, 100%, 72%);
       --gold: hsl(41, 65%, 54%);
+      --orange: #ff8a2a;
       --steel: hsl(222, 45%, 78%);
       --display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       --body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -48,9 +49,18 @@
     .nav { position: sticky; top: 0; z-index: 40; backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(8,9,18,0.72); }
     .nav-inner { max-width: var(--maxw); margin: 0 auto; padding: 0.8rem var(--gutter); display: flex; align-items: center; gap: 1rem; }
     .brand { text-decoration: none; color: #fff; font-family: var(--display); font-weight: 700; font-size: 0.98rem; letter-spacing: 0.16em; display: inline-flex; align-items: baseline; gap: 0.3rem; }
+    .brand .c { color: var(--gold); margin-right: -0.3rem; }
     .brand .c { color: var(--gold); transform: none; }
     .brand small { color: rgba(255,255,255,0.45); font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; }
-    .nav-links { margin-left: auto; display: flex; gap: 1.2rem; }
+    .identity-nav { margin-left: auto; display: flex; flex: 1; max-width: 720px; gap: 0; }
+    .identity-nav a {
+      flex: 1 1 0; text-align: center; text-decoration: none; white-space: nowrap;
+      color: rgba(255,255,255,0.62); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.24em;
+      padding: 0.55rem 0.4rem; border-left: 1px solid rgba(255,255,255,0.05); transition: color 200ms, background 200ms;
+    }
+    .identity-nav a:first-child { border-left: 0; }
+    .identity-nav a:hover { color: var(--gold); background: rgba(216,182,106,0.06); }
+    @media (max-width: 900px) { .nav-inner { flex-wrap: wrap; } .identity-nav { max-width: none; width: 100%; order: 3; margin-left: 0; } }
     .nav-links a { color: rgba(255,255,255,0.62); text-decoration: none; font-size: 0.86rem; transition: color 200ms; }
     .nav-links a:hover { color: #fff; }
 
@@ -106,15 +116,48 @@
     .card:hover .card-go .arrow { transform: translateX(4px); }
 
 
-    /* HERO PORTRAIT */
-    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; align-items: end; }
-    @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.4fr 1fr; } }
-    .hero-photo { position: relative; border-radius: 18px; overflow: hidden; border: 1px solid var(--line);
-      box-shadow: 0 24px 60px -30px rgba(122,74,255,0.5); max-width: 420px; justify-self: center; }
-    .hero-photo img { display: block; width: 100%; height: auto; }
-    .hero-photo figcaption { position: absolute; left: 0.8rem; bottom: 0.8rem; font-size: 0.66rem; letter-spacing: 0.28em;
-      text-transform: uppercase; color: rgba(255,255,255,0.85); background: rgba(8,9,18,0.6); padding: 0.35rem 0.7rem;
-      border-radius: 999px; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.12); }
+    /* HERO — five portraits, each a lit door */
+    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; align-items: center; }
+    .id-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.7rem; margin-top: 1.4rem; }
+    /* mobile: 3 on the first row, 2 on the second (n+3 keeps the two last tiles full-half width) */
+    @media (max-width: 760px) {
+      .id-strip { grid-template-columns: repeat(6, 1fr); }
+      .id-tile { grid-column: span 2; }
+      .id-tile:nth-child(n+4) { grid-column: span 3; }
+    }
+    .id-tile { position: relative; display: block; border-radius: 16px; overflow: hidden; border: 1px solid var(--line);
+      aspect-ratio: 2/3; isolation: isolate; box-shadow: 0 18px 44px -24px rgba(122,74,255,0.45);
+      transition: transform var(--t-hover) var(--e-standard), border-color var(--t-hover) var(--e-standard), box-shadow var(--t-hover) var(--e-standard); }
+    .id-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      filter: grayscale(0.9) brightness(0.55) saturate(0.7); transform: scale(1.02);
+      transition: filter 320ms var(--e-standard), transform 420ms var(--e-standard); }
+    .id-tile::after { content: ""; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(165deg, rgba(255,138,42,0.35), transparent 52%), linear-gradient(0deg, rgba(8,9,18,0.55), transparent 45%);
+      opacity: 0; transition: opacity 320ms var(--e-standard); }
+    .id-name { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 0.55rem 0.4rem; text-align: center;
+      font-family: var(--display); font-weight: 700; font-size: clamp(0.6rem, 1.1vw, 0.78rem); letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.88); background: linear-gradient(transparent, rgba(8,9,18,0.92) 75%); transition: color 250ms; }
+    .id-tile:hover, .id-tile:focus-visible { transform: translateY(-5px); border-color: rgba(255,138,42,0.65);
+      box-shadow: 0 22px 54px -20px rgba(255,138,42,0.5); z-index: 5; }
+    .id-tile:hover img, .id-tile:focus-visible img { filter: none; transform: scale(1.07); }
+    .id-tile:hover::after, .id-tile:focus-visible::after { opacity: 1; }
+    .id-tile:hover .id-name, .id-tile:focus-visible .id-name { color: var(--orange); letter-spacing: 0.26em; }
+    .book-card { display: flex; gap: 1.1rem; align-items: center; background: linear-gradient(135deg, rgba(216,182,106,0.10), rgba(8,9,18,0.65) 55%); }
+    .book-cover { width: 128px; border-radius: 10px; box-shadow: 0 14px 34px -12px rgba(0,0,0,0.8), 0 0 0 1px rgba(216,182,106,0.35); flex: 0 0 auto; }
+    .book-copy { display: flex; flex-direction: column; gap: 0.3rem; min-width: 0; }
+    .book-title { font-size: 1.06rem; display: block; }
+    .book-title .dom { display: inline-block; margin-left: 0.45rem; }
+    .book-sub { font-size: 0.82rem; color: rgba(255,255,255,0.66); }
+    .book-buy { font-size: 0.8rem; color: rgba(228,196,116,0.95); }
+    @media (max-width: 480px) { .book-cover { width: 104px; } .book-title { font-size: 0.94rem; } }
+    /* MOBILE FIT: clip decorative layers + let the identity bars compress */
+    .aurora { max-width: 100vw; overflow: hidden; }
+    .nav { max-width: 100vw; overflow-x: clip; }
+    .card-wide { min-width: 0; }
+    @media (max-width: 430px) {
+      .identity-nav a { font-size: 0.58rem; letter-spacing: 0.14em; padding: 0.5rem 0.25rem; }
+      .identity-nav { flex-wrap: nowrap; }
+    }
     .hint { margin-top: 2rem; text-align: center; color: rgba(255,255,255,0.35); font-size: 0.78rem; }
     .hint a { color: rgba(255,255,255,0.55); }
 
@@ -123,6 +166,9 @@
     footer.site a { color: rgba(255,255,255,0.6); text-decoration: none; }
     footer.site a:hover { color: #fff; }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .card, .card::after, .card-go .arrow { transition: none !important; } }
+    .card-wide { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 1rem; }
+    .card-wide .card-desc { flex: 1; }
+    .card-wide { max-width: 100%; }
   </style>
 </head>
 <body>
@@ -130,11 +176,13 @@
 
   <header class="nav">
     <div class="nav-inner">
-      <a class="brand" href="https://calitoy.com" aria-label="CALITOY"><span class="c">C</span>ALITOY <small>Agency</small></a>
-      <nav class="nav-links" aria-label="Quick links">
-        <a href="https://agency.calitoy.com">Agency</a>
-        <a href="https://calitoycore.com">Core</a>
-        <a href="https://calitoy.com/full.html">Full Hub</a>
+      <a class="brand" href="https://calitoy.com" aria-label="CALITOY"><span class="c">C</span>ALITOY</a>
+      <nav class="identity-nav" aria-label="The five identities">
+        <a href="https://calitoy.org">AGENCY</a>
+        <a href="https://xcalitoy.com">SONGWRITER</a>
+        <a href="https://josephcalitoy.com">CONSULTANT</a>
+        <a href="https://author.calitoy.com">AUTHOR</a>
+        <a href="https://art.calitoy.com">ARTIST</a>
       </nav>
     </div>
   </header>
@@ -142,17 +190,19 @@
   <main class="wrap">
     <!-- ============ ABOVE THE FOLD: the six doors ============ -->
     <section class="hero">
-      <div class="hero-grid">
+      <div class="hero-grid hero-grid-identities">
         <div>
-          <span class="eyebrow">CALITOY Agency</span>
           <h1 class="wordmark">Calitoy</h1>
-          <p class="tagline">One name. <em>Three worlds.</em> Every door from here.</p>
-          <p class="lede">Music, agency, and product under a single roof — written, designed, and directed by Joseph Calitoy. Pick a door.</p>
+          <p class="tagline">One name. <em>Five crafts.</em> Every door from here.</p>
+          <p class="lede">Agency, music, consulting, the book, and the artist's stage — the same hands did all of it. Pick a door above.</p>
         </div>
-        <figure class="hero-photo">
-          <img src="/assets/portrait.jpg" alt="Joseph Calitoy in a black suit" loading="eager">
-          <figcaption>Joseph Calitoy</figcaption>
-        </figure>
+        <div class="id-strip" role="list" aria-label="The five crafts — click a door">
+          <a class="id-tile" href="https://calitoy.org" role="listitem"><img src="/assets/id-agency.jpg" alt="Painting — Agency"><span class="id-name">AGENCY</span></a>
+          <a class="id-tile" href="https://xcalitoy.com" role="listitem"><img src="/assets/id-songwriter.jpg" alt="Singing — Songwriter"><span class="id-name">SONGWRITER</span></a>
+          <a class="id-tile" href="https://josephcalitoy.com" role="listitem"><img src="/assets/id-consultant.jpg" alt="Suited — Consultant"><span class="id-name">CONSULTANT</span></a>
+          <a class="id-tile" href="https://author.calitoy.com" role="listitem"><img src="/assets/id-author.jpg" alt="At desk — Author"><span class="id-name">AUTHOR</span></a>
+          <a class="id-tile" href="https://art.calitoy.com" role="listitem"><img src="/assets/id-artist.jpg" alt="Writing — Artist"><span class="id-name">ARTIST</span></a>
+        </div>
       </div>
 
       <!-- ROW 1 -->
@@ -175,6 +225,16 @@
           <span class="card-name">JosephCalitoy.com <span class="dom">josephcalitoy.com</span></span>
           <span class="card-desc">AI, product, and growth strategy for founders who need execution — Fractional CTO.</span>
           <span class="card-go">Work with Joseph <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+        </a>
+        <a href="https://www.amazon.com/dp/B0HQ5KVQDW" class="card card-wide book-card" target="_blank" rel="noreferrer">
+          <img class="book-cover" src="/assets/pause-book-cover.jpg" alt="PAUSE. DON'T KILL YOURSELF — book cover" loading="lazy">
+          <span class="book-copy">
+            <span class="card-kind">The Book</span>
+            <span class="card-name book-title">PAUSE. DON'T KILL YOURSELF</span>
+            <span class="book-sub"><em>727 Things You HAVE to Do First</em> — a checklist for staying alive (for now), by Joseph Calitoy.</span>
+            <span class="book-buy"><strong>Kindle $7.27</strong> · <strong>Paperback $17.27</strong></span>
+            <span class="card-go">Get it on Amazon <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
+          </span>
         </a>
       </div>
 

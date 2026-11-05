@@ -564,3 +564,6 @@ a.dj-np__track-title:hover{color:var(--accent)}
 .dj-mini__btn:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
 .dj-mini__progress{position:absolute;left:0;bottom:0;height:2px;background:var(--accent);transition:width .25s linear}
 @media(prefers-reduced-motion:reduce){.dj-live-soon__dot,.dj-onair__dot,.dj-mini{animation:none}}
+
+.desmu5-photo { width: min(560px, 92%); margin: 0 auto 1.4rem; display: block; border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 24px 60px -30px rgba(122,74,255,0.5); }
