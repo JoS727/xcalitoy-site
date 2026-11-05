@@ -1,4 +1,5 @@
 import { Router, Route, Switch, useLocation } from 'wouter';
+import { IdentityBar } from './components/IdentityBar';
 import { useHashLocation } from 'wouter/use-hash-location';
 import Home from './pages/Home';
 import SongPage from './pages/SongPage';
@@ -62,6 +63,7 @@ function Navigation() {
           <NavLink href="/" label="Calitoy" className="site-nav__brand-mark" />
           <span className="site-nav__brand-sub">Dark pop / California / xcalitoy.com</span>
         </div>
+        <IdentityBar active="SONGWRITER" />
         <nav className="site-nav__links" aria-label="Primary">
           {navLinks.map((link) => (
             <NavLink key={link.href} href={link.href} label={link.label} />
