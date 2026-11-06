@@ -80,7 +80,14 @@
     .crest-badge:hover { transform: rotate(0deg) scale(1.04); }
           .graffiti-mark { height: clamp(58px, 8.5vw, 100px); width: auto; max-width: min(78vw, 640px);
       filter: drop-shadow(0 6px 18px rgba(230,180,90,0.35)) drop-shadow(0 0 42px rgba(230,180,90,0.18)); }
-    .crest-row { align-items: center; flex-wrap: wrap; gap: clamp(0.7rem, 2.4vw, 1.3rem); }
+    .crest-row { align-items: center; gap: clamp(0.7rem, 2.4vw, 1.4rem); }
+    .tagline-center { flex: 1 1 auto; text-align: center; min-width: 180px; }
+    @media (max-width: 700px) {
+      .crest-row { display: flex; flex-direction: column; }
+      .crest-row .tagline-center { order: 2; flex: none; margin-top: 0.9rem; }
+      .crest-row .graffiti-mark { order: 1; }
+      .crest-row .crest-badge { order: 3; }
+    }
     @media (max-width: 640px) { .crest-badge { width: 88px; } .graffiti-mark { height: 46px; } }
     .tagline { font-family: var(--display); font-size: clamp(1rem, 2.6vw, 1.3rem); color: #fff; margin-top: 0.4rem; }
     .tagline em { color: var(--violet); font-style: normal; }
@@ -214,10 +221,10 @@
       <div class="hero-grid hero-grid-identities">
         <div>
           <div class="crest-row">
-            <img src="/assets/love-louder-crest.png" alt="Love Louder — Calitoy crest" class="crest-badge" loading="eager" data-testid="img-love-louder-crest">
             <img src="/assets/calitoy-graffiti-mark.png" alt="CALITOY" class="graffiti-mark" loading="eager" data-testid="img-graffiti-mark">
+            <p class="tagline tagline-center">One name. <em>Five crafts.</em> Every door from here.</p>
+            <img src="/assets/love-louder-crest.png" alt="Love Louder — Calitoy crest" class="crest-badge" loading="eager" data-testid="img-love-louder-crest">
           </div>
-          <p class="tagline">One name. <em>Five crafts.</em> Every door from here.</p>
           <p class="lede">Agency, music, consulting, the book, and the artist's stage — the same hands did all of it. Pick a door above.</p>
         </div>
         <div class="id-strip" role="list" aria-label="The five crafts — click a door">
