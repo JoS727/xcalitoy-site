@@ -73,6 +73,12 @@
       background: linear-gradient(92deg, #d6a63b 4%, #b678f0 62%);
       -webkit-background-clip: text; background-clip: text; color: transparent;
     }
+    /* LOVE LOUDER crest integration */
+    .crest-row { display: flex; align-items: flex-start; gap: 1rem; }
+    .crest-badge { width: clamp(64px, 9vw, 92px); height: auto; opacity: 0.95; transform: rotate(4deg);
+      filter: drop-shadow(0 6px 18px rgba(214,166,59,0.35)); transition: transform var(--t-hover) var(--e-standard); }
+    .crest-badge:hover { transform: rotate(0deg) scale(1.04); }
+    @media (max-width: 640px) { .crest-badge { width: 56px; } }
     .tagline { font-family: var(--display); font-size: clamp(1rem, 2.6vw, 1.3rem); color: #fff; margin-top: 0.4rem; }
     .tagline em { color: var(--violet); font-style: normal; }
     .lede { color: rgba(255,255,255,0.55); max-width: 58ch; font-size: 0.95rem; margin-top: 0.5rem; }
@@ -171,6 +177,8 @@
     .hint { margin-top: 2rem; text-align: center; color: rgba(255,255,255,0.35); font-size: 0.78rem; }
     .hint a { color: rgba(255,255,255,0.55); }
 
+    .footer-credit { display: inline-flex; align-items: center; gap: 0.55rem; }
+    .footer-rose { width: 26px; height: auto; opacity: 0.85; }
     footer.site { border-top: 1px solid rgba(255,255,255,0.06); margin-top: 3rem; padding: 1.6rem 0 2.4rem; }
     footer.site .wrap { display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: center; justify-content: space-between; color: rgba(255,255,255,0.4); font-size: 0.78rem; }
     footer.site a { color: rgba(255,255,255,0.6); text-decoration: none; }
@@ -202,7 +210,10 @@
     <section class="hero">
       <div class="hero-grid hero-grid-identities">
         <div>
-          <h1 class="wordmark">Calitoy</h1>
+          <div class="crest-row">
+            <h1 class="wordmark">Calitoy</h1>
+            <img src="/assets/love-louder-crest.svg" alt="Love Louder — Calitoy crest" class="crest-badge" loading="eager" data-testid="img-love-louder-crest">
+          </div>
           <p class="tagline">One name. <em>Five crafts.</em> Every door from here.</p>
           <p class="lede">Agency, music, consulting, the book, and the artist's stage — the same hands did all of it. Pick a door above.</p>
         </div>
@@ -363,7 +374,7 @@
 
   <footer class="site">
     <div class="wrap">
-      <span>CALITOY Agency — written, designed, and directed by Joseph Calitoy.</span>
+      <span class="footer-credit"><img src="/assets/love-louder-rose.svg" alt="" class="footer-rose" aria-hidden="true">CALITOY Agency — written, designed, and directed by Joseph Calitoy.</span>
       <span><a href="https://agency.calitoy.com">Agency</a> · <a href="https://calitoycore.com">Core</a> · <a href="/full.html">Full Hub</a></span>
     </div>
   </footer>
