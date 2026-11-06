@@ -59,9 +59,10 @@ function Navigation() {
   return (
     <header className="site-nav-wrap">
       <div className="container site-nav">
-        <div className="site-nav__brand">
+        <div className="site-nav__brand" style={{ flexDirection: 'row', alignItems: 'center', gap: '.55rem' }}>
+          <img src="/love-louder-crest.png" alt="" style={{ width: 30, transform: 'rotate(4deg)' }} data-testid="img-nav-crest" />
           <NavLink href="/" label="Calitoy" className="site-nav__brand-mark" />
-          <span className="site-nav__brand-sub">Dark pop / California / xcalitoy.com</span>
+          <span className="site-nav__brand-sub" style={{ marginLeft: '.35rem' }}>XCalitoy</span>
         </div>
         <IdentityBar active="SONGWRITER" />
         <nav className="site-nav__links" aria-label="Primary">
@@ -101,7 +102,9 @@ export default function App() {
       </Switch>
       <footer>
         <div className="container">
-          <span>© {new Date().getFullYear()} Calitoy</span>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '.5rem' }}>
+            <img src="/calitoy-graffiti-mark.png" alt="" style={{ height: 22 }} />© {new Date().getFullYear()} Calitoy
+          </span>
           <p>{artistProfile.creativeCredit}</p>
           <span style={{ display: 'flex', gap: '.9rem', flexWrap: 'wrap' }}>
             <NavLink href="/about" label="About" className="footer-link" />
