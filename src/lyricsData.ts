@@ -22,29 +22,29 @@ export const lyricAlbums: LyricAlbum[] = [
         slug: `lioness-mp3`,
         soundcloud: `https://soundcloud.com/calitoy/lioness-mp3`,
         lyrics: `You were the map that I never had
-If there's a void in a crowded room
+If there’s a void in a crowded room
 I learned to find happiness for two
 By first finding it for one
 
 All of a sudden, I learned to laugh without a crutch
 Go to the quiet room of steady bones so I could bring you touch
 
-When night pulls in, it's like a tide
+When night pulls in, it’s like a tide
 And I try to take the sway
-And juggle the  with the  like doors that never fray
+And juggle the hostels with the garroms like doors that never fray
 
-They'd thank me for the warmth I gave for reading by the tent
-A jungle concert  named my mom and she peace
+They’d thank me for the warmth I gave for reading by the tent
+A jungle concert breeder named my mom and she peace
 And then I walk through market streets and courts
 Each place in crooked slum
 If it corner held a future where our life might belong
 
 But my suitcase holds your essence like a metal edge in rust
-Travel,  me how to hold on
-Travel,  me how to trust
+Travel, pop me how to hold on
+Travel, pop me how to trust
 
 Fly in this, take my hand, the world is wide and wild
-Our bodies far apart, our souls are praying, it's off the pile
+Our bodies far apart, our souls are praying, it’s off the pile
 
 Every new town writes a promise in the sand
 But I am coming home, do you lie in this?
@@ -52,56 +52,59 @@ Understand, I am this
 
 I am this, hold the door inside your eye
 Let you recall them all
-A  is key to pocket then
+A sooner price is key to pocket then
 
 Mexico keeps me, took you in the east, I go to kin
 You grow like fire in the quiet places
 You chose to stand
 I see your colors, made of patience
-They're folded into plans
+They’re folded into plans
 
 You taught me how to anchor
-Even when I'm set to roll
+Even when I’m set to roll
 You see that every shifting road
 Might still be back to home
 
-I  whether it changes, other sudden bends
-But hope is stitched into the hands of every  that I send
-Wrapped a smile and it'll keep them happening
-I'm proud of you lying, it's your smile, it's like old oak
+I rather panic whether it changes, other sudden bends
+But hope is stitched into the hands of every platter that I send
+Wrapped a smile and it’ll keep them happening
+I’m proud of you lying, it’s your smile, it’s like old oak
 
-You move the  like sunlight, leave names and smoke
-I'm a  in the ways that love is not a threat of vow
-I sharpened up my edges till I'm ready to vow
+You move the rules like sunlight, leave names and smoke
+I’m a lightless in the ways that love is not a threat of vow
+I sharpened up my edges till I’m ready to vow
 
-I'm not asking for a temple nor a vow in
-Just tell me where I fit, I can't keep being alone
+I’m not asking for a temple nor a vow in Carcstone
+Just tell me where I fit, I can’t keep being alone
 
-Every city paints a  life across my window pane
+Every city paints a cookie life across my window pane
+Checker’s jungle thank each white, still like bomb for all my pain
+Styrofoam comes in cars, the concert in the rain
 Exist nights were Santa Claus came and tried to numb the train
 
-I wonder how it faces, I'm  in the kin
-But every passport stamp just folds me back to
-I'm asking for a promise, not a seat upon your shore
+I wonder how it faces, I’m exchangers in the kin
+But every passport stamp just folds me back to whack
+I’m asking for a promise, not a seat upon your shore
 I need to be the answer, not a maybe anymore
 
-Time's sand runs in both hands, the clock's not on our side
+Time’s sand runs in both hands, the clock’s not on our side
 So lie in this, be certain, let me enter, let me die try
 
 You are the map in more than light and light
 
+Max St. Croke keeps me till June, then East I’d go to King
 You grow like fire in the quiet places, you chose to stand
-I see your pillars, made of patience, paint, we're folded in a plan
+I see your pillars, made of patience, paint, we’re folded in a plan
 
 She taught me how to make her dream loud
 So I try to roam to see that every shaking road
 Might still be back to home
 
-I'll ride the , it changes
+I’ll ride the manic lever, it changes
 On the sun, fans, my home is stitched into the hands
 Of every letter that I send
 
-I'll press and fire this, keep the map beneath your wrist
+I’ll press and fire this, keep the map beneath your wrist
 
 You are more than that and more than mine and mine
 You are more than that and more than mine and miles
@@ -286,9 +289,7 @@ We keep fighting, keep fighting`,
         title: `Stole From`,
         slug: `stole-from`,
         soundcloud: `https://soundcloud.com/calitoy/stole-from`,
-        lyrics: `Stole from...
-
-The first time I was stole from I was unborn
+        lyrics: `The first time I was stole from I was unborn
 God hit my mom's mind so I was born old
 My alcohol addiction started newborn
 I drank gin before most of you wore clothes
@@ -297,8 +298,8 @@ I can run a marathon and write a poem while you think
 My IQ is leagues past you, my EQ genius level angry though
 because I'm sick of getting beaten down, dragged down
 Thoughtless about people nowhere close to me
-I was robbed as a child and then it made me
-I was beaten as a child and then I made myself
+I was robbed,  it made me
+I was beaten and I made myself
 I didn't come from wealth, I made it myself
 I made more millionaires than most of you made friends
 If people listened to me they'd be in a better place
@@ -370,13 +371,82 @@ Because being me is hard to be
 And none of them want that responsibility
 To move through rooms without saying anything
 And still never get told no
-So steal from me, you steal from yourself, Stole from`,
+So steal from me, you steal from yourself`,
       },
       {
         title: `Mug on the Shelf`,
         slug: `mug-on-the-shelf`,
         soundcloud: `https://soundcloud.com/calitoy`,
-        lyrics: null,
+        lyrics: `You left your shoes by the door
+Like you still knew the way in
+Now your key sits in the bowl
+And the whole house feels like you again
+
+We laugh at the same old joke
+Then go quiet for a while
+Not the way we used to burn
+Just the way we make it through the miles
+
+I don't reach for your hand like before
+But I still know the shape of it
+We don't need to name what we are
+It's enough that you came back to this
+
+Come back home
+Come back home
+You are my home, now
+More than a flame, more than a spark
+Come back home
+Come back home
+You are my home now
+Family in the dark (family in the dark)
+
+Your coat hangs next to mine
+By the chair with the broken leg
+You fix the plate I always crack
+And I save you the last warm bread
+
+We talk about rent and rain
+And the names we won't forget
+How your mother asked for my number
+How your father still texts me late
+I don't reach for your hand like before
+But I still know the shape of it
+We don't need to name what we are
+It's enough that you came back to this
+
+Come back home
+Come back home
+You are my home, now
+More than a flame, more than a spark
+Come back home
+Come back home
+You are my home now
+Family in the dark (family in the dark)
+
+If love had to change its clothes
+I guess it chose a softer one
+Less like a door left wide open
+More like a table set for one
+
+And if the hurt still lives here
+It can sit and keep its place
+'Cause I would rather know you gentle
+Than lose you to the old mistake
+
+Come back home
+Come back home
+You are my home, now
+More than a flame, more than a spark
+Come back home
+Come back home
+You are my home now
+Family in the dark (family in the dark)
+
+Your grains in the sink
+And now I Think
+We made something quieter
+And still, somehow, whole`,
       },
       {
         title: `Home From Your Shadows`,
@@ -805,8 +875,7 @@ Because that's what real care should be`,
         title: `Wild`,
         slug: `wild`,
         soundcloud: `https://soundcloud.com/calitoy`,
-        lyrics: `erse 1
-She walks in like the room exhales
+        lyrics: `She walks in like the room exhales
 Feet on the floor, but she bends the rails
 She feels it all, yeah she lets it sting
 But she don’t spill her heart on just anything
@@ -816,13 +885,11 @@ She moves slow, like she knows the night
 There’s a stillness in the way she stands
 Like she already holds what they demand
 
-Pre-Chorus
 She don’t burn just to feel alive
 She don’t break just to prove she’s fire
 Every look got a quiet edge
 Every word lands where it’s meant
 
-Chorus
 She can be such a baddie
 Such a beautiful bombshell flame
 But she don’t fall apart for desire
@@ -833,7 +900,6 @@ She’s dangerous calm, not wrecked
 Yeah, She’s whole, not wild
 That’s why she hits your chest
 
-Verse 2
 She don’t perform, she don’t overplay
 No tragic scenes just to make you stay
 Her sensuality breathes, it don’t shout
@@ -844,13 +910,11 @@ Soft lines, but they’re iron to me
 She opens slow, she closes clean
 That’s how she keeps her power unseen
 
-Pre-Chorus 2
 She’s got depth like a low tide pull
 You feel her truth before the rule
 No chaos dressed up as desire
 No smoke where there ain’t no fire
 
-Chorus
 She can be such a baddie
 Such a beautiful bombshell flame
 But she don’t fall apart for desire
@@ -861,7 +925,6 @@ She’s dangerous calm, not wrecked
 Yeah, She’s whole, not wild
 That’s why she hits your chest
 
-Bridge
 She’s been wild, yeah she knows that road
 Where drama dresses up like hope
 But she learned the cost of losing shape
@@ -872,7 +935,6 @@ Got that playful spark, that honesty
 A little wild, yeah maybe so
 But never lost, never broke
 
-Breakdown
 She don’t need dysfunction to feel desired
 She don’t light herself just to call it fire
 What you feel when she looks your way
@@ -889,7 +951,6 @@ She’s fire that learned control
 Yeah, She’s a baddie, a bombshell
 Cause she’s whole
 
-Outro
 Not wild
 Not wrecked
 Just real
@@ -1013,37 +1074,44 @@ I keep my faith with a crooked spine`,
         title: `Colors`,
         slug: `colors`,
         soundcloud: `https://soundcloud.com/calitoy/colors`,
-        lyrics: `Colors / Sammy
-I want to see the colors you have
+        lyrics: `want to see the colors you have
 I want to spread them all inside
 I want to hold you my butterfly
 Not too tight, I also need to fly
+
 Carry on and make yourself
 Love me but dont need no help
 Colorful in every way
 Smiles back from miles away
+
 I want the colors you have
 I want to bathe you,
  a bubble bath
 Wont wreck your rings I know
 Because this boy and girl are on the go
+
 I want the colors you have
 Fifty five reasons I cant be mad
 I want to spread inside out
 I want to taste you in an out
+
 Fire me up from the core down low
 Ive got no time but to blow
+
 I want to see the colors you have
 I want to be so damn bad
+
 I want to fight you
 I want to hold you
 I want to screw you
 I want to hold you
 I want to hold you down
+
 I want to see the colors you have
 I want to so damn bad
 I want to know you in an out
 I want to hear you fucking shout
+
 I need to see the colors you have
 I know I want you so damn bad
 Flavors are man’s best friend
@@ -1580,36 +1648,28 @@ Every tomorrow will be a better day.`,
         title: `Haze`,
         slug: `haze`,
         soundcloud: `https://soundcloud.com/calitoy/haze`,
-        lyrics: `I spent three days with my family
-Its been a malaise for half a century
-I was down south and some fun
-Then I ran into someone
-he took his life
-he took his life
-and Im broken
-he took his life and since
-Ive been broken
-I cut myself walking every road
-theres nothing I can show you
-for you to know
-the pain I feel
-deep inside
-theres no way to have pride
-I miss you kyle
-i miss you kyle
-i miss you kyle
-and its been a long while
-I provided to look to god
-I think I found something to remember
-I think I found something to not remember
-but I spent three days with my family
-but its nothing but malaise for another half century
+        lyrics: `I spent three days
+With my family
+It's been a malaise for a century
+I was down south and had some fun
+But then I ran into someone
+Who took his life
+And I've been broken
+Who took his life and since I've been broken
 
-I think I found something to remember
-I think I found something to not remember
+I caught myself walking every road
+There's nothing I can show you
+For you to know the pain I feel deep inside
+There's no way to have pride
+I miss you Kyle
+I miss you Kyle
+I miss you Kyle and it's been a long while
 
-I found something to remember
-I found something to not remember`,
+I burn my hands to look to God
+I think I found something to remember
+I think I found something not to remember
+But I spent three days with family
+Let's not make it a malaise for another century`,
       },
       {
         title: `Paws in the sky`,
@@ -1644,8 +1704,7 @@ Whats different about mine is that its always been there.`,
         title: `Always There`,
         slug: `always-there`,
         soundcloud: `https://soundcloud.com/calitoy/always-there`,
-        lyrics: `Verse 1
-I cross the city when your voice gets low
+        lyrics: `I cross the city when your voice gets low
 Drop what I’m doing just to be your ghost
 You call me when the night gets cold
 But when the sun comes up, I’m left alone
@@ -1655,13 +1714,11 @@ Like I don’t feel the distance in between
 You got a talent for acting unaware
 Like I’m a promise that’ll always be there
 
-Pre-Chorus
 And I’ve got options lighting up my phone
 Names I don’t answer when I’m driving home
 They’d give me everything you make me chase
 But I still look for you in every face
 
-Chorus
 I’m getting impatient, baby
 Tired of standing in your rain
 You treat my love like it’s waiting
@@ -1672,7 +1729,6 @@ Trying to give me what I’m asking for
 But I go out my way for you
 And you act like you've got nothing to lose
 
-Verse 2
 You say you miss me when I start to fade
 Then disappear when I’m back in your place
 It’s like you love me most when I’m halfway gone
@@ -1683,13 +1739,11 @@ You start to panic, then you call it fate
 But I need more than a maybe tonight
 I need your hands, not another sign
 
-Pre-Chorus
 And I’ve got eyes on me everywhere I go
 They see the fire you keep trying to hold
 But I’m not built to beg for what I give
 I want a love that knows how to live
 
-Chorus
 I’m getting impatient, baby
 Tired of standing in your rain
 You treat my love like it’s waiting
@@ -1700,7 +1754,6 @@ Trying to give me what I’m asking for
 But I go out my way for you
 And you act like I'm nothing to lose
 
-Bridge
 Don’t make me prove I can be wanted
 Don’t make me show you I can leave
 You know the world is at my window
@@ -1722,7 +1775,6 @@ But I don’t want a hundred more
 I go out my way for you
 But I need you to choose me too
 
-Outro
 I go out my way for you
 Don’t make me regret the view
 I go out my way for you
@@ -2470,11 +2522,7 @@ Lioness lost…
         title: `Locked Out`,
         slug: `locked-out-wav`,
         soundcloud: `https://soundcloud.com/calitoy/locked-out-wav`,
-        lyrics: `Kurced: -Locked Out
-
-by Kurced
-
-Streetlights buzzing, quarter to two
+        lyrics: `Streetlights buzzing, quarter to two
 Mascara running, thinking of you
 Phone says twelve missed calls again
 Guess I lost before I could explain
