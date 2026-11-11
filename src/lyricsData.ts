@@ -940,7 +940,6 @@ She don’t light herself just to call it fire
 What you feel when she looks your way
 Is integration, not decay
 
-Final Chorus
 She can be such a baddie
 Such a once-in-a-room kind of pull
 Not an emotional wreck for attention
@@ -1764,7 +1763,6 @@ I’m just asking you to care
 Before the man who always showed up
 Stops being always there
 
-Final Chorus
 I’m getting impatient, baby
 I can’t keep loving you in place
 You treat my heart like it’s waiting
@@ -1796,40 +1794,123 @@ But I won’t always wait for you`,
         title: `Be Alone`,
         slug: `be-alone`,
         soundcloud: `https://soundcloud.com/calitoy/be-alone`,
-        lyrics: `Verse 1 All you do is disappoint me All you do is cause me pain No pleasure that you grant me Could ever fix this causal chain
-You feign ignorance Like you don’t already know Every time you promise me You never fucking show
+        lyrics: `All you do is disappoint me
+All you do is cause me pain
+No pleasure that you grant me
+Could ever fix this causal chain
+You feign ignorance
+Like you don’t already know
+Every time you promise me
+You never fucking show
 
-Pre-Chorus But what you did was show me Who you are beneath the spell What you did was break me Then ask me not to tell
-You turned something sacred Into something on a shelf You degraded every meaning Till you were just a toy yourself
+But what you did was show me
+Who you are beneath the spell
+What you did was break me
+Then ask me not to tell
+You turned something sacred
+Into something on a shelf
+You degraded every meaning
+Till you were just a toy yourself
 
-Chorus All you do is disappoint me All you do is make it worse You claim a higher purpose But you’re nothing but a curse
-You said you were the reason You said you were the door But you’re not some divine answer You’re just a toy and nothing more
-So go fuck yourself Go fuck yourself Find a roof somewhere else Store your life with someone else
-Above all, this is what you want You always wanted to be alone So now be alone Now be alone
+All you do is disappoint me
+All you do is make it worse
+You claim a higher purpose
+But you’re nothing but a curse
+You said you were the reason
+You said you were the door
+But you’re not some divine answer
+You’re just a toy and nothing more
+So go fuck yourself
+Go fuck yourself
+Find a roof somewhere else
+Store your life with someone else
+Above all, this is what you want
+You always wanted to be alone
+So now be alone
+Now be alone
 
-Verse 2 I carried all your shadows Like they were mine to save I gave you all my mercy And you turned it into rage
-You called me your champion Then left me in the dirt You begged for my protection Then taught me how to hurt
-You don’t get to haunt me Like I’m still on your side You don’t get to break me Then crawl back inside
+I carried all your shadows
+Like they were mine to save
+I gave you all my mercy
+And you turned it into rage
+You called me your champion
+Then left me in the dirt
+You begged for my protection
+Then taught me how to hurt
+You don’t get to haunt me
+Like I’m still on your side
+You don’t get to break me
+Then crawl back inside
 
-Pre-Chorus Because what you did was show me There’s nothing left to hold Your love was just a costume And your heart was bought and sold
-You turned every promise Into another empty room Now I’m done being the altar For the things that bury you
+Because what you did was show me
+There’s nothing left to hold
+Your love was just a costume
+And your heart was bought and sold
+You turned every promise
+Into another empty room
+Now I’m done being the altar
+For the things that bury you
 
-Chorus All you do is disappoint me All you do is make it worse You claim a higher purpose But you’re nothing but a curse
-You said you were the reason You said you were the door But you’re not some divine answer You’re just a toy and nothing more
-So go fuck yourself Go fuck yourself Find a roof somewhere else Store your life with someone else
-Above all, this is what you want You always wanted to be alone So now be alone Now be alone
+All you do is disappoint me
+All you do is make it worse
+You claim a higher purpose
+But you’re nothing but a curse
+You said you were the reason
+You said you were the door
+But you’re not some divine answer
+You’re just a toy and nothing more
+So go fuck yourself
+Go fuck yourself
+Find a roof somewhere else
+Store your life with someone else
+Above all, this is what you want
+You always wanted to be alone
+So now be alone
+Now be alone
 
-Bridge And I won’t come running When the silence starts to burn Your champion is gone now Your champion won’t return
-I won’t be the shelter I won’t be the war I won’t be the hand You keep crawling toward
-You made yourself the victim You made me play the throne But every crown you handed me Was made of fucking stone
-So take back every weapon Take back every lie Take back every broken night You made me justify
-Final Chorus All you do is disappoint me All you do is cause me pain No pleasure you could grant me Could ever clean the stain
-You claim a higher purpose But you’re not more Than a toy on the floor Than a toy on the floor
-So go fuck yourself Go fuck yourself Find a roof somewhere else Store your life with someone else
-Above all, this is what you want You always wanted to be alone So now be alone Now be alone
-Outro Now be alone All by yourself Your champion will not return
-Now be alone All by yourself Make yourself Break yourself Save yourself
-Because I won’t Because I won’t Because I won’t return`,
+And I won’t come running
+When the silence starts to burn
+Your champion is gone now
+Your champion won’t return
+I won’t be the shelter
+I won’t be the war
+I won’t be the hand
+You keep crawling toward
+You made yourself the victim
+You made me play the throne
+But every crown you handed me
+Was made of fucking stone
+So take back every weapon
+Take back every lie
+Take back every broken night
+You made me justify
+All you do is disappoint me
+All you do is cause me pain
+No pleasure you could grant me
+Could ever clean the stain
+You claim a higher purpose
+But you’re not more
+Than a toy on the floor
+Than a toy on the floor
+So go fuck yourself
+Go fuck yourself
+Find a roof somewhere else
+Store your life with someone else
+Above all, this is what you want
+You always wanted to be alone
+So now be alone
+Now be alone
+Now be alone
+All by yourself
+Your champion will not return
+Now be alone
+All by yourself
+Make yourself
+Break yourself
+Save yourself
+Because I won’t
+Because I won’t
+Because I won’t return`,
       },
       {
         title: `Burn It`,
