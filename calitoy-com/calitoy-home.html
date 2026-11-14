@@ -87,6 +87,11 @@
       .crest-row { flex-wrap: wrap; justify-content: center; }
     }
     @media (max-width: 640px) { .crest-badge { width: 88px; } .graffiti-mark { height: 46px; } }
+    /* Hero lockup: crest left, CALITOY logo right filling the remaining width; tagline on its own line below */
+    .crest-row { flex-wrap: wrap; justify-content: flex-start; }
+    .crest-row .crest-badge { flex: 0 0 auto; }
+    .crest-row .graffiti-mark { flex: 1 1 0; min-width: 0; width: 100%; height: auto; max-width: none; }
+    .crest-row .tagline-center { flex: 0 0 100%; min-width: 0; }
     .tagline { font-family: var(--display); font-size: clamp(1rem, 2.6vw, 1.3rem); color: #fff; margin-top: 0.4rem; }
     .tagline em { color: var(--violet); font-style: normal; }
     .lede { color: rgba(255,255,255,0.55); max-width: 58ch; font-size: 0.95rem; margin-top: 0.5rem; }
@@ -237,9 +242,9 @@
       <div class="hero-grid hero-grid-identities">
         <div>
           <div class="crest-row">
+            <img src="/assets/love-louder-crest.png" alt="Love Louder — Calitoy crest" class="crest-badge" loading="eager" data-testid="img-love-louder-crest">
             <img src="/assets/calitoy-logo-transparent.png?v=1" alt="CALITOY" class="graffiti-mark" width="1230" height="428" loading="eager" decoding="async" data-testid="img-graffiti-mark">
             <p class="tagline tagline-center">One name. <em>Five crafts.</em> Every door from here.</p>
-            <img src="/assets/love-louder-crest.png" alt="Love Louder — Calitoy crest" class="crest-badge" loading="eager" data-testid="img-love-louder-crest">
           </div>
           <p class="lede">Agency, music, consulting, the book, and the artist's stage — the same hands did all of it. Pick a door above.</p>
         </div>
