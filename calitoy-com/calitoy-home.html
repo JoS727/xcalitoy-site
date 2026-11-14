@@ -196,6 +196,23 @@
     .card-wide .card-desc { flex: 1; }
     .card-wide { max-width: 100%; }
   </style>
+
+<style id="calitoy-sitemenu">
+.site-menu-bar{position:sticky;top:0;z-index:900;background:rgba(8,9,18,0.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(216,182,106,0.18);}
+.site-menu-head{display:flex;align-items:center;gap:.6rem;max-width:1200px;margin:0 auto;padding:.32rem .9rem;}
+.menu-arrow{background:none;border:1px solid rgba(216,182,106,.35);color:#d8b46a;width:26px;height:26px;border-radius:7px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.7rem;transition:transform .25s ease, background .2s;flex:none;}
+.menu-arrow:hover{background:rgba(216,182,106,.12);}
+.site-menu-bar.collapsed .menu-arrow{transform:rotate(-90deg);}
+.menu-label{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(228,196,116,.75);}
+.site-menu{display:flex;flex-wrap:nowrap;gap:0;margin-left:.4rem;overflow-x:auto;scrollbar-width:none;max-height:60px;transition:max-height .25s ease, opacity .2s;opacity:1;}
+.site-menu::-webkit-scrollbar{display:none;}
+.site-menu-bar.collapsed .site-menu{max-height:0;opacity:0;pointer-events:none;overflow:hidden;}
+.site-menu a{flex:none;color:rgba(255,255,255,.72);text-decoration:none;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;padding:.42rem .7rem;white-space:nowrap;border-left:1px solid rgba(216,182,106,.12);}
+.site-menu a:first-child{border-left:0;}
+.site-menu a:hover{color:#d8b46a;background:rgba(216,182,106,.06);}
+.site-menu a.active{color:#ff8a2a;box-shadow:inset 0 -2px 0 #ff8a2a;}
+@media (max-width:640px){.menu-label{display:none;}}
+</style>
 </head>
 <body>
   <div class="aurora" aria-hidden="true"></div>
@@ -212,6 +229,7 @@
       </nav>
     </div>
   </header>
+<div class="site-menu-bar" id="site-menu-bar"><div class="site-menu-head"><button class="menu-arrow" aria-expanded="true" aria-label="Hide menu">▼</button><span class="menu-label">Menu</span><nav class="site-menu" aria-label="Site menu"><a href="index.html">Hub</a><a href="casting/">Casting</a><a href="content/">Content</a><a href="customs/">Customs</a><a href="merch/">Merch</a><a href="stamp/">Stamp</a></nav></div></div>
 
   <main class="wrap">
     <!-- ============ ABOVE THE FOLD: the six doors ============ -->
@@ -294,10 +312,10 @@
           <span class="card-desc">The gateway — every capability, every property, tunneled into one platform.</span>
           <span class="card-go">Enter CORE <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
-        <a href="https://stamp.calitoy.com/" class="card">
+        <a href="https://calitoy.com/stamp/" class="card">
           <img class="card-thumb" src="/assets/cards/stamp.jpg" alt="" loading="lazy" aria-hidden="true">
           <span class="card-kind">The Platform</span>
-          <span class="card-name">Calitoy Stamp <span class="dom">stamp.calitoy.com</span></span>
+          <span class="card-name">Calitoy Stamp <span class="dom">calitoy.com/stamp</span></span>
           <span class="card-desc">A musician's fastest access to an online living — the platform for the artist's own economy.</span>
           <span class="card-go">Open Stamp <span class="arrow" aria-hidden="true">&rsaquo;</span></span>
         </a>
@@ -386,5 +404,30 @@
       <span><a href="https://agency.calitoy.com">Agency</a> · <a href="https://calitoycore.com">Core</a> · <a href="/full.html">Full Hub</a></span>
     </div>
   </footer>
+
+<script id="calitoy-sitemenu-js">
+(function(){
+  document.addEventListener('click', function(e){
+    var bar = document.querySelector('.site-menu-bar');
+    if (!bar) return;
+    if (e.target.closest('.menu-arrow')) {
+      bar.classList.toggle('collapsed');
+      try { localStorage.setItem('calitoy-menu', bar.classList.contains('collapsed') ? 'c' : 'o'); } catch(_) {}
+    }
+  });
+  try {
+    var st = localStorage.getItem('calitoy-menu');
+    if (st === 'c') {
+      var bar = document.querySelector('.site-menu-bar');
+      if (bar) bar.classList.add('collapsed');
+    }
+  } catch(_) {}
+  var here = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.site-menu a').forEach(function(a){
+    var href = a.getAttribute('href') || '';
+    if (href === here) a.classList.add('active');
+  });
+})();
+</script>
 </body>
 </html>
