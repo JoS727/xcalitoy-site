@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kurced | PROTÉGÉ Collection — Official Merch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=UnifrakturMaguntia&family=Inter:wght@300;400;500;600&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0008;
+      --purple: #8b2fc9;
+      --magenta: #c026d3;
+      --purple-dim: rgba(139,47,201,0.15);
+      --magenta-dim: rgba(192,38,211,0.12);
+      --card-bg: #110012;
+      --border: rgba(139,47,201,0.3);
+      --border-bright: rgba(192,38,211,0.7);
+      --white: #f0e8ff;
+      --grey: rgba(240,232,255,0.55);
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    /* NAV */
+    nav {
+      position: fixed; top:0; left:0; right:0; z-index:100;
+      background: rgba(10,0,8,0.92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo img {
+      height: 38px;
+      filter: drop-shadow(0 0 8px var(--magenta)) drop-shadow(0 0 20px var(--purple));
+    }
+    .nav-links { display:flex; gap:2rem; }
+    .nav-links a {
+      color: var(--grey); text-decoration:none; font-size:0.82rem;
+      letter-spacing:2.5px; text-transform:uppercase; transition:color 0.25s, text-shadow 0.25s;
+    }
+    .nav-links a:hover { color:var(--white); text-shadow:0 0 10px var(--magenta); }
+    .nav-cart {
+      border:1px solid var(--border-bright); color:var(--magenta);
+      padding:0.5rem 1.25rem; border-radius:3px; font-size:0.8rem; letter-spacing:2px;
+      text-decoration:none; transition:all 0.25s;
+      text-shadow:0 0 8px var(--magenta);
+    }
+    .nav-cart:hover { background:var(--magenta); color:#0a0008; box-shadow:0 0 20px var(--magenta); text-shadow:none; }
+    /* HERO */
+    .hero {
+      min-height:100vh; display:flex; flex-direction:column; align-items:center;
+      justify-content:center; text-align:center; padding:8rem 2rem 5rem;
+      position:relative; overflow:hidden;
+      background: radial-gradient(ellipse at 50% 60%, rgba(139,47,201,0.18) 0%, transparent 65%),
+                  radial-gradient(ellipse at 20% 30%, rgba(192,38,211,0.1) 0%, transparent 50%),
+                  var(--bg);
+    }
+    .hero::before {
+      content:''; position:absolute; inset:0; pointer-events:none;
+      background: repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(139,47,201,0.03) 80px, rgba(139,47,201,0.03) 81px);
+    }
+    .hero-crest {
+      width: 220px; height: auto; margin-bottom:2.5rem;
+      filter: drop-shadow(0 0 25px var(--purple)) drop-shadow(0 0 55px var(--magenta));
+      animation: crестpulse 4s ease-in-out infinite;
+      position:relative; z-index:1;
+    }
+    @keyframes crестpulse {
+      0%,100% { filter: drop-shadow(0 0 25px var(--purple)) drop-shadow(0 0 55px var(--magenta)); }
+      50%      { filter: drop-shadow(0 0 40px var(--purple)) drop-shadow(0 0 90px var(--magenta)); }
+    }
+    .hero-collection {
+      font-family:'Cinzel Decorative', serif; font-size:0.75rem; letter-spacing:6px;
+      color:var(--magenta); text-transform:uppercase; margin-bottom:0.75rem;
+      text-shadow:0 0 15px var(--magenta); position:relative; z-index:1;
+    }
+    .hero h1 {
+      font-family:'UnifrakturMaguntia', serif;
+      font-size: clamp(3.5rem,10vw,7rem);
+      color:var(--white); letter-spacing:4px; line-height:1;
+      text-shadow: 0 0 20px var(--purple), 0 0 50px var(--magenta), 0 0 80px rgba(192,38,211,0.4);
+      margin-bottom:1.5rem; position:relative; z-index:1;
+    }
+    .hero-pillars {
+      display:flex; flex-wrap:wrap; justify-content:center; gap:1.2rem;
+      margin-bottom:2.5rem; position:relative; z-index:1;
+    }
+    .hero-pillars span {
+      font-size:0.72rem; letter-spacing:3px; color:var(--grey);
+      text-transform:uppercase; border-left:1px solid var(--border); padding-left:1.2rem;
+    }
+    .hero-pillars span:first-child { border-left:none; padding-left:0; }
+    .hero-cta { display:flex; gap:1rem; position:relative; z-index:1; }
+    .btn-primary {
+      background: linear-gradient(135deg,var(--purple),var(--magenta));
+      color:#0a0008; padding:0.9rem 2.5rem; font-weight:600;
+      letter-spacing:2px; font-size:0.85rem; text-transform:uppercase;
+      border:none; border-radius:3px; cursor:pointer; text-decoration:none;
+      transition:all 0.3s; box-shadow:0 0 20px rgba(192,38,211,0.4);
+    }
+    .btn-primary:hover { box-shadow:0 0 40px var(--magenta), 0 0 70px rgba(139,47,201,0.5); transform:translateY(-2px); }
+    .btn-ghost {
+      background:transparent; color:var(--white); padding:0.9rem 2.5rem;
+      letter-spacing:2px; font-size:0.85rem; text-transform:uppercase;
+      border:1px solid var(--border-bright); border-radius:3px; cursor:pointer;
+      text-decoration:none; transition:all 0.3s;
+    }
+    .btn-ghost:hover { background:var(--purple-dim); border-color:var(--purple); box-shadow:0 0 20px var(--purple-dim); }
+    /* DIVIDER */
+    .divider {
+      width:100%; height:1px; margin:0;
+      background:linear-gradient(90deg, transparent, var(--purple), var(--magenta), var(--purple), transparent);
+      box-shadow:0 0 12px var(--purple);
+    }
+    /* COLLECTION HEADER */
+    .collection-header {
+      text-align:center; padding:5rem 2rem 3rem;
+    }
+    .collection-header .eyebrow {
+      font-size:0.72rem; letter-spacing:5px; color:var(--magenta);
+      text-transform:uppercase; margin-bottom:0.75rem; display:block;
+      text-shadow:0 0 10px var(--magenta);
+    }
+    .collection-header h2 {
+      font-family:'UnifrakturMaguntia', serif;
+      font-size: clamp(2rem,6vw,3.5rem);
+      text-shadow:0 0 15px var(--purple), 0 0 35px var(--magenta);
+      margin-bottom:0.75rem;
+    }
+    .collection-header p { color:var(--grey); max-width:480px; margin:0 auto; font-size:0.9rem; }
+    /* PRODUCTS */
+    .products { max-width:1380px; margin:0 auto; padding:2rem 2rem 6rem; }
+    .products-grid {
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:1.75rem;
+    }
+    .product-card {
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      border-radius:6px; overflow:hidden; transition:all 0.35s;
+      position:relative;
+    }
+    .product-card::before {
+      content:''; position:absolute; inset:0; border-radius:6px; pointer-events:none;
+      box-shadow:inset 0 0 0 1px transparent; transition:box-shadow 0.35s;
+    }
+    .product-card:hover { transform:translateY(-6px); border-color:var(--magenta); }
+    .product-card:hover::before { box-shadow:0 0 30px rgba(192,38,211,0.25), inset 0 0 30px rgba(192,38,211,0.04); }
+    .product-img-wrap {
+      aspect-ratio:1; background:linear-gradient(145deg,#0d000e,#1a0018);
+      display:flex; align-items:center; justify-content:center;
+      position:relative; overflow:hidden;
+    }
+    .product-img-wrap::after {
+      content:''; position:absolute; inset:0; pointer-events:none;
+      background:radial-gradient(circle at 50% 50%, rgba(139,47,201,0.08) 0%, transparent 70%);
+    }
+    .product-img-wrap img {
+      width:70%; height:70%; object-fit:contain; position:relative; z-index:1;
+      filter: drop-shadow(0 0 12px var(--purple)) drop-shadow(0 0 28px rgba(192,38,211,0.4));
+      transition:filter 0.35s, transform 0.35s;
+    }
+    .product-card:hover .product-img-wrap img {
+      filter: drop-shadow(0 0 20px var(--purple)) drop-shadow(0 0 45px var(--magenta));
+      transform:scale(1.06);
+    }
+    .product-badge {
+      position:absolute; top:0.85rem; left:0.85rem; z-index:2;
+      background:linear-gradient(135deg,var(--purple),var(--magenta));
+      color:#0a0008; font-size:0.65rem; font-weight:700;
+      letter-spacing:2px; text-transform:uppercase;
+      padding:0.25rem 0.6rem; border-radius:2px;
+    }
+    .product-info { padding:1.4rem; }
+    .product-info h3 {
+      font-family:'Cinzel Decorative', serif;
+      font-size:0.85rem; letter-spacing:1.5px; margin-bottom:0.4rem;
+      color:var(--white);
+    }
+    .product-desc { color:var(--grey); font-size:0.8rem; margin-bottom:1.1rem; line-height:1.5; }
+    .size-selector { display:flex; gap:0.4rem; margin-bottom:1.1rem; flex-wrap:wrap; }
+    .size-btn {
+      background:transparent; border:1px solid var(--border);
+      color:var(--grey); font-size:0.7rem; letter-spacing:1px;
+      padding:0.3rem 0.6rem; border-radius:2px; cursor:pointer; transition:all 0.2s;
+    }
+    .size-btn:hover, .size-btn.active {
+      border-color:var(--magenta); color:var(--magenta);
+      box-shadow:0 0 8px rgba(192,38,211,0.3);
+    }
+    .product-footer { display:flex; align-items:center; justify-content:space-between; }
+    .price {
+      font-size:1.2rem; font-weight:600; color:var(--magenta);
+      text-shadow:0 0 10px rgba(192,38,211,0.5);
+    }
+    .add-cart {
+      background:transparent; border:1px solid var(--border-bright);
+      color:var(--magenta); font-size:0.75rem; letter-spacing:2px;
+      text-transform:uppercase; padding:0.55rem 1.1rem; border-radius:2px;
+      cursor:pointer; transition:all 0.25s;
+      text-shadow:0 0 6px rgba(192,38,211,0.5);
+    }
+    .add-cart:hover { background:var(--magenta); color:#0a0008; box-shadow:0 0 18px var(--magenta); text-shadow:none; }
+    /* FOOTER */
+    footer {
+      background:#070006; border-top:1px solid var(--border);
+      padding:4rem 2rem 2.5rem; text-align:center;
+    }
+    .footer-crest {
+      width:70px; margin-bottom:1.5rem;
+      filter:drop-shadow(0 0 12px var(--purple)) drop-shadow(0 0 28px var(--magenta));
+    }
+    .footer-pillars {
+      display:flex; flex-wrap:wrap; justify-content:center; gap:1rem;
+      margin-bottom:2rem;
+    }
+    .footer-pillars span {
+      font-size:0.68rem; letter-spacing:3px; color:var(--grey); text-transform:uppercase;
+    }
+    .footer-pillars span::after { content:'·'; margin-left:1rem; opacity:0.3; }
+    .footer-pillars span:last-child::after { content:''; }
+    .footer-rose { width:120px; margin:0 auto 1.5rem; opacity:0.4; }
+    .footer-copy { color:rgba(240,232,255,0.3); font-size:0.75rem; letter-spacing:1px; }
+    .footer-copy a { color:var(--purple); text-decoration:none; }
+    /* RESPONSIVE */
+    @media(max-width:768px) {
+      .nav-links { display:none; }
+      .hero-crest { width:160px; }
+      .products-grid { grid-template-columns:1fr 1fr; gap:1rem; }
+      .product-info h3 { font-size:0.75rem; }
+    }
+    @media(max-width:480px) {
+      .products-grid { grid-template-columns:1fr; }
+      .hero-cta { flex-direction:column; align-items:center; }
+      .btn-primary, .btn-ghost { width:220px; text-align:center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="../../assets/branding/svg/All_Brand_Logos_SVG/Kurced/Brand_Color/Wordmark.svg" alt="Kurced">
+    </a>
+    <div class="nav-links">
+      <a href="#collection">Collection</a>
+      <a href="#products">Shop</a>
+      <a href="../">CalitoyCorp</a>
+    </div>
+    <a href="#cart" class="nav-cart">Cart (0)</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="hero-collection">PROTÉGÉ Collection</span>
+    <img
+      src="../../assets/branding/png/All_Brand_Logos_PNG/Kurced/Brand_Color/Primary_Crest.png"
+      alt="Kurced Primary Crest"
+      class="hero-crest"
+    >
+    <h1>Kurced</h1>
+    <div class="hero-pillars">
+      <span>Fall Louder</span>
+      <span>Rise Darker</span>
+      <span>Live Cursed</span>
+      <span>Love Deeper</span>
+      <span>Leave a Mark</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#products" class="btn-primary">Shop the Drop</a>
+      <a href="../" class="btn-ghost">CalitoyCorp</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- COLLECTION HEADER -->
+  <div class="collection-header" id="collection">
+    <span class="eyebrow">Official Merch</span>
+    <h2>PROTÉGÉ</h2>
+    <p>Dark-forged threads for the ones who fall louder and rise darker. Every piece carries the mark.</p>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <div class="products-grid">
+
+      <!-- 1. PROTÉGÉ Tee -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <span class="product-badge">New</span>
+          <img src="../../assets/branding/png/All_Brand_Logos_PNG/Kurced/Brand_Color/Primary_Crest.png" alt="PROTÉGÉ Tee">
+        </div>
+        <div class="product-info">
+          <h3>PROTÉGÉ Tee</h3>
+          <p class="product-desc">Front chest crest print on heavyweight black cotton.</p>
+          <div class="size-selector">
+            <button class="size-btn">XS</button>
+            <button class="size-btn active">S</button>
+            <button class="size-btn">M</button>
+            <button class="size-btn">L</button>
+            <button class="size-btn">XL</button>
+            <button class="size-btn">XXL</button>
+          </div>
+          <div class="product-footer">
+            <span class="price">$38</span>
+            <button class="add-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. PROTÉGÉ Hoodie -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <span class="product-badge">New</span>
+          <img src="../../assets/branding/svg/All_Brand_Logos_SVG/Kurced/Brand_Color/Primary_Crest.svg" alt="PROTÉGÉ Hoodie">
+        </div>
+        <div class="product-info">
+          <h3>PROTÉGÉ Hoodie</h3>
+          <p class="product-desc">Large back crest print with PROTÉGÉ sleeve text. Oversized fit.</p>
+          <div class="size-selector">
+            <button class="size-btn">XS</button>
+            <button class="size-btn active">S</button>
+            <button class="size-btn">M</button>
+            <button class="size-btn">L</button>
+            <button class="size-btn">XL</button>
+            <button class="size-btn">XXL</button>
+          </div>
+          <div class="product-footer">
+            <span class="price">$75</span>
+            <button class="add-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. PROTÉGÉ Long Sleeve -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="../../assets/branding/svg/All_Brand_Logos_SVG/Kurced/Brand_Color/Wordmark.svg" alt="PROTÉGÉ Long Sleeve">
+        </div>
+        <div class="product-info">
+          <h3>PROTÉGÉ Long Sleeve</h3>
+          <p class="product-desc">Sleeve text runs the full length of both arms.</p>
+          <div class="size-selector">
+            <button class="size-btn">XS</button>
+            <button class="size-btn active">S</button>
+            <button class="size-btn">M</button>
+            <button class="size-btn">L</button>
+            <button class="size-btn">XL</button>
+          </div>
+          <div class="product-footer">
+            <span class="price">$52</span>
+            <button class="add-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Rose Icon Tee -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="../../assets/branding/svg/All_Brand_Logos_SVG/Kurced/Brand_Color/Rose_Icon.svg" alt="Rose Icon Tee">
+        </div>
+        <div class="product-info">
+          <h3>Rose Icon Tee</h3>
+          <p class="product-desc">Minimalist rose icon on chest. Soft-wash black.</p>
+          <div class="size-selector">
+            <button class="size-btn">XS</button>
+            <button class="size-btn active">S</button>
+            <button class="size-btn">M</button>
+            <button class="size-btn">L</button>
+            <button class="size-btn">XL</button>
+          </div>
+          <div class="product-footer">
+            <span class="price">$35</span>
+            <button class="add-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Kurced Dad Hat -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="../../assets/branding/svg/All_Brand_Logos_SVG/Kurced/Brand_Color/Embroidery_Mark.svg" alt="Kurced Dad Hat">
+        </div>
+        <div class="product-info">
+          <h3>Kurced Dad Hat</h3>
+          <p class="product-desc">Embroidered rose mark. Unstructured fit, adjustable strap.</p>
+          <div class="size-selector">
+            <button class="size-btn active">One Size</button>
+          </div>
+          <div class="product-footer">
+            <span class="price">$32</span>
+            <button class="add-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Guitar Pick Necklace -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="../../assets/branding/svg/All_Brand_Logos_SVG/Kurced/Brand_Color/Rose_Signature.svg" alt="Guitar Pick Necklace">
+        </div>
+        <div class="product-info">
+          <h3>Guitar Pick Necklace</h3>
+          <p class="product-desc">Blackened metal pick engraved with the Kurced rose. 18" chain.</p>
+          <div class="size-selector">
+            <button class="size-btn active">One Size</button>
+          </div>
+          <div class="product-footer">
+            <span class="price">$28</span>
+            <button class="add-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Kurced Sticker Pack -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="../../assets/branding/svg/All_Brand_Logos_SVG/Kurced/Brand_Color/Stamp.svg" alt="Kurced Sticker Pack">
+        </div>
+        <div class="product-info">
+          <h3>Kurced Sticker Pack</h3>
+          <p class="product-desc">8 die-cut vinyl stickers. Waterproof, UV-resistant.</p>
+          <div class="size-selector">
+            <button class="size-btn active">8-Pack</button>
+          </div>
+          <div class="product-footer">
+            <span class="price">$12</span>
+            <button class="add-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Rose Stamp Hoodie -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="../../assets/branding/svg/All_Brand_Logos_SVG/Kurced/Brand_Color/Stamp.svg" alt="Rose Stamp Hoodie">
+        </div>
+        <div class="product-info">
+          <h3>Rose Stamp Hoodie</h3>
+          <p class="product-desc">All-over rose stamp print. Heavyweight fleece, drop shoulder.</p>
+          <div class="size-selector">
+            <button class="size-btn">XS</button>
+            <button class="size-btn active">S</button>
+            <button class="size-btn">M</button>
+            <button class="size-btn">L</button>
+            <button class="size-btn">XL</button>
+            <button class="size-btn">XXL</button>
+          </div>
+          <div class="product-footer">
+            <span class="price">$72</span>
+            <button class="add-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Wordmark Tee -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="../../assets/branding/png/All_Brand_Logos_PNG/Kurced/Brand_Color/Wordmark.png" alt="Wordmark Tee">
+        </div>
+        <div class="product-info">
+          <h3>Wordmark Tee</h3>
+          <p class="product-desc">Clean Kurced wordmark across the chest. Slim cut.</p>
+          <div class="size-selector">
+            <button class="size-btn">XS</button>
+            <button class="size-btn active">S</button>
+            <button class="size-btn">M</button>
+            <button class="size-btn">L</button>
+            <button class="size-btn">XL</button>
+          </div>
+          <div class="product-footer">
+            <span class="price">$34</span>
+            <button class="add-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Kurced Beanie -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="../../assets/branding/svg/All_Brand_Logos_SVG/Kurced/Brand_Color/Embroidery_Mark.svg" alt="Kurced Beanie">
+        </div>
+        <div class="product-info">
+          <h3>Kurced Beanie</h3>
+          <p class="product-desc">Ribbed-knit cuff beanie with woven Kurced tag. One size.</p>
+          <div class="size-selector">
+            <button class="size-btn active">One Size</button>
+          </div>
+          <div class="product-footer">
+            <span class="price">$28</span>
+            <button class="add-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- LOCKED OUT SINGLE -->
+  <section id="locked-out" style="padding:80px 20px; text-align:center; background: radial-gradient(ellipse at center, rgba(139,47,201,0.15) 0%, transparent 70%);">
+    <p style="font-family:'UnifrakturMaguntia',serif; color:var(--magenta); font-size:0.85rem; letter-spacing:0.3em; text-transform:uppercase; margin-bottom:12px;">New Single</p>
+    <h2 style="font-family:'UnifrakturMaguntia',serif; font-size:clamp(2.5rem,8vw,5rem); color:var(--white); text-shadow:0 0 40px rgba(192,38,211,0.8); margin-bottom:40px;">Locked Out</h2>
+
+    <div style="display:flex; flex-direction:column; align-items:center; gap:40px; max-width:600px; margin:0 auto;">
+
+      <!-- Cover Art -->
+      <div style="position:relative; width:min(340px,90vw);">
+        <img src="../../assets/branding/locked-out-cover.jpg" alt="Locked Out - Kurced"
+          style="width:100%; border-radius:8px; box-shadow:0 0 60px rgba(192,38,211,0.5), 0 0 120px rgba(139,47,201,0.3);">
+        <div style="position:absolute; top:12px; right:12px; background:rgba(0,0,0,0.7); border:1px solid var(--border); border-radius:4px; padding:4px 8px; font-size:0.65rem; letter-spacing:0.1em; color:var(--grey);">PARENTAL ADVISORY</div>
+      </div>
+
+      <!-- Custom Audio Player -->
+      <div id="player" style="width:100%; background:#110012; border:1px solid var(--border-bright); border-radius:12px; padding:24px; box-shadow:0 0 30px rgba(139,47,201,0.2);">
+        <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px;">
+          <img src="../../assets/branding/locked-out-cover.jpg" alt="" style="width:52px; height:52px; border-radius:6px; object-fit:cover;">
+          <div style="text-align:left;">
+            <div style="font-weight:600; color:var(--white); font-size:1rem;">Locked Out</div>
+            <div style="color:var(--magenta); font-size:0.8rem; letter-spacing:0.15em;">KURCED</div>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div id="progress-track" style="width:100%; height:4px; background:rgba(139,47,201,0.2); border-radius:2px; cursor:pointer; margin-bottom:12px; position:relative;">
+          <div id="progress-fill" style="height:100%; width:0%; background:linear-gradient(90deg,var(--purple),var(--magenta)); border-radius:2px; transition:width 0.1s linear;"></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:0.7rem; color:var(--grey); margin-bottom:16px;">
+          <span id="time-current">0:00</span>
+          <span id="time-total">--:--</span>
+        </div>
+
+        <!-- Controls -->
+        <div style="display:flex; align-items:center; justify-content:center; gap:24px;">
+          <button id="prev-btn" onclick="seekBack()" style="background:none; border:none; color:var(--grey); cursor:pointer; font-size:1.2rem;">⏮</button>
+          <button id="play-btn" onclick="togglePlay()"
+            style="width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg,var(--purple),var(--magenta)); border:none; color:#fff; font-size:1.4rem; cursor:pointer; box-shadow:0 0 20px rgba(192,38,211,0.5); display:flex; align-items:center; justify-content:center;">▶</button>
+          <button id="next-btn" onclick="seekForward()" style="background:none; border:none; color:var(--grey); cursor:pointer; font-size:1.2rem;">⏭</button>
+          <button onclick="toggleMute()" id="mute-btn" style="background:none; border:none; color:var(--grey); cursor:pointer; font-size:1rem; margin-left:8px;">🔊</button>
+        </div>
+        <audio id="kurced-audio" preload="metadata"></audio>
+      </div>
+
+      <!-- Coming Soon -->
+      <div>
+        <p style="font-size:0.75rem; letter-spacing:0.3em; color:var(--grey); text-transform:uppercase; margin-bottom:16px;">Coming Soon Everywhere</p>
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;">
+          <span style="padding:10px 20px; border:1px solid var(--border); border-radius:24px; font-size:0.8rem; color:var(--grey); opacity:0.6;">🎵 Spotify</span>
+          <span style="padding:10px 20px; border:1px solid var(--border); border-radius:24px; font-size:0.8rem; color:var(--grey); opacity:0.6;">🎵 Apple Music</span>
+          <span style="padding:10px 20px; border:1px solid var(--border); border-radius:24px; font-size:0.8rem; color:var(--grey); opacity:0.6;">🎵 SoundCloud</span>
+          <span style="padding:10px 20px; border:1px solid var(--border); border-radius:24px; font-size:0.8rem; color:var(--grey); opacity:0.6;">🎵 YouTube Music</span>
+          <span style="padding:10px 20px; border:1px solid var(--border); border-radius:24px; font-size:0.8rem; color:var(--grey); opacity:0.6;">🎵 Tidal</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FOOTER -->
+  <footer>
+    <img
+      src="../../assets/branding/png/All_Brand_Logos_PNG/Kurced/Brand_Color/Primary_Crest.png"
+      alt="Kurced" class="footer-crest"
+    >
+    <div class="footer-pillars">
+      <span>Fall Louder</span>
+      <span>Rise Darker</span>
+      <span>Live Cursed</span>
+      <span>Love Deeper</span>
+      <span>Leave a Mark</span>
+    </div>
+    <img
+      src="../../assets/branding/svg/All_Brand_Logos_SVG/Kurced/Brand_Color/Rose_Signature.svg"
+      alt="" class="footer-rose"
+    >
+    <p class="footer-copy">
+      &copy; 2026 Kurced — PROTÉGÉ Collection &nbsp;|&nbsp;
+      <a href="../">CalitoyCorp</a>
+    </p>
+  </footer>
+
+  <script>
+    // Audio Player
+    const audio = document.getElementById('kurced-audio');
+    const playBtn = document.getElementById('play-btn');
+    const progressFill = document.getElementById('progress-fill');
+    const progressTrack = document.getElementById('progress-track');
+    const timeCurrent = document.getElementById('time-current');
+    const timeTotal = document.getElementById('time-total');
+
+    function fmt(s) {
+      const m = Math.floor(s/60), sec = Math.floor(s%60);
+      return `${m}:${sec.toString().padStart(2,'0')}`;
+    }
+    function togglePlay() {
+      if (audio.src && !audio.paused) { audio.pause(); playBtn.textContent='▶'; }
+      else if (audio.src) { audio.play(); playBtn.textContent='⏸'; }
+      else { playBtn.textContent='▶'; } // no audio file yet
+    }
+    function seekBack() { if(audio.src) audio.currentTime = Math.max(0, audio.currentTime-10); }
+    function seekForward() { if(audio.src) audio.currentTime = Math.min(audio.duration||0, audio.currentTime+10); }
+    function toggleMute() {
+      audio.muted = !audio.muted;
+      document.getElementById('mute-btn').textContent = audio.muted ? '🔇' : '🔊';
+    }
+    audio.addEventListener('timeupdate', () => {
+      if (audio.duration) {
+        progressFill.style.width = (audio.currentTime/audio.duration*100)+'%';
+        timeCurrent.textContent = fmt(audio.currentTime);
+      }
+    });
+    audio.addEventListener('loadedmetadata', () => { timeTotal.textContent = fmt(audio.duration); });
+    audio.addEventListener('ended', () => { playBtn.textContent='▶'; progressFill.style.width='0%'; });
+    progressTrack.addEventListener('click', e => {
+      if (!audio.duration) return;
+      const pct = e.offsetX / progressTrack.offsetWidth;
+      audio.currentTime = pct * audio.duration;
+    });
+
+    // Size selector toggle
+    document.querySelectorAll('.size-selector').forEach(sel => {
+      sel.querySelectorAll('.size-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          sel.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
+    });
+
+    // Add to cart feedback
+    let cartCount = 0;
+    const cartEl = document.querySelector('.nav-cart');
+    document.querySelectorAll('.add-cart').forEach(btn => {
+      btn.addEventListener('click', () => {
+        cartCount++;
+        cartEl.textContent = `Cart (${cartCount})`;
+        btn.textContent = 'Added!';
+        btn.style.background = 'var(--purple)';
+        btn.style.color = '#f0e8ff';
+        setTimeout(() => {
+          btn.textContent = 'Add to Cart';
+          btn.style.background = '';
+          btn.style.color = '';
+        }, 1500);
+      });
+    });
+  </script>
+</body>
+</html>

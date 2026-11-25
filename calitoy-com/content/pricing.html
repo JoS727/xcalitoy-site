@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing - Calitoy Content</title>
+  <meta name="description" content="Transparent pricing for premium content services. Strategy sessions, brand stories, retainers, and full partnerships.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="assets/calitoy-content-logo.png">
+<style>
+.identity-nav { display: flex; flex: 1 1 100%; max-width: none; gap: 0; margin: 0.35rem 0 0; align-items: stretch; }
+.identity-nav a { flex: 1 1 0; text-align: center; text-decoration: none; white-space: nowrap;
+  color: rgba(255,255,255,0.62); font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+  padding: 0.5rem 0.3rem; border-left: 1px solid rgba(255,255,255,0.05); transition: color 200ms, background 200ms; }
+.identity-nav a:first-child { border-left: 0; }
+.identity-nav a:hover { color: #d8b46a; background: rgba(216,182,106,0.06); }
+.identity-nav a.active { color: #ff8a2a; background: rgba(255,138,42,0.10); box-shadow: inset 0 -2px 0 #ff8a2a; }
+@media (max-width: 480px) { .identity-nav a { font-size: 0.52rem; letter-spacing: 0.08em; padding: 0.45rem 0.12rem; } }
+</style>
+<style id="calitoy-sitemenu">
+.site-menu-bar{position:sticky;top:0;z-index:900;background:rgba(8,9,18,0.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(216,182,106,0.18);}
+.site-menu-head{display:flex;align-items:center;gap:.6rem;max-width:1200px;margin:0 auto;padding:.32rem .9rem;}
+.menu-arrow{background:none;border:1px solid rgba(216,182,106,.35);color:#d8b46a;width:26px;height:26px;border-radius:7px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.7rem;transition:transform .25s ease, background .2s;flex:none;}
+.menu-arrow:hover{background:rgba(216,182,106,.12);}
+.site-menu-bar.collapsed .menu-arrow{transform:rotate(-90deg);}
+.menu-label{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(228,196,116,.75);}
+.site-menu{display:flex;flex-wrap:nowrap;gap:0;margin-left:.4rem;overflow-x:auto;scrollbar-width:none;max-height:60px;transition:max-height .25s ease, opacity .2s;opacity:1;}
+.site-menu::-webkit-scrollbar{display:none;}
+.site-menu-bar.collapsed .site-menu{max-height:0;opacity:0;pointer-events:none;overflow:hidden;}
+.site-menu a{flex:none;color:rgba(255,255,255,.72);text-decoration:none;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;padding:.42rem .7rem;white-space:nowrap;border-left:1px solid rgba(216,182,106,.12);}
+.site-menu a:first-child{border-left:0;}
+.site-menu a:hover{color:#d8b46a;background:rgba(216,182,106,.06);}
+.site-menu a.active{color:#ff8a2a;box-shadow:inset 0 -2px 0 #ff8a2a;}
+@media (max-width:640px){.menu-label{display:none;}}
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header"><nav class="identity-nav" aria-label="The five identities"><a href="https://calitoy.org">CREATIVE AGENCY</a><a href="https://xcalitoy.com">SONGWRITER</a><a href="https://josephcalitoy.com">CONSULTANT</a><a href="https://author.calitoy.com">AUTHOR</a><a href="https://art.calitoy.com">ARTIST</a></nav>
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/calitoy-content-logo.png" alt="Calitoy Content">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html" class="active">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="nav-cta">Start Now</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+<div class="site-menu-bar" id="site-menu-bar"><div class="site-menu-head"><button class="menu-arrow" aria-expanded="true" aria-label="Hide menu">▼</button><span class="menu-label">Menu</span><nav class="site-menu" aria-label="Site menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="about.html">About</a><a href="contact.html">Start Now</a></nav></div></div>
+
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="nav-cta">Start Now</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Simple, <span class="accent">Transparent</span> Pricing</h1>
+      <p class="subtitle">Premium content production at every level. No hidden fees, no surprises. Pick the package that fits your goals.</p>
+    </div>
+  </section>
+
+  <!-- PRICING CARDS -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-3">
+        <!-- Strategy Session -->
+        <div class="<div style="max-width:820px;margin:2.5rem auto;padding:1.4rem 1.6rem;border:1px solid rgba(214,166,59,0.4);border-radius:16px;background:linear-gradient(135deg,rgba(214,166,59,0.10),rgba(8,9,24,0.65) 55%);">
+  <div style="font-size:0.62rem;letter-spacing:0.34em;text-transform:uppercase;color:rgba(228,196,116,0.9);margin-bottom:0.5rem;">Easy Onboarding — Start Here</div>
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+    <div>
+      <div style="font-weight:700;font-size:1.05rem;color:#fff;">$250 Strategy Meeting</div>
+      <div style="font-size:0.85rem;color:rgba(255,255,255,0.65);">60 minutes live on Zoom — map the work, leave with the written plan.</div>
+    </div>
+    <a href="https://buy.stripe.com/aFaaEQcMB3dhaHQ4Fecs80K" target="_blank" rel="noreferrer" style="text-decoration:none;background:linear-gradient(92deg,#ff8a2a,#d6a63b);color:#fff;font-weight:700;padding:.8rem 1.6rem;border-radius:999px;white-space:nowrap;">Book on Stripe ›</a>
+  </div>
+</div>
+<div class="pricing-card">
+          <h3>Content Strategy Session</h3>
+          <div class="pricing-price">
+            <span class="currency">$</span>497
+          </div>
+          <p class="pricing-desc">One-time strategy session to map your content ecosystem.</p>
+          <ul class="pricing-features">
+            <li>90-minute strategy call</li>
+            <li>Audience persona development</li>
+            <li>Content audit</li>
+            <li>90-day content calendar</li>
+            <li>Strategy document</li>
+          </ul>
+          <button class="btn btn-gold btn-full" data-stripe-checkout data-price-id="price_1UBIqbISCKHDtOuFnM7osryM" data-product-name="Content Strategy Session">
+            Get Started
+          </button>
+        </div>
+
+        <!-- Brand Story -->
+        <div class="pricing-card">
+          <h3>Brand Story Package</h3>
+          <div class="pricing-price">
+            <span class="currency">$</span>2,500
+          </div>
+          <p class="pricing-desc">Complete brand narrative and foundational copy.</p>
+          <ul class="pricing-features">
+            <li>Brand origin story</li>
+            <li>Website copy (5 pages)</li>
+            <li>Email welcome sequence</li>
+            <li>Social media bio kit</li>
+            <li>Brand voice guidelines</li>
+          </ul>
+          <button class="btn btn-gold btn-full" data-stripe-checkout data-price-id="price_1UBIqbISCKHDtOuFvK00Rfqy" data-product-name="Brand Story Package">
+            Get Started
+          </button>
+        </div>
+
+        <!-- Monthly Retainer -->
+        <div class="pricing-card featured">
+          <span class="pricing-badge">Most Popular</span>
+          <h3>Monthly Content Retainer</h3>
+          <div class="pricing-price">
+            <span class="currency">$</span>4,000<span class="period">/mo</span>
+          </div>
+          <p class="pricing-desc">Ongoing premium content across all your channels.</p>
+          <ul class="pricing-features">
+            <li>8-12 content pieces per month</li>
+            <li>Multi-channel distribution</li>
+            <li>Monthly strategy call</li>
+            <li>Performance reporting</li>
+            <li>Priority turnaround</li>
+          </ul>
+          <button class="btn btn-gold btn-full" data-stripe-checkout data-price-id="price_1UBIqbISCKHDtOuFtkGSjANu" data-product-name="Monthly Content Retainer">
+            Get Started
+          </button>
+        </div>
+
+        <!-- Launch Campaign -->
+        <div class="pricing-card">
+          <h3>Launch Campaign Package</h3>
+          <div class="pricing-price">
+            <span class="currency">$</span>7,500
+          </div>
+          <p class="pricing-desc">Full content campaign for your next big launch.</p>
+          <ul class="pricing-features">
+            <li>Complete campaign strategy</li>
+            <li>Pre-launch, launch, post-launch content</li>
+            <li>Sales page copy</li>
+            <li>7-10 email sequence</li>
+            <li>Social media content package</li>
+          </ul>
+          <button class="btn btn-gold btn-full" data-stripe-checkout data-price-id="price_1UBIqcISCKHDtOuFqwT7JpzV" data-product-name="Launch Campaign Package">
+            Get Started
+          </button>
+        </div>
+
+        <!-- Full Partnership -->
+        <div class="pricing-card">
+          <h3>Full Content Partnership</h3>
+          <div class="pricing-price">
+            <span class="currency">$</span>15,000<span class="period">/mo</span>
+          </div>
+          <p class="pricing-desc">Your complete, dedicated content operation.</p>
+          <ul class="pricing-features">
+            <li>Dedicated content strategist</li>
+            <li>Unlimited content requests</li>
+            <li>Weekly strategy sessions</li>
+            <li>Quarterly strategy reviews</li>
+            <li>Priority on everything</li>
+          </ul>
+          <button class="btn btn-gold btn-full" data-stripe-checkout data-price-id="price_1UBIqcISCKHDtOuFbtHTsBYd" data-product-name="Full Content Partnership">
+            Get Started
+          </button>
+        </div>
+
+        <!-- Custom -->
+        <div class="pricing-card">
+          <h3>Custom Package</h3>
+          <div class="pricing-price" style="font-size: 2rem;">
+            Let's Talk
+          </div>
+          <p class="pricing-desc">Have a unique project? We can tailor a package.</p>
+          <ul class="pricing-features">
+            <li>Bespoke content solutions</li>
+            <li>Flexible scope and timeline</li>
+            <li>Custom pricing</li>
+            <li>Dedicated project manager</li>
+          </ul>
+          <a href="contact.html" class="btn btn-outline btn-full">Submit a Brief</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-elevated">
+    <div class="container">
+      <div class="text-center">
+        <h2>Frequently Asked <span class="text-gold">Questions</span></h2>
+        <div class="divider"></div>
+      </div>
+      <div style="max-width: 700px; margin: 48px auto 0;">
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How does payment work?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>All payments are processed securely through Stripe. One-time packages are charged immediately. Monthly retainers are billed on a recurring basis through Stripe.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>What is the turnaround time?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Strategy sessions are scheduled within 7 days of payment. Brand Story Packages take 2-3 weeks. Monthly retainers begin within 5 business days. Launch campaigns are scoped based on your timeline.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Can I cancel my retainer?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes. Monthly retainers can be canceled at any time with 30 days notice. No long-term contracts required.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Do you offer refunds?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Strategy sessions are non-refundable once delivered. For packages, we offer a 50% refund if canceled before production begins. Monthly retainers are refundable within the first 7 days.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>What industries do you serve?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>We specialize in serving entrepreneurs, coaches, course creators, and service-based businesses. If you sell expertise, we can help you package and communicate it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Still Have <span class="accent">Questions?</span></h2>
+      <p>Submit a brief or reach out directly. We respond within 24 hours.</p>
+      <a href="contact.html" class="btn btn-gold btn-large">Submit a Brief</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/calitoy-content-logo.png" alt="Calitoy Content">
+          <p>Premium content production for entrepreneurs who refuse to blend in. Strategy, storytelling, and campaigns that convert.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html#strategy">Content Strategy</a></li>
+            <li><a href="services.html#brand-story">Brand Storytelling</a></li>
+            <li><a href="services.html#retainer">Monthly Retainer</a></li>
+            <li><a href="services.html#campaigns">Launch Campaigns</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get Started</h4>
+          <ul>
+            <li><a href="contact.html">Submit a Brief</a></li>
+            <li><a href="pricing.html">View Pricing</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-network">
+        <p>Calitoy Network</p>
+        <div class="footer-network-links">
+          <a href="https://calitoy.com">calitoy.com</a>
+          <a href="https://calitoycore.com">calitoycore.com</a>
+          <a href="https://calitoymuse.com">calitoymuse.com</a>
+          <a href="https://kurced.com">kurced.com</a>
+          <a href="https://xcalitoy.com">xcalitoy.com</a>
+          <a href="https://jeremydeanmusic.com">jeremydeanmusic.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Calitoy Content. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+<script id="calitoy-sitemenu-js">
+(function(){
+  document.addEventListener('click', function(e){
+    var bar = document.querySelector('.site-menu-bar');
+    if (!bar) return;
+    if (e.target.closest('.menu-arrow')) {
+      bar.classList.toggle('collapsed');
+      try { localStorage.setItem('calitoy-menu', bar.classList.contains('collapsed') ? 'c' : 'o'); } catch(_) {}
+    }
+  });
+  try {
+    var st = localStorage.getItem('calitoy-menu');
+    if (st === 'c') {
+      var bar = document.querySelector('.site-menu-bar');
+      if (bar) bar.classList.add('collapsed');
+    }
+  } catch(_) {}
+  var here = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.site-menu a').forEach(function(a){
+    var href = a.getAttribute('href') || '';
+    if (href === here) a.classList.add('active');
+  });
+})();
+</script>
+</body>
+</html>

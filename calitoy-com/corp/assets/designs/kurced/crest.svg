@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+            <circle cx="200" cy="200" r="180" fill="none" stroke="#6B2C91" stroke-width="4"/>
+            <circle cx="200" cy="200" r="175" fill="none" stroke="#FF00FF" stroke-width="1" opacity="0.5"/>
+            <text x="200" y="100" text-anchor="middle" fill="#FF00FF" font-size="48" font-family="serif" font-weight="bold">KURCED</text>
+            <path d="M200 140 C170 170, 170 230, 200 260 C230 230, 230 170, 200 140" fill="none" stroke="#6B2C91" stroke-width="3"/>
+            <path d="M200 260 L200 300" stroke="#6B2C91" stroke-width="3"/>
+            <path d="M185 300 L215 300 L200 320 Z" fill="#6B2C91"/>
+            <text x="200" y="360" text-anchor="middle" fill="#FF00FF" font-size="16" letter-spacing="4">PROTÉGÉ</text>
+        </svg>

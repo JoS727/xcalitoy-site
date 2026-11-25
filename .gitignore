@@ -3,3 +3,6 @@ dist/
 *.tar.gz
 .DS_Store
 .vite/
+# Excluded: live site serves a secret here; never commit it
+calitoy-com/.well-known/or/
+calitoy-com/.wrangler/

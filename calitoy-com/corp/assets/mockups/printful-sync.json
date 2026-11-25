@@ -1,0 +1,366 @@
+{
+  "generated": "2026-08-03T04:04:40.056Z",
+  "apiKey": "GOrfWurY6n62Lptr07USfIAjBYVU8ZBhouKOmXDX",
+  "products": [
+    {
+      "id": "kurced-1785729880040-051qc",
+      "brand": "Kurced",
+      "name": "Neon Logo Tee",
+      "printfulProductId": 71,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Kurced/Brand_Color/Wordmark.svg",
+      "placement": "front",
+      "colors": [
+        "Black"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "kurced-1785729880040-vk8fj",
+      "brand": "Kurced",
+      "name": "Cursed Heart Hoodie",
+      "printfulProductId": 77,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Kurced/Brand_Color/Rose_Signature.svg",
+      "placement": "front",
+      "colors": [
+        "Black"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "kurced-1785729880040-fxkgi",
+      "brand": "Kurced",
+      "name": "Afterglow Mesh",
+      "printfulProductId": 71,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Kurced/Brand_Color/Stamp.svg",
+      "placement": "front",
+      "colors": [
+        "Black"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "kurced-1785729880040-nbodf",
+      "brand": "Kurced",
+      "name": "Chrome Thorn Choker",
+      "printfulProductId": 303,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Kurced/Brand_Color/Embroidery_Mark.svg",
+      "placement": "front",
+      "colors": [
+        "Black"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "kurced-1785729880041-ychz9",
+      "brand": "Kurced",
+      "name": "Blacklight Sticker",
+      "printfulProductId": 223,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Kurced/Brand_Color/Rose_Icon.svg",
+      "placement": "front",
+      "colors": [
+        "White"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "kurced-1785729880041-9bi81",
+      "brand": "Kurced",
+      "name": "Nightclub Poster",
+      "printfulProductId": 446,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Kurced/Brand_Color/Signature.svg",
+      "placement": "front",
+      "colors": [
+        "Black"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "tarosyn-1785729880041-8zvw5",
+      "brand": "Tarosyn",
+      "name": "Arcana Candles",
+      "printfulProductId": 19,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Tarosyn/Brand_Color/Moon_Seal.svg",
+      "placement": "front",
+      "colors": [
+        "Black"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "tarosyn-1785729880041-z0fpi",
+      "brand": "Tarosyn",
+      "name": "Birth Chart Journal",
+      "printfulProductId": 258,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Tarosyn/Brand_Color/Rose_Compass.svg",
+      "placement": "front",
+      "colors": [
+        "Black"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "tarosyn-1785729880041-giwcx",
+      "brand": "Tarosyn",
+      "name": "Moon Scarf",
+      "printfulProductId": 258,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Tarosyn/Brand_Color/Wordmark.svg",
+      "placement": "front",
+      "colors": [
+        "Black"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "tarosyn-1785729880041-ix85z",
+      "brand": "Tarosyn",
+      "name": "Tarot Cloth",
+      "printfulProductId": 258,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Tarosyn/Brand_Color/Signature.svg",
+      "placement": "front",
+      "colors": [
+        "Black"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "tarosyn-1785729880041-pfpfy",
+      "brand": "Tarosyn",
+      "name": "Transit Tee",
+      "printfulProductId": 71,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Tarosyn/Brand_Color/Embroidery_Mark.svg",
+      "placement": "front",
+      "colors": [
+        "Black"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "tarosyn-1785729880041-xapky",
+      "brand": "Tarosyn",
+      "name": "Night Hoodie",
+      "printfulProductId": 77,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Tarosyn/Brand_Color/Stamp.svg",
+      "placement": "front",
+      "colors": [
+        "Charcoal"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "lovelouder-1785729880041-7wtr7",
+      "brand": "LoveLouder",
+      "name": "Gold Crest Tee",
+      "printfulProductId": 71,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Calitoy_Love_Louder/Brand_Color/Love_Louder_Wordmark.svg",
+      "placement": "front",
+      "colors": [
+        "Black"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "lovelouder-1785729880041-6sffv",
+      "brand": "LoveLouder",
+      "name": "Love Hoodie",
+      "printfulProductId": 77,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Calitoy_Love_Louder/Brand_Color/Rose_Signature.svg",
+      "placement": "front",
+      "colors": [
+        "Black"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "lovelouder-1785729880041-3hbr7",
+      "brand": "LoveLouder",
+      "name": "Gold Journal",
+      "printfulProductId": 19,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Calitoy_Love_Louder/Brand_Color/Calitoy_Signature.svg",
+      "placement": "front",
+      "colors": [
+        "Black"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "lovelouder-1785729880041-acq9i",
+      "brand": "LoveLouder",
+      "name": "Rose Tote",
+      "printfulProductId": 258,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Calitoy_Love_Louder/Brand_Color/Rose_Icon.svg",
+      "placement": "front",
+      "colors": [
+        "Natural"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "lovelouder-1785729880041-2u62z",
+      "brand": "LoveLouder",
+      "name": "Love Print",
+      "printfulProductId": 446,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Calitoy_Love_Louder/Brand_Color/Stamp.svg",
+      "placement": "front",
+      "colors": [
+        "White"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "lovelouder-1785729880041-489t1",
+      "brand": "LoveLouder",
+      "name": "Embroidered Cap",
+      "printfulProductId": 131,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Calitoy_Love_Louder/Brand_Color/Embroidery_Mark.svg",
+      "placement": "front",
+      "colors": [
+        "Black"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "endof8-1785729880041-jb50l",
+      "brand": "Endof8",
+      "name": "Pier Tee",
+      "printfulProductId": 71,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Endof8/Brand_Color/Wordmark.svg",
+      "placement": "front",
+      "colors": [
+        "White"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "endof8-1785729880041-i741t",
+      "brand": "Endof8",
+      "name": "Seagull Hoodie",
+      "printfulProductId": 77,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Endof8/Brand_Color/Seagull_Icon.svg",
+      "placement": "front",
+      "colors": [
+        "Navy"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "endof8-1785729880041-w2vli",
+      "brand": "Endof8",
+      "name": "Eight Long Sleeve",
+      "printfulProductId": 74,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Endof8/Brand_Color/Eight_Icon.svg",
+      "placement": "front",
+      "colors": [
+        "Black"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "endof8-1785729880041-bli7i",
+      "brand": "Endof8",
+      "name": "Beach Tote",
+      "printfulProductId": 258,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Endof8/Brand_Color/Eight_Seagull.svg",
+      "placement": "front",
+      "colors": [
+        "Natural"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "endof8-1785729880041-g5f00",
+      "brand": "Endof8",
+      "name": "Surf Stickers",
+      "printfulProductId": 223,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Endof8/Brand_Color/Pier_Badge.svg",
+      "placement": "front",
+      "colors": [
+        "White"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "endof8-1785729880041-r1i3k",
+      "brand": "Endof8",
+      "name": "Sunset Poster",
+      "printfulProductId": 446,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Endof8/Brand_Color/Primary_Badge.svg",
+      "placement": "front",
+      "colors": [
+        "White"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "wickedyouth-1785729880041-g2euf",
+      "brand": "WickedYouth",
+      "name": "WY Circle Tee",
+      "printfulProductId": 71,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Wicked_Youth/Brand_Color/Primary_Wordmark.svg",
+      "placement": "front",
+      "colors": [
+        "Black"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "wickedyouth-1785729880042-uylyj",
+      "brand": "WickedYouth",
+      "name": "Crown Hoodie",
+      "printfulProductId": 77,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Wicked_Youth/Brand_Color/Crown_Icon.svg",
+      "placement": "front",
+      "colors": [
+        "Black"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "wickedyouth-1785729880042-5onk9",
+      "brand": "WickedYouth",
+      "name": "WY Monogram Cap",
+      "printfulProductId": 131,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Wicked_Youth/Brand_Color/WY_Monogram.svg",
+      "placement": "front",
+      "colors": [
+        "Black"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "wickedyouth-1785729880042-efql1",
+      "brand": "WickedYouth",
+      "name": "Beauty Pouch",
+      "printfulProductId": 258,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Wicked_Youth/Brand_Color/WY_Circle.svg",
+      "placement": "front",
+      "colors": [
+        "Black"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "wickedyouth-1785729880042-2fykg",
+      "brand": "WickedYouth",
+      "name": "Crown Pin",
+      "printfulProductId": 303,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Wicked_Youth/Brand_Color/Crown_Icon.svg",
+      "placement": "front",
+      "colors": [
+        "Gold"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "wickedyouth-1785729880042-8hb6c",
+      "brand": "WickedYouth",
+      "name": "Canvas Tote",
+      "printfulProductId": 258,
+      "designUrl": "https://calitoycorp.com/assets/logos/All_Brand_Logos_SVG/Wicked_Youth/Brand_Color/Primary_Wordmark.svg",
+      "placement": "front",
+      "colors": [
+        "Natural"
+      ],
+      "status": "pending"
+    }
+  ]
+}

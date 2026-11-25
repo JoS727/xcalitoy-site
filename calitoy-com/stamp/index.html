@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calitoy Stamp | A Musician's Fastest Access to an Online Living</title>
+<meta name="description" content="Calitoy Stamp is a 3D world engine and merch publishing platform for musicians. Build your world, sell your merch, press your vinyl. One engine, many artists.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calitoy Stamp | A Musician's Fastest Access to an Online Living">
+<meta property="og:description" content="3D world engine and merch publishing for musicians. Build your world, sell your merch, press your vinyl.">
+<meta property="og:url" content="https://stamp.calitoy.com">
+<meta property="og:site_name" content="Calitoy Stamp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Calitoy Stamp | A Musician's Fastest Access to an Online Living">
+<meta name="twitter:description" content="3D world engine and merch publishing for musicians.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0908;
+  --bg-card: #14110f;
+  --bg-elevated: #1c1814;
+  --ink: #f5f0e8;
+  --ink-muted: #8a7e6f;
+  --ink-dim: #5a5048;
+  --gold: #c9a96e;
+  --gold-dim: #8a7449;
+  --wine: #8b1a3a;
+  --border: rgba(201, 169, 110, 0.12);
+  --border-strong: rgba(201, 169, 110, 0.3);
+  --r: 6px;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --maxw: 1200px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+.mono { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* ============ NAV ============ */
+nav.top {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(10, 9, 8, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+nav.top .container {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px;
+}
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem; letter-spacing: 0.05em;
+  color: var(--gold);
+  text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+}
+.logo-stamp {
+  width: 34px; height: 34px; border-radius: 50%;
+  filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.45));
+}
+.logo-mark {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--wine));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.6rem; color: var(--bg);
+  font-family: var(--font-body); font-weight: 700;
+}
+nav.top ul {
+  display: flex; gap: 2rem; list-style: none;
+}
+nav.top a.nav-link {
+  color: var(--ink-muted);
+  text-decoration: none;
+  font-size: 0.8rem; letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+nav.top a.nav-link:hover { color: var(--gold); }
+nav.top .cta {
+  background: var(--gold); color: var(--bg);
+  padding: 8px 20px; border-radius: var(--r);
+  font-size: 0.8rem; font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.15s;
+}
+nav.top .cta:hover { transform: translateY(-1px); }
+@media (max-width: 768px) {
+  nav.top ul { display: none; }
+}
+
+/* ============ HERO ============ */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+  padding-top: 60px;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(139, 26, 58, 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 60%, rgba(201, 169, 110, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, #14110f 0%, var(--bg) 100%);
+  z-index: 0;
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(201, 169, 110, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 169, 110, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 1;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 800px;
+  padding: 0 24px;
+  margin: 0 auto;
+}
+.hero-stamp {
+  width: clamp(120px, 18vw, 200px);
+  margin-bottom: 2rem;
+  filter: drop-shadow(0 8px 40px rgba(139, 92, 246, 0.35));
+  animation: stamp-float 7s ease-in-out infinite;
+}
+@keyframes stamp-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-12px) rotate(1.5deg); }
+}
+.hero .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem; letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  display: inline-block;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 10vw, 7rem);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+  color: var(--ink);
+}
+.hero h1 .accent { color: var(--gold); }
+.hero h1 .wine { color: var(--wine); }
+.hero .sub {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--ink-muted);
+  max-width: 580px;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+.hero-actions {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px;
+  border-radius: var(--r);
+  font-size: 0.85rem; font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer; border: none;
+}
+.btn-primary {
+  background: var(--gold); color: var(--bg);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201, 169, 110, 0.2); }
+.btn-outline {
+  background: transparent; color: var(--ink);
+  border: 1px solid var(--border-strong);
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.btn-wine {
+  background: var(--wine); color: var(--ink);
+}
+@media (max-width: 768px) {
+  .hero-actions { flex-direction: column; }
+  .btn { width: 100%; justify-content: center; }
+}
+
+/* ============ MARQUEE ============ */
+.marquee {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  padding: 1.2rem 0;
+  background: var(--bg-card);
+}
+.marquee-track {
+  display: flex; gap: 3rem;
+  white-space: nowrap;
+  animation: scroll 30s linear infinite;
+}
+.marquee span {
+  font-family: var(--font-display);
+  font-size: 1.5rem; letter-spacing: 0.1em;
+  color: var(--ink-dim);
+}
+.marquee span .dot { color: var(--gold); margin: 0 1.5rem; }
+@keyframes scroll {
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* ============ SECTIONS ============ */
+section { padding: 6rem 0; }
+section .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem; letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1; letter-spacing: 0.02em;
+  margin-bottom: 1rem;
+}
+section .lead {
+  font-size: 1.1rem; color: var(--ink-muted);
+  max-width: 600px; margin-bottom: 3rem;
+  line-height: 1.7;
+}
+
+/* ============ WHAT IT IS ============ */
+.what-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: start;
+}
+@media (max-width: 768px) {
+  .what-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+.what-list { list-style: none; }
+.what-list li {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.what-list li:last-child { border-bottom: none; }
+.what-list .num {
+  font-family: var(--font-mono);
+  color: var(--gold);
+  font-size: 0.7rem; letter-spacing: 0.1em;
+  display: block; margin-bottom: 0.5rem;
+}
+.what-list .item-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem; letter-spacing: 0.03em;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.what-list p {
+  color: var(--ink-muted);
+  font-size: 0.9rem; line-height: 1.6;
+}
+
+/* ============ FEATURE CARDS ============ */
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 900px) {
+  .features { grid-template-columns: 1fr; }
+}
+.feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 2rem;
+  transition: border-color 0.2s;
+}
+.feature-card:hover { border-color: var(--border-strong); }
+.feature-card .icon {
+  width: 48px; height: 48px;
+  border-radius: var(--r);
+  background: var(--bg-elevated);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 1.2rem; color: var(--gold);
+}
+.feature-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem; letter-spacing: 0.03em;
+  margin-bottom: 0.75rem;
+}
+.feature-card p {
+  color: var(--ink-muted);
+  font-size: 0.9rem; line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.feature-card .tag {
+  font-family: var(--font-mono);
+  font-size: 0.6rem; letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* ============ HOW IT WORKS ============ */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+@media (max-width: 900px) {
+  .steps { grid-template-columns: 1fr; gap: 2rem; }
+}
+.step {
+  padding: 2rem 1.5rem;
+  position: relative;
+}
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 2.5rem; right: 0;
+  width: 100%; height: 1px;
+  background: var(--border);
+}
+@media (max-width: 900px) {
+  .step:not(:last-child)::after { display: none; }
+}
+.step .num {
+  font-family: var(--font-mono);
+  font-size: 0.6rem; letter-spacing: 0.1em;
+  color: var(--gold);
+  width: 36px; height: 36px;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.5rem;
+  background: var(--bg);
+  position: relative; z-index: 2;
+}
+.step h4 {
+  font-family: var(--font-display);
+  font-size: 1.2rem; letter-spacing: 0.03em;
+  margin-bottom: 0.5rem;
+}
+.step p {
+  color: var(--ink-muted);
+  font-size: 0.85rem; line-height: 1.6;
+}
+
+/* ============ PRICING ============ */
+.pricing {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 900px) {
+  .pricing { grid-template-columns: 1fr; }
+}
+.price-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 2.5rem 2rem;
+  position: relative;
+}
+.price-card.featured {
+  border-color: var(--gold);
+  background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+}
+.price-card .badge {
+  position: absolute; top: -10px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold); color: var(--bg);
+  font-family: var(--font-mono); font-size: 0.6rem;
+  padding: 4px 12px; border-radius: 100px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.price-card .tier {
+  font-family: var(--font-mono);
+  font-size: 0.65rem; letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.price-card .price {
+  font-family: var(--font-display);
+  font-size: 3rem; letter-spacing: 0.02em;
+  margin-bottom: 0.25rem;
+}
+.price-card .price .period {
+  font-size: 1rem; color: var(--ink-muted);
+  font-family: var(--font-body);
+}
+.price-card .desc {
+  color: var(--ink-muted); font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+.price-card ul {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+.price-card ul li {
+  padding: 0.6rem 0;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.price-card ul li::before {
+  content: '+';
+  color: var(--gold);
+  font-weight: 700; flex-shrink: 0;
+}
+.price-card ul li:last-child { border-bottom: none; }
+.price-card .btn {
+  width: 100%; justify-content: center;
+}
+
+/* ============ TESTIMONIAL / QUOTE ============ */
+.quote-section {
+  text-align: center;
+  padding: 8rem 0;
+}
+.quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  line-height: 1.3; letter-spacing: 0.02em;
+  max-width: 700px; margin: 0 auto;
+}
+.quote .accent { color: var(--gold); }
+.quote-attr {
+  font-family: var(--font-mono);
+  font-size: 0.7rem; letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-top: 2rem;
+}
+
+/* ============ CTA ============ */
+.cta-section {
+  text-align: center;
+  padding: 8rem 0;
+  border-top: 1px solid var(--border);
+}
+.cta-section h2 {
+  margin-bottom: 1.5rem;
+}
+.cta-section .sub {
+  color: var(--ink-muted);
+  max-width: 500px; margin: 0 auto 2.5rem;
+  font-size: 1.1rem;
+}
+
+/* ============ FOOTER ============ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 0 2rem;
+}
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+footer .brand {
+  font-family: var(--font-display);
+  font-size: 1.2rem; color: var(--gold);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+footer .brand-sub {
+  color: var(--ink-dim); font-size: 0.8rem;
+}
+footer .links {
+  display: flex; gap: 2rem; list-style: none;
+}
+footer .links a {
+  color: var(--ink-muted); text-decoration: none;
+  font-size: 0.8rem; transition: color 0.2s;
+}
+footer .links a:hover { color: var(--gold); }
+footer .copy {
+  width: 100%; margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  color: var(--ink-dim);
+  font-size: 0.7rem; font-family: var(--font-mono);
+  display: flex; justify-content: space-between;
+}
+@media (max-width: 600px) {
+  footer .copy { flex-direction: column; gap: 0.5rem; }
+}
+
+/* ============ JSON-LD ============ */
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Calitoy Stamp",
+  "applicationCategory": "MusicTechnology",
+  "operatingSystem": "Web",
+  "description": "3D world engine and merch publishing platform for musicians. Build your world, sell your merch, press your vinyl.",
+  "offers": {
+    "@type": "Offer",
+    "price": "29",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+<link rel="canonical" href="https://stamp.calitoy.com/">
+<link rel="icon" type="image/png" href="assets/stamp-logo.png">
+<style>
+.identity-nav { display: flex; flex: 1 1 100%; max-width: none; gap: 0; margin: 0.35rem 0 0; align-items: stretch; }
+.identity-nav a { flex: 1 1 0; text-align: center; text-decoration: none; white-space: nowrap;
+  color: rgba(255,255,255,0.62); font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+  padding: 0.5rem 0.3rem; border-left: 1px solid rgba(255,255,255,0.05); transition: color 200ms, background 200ms; }
+.identity-nav a:first-child { border-left: 0; }
+.identity-nav a:hover { color: #d8b46a; background: rgba(216,182,106,0.06); }
+.identity-nav a.active { color: #ff8a2a; background: rgba(255,138,42,0.10); box-shadow: inset 0 -2px 0 #ff8a2a; }
+@media (max-width: 480px) { .identity-nav a { font-size: 0.52rem; letter-spacing: 0.08em; padding: 0.45rem 0.12rem; } }
+</style>
+<style id="calitoy-sitemenu">
+.site-menu-bar{position:sticky;top:0;z-index:900;background:rgba(8,9,18,0.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(216,182,106,0.18);}
+.site-menu-head{display:flex;align-items:center;gap:.6rem;max-width:1200px;margin:0 auto;padding:.32rem .9rem;}
+.menu-arrow{background:none;border:1px solid rgba(216,182,106,.35);color:#d8b46a;width:26px;height:26px;border-radius:7px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.7rem;transition:transform .25s ease, background .2s;flex:none;}
+.menu-arrow:hover{background:rgba(216,182,106,.12);}
+.site-menu-bar.collapsed .menu-arrow{transform:rotate(-90deg);}
+.menu-label{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(228,196,116,.75);}
+.site-menu{display:flex;flex-wrap:nowrap;gap:0;margin-left:.4rem;overflow-x:auto;scrollbar-width:none;max-height:60px;transition:max-height .25s ease, opacity .2s;opacity:1;}
+.site-menu::-webkit-scrollbar{display:none;}
+.site-menu-bar.collapsed .site-menu{max-height:0;opacity:0;pointer-events:none;overflow:hidden;}
+.site-menu a{flex:none;color:rgba(255,255,255,.72);text-decoration:none;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;padding:.42rem .7rem;white-space:nowrap;border-left:1px solid rgba(216,182,106,.12);}
+.site-menu a:first-child{border-left:0;}
+.site-menu a:hover{color:#d8b46a;background:rgba(216,182,106,.06);}
+.site-menu a.active{color:#ff8a2a;box-shadow:inset 0 -2px 0 #ff8a2a;}
+@media (max-width:640px){.menu-label{display:none;}}
+</style>
+</head>
+<body>
+<header style="position:relative;z-index:40"><nav class="identity-nav" aria-label="The five identities"><a href="https://calitoy.org">CREATIVE AGENCY</a><a href="https://xcalitoy.com">SONGWRITER</a><a href="https://josephcalitoy.com">CONSULTANT</a><a href="https://author.calitoy.com">AUTHOR</a><a href="https://art.calitoy.com">ARTIST</a></nav></header>
+<div class="site-menu-bar" id="site-menu-bar"><div class="site-menu-head"><button class="menu-arrow" aria-expanded="true" aria-label="Hide menu">▼</button><span class="menu-label">Menu</span><nav class="site-menu" aria-label="Site menu"><a href="#worlds">Worlds</a><a href="#merch">Merch</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav></div></div>
+
+<!-- NAV -->
+<nav class="top">
+  <div class="container">
+    <a href="/" class="logo">
+      <img src="assets/stamp-logo.png" alt="Calitoy Stamp" class="logo-stamp" />
+      CALITOY STAMP
+    </a>
+    <ul>
+      <li><a href="#worlds" class="nav-link">Worlds</a></li>
+      <li><a href="#merch" class="nav-link">Merch</a></li>
+      <li><a href="#pricing" class="nav-link">Pricing</a></li>
+      <li><a href="#admin" class="nav-link">Admin</a></li>
+    </ul>
+    <a href="#pricing" class="cta">Get Started</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <img src="assets/stamp-logo.png" alt="The Calitoy Stamp — Love Calitoy Louder" class="hero-stamp" />
+    <span class="eyebrow">CALITOY STAMP / MUSICIAN PLATFORM</span>
+    <h1>A MUSICIAN'S<br><span class="accent">FASTEST</span> ACCESS<br>TO AN <span class="wine">ONLINE</span> LIVING.</h1>
+    <p class="sub">
+      One engine. Many artists. Build a 3D world your fans walk through, sell merch that prints and ships itself, and press vinyl without leaving the studio. Calitoy Stamp is the full stack for the independent artist who refuses to wait.
+    </p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn btn-primary">Start Building</a>
+      <a href="https://calitoystamp-admin.pages.dev" target="_blank" rel="noreferrer" class="btn btn-outline">Open Admin</a>
+    </div>
+  </div>
+</section><div style="max-width:820px;margin:2.5rem auto;padding:1.4rem 1.6rem;border:1px solid rgba(214,166,59,0.4);border-radius:16px;background:linear-gradient(135deg,rgba(214,166,59,0.10),rgba(8,9,24,0.65) 55%);">
+  <div style="font-size:0.62rem;letter-spacing:0.34em;text-transform:uppercase;color:rgba(228,196,116,0.9);margin-bottom:0.5rem;">Easy Onboarding — Start Here</div>
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+    <div>
+      <div style="font-weight:700;font-size:1.05rem;color:#fff;">$250 Strategy Meeting</div>
+      <div style="font-size:0.85rem;color:rgba(255,255,255,0.65);">60 minutes live on Zoom — map the work, leave with the written plan.</div>
+    </div>
+    <a href="https://buy.stripe.com/aFaaEQcMB3dhaHQ4Fecs80K" target="_blank" rel="noreferrer" style="text-decoration:none;background:linear-gradient(92deg,#ff8a2a,#d6a63b);color:#fff;font-weight:700;padding:.8rem 1.6rem;border-radius:999px;white-space:nowrap;">Book on Stripe ›</a>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>3D WORLDS <span class="dot">/</span> PRINTFUL MERCH <span class="dot">/</span> VINYL PRESSING <span class="dot">/</span> STRIPE CHECKOUT <span class="dot">/</span> AI LOGO DESIGN <span class="dot">/</span> ARTIST WORLDS <span class="dot">/</span> PRINT ON DEMAND <span class="dot">/</span> ONE ENGINE MANY ARTISTS <span class="dot">/</span></span>
+    <span>3D WORLDS <span class="dot">/</span> PRINTFUL MERCH <span class="dot">/</span> VINYL PRESSING <span class="dot">/</span> STRIPE CHECKOUT <span class="dot">/</span> AI LOGO DESIGN <span class="dot">/</span> ARTIST WORLDS <span class="dot">/</span> PRINT ON DEMAND <span class="dot">/</span> ONE ENGINE MANY ARTISTS <span class="dot">/</span></span>
+  </div>
+</div>
+
+<!-- WHAT IT IS -->
+<section id="worlds">
+  <div class="container">
+    <span class="eyebrow">01 / WHAT IT IS</span>
+    <h2>ONE ENGINE.<br>MANY ARTISTS.</h2>
+    <p class="lead">
+      Calitoy Stamp gives a musician everything they need to exist online in one platform: a 3D world fans can walk through, a merch store that prints and ships itself, and a vinyl pressing pipeline. No web developer, no inventory, no waiting.
+    </p>
+    <div class="what-grid">
+      <ul class="what-list">
+        <li>
+          <span class="num">01</span>
+          <div class="item-title">3D WORLDS</div>
+          <p>Each artist gets a street at night. Graffiti walls peel back into merch racks. A crate of records sits by the couch. A turntable drops the needle. Out back, a skatepark hides doors to other artists' worlds. Built in React Three Fiber, running at 60fps in the browser.</p>
+        </li>
+        <li>
+          <span class="num">02</span>
+          <div class="item-title">MERCH ENGINE</div>
+          <p>AI-assisted logo design, Printful product matching, automated mockup generation, and Stripe checkout. You approve the artwork. The system creates the Printful products, generates mockups, and publishes to your storefront. Every order auto-fulfills. You never touch inventory.</p>
+        </li>
+        <li>
+          <span class="num">03</span>
+          <div class="item-title">VINYL PRESSING</div>
+          <p>Connect your SoundCloud releases to Elastic Stage for on-demand vinyl pressing. Fans buy the vinyl, Elastic Stage presses and ships it. No minimums, no upfront costs, no warehouse. The record exists because someone bought it.</p>
+        </li>
+      </ul>
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 2rem; position: sticky; top: 80px;">
+        <span class="mono" style="color: var(--gold);">KURCED / FIRST WORLD</span>
+        <div style="margin: 1.5rem 0; padding: 1.5rem; background: var(--bg); border-radius: 4px; border-left: 2px solid var(--gold);">
+          <div style="font-family: var(--font-display); font-size: 1.8rem; color: var(--ink); margin-bottom: 0.5rem;">kurced.com</div>
+          <div style="color: var(--ink-muted); font-size: 0.85rem; line-height: 1.6;">
+            Dark pop from the debut era. A 3D street at night with a merch rack, a vinyl crate, and a skatepark. The first artist world built on Calitoy Stamp.
+          </div>
+        </div>
+        <div style="margin: 1.5rem 0; padding: 1.5rem; background: var(--bg); border-radius: 4px; border-left: 2px solid var(--wine);">
+          <div style="font-family: var(--font-display); font-size: 1.8rem; color: var(--ink); margin-bottom: 0.5rem;">xcalitoy.com</div>
+          <div style="color: var(--ink-muted); font-size: 0.85rem; line-height: 1.6;">
+            Night-drive confessionals and pressure-heavy records. The second world, with vinyl pre-orders and the full Calitoy album catalog.
+          </div>
+        </div>
+        <div style="color: var(--ink-dim); font-size: 0.8rem; text-align: center; margin-top: 1.5rem;">
+          Artist number three is a config file.<br>That is the whole point.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MERCH ENGINE -->
+<section id="merch" style="background: var(--bg-card);">
+  <div class="container">
+    <span class="eyebrow">02 / MERCH ENGINE</span>
+    <h2>FROM LOGO TO LIVE<br>WITHOUT TOUCHING INVENTORY.</h2>
+    <p class="lead">
+      The merch workflow is AI-assisted and human-approved. Generate a logo, match it to Printful products, generate mockups, approve the listing, and publish. Every order auto-fulfills through Printful. You never stock, pack, or ship anything.
+    </p>
+    <div class="features">
+      <div class="feature-card">
+        <div class="icon">AI</div>
+        <h3>Logo Generation</h3>
+        <p>Generate transparent logo options from a brief. Preflight checks validate alpha channels, dimensions, contrast, and text accuracy before approval.</p>
+        <span class="tag">AI-Assisted</span>
+      </div>
+      <div class="feature-card">
+        <div class="icon">PF</div>
+        <h3>Printful Integration</h3>
+        <p>Match your logo to compatible Printful products. Tees, hoodies, totes, posters. The system knows which placements work for each blank and filters out incompatible variants.</p>
+        <span class="tag">Print on Demand</span>
+      </div>
+      <div class="feature-card">
+        <div class="icon">$</div>
+        <h3>Stripe Checkout</h3>
+        <p>Every product gets a Stripe price ID. Customers pay by card, Cash App, Venmo, or Zelle. Stripe payments auto-create Printful orders with shipping details.</p>
+        <span class="tag">Auto-fulfill</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <div class="container">
+    <span class="eyebrow">03 / HOW IT WORKS</span>
+    <h2>FOUR STEPS<br>FROM IDEA TO INCOME.</h2>
+    <div class="steps" style="margin-top: 3rem;">
+      <div class="step">
+        <div class="num">01</div>
+        <h4>CREATE THE BRIEF</h4>
+        <p>Enter your brand, a logo prompt, your style, and what you want it on. The system generates transparent logo options for you to review.</p>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <h4>APPROVE THE ART</h4>
+        <p>Pick your logo. The system validates it as a production-ready PNG with true alpha transparency. You approve on light, dark, and checkerboard previews.</p>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <h4>SELECT PRODUCTS</h4>
+        <p>Choose from compatible Printful blanks, colors, sizes, and placements. The system generates real Printful mockups with your artwork applied.</p>
+      </div>
+      <div class="step">
+        <div class="num">04</div>
+        <h4>PUBLISH AND SELL</h4>
+        <p>Review the final listing, set your price, and publish. It goes live on your storefront with Stripe checkout. Every order auto-fulfills through Printful.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section" style="background: var(--bg-card);">
+  <div class="container">
+    <div class="quote">
+      "You arrive on a street at night. The graffiti on the wall peels back into a <span class="accent">merch rack</span>. Inside, a couch and a crate of records and a turntable that actually drops the needle."
+    </div>
+    <div class="quote-attr">CALITOY STAMP / WORLD DESIGN</div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <span class="eyebrow">04 / PRICING</span>
+    <h2>START FREE.<br>SCALE WHEN IT WORKS.</h2>
+    <p class="lead">No inventory, no upfront costs, no developer. Just a platform fee and the margins on your merch.</p>
+    <div class="pricing">
+      <div class="price-card">
+        <div class="tier">STARTER</div>
+        <div class="price">$0<span class="period">/mo</span></div>
+        <div class="desc">For testing the waters.</div>
+        <ul>
+          <li>3D world template</li>
+          <li>Up to 5 merch products</li>
+          <li>Printful integration</li>
+          <li>Stripe checkout</li>
+          <li>Calitoy Stamp branding</li>
+        </ul>
+        <a href="https://calitoystamp-admin.pages.dev" target="_blank" rel="noreferrer" class="btn btn-outline">Start Free</a>
+      </div>
+      <div class="price-card featured">
+        <div class="badge">MOST POPULAR</div>
+        <div class="tier">ARTIST</div>
+        <div class="price">$39.99<span class="period">/mo</span></div>
+        <div class="desc">For the working musician. Or $19.99/mo billed annually at $239.88 upfront — save 50%.</div>
+        <ul>
+          <li>Custom 3D world</li>
+          <li>Unlimited merch products</li>
+          <li>AI logo generation</li>
+          <li>Printful mockups</li>
+          <li>Vinyl pressing via Elastic Stage</li>
+          <li>Custom domain</li>
+          <li>Remove Calitoy branding</li>
+        </ul>
+        <a href="https://buy.stripe.com/4gM9AMfYNeVZ3fognWcs80B" target="_blank" rel="noreferrer" class="btn btn-primary">Subscribe $39.99/mo</a>
+        <a href="https://buy.stripe.com/aFabIU8wl3dh3fo9Zycs80C" target="_blank" rel="noreferrer" class="btn btn-outline">Or $239.88/yr — save 50%</a>
+      </div>
+      <div class="price-card">
+        <div class="tier">LABEL</div>
+        <div class="price">$199.99<span class="period">/mo</span></div>
+        <div class="desc">For multiple artists. Or $99.99/mo billed annually at $1,199.88 upfront — save 50%.</div>
+        <ul>
+          <li>Up to 10 artist worlds</li>
+          <li>Unlimited merch per artist</li>
+          <li>Cross-artist world links</li>
+          <li>Team access and roles</li>
+          <li>Priority mockup generation</li>
+          <li>API access</li>
+          <li>White-label option</li>
+        </ul>
+        <a href="https://buy.stripe.com/9B6dR27sh5lpbLU8Vucs80D" target="_blank" rel="noreferrer" class="btn btn-primary">Subscribe $199.99/mo</a>
+        <a href="https://buy.stripe.com/00w7sEfYNbJNbLU4Fecs80E" target="_blank" rel="noreferrer" class="btn btn-outline">Or $1,199.88/yr — save 50%</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <span class="eyebrow">CALITOY STAMP</span>
+    <h2>YOUR WORLD IS WAITING.</h2>
+    <p class="sub">Build it tonight. Sell from it tomorrow. Press vinyl by next week.</p>
+    <div class="hero-actions" style="justify-content: center;">
+      <a href="#pricing" class="btn btn-primary">Start Building</a>
+      <a href="https://github.com/JoS727/CalitoyStamp" target="_blank" rel="noreferrer" class="btn btn-outline">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div>
+      <div class="brand">CALITOY STAMP</div>
+      <div class="brand-sub">A musician's fastest access to an online living.</div>
+    </div>
+    <ul class="links">
+      <li><a href="#worlds">Worlds</a></li>
+      <li><a href="#merch">Merch</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="https://calitoystamp-admin.pages.dev" target="_blank" rel="noreferrer">Admin</a></li>
+      <li><a href="https://github.com/JoS727/CalitoyStamp" target="_blank" rel="noreferrer">GitHub</a></li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="copy">
+      <span>(c) <span id="year"></span> CALITOY STAMP / JOSEPH CALITOY</span>
+      <span>xcalitoy.com / kurced.com / calitoymuse.com</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+<footer style="background:#050505;border-top:1px solid rgba(201,169,110,0.2);padding:2rem 0;text-align:center;">
+  <div class="container">
+    <div style="font-family:var(--font-display);font-weight:700;font-size:1.1rem;letter-spacing:.08em;color:#f0f0f0;">C<span style="display:inline-block;transform:rotate(180deg);">A</span>LITOY</div>
+    <div style="font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:#6d6d6d;margin-top:.3rem;">A CALITOY Agency Company &middot; Music Division</div>
+    <div style="display:flex;gap:1.4rem;justify-content:center;flex-wrap:wrap;margin-top:1rem;font-size:.8rem;">
+      <a href="https://calitoy.com" style="color:#9a9a9a;text-decoration:none;">Company</a>
+      <a href="https://calitoycore.com" style="color:#9a9a9a;text-decoration:none;">CORE Platform</a>
+      <a href="https://josephcalitoy.com" style="color:#9a9a9a;text-decoration:none;">Artist Calitoy</a>
+      <a href="https://calitoy.org" style="color:#9a9a9a;text-decoration:none;">Cues</a>
+      <a href="mailto:joseph@xcalitoy.com?subject=Calitoy%20Stamp%20Inquiry" style="color:#c9a96e;text-decoration:none;">joseph@xcalitoy.com</a>
+    </div>
+    <div style="font-size:.66rem;color:#555;margin-top:1.2rem;">&copy; <span id="yr2"></span> CALITOY Agency &middot; Calitoy Stamp &middot; Media &bull; Fashion &bull; Tech</div>
+  </div>
+</footer>
+<script>document.getElementById('yr2').textContent = new Date().getFullYear();</script>
+
+<script id="calitoy-sitemenu-js">
+(function(){
+  document.addEventListener('click', function(e){
+    var bar = document.querySelector('.site-menu-bar');
+    if (!bar) return;
+    if (e.target.closest('.menu-arrow')) {
+      bar.classList.toggle('collapsed');
+      try { localStorage.setItem('calitoy-menu', bar.classList.contains('collapsed') ? 'c' : 'o'); } catch(_) {}
+    }
+  });
+  try {
+    var st = localStorage.getItem('calitoy-menu');
+    if (st === 'c') {
+      var bar = document.querySelector('.site-menu-bar');
+      if (bar) bar.classList.add('collapsed');
+    }
+  } catch(_) {}
+  var here = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.site-menu a').forEach(function(a){
+    var href = a.getAttribute('href') || '';
+    if (href === here) a.classList.add('active');
+  });
+})();
+</script>
+</body>
+</html>

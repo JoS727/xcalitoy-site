@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+            <circle cx="200" cy="200" r="180" fill="none" stroke="#D2691E" stroke-width="4" stroke-dasharray="20,10"/>
+            <text x="200" y="120" text-anchor="middle" fill="#FFFFFF" font-size="36" font-family="sans-serif">End of</text>
+            <text x="200" y="200" text-anchor="middle" fill="#D2691E" font-size="120" font-family="sans-serif" font-weight="bold">8</text>
+            <text x="200" y="300" text-anchor="middle" fill="#FFFFFF" font-size="20" font-family="sans-serif">OCEAN BEACH, CA</text>
+            <path d="M320 150 Q340 140, 350 150 Q360 160, 340 170" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+        </svg>

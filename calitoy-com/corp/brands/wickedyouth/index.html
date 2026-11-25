@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wicked Youth — Official Merch</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #050505;
+    --accent: #15803d;
+    --purple: #7c3aed;
+    --gold: #ca8a04;
+    --white: #ffffff;
+    --card-bg: #0d0d0d;
+    --border: #1a2a1a;
+  }
+  body { background: var(--bg); color: var(--white); font-family: 'Impact', 'Arial Black', sans-serif; min-height: 100vh; }
+
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 2rem; background: #000;
+    border-bottom: 2px solid var(--accent);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+  .nav-logo img { height: 44px; }
+  .nav-logo span { font-size: 1.4rem; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; }
+  .cart-btn {
+    background: var(--purple); color: #fff; border: none;
+    padding: 0.5rem 1.2rem; border-radius: 4px; cursor: pointer;
+    font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem; font-weight: 700;
+    font-family: inherit;
+  }
+  .cart-btn span { background: var(--gold); color: #000; border-radius: 50%; width: 20px; height: 20px;
+    display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; }
+
+  .hero {
+    text-align: center; padding: 4rem 2rem 3rem;
+    background: linear-gradient(180deg, #1a0000 0%, var(--bg) 70%);
+    border-bottom: 3px solid var(--accent);
+  }
+  .hero-logo { max-width: 180px; margin: 0 auto 1.5rem; display: block; }
+  .hero h1 {
+    font-size: clamp(2.5rem, 7vw, 5rem); color: var(--white);
+    letter-spacing: 0.06em; text-transform: uppercase;
+    text-shadow: 3px 3px 0 var(--accent), -1px -1px 0 #000;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p { color: #aaa; margin-top: 0.75rem; font-size: 1rem; font-family: Arial, sans-serif; letter-spacing: 0.05em; }
+  .crown-row { font-size: 1.8rem; margin-bottom: 0.75rem; }
+
+  .section-title {
+    text-align: center; padding: 2rem 1rem 1rem;
+    font-size: 1rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.3em;
+    font-family: Arial, sans-serif;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem; padding: 1rem 2rem 3rem; max-width: 1300px; margin: 0 auto;
+  }
+
+  .card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+    display: flex; flex-direction: column;
+  }
+  .card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 0 20px rgba(21,128,61,0.3); }
+  .card-img {
+    background: linear-gradient(135deg, #1a0000 0%, #0d0d0d 100%);
+    padding: 2rem; display: flex; align-items: center; justify-content: center;
+    min-height: 200px;
+  }
+  .card-img img { max-width: 130px; max-height: 130px; object-fit: contain; }
+  .card-body { padding: 1.2rem; flex: 1; display: flex; flex-direction: column; gap: 0.6rem; }
+  .card-name { font-size: 1.05rem; color: var(--white); text-transform: uppercase; letter-spacing: 0.06em; }
+  .card-price { font-size: 1.4rem; color: var(--accent); }
+  .size-select {
+    background: #1a0000; border: 1px solid var(--border); color: var(--white);
+    padding: 0.4rem 0.6rem; border-radius: 4px; width: 100%; font-size: 0.9rem; cursor: pointer;
+    font-family: Arial, sans-serif;
+  }
+  .add-btn {
+    margin-top: auto; background: var(--purple); color: #fff;
+    border: none; padding: 0.7rem; border-radius: 6px; cursor: pointer;
+    font-size: 1rem; font-weight: 700; transition: background 0.2s;
+    text-transform: uppercase; letter-spacing: 0.08em; font-family: inherit;
+  }
+  .add-btn:hover { background: #6d28d9; }
+
+  .cart-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 200; }
+  .cart-overlay.open { display: block; }
+  .cart-drawer {
+    position: fixed; right: 0; top: 0; bottom: 0; width: 360px; max-width: 95vw;
+    background: #0d0d0d; border-left: 2px solid var(--accent);
+    z-index: 300; display: flex; flex-direction: column; transform: translateX(100%);
+    transition: transform 0.3s;
+  }
+  .cart-drawer.open { transform: translateX(0); }
+  .cart-header { padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .cart-header h2 { color: var(--accent); font-size: 1.2rem; }
+  .close-cart { background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
+  .cart-items { flex: 1; overflow-y: auto; padding: 1rem 1.5rem; }
+  .cart-item { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; font-family: Arial, sans-serif; }
+  .cart-item-name { color: var(--white); }
+  .cart-item-price { color: var(--accent); }
+  .cart-empty { color: #555; text-align: center; margin-top: 2rem; font-family: Arial, sans-serif; }
+  .cart-footer { padding: 1.2rem 1.5rem; border-top: 1px solid var(--border); }
+  .cart-total { display: flex; justify-content: space-between; font-size: 1.1rem; margin-bottom: 1rem; font-family: Arial, sans-serif; }
+  .cart-total span:last-child { color: var(--accent); font-weight: 700; }
+  .checkout-btn {
+    width: 100%; background: var(--purple); color: #fff; border: none;
+    padding: 0.9rem; border-radius: 6px; font-size: 1rem; font-weight: 700;
+    cursor: pointer; text-transform: uppercase; letter-spacing: 0.08em; font-family: inherit;
+  }
+
+  footer {
+    text-align: center; padding: 2.5rem 1rem;
+    border-top: 3px solid var(--accent); background: #000;
+    color: #888; font-family: Arial, sans-serif;
+  }
+  footer strong { color: var(--accent); }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .grid { padding: 1rem; gap: 1rem; }
+    .hero { padding: 2.5rem 1rem 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../../index.html">
+    <img src="../../assets/branding/png/All_Brand_Logos_PNG/Wicked_Youth/Brand_Color/Primary_Wordmark.png" alt="Wicked Youth">
+  </a>
+  <button class="cart-btn" onclick="openCart()">🛒 Cart <span id="cart-count">0</span></button>
+</nav>
+
+<section class="hero">
+  <img class="hero-logo" src="../../assets/branding/png/All_Brand_Logos_PNG/Wicked_Youth/Brand_Color/Crown_Icon.png" alt="Crown">
+  <div class="crown-row">👑 👑 👑</div>
+  <h1><span>Wicked</span> Youth</h1>
+  <p>Bold. Crowned. Unapologetic. This is streetwear with attitude.</p>
+</section>
+
+<p class="section-title">★ Official Merch Collection ★</p>
+
+<div class="grid" id="product-grid"></div>
+
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-header">
+    <h2>Your Cart</h2>
+    <button class="close-cart" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items">
+    <p class="cart-empty">Your cart is empty</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><span id="cart-total">$0</span></div>
+    <button class="checkout-btn">Checkout</button>
+  </div>
+</div>
+
+<footer>
+  <p><strong>Wicked Youth</strong> — Crown up. Stay wicked. 👑</p>
+  <p style="margin-top:0.5rem;font-size:0.85rem;">Part of <a href="../hub/index.html">CalitoyCorp</a> · <a href="../hub/index.html">All Brands</a></p>
+</footer>
+
+<script>
+const products = [
+  { name: "Crown Tee", price: 40, img: "../../assets/branding/png/All_Brand_Logos_PNG/Wicked_Youth/Brand_Color/Crown_Icon.png" },
+  { name: "WY Monogram Hoodie", price: 74, img: "../../assets/branding/png/All_Brand_Logos_PNG/Wicked_Youth/Brand_Color/WY_Monogram.png" },
+  { name: "Wordmark Tee", price: 36, img: "../../assets/branding/png/All_Brand_Logos_PNG/Wicked_Youth/Brand_Color/Primary_Wordmark.png" },
+  { name: "WY Circle Crewneck", price: 64, img: "../../assets/branding/png/All_Brand_Logos_PNG/Wicked_Youth/Brand_Color/WY_Circle.png" },
+  { name: "Crown Hat", price: 32, img: "../../assets/branding/png/All_Brand_Logos_PNG/Wicked_Youth/Brand_Color/Crown_Icon.png" },
+  { name: "WY Sticker Pack", price: 12, img: "../../assets/branding/png/All_Brand_Logos_PNG/Wicked_Youth/Brand_Color/WY_Monogram.png" },
+  { name: "Crown Long Sleeve", price: 54, img: "../../assets/branding/png/All_Brand_Logos_PNG/Wicked_Youth/Brand_Color/Crown_Icon.png" },
+  { name: "Wicked Beanie", price: 28, img: "../../assets/branding/png/All_Brand_Logos_PNG/Wicked_Youth/Brand_Color/WY_Circle.png" },
+  { name: "WY Tote", price: 24, img: "../../assets/branding/png/All_Brand_Logos_PNG/Wicked_Youth/Brand_Color/WY_Monogram.png" },
+  { name: "Crown Hoodie", price: 76, img: "../../assets/branding/png/All_Brand_Logos_PNG/Wicked_Youth/Brand_Color/Crown_Icon.png" },
+];
+
+const sizes = ["S","M","L","XL","XXL"];
+let cart = [];
+
+function renderGrid() {
+  const grid = document.getElementById("product-grid");
+  grid.innerHTML = products.map((p, i) => `
+    <div class="card">
+      <div class="card-img"><img src="${p.img}" alt="${p.name}"></div>
+      <div class="card-body">
+        <div class="card-name">${p.name}</div>
+        <div class="card-price">$${p.price}</div>
+        <select class="size-select" id="size-${i}">
+          ${sizes.map(s => `<option>${s}</option>`).join("")}
+        </select>
+        <button class="add-btn" onclick="addToCart(${i})">Add to Cart</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function addToCart(i) {
+  const size = document.getElementById(`size-${i}`).value;
+  const p = products[i];
+  cart.push({ name: p.name, size, price: p.price });
+  updateCart();
+}
+
+function updateCart() {
+  document.getElementById("cart-count").textContent = cart.length;
+  const total = cart.reduce((s, i) => s + i.price, 0);
+  document.getElementById("cart-total").textContent = "$" + total;
+  const el = document.getElementById("cart-items");
+  if (!cart.length) { el.innerHTML = '<p class="cart-empty">Your cart is empty</p>'; return; }
+  el.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <span class="cart-item-name">${item.name} (${item.size})</span>
+      <span class="cart-item-price">$${item.price}</span>
+    </div>
+  `).join("");
+}
+
+function openCart() { document.getElementById("cart-drawer").classList.add("open"); document.getElementById("cart-overlay").classList.add("open"); }
+function closeCart() { document.getElementById("cart-drawer").classList.remove("open"); document.getElementById("cart-overlay").classList.remove("open"); }
+
+renderGrid();
+</script>
+</body>
+</html>

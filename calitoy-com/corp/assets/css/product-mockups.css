@@ -1,0 +1,288 @@
+/* ============================================================
+   PRODUCT MOCKUP SYSTEM
+   Realistic product photography templates
+   ============================================================ */
+
+.product-mockup {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* T-Shirt Mockup */
+.mockup-tshirt {
+  width: 80%;
+  height: 80%;
+  position: relative;
+}
+
+.mockup-tshirt::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    /* Neck */
+    radial-gradient(ellipse 30% 20% at 50% 15%, transparent 40%, #1a1a1a 41%, #1a1a1a 45%, transparent 46%),
+    /* Shoulders */
+    linear-gradient(135deg, transparent 40%, #1a1a1a 41%, #1a1a1a 50%, transparent 51%),
+    linear-gradient(225deg, transparent 40%, #1a1a1a 41%, #1a1a1a 50%, transparent 51%),
+    /* Body */
+    linear-gradient(to bottom, #1a1a1a 20%, #1a1a1a 80%);
+  border-radius: 10px 10px 20px 20px;
+  box-shadow: 
+    inset 0 0 50px rgba(0,0,0,0.5),
+    0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Hoodie Mockup */
+.mockup-hoodie {
+  width: 85%;
+  height: 85%;
+  position: relative;
+}
+
+.mockup-hoodie::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    /* Hood */
+    radial-gradient(ellipse 40% 25% at 50% 10%, #1a1a1a 35%, transparent 36%),
+    /* Neck opening */
+    radial-gradient(ellipse 25% 15% at 50% 20%, transparent 35%, #1a1a1a 36%),
+    /* Body */
+    linear-gradient(to bottom, #1a1a1a 25%, #1a1a1a 80%);
+  border-radius: 30px 30px 25px 25px;
+  box-shadow: 
+    inset 0 0 60px rgba(0,0,0,0.6),
+    0 15px 40px rgba(0,0,0,0.4);
+}
+
+/* Hat Mockup */
+.mockup-hat {
+  width: 70%;
+  height: 50%;
+  position: relative;
+}
+
+.mockup-hat::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 30%;
+  background: #1a1a1a;
+  border-radius: 50% 50% 0 0;
+  box-shadow: 
+    inset 0 -10px 20px rgba(0,0,0,0.3),
+    0 5px 15px rgba(0,0,0,0.2);
+}
+
+.mockup-hat::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -10%;
+  right: -10%;
+  height: 30%;
+  background: #1a1a1a;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+/* Beanie Mockup */
+.mockup-beanie {
+  width: 60%;
+  height: 55%;
+  position: relative;
+}
+
+.mockup-beanie::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 25%;
+  background: linear-gradient(to bottom, #1a1a1a 70%, #2a2a2a 100%);
+  border-radius: 30% 30% 0 0;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.4);
+}
+
+.mockup-beanie::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: #1a1a1a;
+  border-radius: 0 0 10px 10px;
+  border-top: 3px solid rgba(255,255,255,0.1);
+}
+
+/* Tote Bag Mockup */
+.mockup-tote {
+  width: 75%;
+  height: 80%;
+  position: relative;
+}
+
+.mockup-tote::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #d4c4a8;
+  border-radius: 5px;
+  box-shadow: 
+    inset 0 0 40px rgba(0,0,0,0.1),
+    0 10px 30px rgba(0,0,0,0.2);
+}
+
+.mockup-tote::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 25%;
+  right: 25%;
+  height: 20%;
+  border: 8px solid #d4c4a8;
+  border-bottom: none;
+  border-radius: 20px 20px 0 0;
+}
+
+/* Mug Mockup */
+.mockup-mug {
+  width: 60%;
+  height: 65%;
+  position: relative;
+}
+
+.mockup-mug::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 15%;
+  bottom: 0;
+  background: linear-gradient(to right, #f5f5f5 0%, #fff 50%, #f5f5f5 100%);
+  border-radius: 10px 10px 20px 20px;
+  box-shadow: 
+    inset -10px 0 20px rgba(0,0,0,0.1),
+    0 10px 30px rgba(0,0,0,0.2);
+}
+
+.mockup-mug::after {
+  content: '';
+  position: absolute;
+  top: 25%;
+  right: 0;
+  width: 25%;
+  height: 40%;
+  border: 8px solid #f5f5f5;
+  border-left: none;
+  border-radius: 0 15px 15px 0;
+}
+
+/* Design Overlay */
+.design-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 60%;
+  max-height: 40%;
+  z-index: 10;
+}
+
+.design-overlay img,
+.design-overlay svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+/* Brand-specific glow effects */
+.brand-lovelouder .mockup-tshirt::before,
+.brand-lovelouder .mockup-hoodie::before {
+  box-shadow: 
+    inset 0 0 50px rgba(0,0,0,0.5),
+    0 10px 30px rgba(201,162,39,0.1);
+}
+
+.brand-kurced .mockup-tshirt::before,
+.brand-kurced .mockup-hoodie::before {
+  box-shadow: 
+    inset 0 0 50px rgba(0,0,0,0.5),
+    0 10px 30px rgba(107,44,145,0.2);
+}
+
+.brand-tarosyn .mockup-tshirt::before,
+.brand-tarosyn .mockup-hoodie::before {
+  box-shadow: 
+    inset 0 0 50px rgba(0,0,0,0.5),
+    0 10px 30px rgba(74,26,107,0.2);
+}
+
+.brand-wickedyouth .mockup-tshirt::before,
+.brand-wickedyouth .mockup-hoodie::before {
+  box-shadow: 
+    inset 0 0 50px rgba(0,0,0,0.5),
+    0 10px 30px rgba(139,92,246,0.1);
+}
+
+.brand-endof8 .mockup-tshirt::before,
+.brand-endof8 .mockup-hoodie::before {
+  box-shadow: 
+    inset 0 0 50px rgba(0,0,0,0.5),
+    0 10px 30px rgba(210,105,30,0.1);
+}
+
+/* Product card hover effect */
+.product-card:hover .product-mockup {
+  transform: scale(1.02);
+}
+
+.product-card:hover .mockup-tshirt::before,
+.product-card:hover .mockup-hoodie::before,
+.product-card:hover .mockup-hat::before,
+.product-card:hover .mockup-beanie::before,
+.product-card:hover .mockup-tote::before,
+.product-card:hover .mockup-mug::before {
+  filter: brightness(1.1);
+}
+
+/* Loading state */
+.mockup-loading {
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .product-mockup {
+    aspect-ratio: 4/5;
+  }
+}

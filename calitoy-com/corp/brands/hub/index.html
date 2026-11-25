@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calitoy.org — All Brands</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #050505; --white: #f5f5f5; --card-bg: #0d0d0d; --border: #222;
+  --purple: #4a1d96; --gold: #d97706; --orange: #ea580c; --sand: #d4a574;
+  --ocean: #0369a1; --red: #dc2626; --crown-gold: #ca8a04;
+}
+body { background: var(--bg); color: var(--white); font-family: 'Arial', sans-serif; min-height: 100vh; }
+
+/* NAV */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 2rem; background: #000; border-bottom: 1px solid #222;
+  position: sticky; top: 0; z-index: 100; flex-wrap: wrap; gap: 0.75rem;
+}
+.nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+.nav-brand-name { font-size: 1.5rem; font-weight: 900; color: var(--white); letter-spacing: 0.05em; }
+.nav-brand-name span { color: var(--gold); }
+.cart-btn {
+  background: #1a1a1a; color: var(--white); border: 1px solid #333;
+  padding: 0.5rem 1.2rem; border-radius: 6px; cursor: pointer;
+  font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem;
+}
+.cart-count { background: var(--gold); color: #000; border-radius: 50%; width: 20px; height: 20px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; }
+
+/* HERO */
+.hero {
+  text-align: center; padding: 3.5rem 2rem 2.5rem;
+  background: linear-gradient(180deg, #0a0a0a 0%, var(--bg) 100%);
+  border-bottom: 1px solid #1a1a1a;
+}
+.hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; letter-spacing: 0.06em; }
+.hero h1 span { color: var(--gold); }
+.hero p { color: #888; margin-top: 0.5rem; font-size: 1rem; }
+.brand-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
+.brand-link {
+  padding: 0.4rem 1rem; border-radius: 20px; text-decoration: none;
+  font-size: 0.85rem; font-weight: 700; border: 1px solid; transition: opacity 0.2s;
+}
+.brand-link:hover { opacity: 0.8; }
+.bl-tarosyn { color: var(--gold); border-color: var(--purple); background: rgba(74,29,150,0.2); }
+.bl-endof8  { color: var(--orange); border-color: var(--orange); background: rgba(234,88,12,0.15); }
+.bl-wy      { color: var(--red); border-color: var(--red); background: rgba(220,38,38,0.15); }
+
+/* FILTER TABS */
+.filters {
+  display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;
+  padding: 1.5rem 1rem 0.5rem;
+}
+.filter-btn {
+  padding: 0.45rem 1.1rem; border-radius: 20px; border: 1px solid #333;
+  background: #111; color: #aaa; cursor: pointer; font-size: 0.88rem;
+  transition: all 0.2s; font-weight: 600;
+}
+.filter-btn.active, .filter-btn:hover { color: var(--white); border-color: var(--gold); background: #1a1a1a; }
+.filter-btn[data-brand="tarosyn"].active  { border-color: var(--purple); color: var(--gold); background: rgba(74,29,150,0.25); }
+.filter-btn[data-brand="endof8"].active   { border-color: var(--orange); color: var(--orange); background: rgba(234,88,12,0.2); }
+.filter-btn[data-brand="wickedyouth"].active { border-color: var(--red); color: var(--red); background: rgba(220,38,38,0.2); }
+
+/* GRID */
+.grid-wrap { max-width: 1400px; margin: 0 auto; padding: 1.5rem 2rem 4rem; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+.card {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 10px; overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s;
+  display: flex; flex-direction: column;
+}
+.card:hover { transform: translateY(-3px); }
+.card[data-brand="tarosyn"]:hover  { border-color: var(--purple); }
+.card[data-brand="endof8"]:hover   { border-color: var(--orange); }
+.card[data-brand="wickedyouth"]:hover { border-color: var(--red); }
+.card.hidden { display: none; }
+
+.card-img {
+  padding: 1.75rem; display: flex; align-items: center; justify-content: center;
+  min-height: 180px;
+}
+.card[data-brand="tarosyn"]  .card-img { background: linear-gradient(135deg, #1a0840, #0e0b1a); }
+.card[data-brand="endof8"]   .card-img { background: linear-gradient(135deg, #1a0d04, #0a0804); }
+.card[data-brand="wickedyouth"] .card-img { background: linear-gradient(135deg, #1a0000, #0d0d0d); }
+.card-img img { max-width: 110px; max-height: 110px; object-fit: contain; }
+
+.card-body { padding: 1rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+.card-brand-badge {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.15em; padding: 0.15rem 0.5rem; border-radius: 3px; width: fit-content;
+}
+.badge-tarosyn   { color: var(--gold); background: rgba(74,29,150,0.4); }
+.badge-calitoywildales { color: #f59e0b; background: rgba(245,158,11,0.25); border: 1px solid rgba(245,158,11,0.4); }
+.badge-endof8    { color: var(--orange); background: rgba(234,88,12,0.25); }
+.badge-wickedyouth { color: var(--red); background: rgba(220,38,38,0.2); }
+
+.card-name { font-size: 0.95rem; font-weight: 700; color: var(--white); }
+.card-price { font-size: 1.15rem; font-weight: 700; }
+.price-tarosyn   { color: var(--gold); }
+.price-calitoywildales { color: #f59e0b; }
+.price-endof8    { color: var(--orange); }
+.price-wickedyouth { color: var(--red); }
+
+.size-select {
+  background: #111; border: 1px solid #2a2a2a; color: var(--white);
+  padding: 0.35rem 0.5rem; border-radius: 5px; width: 100%; font-size: 0.85rem; cursor: pointer;
+}
+.add-btn {
+  margin-top: auto; color: #fff; border: none; padding: 0.6rem;
+  border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; transition: opacity 0.2s;
+}
+.add-btn:hover { opacity: 0.85; }
+.btn-tarosyn   { background: var(--purple); }
+.btn-calitoywildales { background: #b45309; }
+.btn-endof8    { background: var(--orange); }
+.btn-wickedyouth { background: var(--red); }
+
+/* CART DRAWER */
+.cart-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 200; }
+.cart-overlay.open { display: block; }
+.cart-drawer {
+  position: fixed; right: 0; top: 0; bottom: 0; width: 380px; max-width: 95vw;
+  background: #0d0d0d; border-left: 1px solid #222;
+  z-index: 300; display: flex; flex-direction: column; transform: translateX(100%);
+  transition: transform 0.3s;
+}
+.cart-drawer.open { transform: translateX(0); }
+.cart-header { padding: 1.2rem 1.5rem; border-bottom: 1px solid #1a1a1a; display: flex; justify-content: space-between; align-items: center; }
+.cart-header h2 { color: var(--gold); font-size: 1.15rem; }
+.close-cart { background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
+.cart-items { flex: 1; overflow-y: auto; padding: 1rem 1.5rem; }
+.cart-item { display: flex; justify-content: space-between; align-items: flex-start; padding: 0.7rem 0; border-bottom: 1px solid #1a1a1a; font-size: 0.88rem; gap: 0.5rem; }
+.cart-item-info { flex: 1; }
+.cart-item-name { color: var(--white); }
+.cart-item-meta { color: #666; font-size: 0.78rem; margin-top: 0.15rem; }
+.cart-item-price { color: var(--gold); font-weight: 700; white-space: nowrap; }
+.cart-empty { color: #555; text-align: center; margin-top: 2rem; }
+.cart-footer { padding: 1.2rem 1.5rem; border-top: 1px solid #1a1a1a; }
+.cart-total { display: flex; justify-content: space-between; font-size: 1.1rem; margin-bottom: 1rem; }
+.cart-total span:last-child { color: var(--gold); font-weight: 700; }
+.checkout-btn {
+  width: 100%; background: var(--gold); color: #000; border: none;
+  padding: 0.9rem; border-radius: 8px; font-size: 1rem; font-weight: 700;
+  cursor: pointer; text-transform: uppercase; letter-spacing: 0.08em;
+}
+
+footer {
+  text-align: center; padding: 2.5rem 1rem;
+  border-top: 1px solid #1a1a1a; background: #000; color: #555;
+}
+footer strong { color: var(--gold); }
+.footer-brands { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; font-size: 0.85rem; }
+.footer-brands a { text-decoration: none; }
+
+@media (max-width: 600px) {
+  .grid-wrap { padding: 1rem; }
+  .grid { gap: 1rem; }
+  .hero { padding: 2rem 1rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="../../index.html">
+    <span class="nav-brand-name">Calitoy<span>.org</span></span>
+  </a>
+  <button class="cart-btn" onclick="openCart()">🛒 Cart <span class="cart-count" id="cart-count">0</span></button>
+</nav>
+
+<section class="hero">
+  <h1>Calitoy<span>.org</span></h1>
+  <p>All brands. One store. Wear what you are.</p>
+  <div class="brand-links">
+    <a class="brand-link bl-tarosyn" href="../tarosyn/index.html">✦ Tarosyn</a>
+    <a class="brand-link bl-endof8" href="../endof8/index.html">🌊 Endof8</a>
+    <a class="brand-link bl-wy" href="../wickedyouth/index.html">👑 Wicked Youth</a>
+    <a class="brand-link" href="../calitoywildales/index.html" style="color:#f59e0b;border-color:#b45309;background:rgba(245,158,11,0.12)">🛢️ California Wild Ales</a>
+  </div>
+</section>
+
+<div class="filters">
+  <button class="filter-btn active" data-brand="all" onclick="filterBrand('all', this)">All</button>
+  <button class="filter-btn" data-brand="all" onclick="filterBrand('all', this)" style="opacity:0.5;cursor:default">Love Louder</button>
+  <button class="filter-btn" data-brand="all" onclick="filterBrand('all', this)" style="opacity:0.5;cursor:default">Kurced</button>
+  <button class="filter-btn" data-brand="tarosyn" onclick="filterBrand('tarosyn', this)">✦ Tarosyn</button>
+  <button class="filter-btn" data-brand="endof8" onclick="filterBrand('endof8', this)">🌊 Endof8</button>
+  <button class="filter-btn" data-brand="wickedyouth" onclick="filterBrand('wickedyouth', this)">👑 Wicked Youth</button>
+  <button class="filter-btn" data-brand="calitoywildales" onclick="filterBrand('calitoywildales', this)" style="border-color:#b45309;color:#f59e0b">🛢️ California Wild Ales</button>
+</div>
+
+<div class="grid-wrap">
+  <div class="grid" id="product-grid"></div>
+</div>
+
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-header">
+    <h2>Your Cart</h2>
+    <button class="close-cart" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items">
+    <p class="cart-empty">Your cart is empty</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><span id="cart-total">$0</span></div>
+    <button class="checkout-btn">Checkout</button>
+  </div>
+</div>
+
+<footer>
+  <strong>Calitoy.org</strong> — The House of Brands
+  <div class="footer-brands">
+    <a href="../tarosyn/index.html" style="color:#d97706">✦ Tarosyn</a>
+    <a href="../endof8/index.html" style="color:#ea580c">🌊 Endof8</a>
+    <a href="../wickedyouth/index.html" style="color:#dc2626">👑 Wicked Youth</a>
+    <a href="../calitoywildales/index.html" style="color:#f59e0b">🛢️ California Wild Ales</a>
+  </div>
+</footer>
+
+<script>
+const BASE = "../../assets/branding/png/All_Brand_Logos_PNG";
+const products = [
+  // TAROSYN
+  { brand:"tarosyn", name:"Crest Tee",            price:40, img:`${BASE}/Tarosyn/Brand_Color/Primary_Crest.png` },
+  { brand:"tarosyn", name:"Moon Seal Hoodie",      price:76, img:`${BASE}/Tarosyn/Brand_Color/Moon_Seal.png` },
+  { brand:"tarosyn", name:"Rose Compass Tee",      price:38, img:`${BASE}/Tarosyn/Brand_Color/Rose_Compass.png` },
+  { brand:"tarosyn", name:"Wordmark Crewneck",     price:65, img:`${BASE}/Tarosyn/Brand_Color/Wordmark.png` },
+  { brand:"tarosyn", name:"Stamp Hat",             price:32, img:`${BASE}/Tarosyn/Brand_Color/Primary_Crest.png` },
+  { brand:"tarosyn", name:"Crystal Sticker Pack",  price:12, img:`${BASE}/Tarosyn/Brand_Color/Moon_Seal.png` },
+  { brand:"tarosyn", name:"Moon Seal Long Sleeve", price:54, img:`${BASE}/Tarosyn/Brand_Color/Moon_Seal.png` },
+  { brand:"tarosyn", name:"Tarosyn Beanie",        price:28, img:`${BASE}/Tarosyn/Brand_Color/Primary_Crest.png` },
+  { brand:"tarosyn", name:"Compass Tote",          price:26, img:`${BASE}/Tarosyn/Brand_Color/Rose_Compass.png` },
+  { brand:"tarosyn", name:"Embroidery Hoodie",     price:80, img:`${BASE}/Tarosyn/Brand_Color/Primary_Crest.png` },
+  // ENDOF8
+  { brand:"endof8", name:"Primary Badge Tee",   price:38, img:`${BASE}/Endof8/Brand_Color/Primary_Badge.png` },
+  { brand:"endof8", name:"Pier Badge Hoodie",   price:72, img:`${BASE}/Endof8/Brand_Color/Pier_Badge.png` },
+  { brand:"endof8", name:"Eight Seagull Tee",   price:36, img:`${BASE}/Endof8/Brand_Color/Eight_Seagull.png` },
+  { brand:"endof8", name:"Wordmark Crewneck",   price:62, img:`${BASE}/Endof8/Brand_Color/Wordmark.png` },
+  { brand:"endof8", name:"Pier Badge Hat",      price:30, img:`${BASE}/Endof8/Brand_Color/Pier_Badge.png` },
+  { brand:"endof8", name:"OB Sticker Pack",     price:12, img:`${BASE}/Endof8/Brand_Color/Primary_Badge.png` },
+  { brand:"endof8", name:"Seagull Long Sleeve", price:52, img:`${BASE}/Endof8/Brand_Color/Eight_Seagull.png` },
+  { brand:"endof8", name:"Endof8 Beanie",       price:26, img:`${BASE}/Endof8/Brand_Color/Wordmark.png` },
+  { brand:"endof8", name:"Pier Tote",           price:24, img:`${BASE}/Endof8/Brand_Color/Pier_Badge.png` },
+  { brand:"endof8", name:"Badge Hoodie",        price:74, img:`${BASE}/Endof8/Brand_Color/Primary_Badge.png` },
+  // WICKED YOUTH
+  { brand:"wickedyouth", name:"Crown Tee",          price:40, img:`${BASE}/Wicked_Youth/Brand_Color/Crown_Icon.png` },
+  { brand:"wickedyouth", name:"WY Monogram Hoodie", price:74, img:`${BASE}/Wicked_Youth/Brand_Color/WY_Monogram.png` },
+  { brand:"wickedyouth", name:"Wordmark Tee",       price:36, img:`${BASE}/Wicked_Youth/Brand_Color/Primary_Wordmark.png` },
+  { brand:"wickedyouth", name:"WY Circle Crewneck", price:64, img:`${BASE}/Wicked_Youth/Brand_Color/WY_Circle.png` },
+  { brand:"wickedyouth", name:"Crown Hat",          price:32, img:`${BASE}/Wicked_Youth/Brand_Color/Crown_Icon.png` },
+  { brand:"wickedyouth", name:"WY Sticker Pack",    price:12, img:`${BASE}/Wicked_Youth/Brand_Color/WY_Monogram.png` },
+  { brand:"wickedyouth", name:"Crown Long Sleeve",  price:54, img:`${BASE}/Wicked_Youth/Brand_Color/Crown_Icon.png` },
+  { brand:"wickedyouth", name:"Wicked Beanie",      price:28, img:`${BASE}/Wicked_Youth/Brand_Color/WY_Circle.png` },
+  { brand:"wickedyouth", name:"WY Tote",            price:24, img:`${BASE}/Wicked_Youth/Brand_Color/WY_Monogram.png` },
+  { brand:"wickedyouth", name:"Crown Hoodie",       price:76, img:`${BASE}/Wicked_Youth/Brand_Color/Crown_Icon.png` },
+  // CALIFORNIA WILD ALES (test account)
+  { brand:"calitoywildales", name:"Gose Loco Tee",       price:34, img:"🛢️" },
+  { brand:"calitoywildales", name:"Fuzzy Peaches Tee",   price:34, img:"🍑" },
+  { brand:"calitoywildales", name:"Ozzy Oz-Orange Tee",  price:34, img:"🍊" },
+  { brand:"calitoywildales", name:"Midas Touch Tee",     price:38, img:"🏆" },
+  { brand:"calitoywildales", name:"100 Barrels Crewneck",price:62, img:"🛢️" },
+  { brand:"calitoywildales", name:"14 Mile Hat",         price:30, img:"🌱" },
+  { brand:"calitoywildales", name:"Wild Things Hoodie",  price:72, img:"🐻" },
+  { brand:"calitoywildales", name:"Funk Sticker Pack",   price:12, img:"✨" },
+  { brand:"calitoywildales", name:"Gose Loco Poster",    price:24, img:"🖼️" },
+  { brand:"calitoywildales", name:"Newport Ave Tee",     price:34, img:"🌅" },
+];
+
+const brandLabels = { tarosyn:"Tarosyn", endof8:"Endof8", wickedyouth:"Wicked Youth", calitoywildales:"California Wild Ales" };
+const sizes = ["S","M","L","XL","XXL"];
+let cart = [];
+
+function renderGrid() {
+  const grid = document.getElementById("product-grid");
+  grid.innerHTML = products.map((p, i) => `
+    <div class="card" data-brand="${p.brand}">
+      <div class="card-img"><img src="${p.img}" alt="${p.name}" loading="lazy"></div>
+      <div class="card-body">
+        <span class="card-brand-badge badge-${p.brand}">${brandLabels[p.brand]}</span>
+        <div class="card-name">${p.name}</div>
+        <div class="card-price price-${p.brand}">$${p.price}</div>
+        <select class="size-select" id="size-${i}">
+          ${sizes.map(s => `<option>${s}</option>`).join("")}
+        </select>
+        <button class="add-btn btn-${p.brand}" onclick="addToCart(${i})">Add to Cart</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function filterBrand(brand, btn) {
+  document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  document.querySelectorAll(".card").forEach(card => {
+    card.classList.toggle("hidden", brand !== "all" && card.dataset.brand !== brand);
+  });
+}
+
+function addToCart(i) {
+  const size = document.getElementById(`size-${i}`).value;
+  const p = products[i];
+  cart.push({ name: p.name, brand: p.brand, size, price: p.price });
+  updateCart();
+}
+
+function updateCart() {
+  document.getElementById("cart-count").textContent = cart.length;
+  const total = cart.reduce((s, i) => s + i.price, 0);
+  document.getElementById("cart-total").textContent = "$" + total;
+  const el = document.getElementById("cart-items");
+  if (!cart.length) { el.innerHTML = '<p class="cart-empty">Your cart is empty</p>'; return; }
+  el.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name} (${item.size})</div>
+        <div class="cart-item-meta">${brandLabels[item.brand]}</div>
+      </div>
+      <span class="cart-item-price">$${item.price}</span>
+    </div>
+  `).join("");
+}
+
+function openCart()  { document.getElementById("cart-drawer").classList.add("open"); document.getElementById("cart-overlay").classList.add("open"); }
+function closeCart() { document.getElementById("cart-drawer").classList.remove("open"); document.getElementById("cart-overlay").classList.remove("open"); }
+
+renderGrid();
+</script>
+</body>
+</html>

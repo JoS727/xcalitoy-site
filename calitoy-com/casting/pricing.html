@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing - Calitoy Casting</title>
+<meta name="description" content="Tiered pricing for AI casting services. Single role, multi-role packages, full production casting, monthly retainers, and specialized services.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.identity-nav { display: flex; flex: 1 1 100%; max-width: none; gap: 0; margin: 0.35rem 0 0; align-items: stretch; }
+.identity-nav a { flex: 1 1 0; text-align: center; text-decoration: none; white-space: nowrap;
+  color: rgba(255,255,255,0.62); font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+  padding: 0.5rem 0.3rem; border-left: 1px solid rgba(255,255,255,0.05); transition: color 200ms, background 200ms; }
+.identity-nav a:first-child { border-left: 0; }
+.identity-nav a:hover { color: #d8b46a; background: rgba(216,182,106,0.06); }
+.identity-nav a.active { color: #ff8a2a; background: rgba(255,138,42,0.10); box-shadow: inset 0 -2px 0 #ff8a2a; }
+@media (max-width: 480px) { .identity-nav a { font-size: 0.52rem; letter-spacing: 0.08em; padding: 0.45rem 0.12rem; } }
+</style>
+<style id="calitoy-sitemenu">
+.site-menu-bar{position:sticky;top:0;z-index:900;background:rgba(8,9,18,0.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(216,182,106,0.18);}
+.site-menu-head{display:flex;align-items:center;gap:.6rem;max-width:1200px;margin:0 auto;padding:.32rem .9rem;}
+.menu-arrow{background:none;border:1px solid rgba(216,182,106,.35);color:#d8b46a;width:26px;height:26px;border-radius:7px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.7rem;transition:transform .25s ease, background .2s;flex:none;}
+.menu-arrow:hover{background:rgba(216,182,106,.12);}
+.site-menu-bar.collapsed .menu-arrow{transform:rotate(-90deg);}
+.menu-label{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(228,196,116,.75);}
+.site-menu{display:flex;flex-wrap:nowrap;gap:0;margin-left:.4rem;overflow-x:auto;scrollbar-width:none;max-height:60px;transition:max-height .25s ease, opacity .2s;opacity:1;}
+.site-menu::-webkit-scrollbar{display:none;}
+.site-menu-bar.collapsed .site-menu{max-height:0;opacity:0;pointer-events:none;overflow:hidden;}
+.site-menu a{flex:none;color:rgba(255,255,255,.72);text-decoration:none;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;padding:.42rem .7rem;white-space:nowrap;border-left:1px solid rgba(216,182,106,.12);}
+.site-menu a:first-child{border-left:0;}
+.site-menu a:hover{color:#d8b46a;background:rgba(216,182,106,.06);}
+.site-menu a.active{color:#ff8a2a;box-shadow:inset 0 -2px 0 #ff8a2a;}
+@media (max-width:640px){.menu-label{display:none;}}
+</style>
+</head>
+<body>
+
+<header><nav class="identity-nav" aria-label="The five identities"><a href="https://calitoy.org">CREATIVE AGENCY</a><a href="https://xcalitoy.com">SONGWRITER</a><a href="https://josephcalitoy.com">CONSULTANT</a><a href="https://author.calitoy.com">AUTHOR</a><a href="https://art.calitoy.com">ARTIST</a></nav>
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/calitoy-casting-logo.png" alt="Calitoy Casting">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="pricing.html" class="active">Pricing</a></li>
+      <li><a href="showcase.html">Showcase</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <a href="intake.html" class="nav-cta">Start Casting</a>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="site-menu-bar" id="site-menu-bar"><div class="site-menu-head"><button class="menu-arrow" aria-expanded="true" aria-label="Hide menu">▼</button><span class="menu-label">Menu</span><nav class="site-menu" aria-label="Site menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="showcase.html">Showcase</a><a href="about.html">About</a><a href="intake.html">Start Casting</a></nav></div></div>
+<div class="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="showcase.html">Showcase</a>
+  <a href="about.html">About</a>
+  <a href="intake.html" class="nav-cta">Start Casting</a>
+</div>
+
+<section class="hero" style="min-height: auto; padding: 80px 0 40px;">
+  <div class="hero-bg"></div>
+  <div class="container hero-content">
+    <p class="eyebrow">Transparent Pricing</p>
+    <h1>Casting <span class="gold">Pricing</span></h1>
+    <p>Every package is built for a specific production scale. All prices include AI generation, voice modeling, revisions, and delivery in your required formats.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <p class="eyebrow">Core Packages</p>
+    <h2 class="section-title">Production Packages</h2>
+    <p class="section-subtitle">Choose the package that matches your production scale.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Single Role Cast</h3>
+        <div class="pricing-price">$1,500<span class="period">one-time</span></div>
+        <p class="pricing-desc">Perfect for indie films and single-character needs.</p>
+        <ul class="pricing-features">
+          <li>One AI-generated character</li>
+          <li>Up to 3 appearance variations</li>
+          <li>Voice model included</li>
+          <li>48-hour delivery</li>
+          <li>2 rounds of revisions</li>
+          <li>Full usage rights</li>
+        </ul>
+        <button class="btn-primary" onclick="calitoyCheckout('price_1UBIfXISCKHDtOuFtr53JNz7','Single Role Cast')">Buy Now</button>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Popular</div>
+        <h3>Multi-Role Package</h3>
+        <div class="pricing-price">$5,000<span class="period">one-time</span></div>
+        <p class="pricing-desc">Up to 5 roles for short films and web series.</p>
+        <ul class="pricing-features">
+          <li>Up to 5 AI characters</li>
+          <li>Unlimited variations per role</li>
+          <li>Voice models for all roles</li>
+          <li>72-hour delivery</li>
+          <li>5 rounds of revisions</li>
+          <li>Priority support</li>
+          <li>Full usage rights</li>
+        </ul>
+        <button class="btn-primary" onclick="calitoyCheckout('price_1UBIfXISCKHDtOuFhxt7vO07','Multi-Role Package (up to 5)')">Buy Now</button>
+      </div>
+      <div class="pricing-card">
+        <h3>Full Production Cast</h3>
+        <div class="pricing-price">$15,000<span class="period">one-time</span></div>
+        <p class="pricing-desc">Complete casting for feature films and TV series.</p>
+        <ul class="pricing-features">
+          <li>Unlimited AI characters</li>
+          <li>Full voice cloning suite</li>
+          <li>Crowd generation tools</li>
+          <li>7-day delivery</li>
+          <li>Unlimited revisions</li>
+          <li>Dedicated casting director</li>
+          <li>Full usage rights</li>
+        </ul>
+        <button class="btn-primary" onclick="calitoyCheckout('price_1UBIfXISCKHDtOuFRfgH9AXj','Full Production Cast')">Buy Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--bg-surface);">
+  <div class="container">
+    <p class="eyebrow">Retainer</p>
+    <h2 class="section-title">Monthly Retainer</h2>
+    <p class="section-subtitle">For studios and production companies with ongoing casting needs.</p>
+    <div class="pricing-grid" style="grid-template-columns: 1fr; max-width: 640px; margin: 0 auto;">
+      <div class="pricing-card">
+        <h3>Monthly Casting Retainer</h3>
+        <div class="pricing-price">$8,000<span class="period">per month</span></div>
+        <p class="pricing-desc">Ongoing casting support for continuous production pipelines.</p>
+        <ul class="pricing-features">
+          <li>Up to 10 new characters per month</li>
+          <li>Voice cloning for all characters</li>
+          <li>Crowd generation included</li>
+          <li>24-hour turnaround on requests</li>
+          <li>Unlimited revisions</li>
+          <li>Dedicated casting director</li>
+          <li>Priority pipeline access</li>
+          <li>Full usage rights</li>
+        </ul>
+        <button class="btn-primary" onclick="calitoyCheckout('price_1UBIfXISCKHDtOuFmOPkwzn8','Monthly Casting Retainer')">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <p class="eyebrow">Specialized</p>
+    <h2 class="section-title">Specialized Services</h2>
+    <p class="section-subtitle">Standalone services for specific casting needs.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Digital Double Creation</h3>
+        <div class="pricing-price">$3,500<span class="period">one-time</span></div>
+        <p class="pricing-desc">Photorealistic digital double for a single performer.</p>
+        <ul class="pricing-features">
+          <li>Full-body digital double</li>
+          <li>Performance capture mapping</li>
+          <li>Scene-ready delivery</li>
+          <li>3 rounds of revisions</li>
+          <li>72-hour delivery</li>
+          <li>Full usage rights</li>
+        </ul>
+        <button class="btn-primary" onclick="calitoyCheckout('price_1UBIfXISCKHDtOuFQjtqWzr3','Digital Double Creation')">Buy Now</button>
+      </div>
+      <div class="pricing-card">
+        <h3>Voice Cloning Package</h3>
+        <div class="pricing-price">$2,500<span class="period">one-time</span></div>
+        <p class="pricing-desc">Complete voice cloning for up to 5 characters.</p>
+        <ul class="pricing-features">
+          <li>Up to 5 custom voice models</li>
+          <li>Emotional range modeling</li>
+          <li>Accent and dialect support</li>
+          <li>3 rounds of revisions</li>
+          <li>48-hour delivery</li>
+          <li>Full usage rights</li>
+        </ul>
+        <button class="btn-primary" onclick="calitoyCheckout('price_1UBIfYISCKHDtOuFfvym17rP','Voice Cloning Package')">Buy Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Not Sure Which Package?</h2>
+    <p>Submit a casting brief and we will recommend the right package for your production.</p>
+    <a href="intake.html" class="btn-primary">Submit Casting Brief</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo"><img src="assets/calitoy-casting-logo.png" alt="Calitoy Casting" height="40"></a>
+        <p>AI-powered casting studio for film and movies. Photorealistic digital talent, voice cloning, and crowd generation.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="showcase.html">Showcase</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Digital Doubles</a></li>
+          <li><a href="services.html">Voice Cloning</a></li>
+          <li><a href="services.html">De-Aging</a></li>
+          <li><a href="services.html">Crowd Generation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get Started</h4>
+        <ul>
+          <li><a href="intake.html">Casting Brief</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="intake.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Calitoy Casting. All rights reserved.</p>
+      <div class="footer-network">
+        <a href="https://calitoy.com" target="_blank">calitoy.com</a>
+        <a href="https://calitoycore.com" target="_blank">calitoycore.com</a>
+        <a href="https://calitoymuse.com" target="_blank">calitoymuse.com</a>
+        <a href="https://kurced.com" target="_blank">kurced.com</a>
+        <a href="https://xcalitoy.com" target="_blank">xcalitoy.com</a>
+        <a href="https://jeremydeanmusic.com" target="_blank">jeremydeanmusic.com</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+
+<script id="calitoy-sitemenu-js">
+(function(){
+  document.addEventListener('click', function(e){
+    var bar = document.querySelector('.site-menu-bar');
+    if (!bar) return;
+    if (e.target.closest('.menu-arrow')) {
+      bar.classList.toggle('collapsed');
+      try { localStorage.setItem('calitoy-menu', bar.classList.contains('collapsed') ? 'c' : 'o'); } catch(_) {}
+    }
+  });
+  try {
+    var st = localStorage.getItem('calitoy-menu');
+    if (st === 'c') {
+      var bar = document.querySelector('.site-menu-bar');
+      if (bar) bar.classList.add('collapsed');
+    }
+  } catch(_) {}
+  var here = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.site-menu a').forEach(function(a){
+    var href = a.getAttribute('href') || '';
+    if (href === here) a.classList.add('active');
+  });
+})();
+</script>
+</body>
+</html>

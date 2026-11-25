@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Louder — Premium Streetwear by Calitoy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0a0a0a;
+  --gold:#c9a84c;
+  --gold-light:#e0c06a;
+  --gold-dark:#a8863a;
+  --cream:#f5f0e8;
+  --gray:#1a1a1a;
+  --gray2:#2a2a2a;
+  --text-muted:#888;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--cream);font-family:'Inter',sans-serif;min-height:100vh}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.2);padding:0 5%}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:1400px;margin:0 auto}
+.nav-logo img{height:36px;filter:drop-shadow(0 0 8px rgba(201,168,76,0.4))}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--cream);text-decoration:none;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;opacity:0.75;transition:opacity .2s,color .2s}
+.nav-links a:hover{opacity:1;color:var(--gold)}
+.nav-cart{background:var(--gold);color:var(--black);border:none;padding:10px 22px;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.nav-cart:hover{background:var(--gold-light)}
+
+/* HERO */
+.hero{min-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 5%;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 40%,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-crest{width:min(280px,55vw);filter:drop-shadow(0 0 40px rgba(201,168,76,0.5)) drop-shadow(0 0 80px rgba(201,168,76,0.2));animation:glow-pulse 3s ease-in-out infinite}
+@keyframes glow-pulse{0%,100%{filter:drop-shadow(0 0 40px rgba(201,168,76,0.5)) drop-shadow(0 0 80px rgba(201,168,76,0.2))}50%{filter:drop-shadow(0 0 60px rgba(201,168,76,0.7)) drop-shadow(0 0 120px rgba(201,168,76,0.35))}}
+.hero-eyebrow{font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin:32px 0 16px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(48px,8vw,96px);font-weight:700;line-height:1;color:var(--cream);letter-spacing:-0.02em}
+.hero h1 span{color:var(--gold)}
+.hero-sub{font-size:16px;color:var(--text-muted);margin:20px 0 40px;max-width:480px;line-height:1.6}
+.hero-cta{display:inline-block;background:transparent;color:var(--gold);border:1px solid var(--gold);padding:14px 40px;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:all .25s}
+.hero-cta:hover{background:var(--gold);color:var(--black)}
+
+/* DIVIDER */
+.divider{display:flex;align-items:center;gap:20px;padding:0 5%;max-width:1400px;margin:0 auto 60px}
+.divider-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.3),transparent)}
+.divider-icon img{height:28px;opacity:0.6}
+
+/* PRODUCTS */
+.products-section{padding:40px 5% 100px;max-width:1400px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:60px}
+.section-header h2{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,52px);color:var(--cream);margin-bottom:12px}
+.section-header p{color:var(--text-muted);font-size:15px;letter-spacing:0.05em}
+
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2px}
+
+.product-card{background:var(--gray);position:relative;overflow:hidden;cursor:pointer;transition:transform .3s}
+.product-card:hover{transform:translateY(-4px)}
+.product-card:hover .product-overlay{opacity:1}
+.product-img{width:100%;aspect-ratio:1;background:var(--gray2);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.product-img img{width:65%;height:65%;object-fit:contain;filter:drop-shadow(0 4px 20px rgba(0,0,0,0.5));transition:transform .3s}
+.product-card:hover .product-img img{transform:scale(1.05)}
+.product-badge{position:absolute;top:12px;left:12px;background:var(--gold);color:var(--black);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px}
+.product-overlay{position:absolute;inset:0;background:rgba(201,168,76,0.05);opacity:0;transition:opacity .3s;pointer-events:none}
+.product-info{padding:20px}
+.product-name{font-family:'Playfair Display',serif;font-size:18px;color:var(--cream);margin-bottom:4px}
+.product-price{font-size:20px;color:var(--gold);font-weight:600;margin-bottom:16px}
+.size-label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
+.size-options{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.size-btn{background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--cream);width:36px;height:36px;font-size:11px;font-weight:500;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif}
+.size-btn:hover,.size-btn.active{background:var(--gold);color:var(--black);border-color:var(--gold)}
+.size-btn.one-size{width:auto;padding:0 12px}
+.add-cart-btn{width:100%;background:transparent;color:var(--gold);border:1px solid var(--gold);padding:12px;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:all .25s}
+.add-cart-btn:hover{background:var(--gold);color:var(--black)}
+
+/* FOOTER */
+footer{border-top:1px solid rgba(201,168,76,0.2);padding:60px 5% 40px;max-width:1400px;margin:0 auto}
+.footer-inner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand img{height:48px;margin-bottom:16px;filter:drop-shadow(0 0 8px rgba(201,168,76,0.3))}
+.footer-brand p{color:var(--text-muted);font-size:13px;line-height:1.7;max-width:260px}
+.footer-col h4{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px}
+.footer-col a{color:var(--text-muted);text-decoration:none;font-size:13px;transition:color .2s}
+.footer-col a:hover{color:var(--cream)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:32px;border-top:1px solid rgba(255,255,255,0.06)}
+.footer-bottom p{font-size:12px;color:var(--text-muted)}
+.footer-bottom img{height:24px;opacity:0.5}
+
+/* CART TOAST */
+.toast{position:fixed;bottom:32px;right:32px;background:var(--gold);color:var(--black);padding:14px 24px;font-size:13px;font-weight:600;transform:translateY(100px);opacity:0;transition:all .35s;z-index:999}
+.toast.show{transform:translateY(0);opacity:1}
+
+@media(max-width:900px){
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .footer-brand{grid-column:1/-1}
+}
+@media(max-width:600px){
+  .nav-links{display:none}
+  .footer-inner{grid-template-columns:1fr}
+  .product-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+}
+@media(max-width:400px){
+  .product-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <img src="../../assets/branding/png/All_Brand_Logos_PNG/Calitoy_Love_Louder/Brand_Color/Love_Louder_Wordmark.png" alt="Love Louder">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#products">Shop</a></li>
+      <li><a href="#">Lookbook</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <button class="nav-cart" onclick="showToast('Cart opened')">Cart (0)</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <img class="hero-crest" src="../../assets/branding/png/All_Brand_Logos_PNG/Calitoy_Love_Louder/Brand_Color/Primary_Crest.png" alt="Love Louder Crest">
+  <p class="hero-eyebrow">Calitoy Presents</p>
+  <h1>Love <span>Louder</span></h1>
+  <p class="hero-sub">Premium streetwear for those who wear their heart on their sleeve — and their crest on their chest.</p>
+  <a class="hero-cta" href="#products">Shop the Collection</a>
+</section>
+
+<div style="max-width:1400px;margin:0 auto">
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-icon"><img src="../../assets/branding/png/All_Brand_Logos_PNG/Calitoy_Love_Louder/Brand_Color/Rose_Icon.png" alt=""></div>
+    <div class="divider-line"></div>
+  </div>
+</div>
+
+<section class="products-section" id="products">
+  <div class="section-header">
+    <h2>The Collection</h2>
+    <p>10 pieces. One statement.</p>
+  </div>
+
+  <div class="product-grid">
+
+    <!-- 1 -->
+    <div class="product-card">
+      <div class="product-img">
+        <img src="../../assets/branding/png/All_Brand_Logos_PNG/Calitoy_Love_Louder/Brand_Color/Primary_Crest.png" alt="Love Louder Crest Tee">
+        <div class="product-overlay"></div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Love Louder Crest Tee</div>
+        <div class="product-price">$42</div>
+        <div class="size-label">Select Size</div>
+        <div class="size-options">
+          <button class="size-btn" onclick="selectSize(this)">XS</button>
+          <button class="size-btn" onclick="selectSize(this)">S</button>
+          <button class="size-btn active" onclick="selectSize(this)">M</button>
+          <button class="size-btn" onclick="selectSize(this)">L</button>
+          <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+        <button class="add-cart-btn" onclick="showToast('Love Louder Crest Tee added to cart')">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="product-card">
+      <div class="product-img">
+        <img src="../../assets/branding/png/All_Brand_Logos_PNG/Calitoy_Love_Louder/Brand_Color/Rose_Signature.png" alt="Gold Rose Hoodie">
+        <div class="product-badge">Fan Fave</div>
+        <div class="product-overlay"></div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Gold Rose Hoodie</div>
+        <div class="product-price">$78</div>
+        <div class="size-label">Select Size</div>
+        <div class="size-options">
+          <button class="size-btn" onclick="selectSize(this)">XS</button>
+          <button class="size-btn" onclick="selectSize(this)">S</button>
+          <button class="size-btn active" onclick="selectSize(this)">M</button>
+          <button class="size-btn" onclick="selectSize(this)">L</button>
+          <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+        <button class="add-cart-btn" onclick="showToast('Gold Rose Hoodie added to cart')">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="product-card">
+      <div class="product-img">
+        <img src="../../assets/branding/png/All_Brand_Logos_PNG/Calitoy_Love_Louder/Brand_Color/Calitoy_Signature.png" alt="Calitoy Signature Tee">
+        <div class="product-overlay"></div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Calitoy Signature Tee</div>
+        <div class="product-price">$38</div>
+        <div class="size-label">Select Size</div>
+        <div class="size-options">
+          <button class="size-btn" onclick="selectSize(this)">XS</button>
+          <button class="size-btn" onclick="selectSize(this)">S</button>
+          <button class="size-btn active" onclick="selectSize(this)">M</button>
+          <button class="size-btn" onclick="selectSize(this)">L</button>
+          <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+        <button class="add-cart-btn" onclick="showToast('Calitoy Signature Tee added to cart')">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="product-card">
+      <div class="product-img">
+        <img src="../../assets/branding/png/All_Brand_Logos_PNG/Calitoy_Love_Louder/Brand_Color/Love_Louder_Wordmark.png" alt="Love Louder Wordmark Tee">
+        <div class="product-overlay"></div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Love Louder Wordmark Tee</div>
+        <div class="product-price">$36</div>
+        <div class="size-label">Select Size</div>
+        <div class="size-options">
+          <button class="size-btn" onclick="selectSize(this)">XS</button>
+          <button class="size-btn" onclick="selectSize(this)">S</button>
+          <button class="size-btn active" onclick="selectSize(this)">M</button>
+          <button class="size-btn" onclick="selectSize(this)">L</button>
+          <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+        <button class="add-cart-btn" onclick="showToast('Love Louder Wordmark Tee added to cart')">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="product-card">
+      <div class="product-img">
+        <img src="../../assets/branding/png/All_Brand_Logos_PNG/Calitoy_Love_Louder/Brand_Color/Rose_Icon.png" alt="Rose Icon Crewneck">
+        <div class="product-overlay"></div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Rose Icon Crewneck</div>
+        <div class="product-price">$68</div>
+        <div class="size-label">Select Size</div>
+        <div class="size-options">
+          <button class="size-btn" onclick="selectSize(this)">XS</button>
+          <button class="size-btn" onclick="selectSize(this)">S</button>
+          <button class="size-btn active" onclick="selectSize(this)">M</button>
+          <button class="size-btn" onclick="selectSize(this)">L</button>
+          <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+        <button class="add-cart-btn" onclick="showToast('Rose Icon Crewneck added to cart')">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="product-card">
+      <div class="product-img">
+        <img src="../../assets/branding/png/All_Brand_Logos_PNG/Calitoy_Love_Louder/Brand_Color/Stamp.png" alt="Gold Stamp Dad Hat">
+        <div class="product-overlay"></div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Gold Stamp Dad Hat</div>
+        <div class="product-price">$34</div>
+        <div class="size-label">Select Size</div>
+        <div class="size-options">
+          <button class="size-btn one-size active" onclick="selectSize(this)">One Size</button>
+        </div>
+        <button class="add-cart-btn" onclick="showToast('Gold Stamp Dad Hat added to cart')">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="product-card">
+      <div class="product-img">
+        <img src="../../assets/branding/png/All_Brand_Logos_PNG/Calitoy_Love_Louder/Brand_Color/Love_Louder_Wordmark.png" alt="Love Louder Tote">
+        <div class="product-overlay"></div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Love Louder Tote</div>
+        <div class="product-price">$28</div>
+        <div class="size-label">Select Size</div>
+        <div class="size-options">
+          <button class="size-btn one-size active" onclick="selectSize(this)">One Size</button>
+        </div>
+        <button class="add-cart-btn" onclick="showToast('Love Louder Tote added to cart')">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="product-card">
+      <div class="product-img">
+        <img src="../../assets/branding/png/All_Brand_Logos_PNG/Calitoy_Love_Louder/Brand_Color/Embroidery_Mark.png" alt="Embroidery Hoodie">
+        <div class="product-badge">Premium</div>
+        <div class="product-overlay"></div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Embroidery Hoodie</div>
+        <div class="product-price">$82</div>
+        <div class="size-label">Select Size</div>
+        <div class="size-options">
+          <button class="size-btn" onclick="selectSize(this)">XS</button>
+          <button class="size-btn" onclick="selectSize(this)">S</button>
+          <button class="size-btn active" onclick="selectSize(this)">M</button>
+          <button class="size-btn" onclick="selectSize(this)">L</button>
+          <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+        <button class="add-cart-btn" onclick="showToast('Embroidery Hoodie added to cart')">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="product-card">
+      <div class="product-img">
+        <img src="../../assets/branding/png/All_Brand_Logos_PNG/Calitoy_Love_Louder/Brand_Color/Rose_Icon.png" alt="Rose Sticker Pack">
+        <div class="product-overlay"></div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Rose Sticker Pack</div>
+        <div class="product-price">$12</div>
+        <div class="size-label">Quantity</div>
+        <div class="size-options">
+          <button class="size-btn one-size active" onclick="selectSize(this)">1 Pack</button>
+          <button class="size-btn one-size" onclick="selectSize(this)">3 Pack</button>
+        </div>
+        <button class="add-cart-btn" onclick="showToast('Rose Sticker Pack added to cart')">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="product-card">
+      <div class="product-img">
+        <img src="../../assets/branding/png/All_Brand_Logos_PNG/Calitoy_Love_Louder/Brand_Color/Primary_Crest.png" alt="Love Louder Long Sleeve">
+        <div class="product-overlay"></div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Love Louder Long Sleeve</div>
+        <div class="product-price">$54</div>
+        <div class="size-label">Select Size</div>
+        <div class="size-options">
+          <button class="size-btn" onclick="selectSize(this)">XS</button>
+          <button class="size-btn" onclick="selectSize(this)">S</button>
+          <button class="size-btn active" onclick="selectSize(this)">M</button>
+          <button class="size-btn" onclick="selectSize(this)">L</button>
+          <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+        <button class="add-cart-btn" onclick="showToast('Love Louder Long Sleeve added to cart')">Add to Cart</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="../../assets/branding/png/All_Brand_Logos_PNG/Calitoy_Love_Louder/Brand_Color/Calitoy_Signature.png" alt="Calitoy">
+      <p>Love Louder is a Calitoy brand — premium streetwear made for those who lead with love and wear it without apology.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Tees &amp; Tops</a></li>
+        <li><a href="#">Hoodies</a></li>
+        <li><a href="#">Accessories</a></li>
+        <li><a href="#">Sale</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
+      <ul>
+        <li><a href="#">About Love Louder</a></li>
+        <li><a href="#">Shipping &amp; Returns</a></li>
+        <li><a href="#">Size Guide</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Calitoy. All rights reserved. Love Louder&trade;</p>
+    <img src="../../assets/branding/png/All_Brand_Logos_PNG/Calitoy_Love_Louder/Brand_Color/Rose_Signature.png" alt="Rose">
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+function selectSize(btn){
+  const group=btn.closest('.size-options');
+  group.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+let toastTimer;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2500);
+}
+</script>
+</body>
+</html>

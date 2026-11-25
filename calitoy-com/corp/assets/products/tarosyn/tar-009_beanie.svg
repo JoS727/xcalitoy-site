@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="fabric" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#151515;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="8" stdDeviation="15" flood-opacity="0.3"/></filter>
+  </defs>
+  <rect width="600" height="600" fill="#f5f5f5"/>
+  <path d="M200 200 Q200 120 300 120 Q400 120 400 200 L400 350 Q300 370 200 350 Z" fill="url(#fabric)" filter="url(#shadow)"/>
+  <rect x="200" y="320" width="200" height="60" rx="5" fill="url(#fabric)" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+  <g transform="translate(300, 250)">
+    <text x="0" y="0" text-anchor="middle" fill="#C9A227" font-size="40" font-family="serif">🌙</text>
+    <text x="0" y="35" text-anchor="middle" fill="#C9A227" font-size="10" font-family="sans-serif" letter-spacing="1">TAROSYN</text>
+  </g>
+  <text x="300" y="560" text-anchor="middle" fill="#666" font-size="12" font-family="sans-serif">Trust The Cosmos Beanie</text>
+</svg>

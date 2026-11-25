@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CalitoyCorp | Portfolio of Brands</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0A0A0A;
+      --white: #FFFFFF;
+      --gold: #C9A227;
+      --grey: #1A1A1A;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+    }
+    
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      border: 2px solid var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+    }
+    .cmark { color: var(--gold); font-weight: 700; }
+    .cmark-ra { display: inline-block; transform: rotate(180deg); }
+    .cmark-gold { color: var(--gold); }
+
+    
+    .nav {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .nav a:hover { color: var(--gold); }
+    
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem;
+      background: linear-gradient(180deg, var(--black) 0%, var(--grey) 100%);
+    }
+    
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .hero-tagline {
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 3rem;
+      max-width: 600px;
+    }
+    
+    .hero-stats {
+      display: flex;
+      gap: 4rem;
+      margin-bottom: 3rem;
+    }
+    
+    .stat {
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    
+    .stat-label {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    /* Brands Grid */
+    .brands {
+      padding: 6rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .section-header p {
+      color: rgba(255,255,255,0.6);
+    }
+    
+    .brands-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .brand-card {
+      background: var(--grey);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    
+    .brand-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold);
+    }
+    
+    .brand-header {
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .brand-header.lovelouder { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
+    .brand-header.kurced { background: linear-gradient(135deg, #2d1b4e 0%, #1a1a1a 100%); }
+    .brand-header.tarosyn { background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 100%); }
+    .brand-header.wickedyouth { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
+    .brand-header.endof8 { background: linear-gradient(135deg, #1a1a1a 0%, #2d3436 100%); }
+    
+    .brand-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .brand-logo-svg {
+      margin-bottom: 1rem;
+    }
+    
+    .brand-logo-svg img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
+    
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .brand-tagline {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+    }
+    
+    .brand-content {
+      padding: 1.5rem 2rem;
+    }
+    
+    .brand-stats {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .brand-stat {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+    }
+    
+    .brand-stat span {
+      color: var(--white);
+      font-weight: 600;
+    }
+    
+    .brand-products {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .product-tag {
+      padding: 0.25rem 0.5rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+    
+    .visit-btn {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      text-align: center;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .visit-btn:hover {
+      background: var(--gold);
+      color: var(--black);
+      border-color: var(--gold);
+    }
+    
+    /* Admin Link */
+    .admin-bar {
+      background: var(--grey);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    
+    .admin-bar a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .admin-bar a:hover {
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .hero-stats { flex-direction: column; gap: 2rem; }
+      .brands-grid { grid-template-columns: 1fr; }
+      .nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <div><span class="cmark">C</span><span class="cmark-ra">V</span>LITOY<span class="cmark-gold">CORP</span></div>
+      </div>
+      <nav class="nav">
+        <a href="#brands">Brands</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="admin/">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>CalitoyCorp</h1>
+    <p class="hero-tagline">A portfolio of emotionally resonant brands. California crafted, globally worn.</p>
+    
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-value">5</div>
+        <div class="stat-label">Brands</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">25</div>
+        <div class="stat-label">Products</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">875</div>
+        <div class="stat-label">Variants</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="brands" id="brands">
+    <div class="section-header">
+      <h2>Our Brands</h2>
+      <p>Each brand tells a different story. All speak the same truth.</p>
+    </div>
+    
+    <div class="brands-grid">
+      <div class="brand-card" onclick="window.location.href='brands/lovelouder/'">
+        <div class="brand-header lovelouder">
+          <div class="brand-logo-svg">
+            <img src="assets/logos/All_Brand_Logos_SVG/Calitoy_Love_Louder/Brand_Color/Primary_Crest.svg" alt="Love Louder" width="80" height="80">
+          </div>
+          <h3 class="brand-name">Love Louder</h3>
+          <p class="brand-tagline">Love Louder. Live Louder. Feel Louder.</p>
+        </div>
+        <div class="brand-content">
+          <div class="brand-stats">
+            <div class="brand-stat"><span>8</span> Products</div>
+            <div class="brand-stat"><span>Gold</span> Primary</div>
+          </div>
+          <div class="brand-products">
+            <span class="product-tag">Tees</span>
+            <span class="product-tag">Hoodies</span>
+            <span class="product-tag">Accessories</span>
+          </div>
+          <a href="brands/lovelouder/" class="visit-btn">Visit Store →</a>
+        </div>
+      </div>
+
+      <div class="brand-card" onclick="window.location.href='brands/kurced/'">
+        <div class="brand-header kurced">
+          <div class="brand-logo-svg">
+            <img src="assets/logos/All_Brand_Logos_SVG/Kurced/Brand_Color/Primary_Crest.svg" alt="Kurced" width="80" height="80">
+          </div>
+          <h3 class="brand-name">Kurced</h3>
+          <p class="brand-tagline">Fall Louder. Rise Darker. Live Cursed.</p>
+        </div>
+        <div class="brand-content">
+          <div class="brand-stats">
+            <div class="brand-stat"><span>8</span> Products</div>
+            <div class="brand-stat"><span>Neon</span> Goth</div>
+          </div>
+          <div class="brand-products">
+            <span class="product-tag">Tees</span>
+            <span class="product-tag">Hoodies</span>
+            <span class="product-tag">Accessories</span>
+          </div>
+          <a href="brands/kurced/" class="visit-btn">Visit Store →</a>
+        </div>
+      </div>
+
+      <div class="brand-card" onclick="window.location.href='brands/tarosyn/'">
+        <div class="brand-header tarosyn">
+          <div class="brand-logo-svg">
+            <img src="assets/logos/All_Brand_Logos_SVG/Tarosyn/Brand_Color/Primary_Crest.svg" alt="Tarosyn" width="80" height="80">
+          </div>
+          <h3 class="brand-name">Tarosyn</h3>
+          <p class="brand-tagline">You're A Star. Design Your Destiny.</p>
+        </div>
+        <div class="brand-content">
+          <div class="brand-stats">
+            <div class="brand-stat"><span>8</span> Products</div>
+            <div class="brand-stat"><span>Mystical</span> Celestial</div>
+          </div>
+          <div class="brand-products">
+            <span class="product-tag">Tees</span>
+            <span class="product-tag">Hoodies</span>
+            <span class="product-tag">Accessories</span>
+          </div>
+          <a href="brands/tarosyn/" class="visit-btn">Visit Store →</a>
+        </div>
+      </div>
+
+      <div class="brand-card" onclick="window.location.href='brands/wickedyouth/'">
+        <div class="brand-header wickedyouth">
+          <div class="brand-logo-svg">
+            <img src="assets/logos/All_Brand_Logos_SVG/Wicked_Youth/Brand_Color/WY_Circle.svg" alt="Wicked Youth" width="80" height="80">
+          </div>
+          <h3 class="brand-name">Wicked Youth</h3>
+          <p class="brand-tagline">Create. Disrupt. Elevate.</p>
+        </div>
+        <div class="brand-content">
+          <div class="brand-stats">
+            <div class="brand-stat"><span>8</span> Products</div>
+            <div class="brand-stat"><span>Beauty</span> Street</div>
+          </div>
+          <div class="brand-products">
+            <span class="product-tag">Tees</span>
+            <span class="product-tag">Hoodies</span>
+            <span class="product-tag">Accessories</span>
+          </div>
+          <a href="brands/wickedyouth/" class="visit-btn">Visit Store →</a>
+        </div>
+      </div>
+
+      <div class="brand-card" onclick="window.location.href='brands/endof8/'">
+        <div class="brand-header endof8">
+          <div class="brand-logo-svg">
+            <img src="assets/logos/All_Brand_Logos_SVG/Endof8/Brand_Color/Primary_Badge.svg" alt="Endof8" width="80" height="80">
+          </div>
+          <h3 class="brand-name">Endof8</h3>
+          <p class="brand-tagline">Live Free. Ride Hard. End Of 8.</p>
+        </div>
+        <div class="brand-content">
+          <div class="brand-stats">
+            <div class="brand-stat"><span>8</span> Products</div>
+            <div class="brand-stat"><span>Surf</span> Punk</div>
+          </div>
+          <div class="brand-products">
+            <span class="product-tag">Tees</span>
+            <span class="product-tag">Hoodies</span>
+            <span class="product-tag">Accessories</span>
+          </div>
+          <a href="brands/endof8/" class="visit-btn">Visit Store →</a>
+        </div>
+      </div>
+
+      <div class="brand-card" onclick="window.location.href='brands/calitoywildales/'">
+        <div class="brand-header endof8" style="background:linear-gradient(135deg,#1a0f04 0%,#3a2a12 100%);">
+          <div class="brand-logo-svg" style="display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:2.2rem;">
+            <span><span style="color:var(--gold)">C</span><span style="display:inline-block;transform:rotate(180deg);color:var(--gold)">A</span>LITOY</span>
+          </div>
+          <h3 class="brand-name">California Wild Ales</h3>
+          <p class="brand-tagline">Celebrate the Funk. Wild Fermented. Barrel Aged.</p>
+        </div>
+        <div class="brand-content">
+          <div class="brand-stats">
+            <div class="brand-stat"><span>10</span> Products</div>
+            <div class="brand-stat"><span>TEST</span> Account</div>
+          </div>
+          <div class="brand-products">
+            <span class="product-tag">Tees</span>
+            <span class="product-tag">Hoodies</span>
+            <span class="product-tag">Posters</span>
+          </div>
+          <a href="brands/calitoywildales/" class="visit-btn">Visit Store →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="admin-bar">
+    <a href="admin/">→ Manage Products in Admin Dashboard</a>
+  </div>
+
+  <script>
+    // Animate stats on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const stats = document.querySelectorAll('.stat-value');
+      stats.forEach(stat => {
+        const finalValue = stat.textContent;
+        stat.textContent = '0';
+        animateValue(stat, 0, parseInt(finalValue), 1000);
+      });
+    });
+    
+    function animateValue(element, start, end, duration) {
+      const range = end - start;
+      const increment = end > start ? 1 : -1;
+      const stepTime = Math.abs(Math.floor(duration / range));
+      let current = start;
+      
+      const timer = setInterval(() => {
+        current += increment;
+        element.textContent = current;
+        if (current === end) clearInterval(timer);
+      }, stepTime);
+    }
+  </script>
+</body>
+</html>

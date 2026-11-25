@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-labelledby="title desc">
+  <title id="title">Bearing component illustration</title><desc id="desc">A stylized steel skateboard bearing with a small heart motif.</desc>
+  <defs><radialGradient id="metal" cx="32%" cy="28%"><stop stop-color="#f5f0df"/><stop offset=".32" stop-color="#b8b6ad"/><stop offset=".72" stop-color="#62645f"/><stop offset="1" stop-color="#232520"/></radialGradient><linearGradient id="heart" x1="0" x2="1"><stop stop-color="#ef7252"/><stop offset="1" stop-color="#b6323e"/></linearGradient></defs>
+  <rect width="600" height="600" fill="#e9e5d9"/>
+  <circle cx="300" cy="300" r="222" fill="url(#metal)" stroke="#191b17" stroke-width="20"/>
+  <circle cx="300" cy="300" r="154" fill="#e9e5d9" stroke="#6e7069" stroke-width="20"/>
+  <circle cx="300" cy="300" r="74" fill="url(#metal)" stroke="#191b17" stroke-width="18"/>
+  <g fill="#33352f"><circle cx="300" cy="160" r="15"/><circle cx="399" cy="201" r="15"/><circle cx="440" cy="300" r="15"/><circle cx="399" cy="399" r="15"/><circle cx="300" cy="440" r="15"/><circle cx="201" cy="399" r="15"/><circle cx="160" cy="300" r="15"/><circle cx="201" cy="201" r="15"/></g>
+  <path d="M300 390c-101-69-108-130-70-160 29-23 59-6 70 17 11-23 41-40 70-17 38 30 31 91-70 160Z" fill="url(#heart)" stroke="#722833" stroke-width="9"/>
+</svg>
