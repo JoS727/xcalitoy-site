@@ -1,0 +1,1051 @@
+{
+  "_doc": "Single source of truth for calitoy.com/works and the /api/checkout Pages Function. See works/README.md (WORKS_README.md at repo root). Regenerate index.html with: python3 calitoy-com/works/build_works.py",
+  "version": 1,
+  "updated": "2026-11-25",
+  "sections": [
+    {
+      "id": "music",
+      "title": "Music",
+      "types": [
+        "album",
+        "single"
+      ]
+    },
+    {
+      "id": "digital",
+      "title": "Digital Downloads"
+    },
+    {
+      "id": "vinyl",
+      "title": "Vinyl"
+    },
+    {
+      "id": "cd",
+      "title": "CD on Demand"
+    },
+    {
+      "id": "books",
+      "title": "Books",
+      "types": [
+        "book"
+      ]
+    },
+    {
+      "id": "graphic-novels",
+      "title": "Graphic Novels",
+      "types": [
+        "graphic_novel"
+      ]
+    },
+    {
+      "id": "tv",
+      "title": "TV — Episodes & Seasons",
+      "types": [
+        "tv_episode",
+        "tv_season"
+      ]
+    },
+    {
+      "id": "merch",
+      "title": "Merch"
+    }
+  ],
+  "merch": {
+    "links": [
+      {
+        "label": "Calitoy Merch Store",
+        "url": "https://calitoy.com/merch/"
+      },
+      {
+        "label": "merch.calitoy.com",
+        "url": "https://merch.calitoy.com"
+      }
+    ]
+  },
+  "items": [
+    {
+      "sku": "single-that-one-thing",
+      "title": "That One Thing",
+      "type": "single",
+      "status": "available",
+      "release_date": "2026-10-02",
+      "tracks": 1,
+      "cover": "/works/img/that-one-thing.jpg",
+      "retail_reference": {
+        "lowest_retail": 0.99,
+        "lowest_retail_source": "iTunes Store (Apple lookup API)",
+        "highest_payout": 0.69,
+        "highest_payout_source": "iTunes ~70% of retail"
+      },
+      "links": [
+        {
+          "tier": 3,
+          "store": "iTunes",
+          "kind": "purchase",
+          "label": "Buy on iTunes — $0.99",
+          "url": "https://music.apple.com/us/album/that-one-thing-single/6813082167?app=itunes",
+          "price": 0.99
+        },
+        {
+          "tier": 3,
+          "store": "Amazon",
+          "kind": "search",
+          "label": "Amazon digital (search: Calitoy That One Thing)",
+          "url": "https://www.amazon.com/s?k=Calitoy+That+One+Thing&i=digital-music"
+        },
+        {
+          "tier": 5,
+          "store": "Apple Music",
+          "kind": "stream",
+          "label": "Stream on Apple Music",
+          "url": "https://music.apple.com/us/album/that-one-thing-single/6813082167"
+        },
+        {
+          "tier": 5,
+          "store": "Spotify",
+          "kind": "stream",
+          "label": "Spotify (artist page)",
+          "url": "https://open.spotify.com/artist/1EKZspXmE10a4NU0p1OAqG"
+        },
+        {
+          "tier": 5,
+          "store": "Amazon Music",
+          "kind": "search",
+          "label": "Amazon Music (search: Calitoy)",
+          "url": "https://music.amazon.com/search/calitoy"
+        },
+        {
+          "tier": 5,
+          "store": "SoundCloud",
+          "kind": "stream",
+          "label": "SoundCloud",
+          "url": "https://soundcloud.com/calitoy"
+        }
+      ],
+      "direct": {
+        "eligible": false,
+        "reason": "Singles are not sold direct: at $0.99 the $0.30 Stripe fee breaks the pricing rule. Point buyers to the album or stores."
+      }
+    },
+    {
+      "sku": "single-me-first",
+      "title": "Me First",
+      "type": "single",
+      "status": "available",
+      "release_date": "2026-09-25",
+      "tracks": 1,
+      "cover": "/works/img/me-first.jpg",
+      "retail_reference": {
+        "lowest_retail": 0.99,
+        "lowest_retail_source": "iTunes Store (Apple lookup API)",
+        "highest_payout": 0.69,
+        "highest_payout_source": "iTunes ~70% of retail"
+      },
+      "links": [
+        {
+          "tier": 3,
+          "store": "iTunes",
+          "kind": "purchase",
+          "label": "Buy on iTunes — $0.99",
+          "url": "https://music.apple.com/us/album/me-first-single/6830204258?app=itunes",
+          "price": 0.99
+        },
+        {
+          "tier": 3,
+          "store": "Amazon",
+          "kind": "search",
+          "label": "Amazon digital (search: Calitoy Me First)",
+          "url": "https://www.amazon.com/s?k=Calitoy+Me+First&i=digital-music"
+        },
+        {
+          "tier": 5,
+          "store": "Apple Music",
+          "kind": "stream",
+          "label": "Stream on Apple Music",
+          "url": "https://music.apple.com/us/album/me-first-single/6830204258"
+        },
+        {
+          "tier": 5,
+          "store": "Spotify",
+          "kind": "stream",
+          "label": "Spotify (artist page)",
+          "url": "https://open.spotify.com/artist/1EKZspXmE10a4NU0p1OAqG"
+        },
+        {
+          "tier": 5,
+          "store": "Amazon Music",
+          "kind": "search",
+          "label": "Amazon Music (search: Calitoy)",
+          "url": "https://music.amazon.com/search/calitoy"
+        },
+        {
+          "tier": 5,
+          "store": "SoundCloud",
+          "kind": "stream",
+          "label": "SoundCloud",
+          "url": "https://soundcloud.com/calitoy"
+        }
+      ],
+      "direct": {
+        "eligible": false,
+        "reason": "Singles are not sold direct: at $0.99 the $0.30 Stripe fee breaks the pricing rule. Point buyers to the album or stores."
+      }
+    },
+    {
+      "sku": "album-xcalitoy",
+      "title": "XCalitoy",
+      "type": "album",
+      "status": "available",
+      "release_date": "2026-09-04",
+      "tracks": 13,
+      "cover": "/works/img/xcalitoy.jpg",
+      "retail_reference": {
+        "lowest_retail": 9.99,
+        "lowest_retail_source": "iTunes Store (Apple lookup API)",
+        "highest_payout": 6.99,
+        "highest_payout_source": "iTunes ~70% of retail"
+      },
+      "links": [
+        {
+          "tier": 3,
+          "store": "iTunes",
+          "kind": "purchase",
+          "label": "Buy on iTunes — $9.99",
+          "url": "https://music.apple.com/us/album/xcalitoy/6807407186?app=itunes",
+          "price": 9.99
+        },
+        {
+          "tier": 3,
+          "store": "Amazon",
+          "kind": "search",
+          "label": "Amazon digital (search: Calitoy XCalitoy)",
+          "url": "https://www.amazon.com/s?k=Calitoy+XCalitoy&i=digital-music"
+        },
+        {
+          "tier": 4,
+          "store": "elasticStage",
+          "kind": "physical",
+          "label": "12\" vinyl — elasticStage",
+          "url": "https://elasticstage.com/soundcloud/releases/calitoy-xcalitoy-album"
+        },
+        {
+          "tier": 5,
+          "store": "Apple Music",
+          "kind": "stream",
+          "label": "Stream on Apple Music",
+          "url": "https://music.apple.com/us/album/xcalitoy/6807407186"
+        },
+        {
+          "tier": 5,
+          "store": "Spotify",
+          "kind": "stream",
+          "label": "Spotify (artist page)",
+          "url": "https://open.spotify.com/artist/1EKZspXmE10a4NU0p1OAqG"
+        },
+        {
+          "tier": 5,
+          "store": "Amazon Music",
+          "kind": "search",
+          "label": "Amazon Music (search: Calitoy)",
+          "url": "https://music.amazon.com/search/calitoy"
+        },
+        {
+          "tier": 5,
+          "store": "SoundCloud",
+          "kind": "stream",
+          "label": "SoundCloud",
+          "url": "https://soundcloud.com/calitoy"
+        }
+      ],
+      "direct": {
+        "eligible": true,
+        "price_cents": 899,
+        "currency": "usd",
+        "download_key": "music/xcalitoy/Calitoy-xcalitoy.zip",
+        "filename": "Calitoy - XCalitoy.zip",
+        "content_type": "application/zip",
+        "format": "Digital album (zip)"
+      },
+      "vinyl": true,
+      "featured": true,
+      "blurb": "The latest album — 13 tracks of dark pop and night-drive confessionals. Out now, and on 12\" heavyweight vinyl."
+    },
+    {
+      "sku": "single-lioness-lost",
+      "title": "Lioness Lost",
+      "type": "single",
+      "status": "available",
+      "release_date": "2026-06-12",
+      "tracks": 1,
+      "cover": "/works/img/lioness-lost.jpg",
+      "retail_reference": {
+        "lowest_retail": 0.99,
+        "lowest_retail_source": "iTunes Store (Apple lookup API)",
+        "highest_payout": 0.69,
+        "highest_payout_source": "iTunes ~70% of retail"
+      },
+      "links": [
+        {
+          "tier": 3,
+          "store": "iTunes",
+          "kind": "purchase",
+          "label": "Buy on iTunes — $0.99",
+          "url": "https://music.apple.com/us/album/lioness-lost-single/6787993067?app=itunes",
+          "price": 0.99
+        },
+        {
+          "tier": 3,
+          "store": "Amazon",
+          "kind": "search",
+          "label": "Amazon digital (search: Calitoy Lioness Lost)",
+          "url": "https://www.amazon.com/s?k=Calitoy+Lioness+Lost&i=digital-music"
+        },
+        {
+          "tier": 4,
+          "store": "elasticStage",
+          "kind": "physical",
+          "label": "12\" vinyl — elasticStage",
+          "url": "https://elasticstage.com/soundcloud/releases/calitoy-lioness-album"
+        },
+        {
+          "tier": 5,
+          "store": "Apple Music",
+          "kind": "stream",
+          "label": "Stream on Apple Music",
+          "url": "https://music.apple.com/us/album/lioness-lost-single/6787993067"
+        },
+        {
+          "tier": 5,
+          "store": "Spotify",
+          "kind": "stream",
+          "label": "Stream on Spotify",
+          "url": "https://open.spotify.com/album/5P8XnbH0PEqtNq9bRed1I1"
+        },
+        {
+          "tier": 5,
+          "store": "Amazon Music",
+          "kind": "search",
+          "label": "Amazon Music (search: Calitoy)",
+          "url": "https://music.amazon.com/search/calitoy"
+        },
+        {
+          "tier": 5,
+          "store": "SoundCloud",
+          "kind": "stream",
+          "label": "SoundCloud",
+          "url": "https://soundcloud.com/calitoy"
+        }
+      ],
+      "direct": {
+        "eligible": false,
+        "reason": "Singles are not sold direct: at $0.99 the $0.30 Stripe fee breaks the pricing rule. Point buyers to the album or stores."
+      },
+      "vinyl": true
+    },
+    {
+      "sku": "album-two-light",
+      "title": "Two Light",
+      "type": "album",
+      "status": "available",
+      "release_date": "2025-10-31",
+      "tracks": 9,
+      "cover": "/works/img/two-light.jpg",
+      "retail_reference": {
+        "lowest_retail": 8.91,
+        "lowest_retail_source": "iTunes Store (Apple lookup API)",
+        "highest_payout": 6.24,
+        "highest_payout_source": "iTunes ~70% of retail"
+      },
+      "links": [
+        {
+          "tier": 3,
+          "store": "iTunes",
+          "kind": "purchase",
+          "label": "Buy on iTunes — $8.91",
+          "url": "https://music.apple.com/us/album/two-light/1850735938?app=itunes",
+          "price": 8.91
+        },
+        {
+          "tier": 3,
+          "store": "Amazon",
+          "kind": "search",
+          "label": "Amazon digital (search: Calitoy Two Light)",
+          "url": "https://www.amazon.com/s?k=Calitoy+Two+Light&i=digital-music"
+        },
+        {
+          "tier": 5,
+          "store": "Apple Music",
+          "kind": "stream",
+          "label": "Stream on Apple Music",
+          "url": "https://music.apple.com/us/album/two-light/1850735938"
+        },
+        {
+          "tier": 5,
+          "store": "Spotify",
+          "kind": "stream",
+          "label": "Spotify (artist page)",
+          "url": "https://open.spotify.com/artist/1EKZspXmE10a4NU0p1OAqG"
+        },
+        {
+          "tier": 5,
+          "store": "Amazon Music",
+          "kind": "search",
+          "label": "Amazon Music (search: Calitoy)",
+          "url": "https://music.amazon.com/search/calitoy"
+        },
+        {
+          "tier": 5,
+          "store": "SoundCloud",
+          "kind": "stream",
+          "label": "SoundCloud",
+          "url": "https://soundcloud.com/calitoy"
+        }
+      ],
+      "direct": {
+        "eligible": true,
+        "price_cents": 799,
+        "currency": "usd",
+        "download_key": "music/two-light/Calitoy-two-light.zip",
+        "filename": "Calitoy - Two Light.zip",
+        "content_type": "application/zip",
+        "format": "Digital album (zip)"
+      }
+    },
+    {
+      "sku": "album-dance-and-play",
+      "title": "Dance And Play",
+      "type": "album",
+      "status": "available",
+      "release_date": "2025-05-09",
+      "tracks": 7,
+      "cover": "/works/img/dance-and-play.jpg",
+      "retail_reference": {
+        "lowest_retail": 6.93,
+        "lowest_retail_source": "iTunes Store (Apple lookup API)",
+        "highest_payout": 4.85,
+        "highest_payout_source": "iTunes ~70% of retail"
+      },
+      "links": [
+        {
+          "tier": 3,
+          "store": "iTunes",
+          "kind": "purchase",
+          "label": "Buy on iTunes — $6.93",
+          "url": "https://music.apple.com/us/album/dance-and-play/1812861176?app=itunes",
+          "price": 6.93
+        },
+        {
+          "tier": 3,
+          "store": "Amazon",
+          "kind": "search",
+          "label": "Amazon digital (search: Calitoy Dance And Play)",
+          "url": "https://www.amazon.com/s?k=Calitoy+Dance+And+Play&i=digital-music"
+        },
+        {
+          "tier": 5,
+          "store": "Apple Music",
+          "kind": "stream",
+          "label": "Stream on Apple Music",
+          "url": "https://music.apple.com/us/album/dance-and-play/1812861176"
+        },
+        {
+          "tier": 5,
+          "store": "Spotify",
+          "kind": "stream",
+          "label": "Spotify (artist page)",
+          "url": "https://open.spotify.com/artist/1EKZspXmE10a4NU0p1OAqG"
+        },
+        {
+          "tier": 5,
+          "store": "Amazon Music",
+          "kind": "search",
+          "label": "Amazon Music (search: Calitoy)",
+          "url": "https://music.amazon.com/search/calitoy"
+        },
+        {
+          "tier": 5,
+          "store": "SoundCloud",
+          "kind": "stream",
+          "label": "SoundCloud",
+          "url": "https://soundcloud.com/calitoy"
+        }
+      ],
+      "direct": {
+        "eligible": true,
+        "price_cents": 599,
+        "currency": "usd",
+        "download_key": "music/dance-and-play/Calitoy-dance-and-play.zip",
+        "filename": "Calitoy - Dance And Play.zip",
+        "content_type": "application/zip",
+        "format": "Digital album (zip)"
+      }
+    },
+    {
+      "sku": "album-roses",
+      "title": "Roses",
+      "type": "album",
+      "status": "available",
+      "release_date": "2025-02-21",
+      "tracks": 8,
+      "cover": "/works/img/roses.jpg",
+      "retail_reference": {
+        "lowest_retail": 7.92,
+        "lowest_retail_source": "iTunes Store (Apple lookup API)",
+        "highest_payout": 5.54,
+        "highest_payout_source": "iTunes ~70% of retail"
+      },
+      "links": [
+        {
+          "tier": 3,
+          "store": "iTunes",
+          "kind": "purchase",
+          "label": "Buy on iTunes — $7.92",
+          "url": "https://music.apple.com/us/album/roses/1798055710?app=itunes",
+          "price": 7.92
+        },
+        {
+          "tier": 3,
+          "store": "Amazon",
+          "kind": "search",
+          "label": "Amazon digital (search: Calitoy Roses)",
+          "url": "https://www.amazon.com/s?k=Calitoy+Roses&i=digital-music"
+        },
+        {
+          "tier": 5,
+          "store": "Apple Music",
+          "kind": "stream",
+          "label": "Stream on Apple Music",
+          "url": "https://music.apple.com/us/album/roses/1798055710"
+        },
+        {
+          "tier": 5,
+          "store": "Spotify",
+          "kind": "stream",
+          "label": "Spotify (artist page)",
+          "url": "https://open.spotify.com/artist/1EKZspXmE10a4NU0p1OAqG"
+        },
+        {
+          "tier": 5,
+          "store": "Amazon Music",
+          "kind": "search",
+          "label": "Amazon Music (search: Calitoy)",
+          "url": "https://music.amazon.com/search/calitoy"
+        },
+        {
+          "tier": 5,
+          "store": "SoundCloud",
+          "kind": "stream",
+          "label": "SoundCloud",
+          "url": "https://soundcloud.com/calitoy"
+        }
+      ],
+      "direct": {
+        "eligible": true,
+        "price_cents": 699,
+        "currency": "usd",
+        "download_key": "music/roses/Calitoy-roses.zip",
+        "filename": "Calitoy - Roses.zip",
+        "content_type": "application/zip",
+        "format": "Digital album (zip)"
+      }
+    },
+    {
+      "sku": "single-happy-when-im-rich",
+      "title": "Happy When I'm Rich",
+      "type": "single",
+      "status": "available",
+      "release_date": "2024-11-30",
+      "tracks": 1,
+      "cover": "/works/img/happy-when-im-rich.jpg",
+      "retail_reference": {
+        "lowest_retail": 0.99,
+        "lowest_retail_source": "iTunes Store (Apple lookup API)",
+        "highest_payout": 0.69,
+        "highest_payout_source": "iTunes ~70% of retail"
+      },
+      "links": [
+        {
+          "tier": 3,
+          "store": "iTunes",
+          "kind": "purchase",
+          "label": "Buy on iTunes — $0.99",
+          "url": "https://music.apple.com/us/album/happy-when-im-rich-single/1782773571?app=itunes",
+          "price": 0.99
+        },
+        {
+          "tier": 3,
+          "store": "Amazon",
+          "kind": "search",
+          "label": "Amazon digital (search: Calitoy Happy When I'm Rich)",
+          "url": "https://www.amazon.com/s?k=Calitoy+Happy+When+I%27m+Rich&i=digital-music"
+        },
+        {
+          "tier": 5,
+          "store": "Apple Music",
+          "kind": "stream",
+          "label": "Stream on Apple Music",
+          "url": "https://music.apple.com/us/album/happy-when-im-rich-single/1782773571"
+        },
+        {
+          "tier": 5,
+          "store": "Spotify",
+          "kind": "stream",
+          "label": "Spotify (artist page)",
+          "url": "https://open.spotify.com/artist/1EKZspXmE10a4NU0p1OAqG"
+        },
+        {
+          "tier": 5,
+          "store": "Amazon Music",
+          "kind": "search",
+          "label": "Amazon Music (search: Calitoy)",
+          "url": "https://music.amazon.com/search/calitoy"
+        },
+        {
+          "tier": 5,
+          "store": "SoundCloud",
+          "kind": "stream",
+          "label": "SoundCloud",
+          "url": "https://soundcloud.com/calitoy"
+        }
+      ],
+      "direct": {
+        "eligible": false,
+        "reason": "Singles are not sold direct: at $0.99 the $0.30 Stripe fee breaks the pricing rule. Point buyers to the album or stores."
+      }
+    },
+    {
+      "sku": "album-that-jo3mad",
+      "title": "That JO3MAD",
+      "type": "album",
+      "status": "available",
+      "release_date": "2024-10-31",
+      "tracks": 9,
+      "cover": "/works/img/that-jo3mad.jpg",
+      "retail_reference": {
+        "lowest_retail": 8.91,
+        "lowest_retail_source": "iTunes Store (Apple lookup API)",
+        "highest_payout": 6.24,
+        "highest_payout_source": "iTunes ~70% of retail"
+      },
+      "links": [
+        {
+          "tier": 3,
+          "store": "iTunes",
+          "kind": "purchase",
+          "label": "Buy on iTunes — $8.91",
+          "url": "https://music.apple.com/us/album/that-jo3mad/1770030521?app=itunes",
+          "price": 8.91
+        },
+        {
+          "tier": 3,
+          "store": "Amazon",
+          "kind": "search",
+          "label": "Amazon digital (search: Calitoy That JO3MAD)",
+          "url": "https://www.amazon.com/s?k=Calitoy+That+JO3MAD&i=digital-music"
+        },
+        {
+          "tier": 5,
+          "store": "Apple Music",
+          "kind": "stream",
+          "label": "Stream on Apple Music",
+          "url": "https://music.apple.com/us/album/that-jo3mad/1770030521"
+        },
+        {
+          "tier": 5,
+          "store": "Spotify",
+          "kind": "stream",
+          "label": "Spotify (artist page)",
+          "url": "https://open.spotify.com/artist/1EKZspXmE10a4NU0p1OAqG"
+        },
+        {
+          "tier": 5,
+          "store": "Amazon Music",
+          "kind": "search",
+          "label": "Amazon Music (search: Calitoy)",
+          "url": "https://music.amazon.com/search/calitoy"
+        },
+        {
+          "tier": 5,
+          "store": "SoundCloud",
+          "kind": "stream",
+          "label": "SoundCloud",
+          "url": "https://soundcloud.com/calitoy"
+        }
+      ],
+      "direct": {
+        "eligible": true,
+        "price_cents": 799,
+        "currency": "usd",
+        "download_key": "music/that-jo3mad/Calitoy-that-jo3mad.zip",
+        "filename": "Calitoy - That JO3MAD.zip",
+        "content_type": "application/zip",
+        "format": "Digital album (zip)"
+      }
+    },
+    {
+      "sku": "single-holy-trinity",
+      "title": "Holy Trinity",
+      "type": "single",
+      "status": "available",
+      "release_date": "2024-10-04",
+      "tracks": 3,
+      "cover": "/works/img/holy-trinity.jpg",
+      "retail_reference": {
+        "lowest_retail": 2.97,
+        "lowest_retail_source": "iTunes Store (Apple lookup API)",
+        "highest_payout": 2.08,
+        "highest_payout_source": "iTunes ~70% of retail"
+      },
+      "links": [
+        {
+          "tier": 3,
+          "store": "iTunes",
+          "kind": "purchase",
+          "label": "Buy on iTunes — $2.97",
+          "url": "https://music.apple.com/us/album/holy-trinity-single/1769652993?app=itunes",
+          "price": 2.97
+        },
+        {
+          "tier": 3,
+          "store": "Amazon",
+          "kind": "search",
+          "label": "Amazon digital (search: Calitoy Holy Trinity)",
+          "url": "https://www.amazon.com/s?k=Calitoy+Holy+Trinity&i=digital-music"
+        },
+        {
+          "tier": 5,
+          "store": "Apple Music",
+          "kind": "stream",
+          "label": "Stream on Apple Music",
+          "url": "https://music.apple.com/us/album/holy-trinity-single/1769652993"
+        },
+        {
+          "tier": 5,
+          "store": "Spotify",
+          "kind": "stream",
+          "label": "Spotify (artist page)",
+          "url": "https://open.spotify.com/artist/1EKZspXmE10a4NU0p1OAqG"
+        },
+        {
+          "tier": 5,
+          "store": "Amazon Music",
+          "kind": "search",
+          "label": "Amazon Music (search: Calitoy)",
+          "url": "https://music.amazon.com/search/calitoy"
+        },
+        {
+          "tier": 5,
+          "store": "SoundCloud",
+          "kind": "stream",
+          "label": "SoundCloud",
+          "url": "https://soundcloud.com/calitoy"
+        }
+      ],
+      "direct": {
+        "eligible": false,
+        "reason": "Singles are not sold direct: at $0.99 the $0.30 Stripe fee breaks the pricing rule. Point buyers to the album or stores."
+      }
+    },
+    {
+      "sku": "single-corporations",
+      "title": "Corporations",
+      "type": "single",
+      "status": "available",
+      "release_date": "2024-09-13",
+      "tracks": 1,
+      "cover": "/works/img/corporations.jpg",
+      "retail_reference": {
+        "lowest_retail": 0.99,
+        "lowest_retail_source": "iTunes Store (Apple lookup API)",
+        "highest_payout": 0.69,
+        "highest_payout_source": "iTunes ~70% of retail"
+      },
+      "links": [
+        {
+          "tier": 3,
+          "store": "iTunes",
+          "kind": "purchase",
+          "label": "Buy on iTunes — $0.99",
+          "url": "https://music.apple.com/us/album/corporations-single/1765144058?app=itunes",
+          "price": 0.99
+        },
+        {
+          "tier": 3,
+          "store": "Amazon",
+          "kind": "search",
+          "label": "Amazon digital (search: Calitoy Corporations)",
+          "url": "https://www.amazon.com/s?k=Calitoy+Corporations&i=digital-music"
+        },
+        {
+          "tier": 5,
+          "store": "Apple Music",
+          "kind": "stream",
+          "label": "Stream on Apple Music",
+          "url": "https://music.apple.com/us/album/corporations-single/1765144058"
+        },
+        {
+          "tier": 5,
+          "store": "Spotify",
+          "kind": "stream",
+          "label": "Spotify (artist page)",
+          "url": "https://open.spotify.com/artist/1EKZspXmE10a4NU0p1OAqG"
+        },
+        {
+          "tier": 5,
+          "store": "Amazon Music",
+          "kind": "search",
+          "label": "Amazon Music (search: Calitoy)",
+          "url": "https://music.amazon.com/search/calitoy"
+        },
+        {
+          "tier": 5,
+          "store": "SoundCloud",
+          "kind": "stream",
+          "label": "SoundCloud",
+          "url": "https://soundcloud.com/calitoy"
+        }
+      ],
+      "direct": {
+        "eligible": false,
+        "reason": "Singles are not sold direct: at $0.99 the $0.30 Stripe fee breaks the pricing rule. Point buyers to the album or stores."
+      }
+    },
+    {
+      "sku": "album-calitoy",
+      "title": "CaliTOY",
+      "type": "album",
+      "status": "available",
+      "release_date": "2024-05-31",
+      "tracks": 8,
+      "cover": "/works/img/calitoy.jpg",
+      "retail_reference": {
+        "lowest_retail": 7.92,
+        "lowest_retail_source": "iTunes Store (Apple lookup API)",
+        "highest_payout": 5.54,
+        "highest_payout_source": "iTunes ~70% of retail"
+      },
+      "links": [
+        {
+          "tier": 3,
+          "store": "iTunes",
+          "kind": "purchase",
+          "label": "Buy on iTunes — $7.92",
+          "url": "https://music.apple.com/us/album/calitoy/1769819579?app=itunes",
+          "price": 7.92
+        },
+        {
+          "tier": 3,
+          "store": "Amazon",
+          "kind": "search",
+          "label": "Amazon digital (search: Calitoy CaliTOY)",
+          "url": "https://www.amazon.com/s?k=Calitoy+CaliTOY&i=digital-music"
+        },
+        {
+          "tier": 5,
+          "store": "Apple Music",
+          "kind": "stream",
+          "label": "Stream on Apple Music",
+          "url": "https://music.apple.com/us/album/calitoy/1769819579"
+        },
+        {
+          "tier": 5,
+          "store": "Spotify",
+          "kind": "stream",
+          "label": "Spotify (artist page)",
+          "url": "https://open.spotify.com/artist/1EKZspXmE10a4NU0p1OAqG"
+        },
+        {
+          "tier": 5,
+          "store": "Amazon Music",
+          "kind": "search",
+          "label": "Amazon Music (search: Calitoy)",
+          "url": "https://music.amazon.com/search/calitoy"
+        },
+        {
+          "tier": 5,
+          "store": "SoundCloud",
+          "kind": "stream",
+          "label": "SoundCloud",
+          "url": "https://soundcloud.com/calitoy"
+        }
+      ],
+      "direct": {
+        "eligible": true,
+        "price_cents": 699,
+        "currency": "usd",
+        "download_key": "music/calitoy/Calitoy-calitoy.zip",
+        "filename": "Calitoy - CaliTOY.zip",
+        "content_type": "application/zip",
+        "format": "Digital album (zip)"
+      }
+    },
+    {
+      "sku": "album-paper-boy",
+      "title": "Paper Boy",
+      "type": "album",
+      "status": "available",
+      "release_date": "2023-09-28",
+      "tracks": 9,
+      "cover": "/works/img/paper-boy.jpg",
+      "retail_reference": {
+        "lowest_retail": 8.91,
+        "lowest_retail_source": "iTunes Store (Apple lookup API)",
+        "highest_payout": 6.24,
+        "highest_payout_source": "iTunes ~70% of retail"
+      },
+      "links": [
+        {
+          "tier": 3,
+          "store": "iTunes",
+          "kind": "purchase",
+          "label": "Buy on iTunes — $8.91",
+          "url": "https://music.apple.com/us/album/paper-boy/1782774803?app=itunes",
+          "price": 8.91
+        },
+        {
+          "tier": 3,
+          "store": "Amazon",
+          "kind": "search",
+          "label": "Amazon digital (search: Calitoy Paper Boy)",
+          "url": "https://www.amazon.com/s?k=Calitoy+Paper+Boy&i=digital-music"
+        },
+        {
+          "tier": 5,
+          "store": "Apple Music",
+          "kind": "stream",
+          "label": "Stream on Apple Music",
+          "url": "https://music.apple.com/us/album/paper-boy/1782774803"
+        },
+        {
+          "tier": 5,
+          "store": "Spotify",
+          "kind": "stream",
+          "label": "Spotify (artist page)",
+          "url": "https://open.spotify.com/artist/1EKZspXmE10a4NU0p1OAqG"
+        },
+        {
+          "tier": 5,
+          "store": "Amazon Music",
+          "kind": "search",
+          "label": "Amazon Music (search: Calitoy)",
+          "url": "https://music.amazon.com/search/calitoy"
+        },
+        {
+          "tier": 5,
+          "store": "SoundCloud",
+          "kind": "stream",
+          "label": "SoundCloud",
+          "url": "https://soundcloud.com/calitoy"
+        }
+      ],
+      "direct": {
+        "eligible": true,
+        "price_cents": 799,
+        "currency": "usd",
+        "download_key": "music/paper-boy/Calitoy-paper-boy.zip",
+        "filename": "Calitoy - Paper Boy.zip",
+        "content_type": "application/zip",
+        "format": "Digital album (zip)"
+      }
+    },
+    {
+      "sku": "book-pause",
+      "title": "PAUSE. DON'T KILL YOURSELF",
+      "subtitle": "727 Things You HAVE to Do First",
+      "type": "book",
+      "literary": true,
+      "founder_approved": true,
+      "status": "available",
+      "cover": "/assets/pause-book-cover.jpg",
+      "retail_reference": {
+        "lowest_retail": 7.27,
+        "lowest_retail_source": "Amazon Kindle",
+        "highest_payout": 5.09,
+        "highest_payout_source": "KDP 70% royalty on $7.27"
+      },
+      "direct": {
+        "eligible": true,
+        "price_cents": 627,
+        "currency": "usd",
+        "download_key": "books/pause/PAUSE-Dont-Kill-Yourself.epub",
+        "filename": "PAUSE - Don't Kill Yourself.epub",
+        "content_type": "application/epub+zip",
+        "format": "Ebook (EPUB)"
+      },
+      "links": [
+        {
+          "tier": 3,
+          "store": "Amazon Kindle",
+          "kind": "purchase",
+          "label": "Amazon Kindle — $7.27",
+          "url": "https://www.amazon.com/dp/B0HQ5KVQDW",
+          "price": 7.27
+        },
+        {
+          "tier": 4,
+          "store": "Amazon Paperback",
+          "kind": "physical",
+          "label": "Paperback (Amazon) — $17.27",
+          "url": "https://www.amazon.com/dp/B0HQ5KVQDW",
+          "price": 17.27
+        }
+      ]
+    },
+    {
+      "sku": "book-wolf-moon",
+      "title": "WOLF MOON",
+      "type": "book",
+      "literary": true,
+      "founder_approved": false,
+      "status": "coming_soon",
+      "note": "In the edit — 2026.",
+      "direct": {
+        "eligible": false,
+        "reason": "Not for sale — needs founder approval."
+      },
+      "links": []
+    },
+    {
+      "sku": "book-spider",
+      "title": "SPIDER",
+      "type": "book",
+      "literary": true,
+      "founder_approved": false,
+      "status": "coming_soon",
+      "note": "Drafted — 2026 / 2027.",
+      "direct": {
+        "eligible": false,
+        "reason": "Not for sale — needs founder approval."
+      },
+      "links": []
+    },
+    {
+      "sku": "book-reaching-the-bottom",
+      "title": "REACHING THE BOTTOM",
+      "type": "book",
+      "literary": true,
+      "founder_approved": false,
+      "status": "coming_soon",
+      "note": "Queued for edit.",
+      "direct": {
+        "eligible": false,
+        "reason": "Not for sale — needs founder approval."
+      },
+      "links": []
+    },
+    {
+      "sku": "gn-spider",
+      "title": "SPIDER — Graphic Novel",
+      "type": "graphic_novel",
+      "literary": true,
+      "founder_approved": false,
+      "status": "coming_soon",
+      "note": "In production. Not for sale.",
+      "direct": {
+        "eligible": false,
+        "reason": "Not for sale — needs founder approval."
+      },
+      "links": []
+    }
+  ]
+}

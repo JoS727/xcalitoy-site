@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calitoy Casting - AI Casting Studio for Film and Movies</title>
+<meta name="description" content="AI-powered casting studio for film and movies. Digital doubles, voice cloning, de-aging, crowd generation, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.identity-nav { display: flex; flex: 1 1 100%; max-width: none; gap: 0; margin: 0.35rem 0 0; align-items: stretch; }
+.identity-nav a { flex: 1 1 0; text-align: center; text-decoration: none; white-space: nowrap;
+  color: rgba(255,255,255,0.62); font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+  padding: 0.5rem 0.3rem; border-left: 1px solid rgba(255,255,255,0.05); transition: color 200ms, background 200ms; }
+.identity-nav a:first-child { border-left: 0; }
+.identity-nav a:hover { color: #d8b46a; background: rgba(216,182,106,0.06); }
+.identity-nav a.active { color: #ff8a2a; background: rgba(255,138,42,0.10); box-shadow: inset 0 -2px 0 #ff8a2a; }
+@media (max-width: 480px) { .identity-nav a { font-size: 0.52rem; letter-spacing: 0.08em; padding: 0.45rem 0.12rem; } }
+</style>
+<style id="calitoy-sitemenu">
+.site-menu-bar{position:sticky;top:0;z-index:900;background:rgba(8,9,18,0.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(216,182,106,0.18);}
+.site-menu-head{display:flex;align-items:center;gap:.6rem;max-width:1200px;margin:0 auto;padding:.32rem .9rem;}
+.menu-arrow{background:none;border:1px solid rgba(216,182,106,.35);color:#d8b46a;width:26px;height:26px;border-radius:7px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.7rem;transition:transform .25s ease, background .2s;flex:none;}
+.menu-arrow:hover{background:rgba(216,182,106,.12);}
+.site-menu-bar.collapsed .menu-arrow{transform:rotate(-90deg);}
+.menu-label{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(228,196,116,.75);}
+.site-menu{display:flex;flex-wrap:nowrap;gap:0;margin-left:.4rem;overflow-x:auto;scrollbar-width:none;max-height:60px;transition:max-height .25s ease, opacity .2s;opacity:1;}
+.site-menu::-webkit-scrollbar{display:none;}
+.site-menu-bar.collapsed .site-menu{max-height:0;opacity:0;pointer-events:none;overflow:hidden;}
+.site-menu a{flex:none;color:rgba(255,255,255,.72);text-decoration:none;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;padding:.42rem .7rem;white-space:nowrap;border-left:1px solid rgba(216,182,106,.12);}
+.site-menu a:first-child{border-left:0;}
+.site-menu a:hover{color:#d8b46a;background:rgba(216,182,106,.06);}
+.site-menu a.active{color:#ff8a2a;box-shadow:inset 0 -2px 0 #ff8a2a;}
+@media (max-width:640px){.menu-label{display:none;}}
+</style>
+</head>
+<body>
+
+<header><nav class="identity-nav" aria-label="The five identities"><a href="https://calitoy.org">CREATIVE AGENCY</a><a href="https://xcalitoy.com">SONGWRITER</a><a href="https://josephcalitoy.com">CONSULTANT</a><a href="https://author.calitoy.com">AUTHOR</a><a href="https://art.calitoy.com">ARTIST</a></nav>
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/calitoy-casting-logo.png" alt="Calitoy Casting">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="showcase.html">Showcase</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <a href="intake.html" class="nav-cta">Start Casting</a>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="site-menu-bar" id="site-menu-bar"><div class="site-menu-head"><button class="menu-arrow" aria-expanded="true" aria-label="Hide menu">▼</button><span class="menu-label">Menu</span><nav class="site-menu" aria-label="Site menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="showcase.html">Showcase</a><a href="about.html">About</a><a href="intake.html">Start Casting</a></nav></div></div>
+<div class="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="showcase.html">Showcase</a>
+  <a href="about.html">About</a>
+  <a href="intake.html" class="nav-cta">Start Casting</a>
+</div>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="container hero-content">
+    <p class="eyebrow">AI-Powered Casting Studio</p>
+    <h1>Cast Your Film with <span class="gold">Artificial Intelligence</span></h1>
+    <p>Calitoy Casting uses cutting-edge AI to generate, cast, and manage digital talent for film and movie productions. From digital doubles to voice cloning, we deliver photorealistic results in days, not months.</p>
+    <div class="hero-cta-group">
+      <a href="intake.html" class="btn-primary">Start Your Project</a>
+      <a href="showcase.html" class="btn-secondary">View Showcase</a>
+    </div>
+    <div class="film-strip">
+      <div class="film-frame">Digital Doubles</div>
+      <div class="film-frame">Voice Cloning</div>
+      <div class="film-frame">De-Aging</div>
+      <div class="film-frame">Crowd Gen</div>
+      <div class="film-frame">Face Replace</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <p class="eyebrow">Why Calitoy Casting</p>
+    <h2 class="section-title">The Future of Film Casting</h2>
+    <p class="section-subtitle">Traditional casting takes weeks. AI casting takes days. Our platform combines generative AI with film industry expertise to deliver studio-quality talent on demand.</p>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">&#127916;</div>
+        <h3>Rapid Turnaround</h3>
+        <p>Generate complete cast packages in 48-72 hours. No auditions, no scheduling conflicts, no location constraints.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#129504;</div>
+        <h3>Photorealistic Results</h3>
+        <p>Our AI models produce cinema-grade digital talent indistinguishable from real performers on the big screen.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#127910;</div>
+        <h3>Full Creative Control</h3>
+        <p>Direct every detail. Adjust appearance, voice, age, expression, and performance to match your creative vision exactly.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#128176;</div>
+        <h3>Cost Effective</h3>
+        <p>Reduce casting budgets by up to 70% without sacrificing quality. Scale from a single role to an entire production cast.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--bg-surface);">
+  <div class="container">
+    <p class="eyebrow">How It Works</p>
+    <h2 class="section-title">From Brief to Screen</h2>
+    <p class="section-subtitle">A streamlined pipeline that takes your casting brief and delivers production-ready digital talent.</p>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-number">01</div>
+        <h3>Submit Brief</h3>
+        <p>Complete our automated casting brief with your production details, role requirements, and creative direction.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">02</div>
+        <h3>AI Generation</h3>
+        <p>Our AI engine generates digital talent, voice models, and performance assets tailored to your specifications.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">03</div>
+        <h3>Review and Refine</h3>
+        <p>Review generated assets, request adjustments, and iterate until every detail matches your creative vision.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">04</div>
+        <h3>Delivery</h3>
+        <p>Receive production-ready assets in your required formats, complete with usage rights and technical documentation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <p class="eyebrow">Featured Talent</p>
+    <h2 class="section-title">AI-Generated Performers</h2>
+    <p class="section-subtitle">A glimpse of the digital talent our platform has produced for film and television productions.</p>
+    <div class="showcase-grid">
+      <div class="showcase-item">
+        <img src="assets/showcase-digital-actor.png" alt="Digital Actor">
+        <div class="showcase-body">
+          <span class="tag">Lead Role</span>
+          <h3>Dramatic Lead</h3>
+          <p>AI-generated performer for an independent drama feature. Photorealistic with full motion range.</p>
+        </div>
+      </div>
+      <div class="showcase-item">
+        <img src="assets/showcase-digital-double.png" alt="Digital Double">
+        <div class="showcase-body">
+          <span class="tag">Stunt Double</span>
+          <h3>Digital Stunt Double</h3>
+          <p>Seamless digital double created for action sequences, replacing the need for practical stunt performers.</p>
+        </div>
+      </div>
+      <div class="showcase-item">
+        <img src="assets/showcase-ai-set.png" alt="AI Generated Set">
+        <div class="showcase-body">
+          <span class="tag">Scene Generation</span>
+          <h3>Full Scene Cast</h3>
+          <p>Complete background cast generated for a period piece, filling every frame with era-appropriate talent.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--bg-surface);">
+  <div class="container">
+    <p class="eyebrow">Pricing</p>
+    <h2 class="section-title">Casting Packages</h2>
+    <p class="section-subtitle">Transparent pricing for every production scale. From a single role to a full cast.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Single Role Cast</h3>
+        <div class="pricing-price">$1,500<span class="period">one-time</span></div>
+        <p class="pricing-desc">Perfect for indie films and single-character needs.</p>
+        <ul class="pricing-features">
+          <li>One AI-generated character</li>
+          <li>Up to 3 appearance variations</li>
+          <li>Voice model included</li>
+          <li>48-hour delivery</li>
+          <li>2 rounds of revisions</li>
+        </ul>
+        <button class="btn-primary" onclick="calitoyCheckout('price_1UBIfXISCKHDtOuFtr53JNz7','Single Role Cast')">Get Started</button>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Popular</div>
+        <h3>Multi-Role Package</h3>
+        <div class="pricing-price">$5,000<span class="period">one-time</span></div>
+        <p class="pricing-desc">Up to 5 roles for short films and web series.</p>
+        <ul class="pricing-features">
+          <li>Up to 5 AI characters</li>
+          <li>Unlimited variations per role</li>
+          <li>Voice models for all roles</li>
+          <li>72-hour delivery</li>
+          <li>5 rounds of revisions</li>
+          <li>Priority support</li>
+        </ul>
+        <button class="btn-primary" onclick="calitoyCheckout('price_1UBIfXISCKHDtOuFhxt7vO07','Multi-Role Package (up to 5)')">Get Started</button>
+      </div>
+      <div class="pricing-card">
+        <h3>Full Production Cast</h3>
+        <div class="pricing-price">$15,000<span class="period">one-time</span></div>
+        <p class="pricing-desc">Complete casting for feature films.</p>
+        <ul class="pricing-features">
+          <li>Unlimited AI characters</li>
+          <li>Full voice cloning suite</li>
+          <li>Crowd generation tools</li>
+          <li>7-day delivery</li>
+          <li>Unlimited revisions</li>
+          <li>Dedicated casting director</li>
+        </ul>
+        <button class="btn-primary" onclick="calitoyCheckout('price_1UBIfXISCKHDtOuFRfgH9AXj','Full Production Cast')">Get Started</button>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 32px;">
+      <a href="pricing.html" class="btn-secondary">View All Pricing</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Cast Your Film?</h2>
+    <p>Submit your casting brief and get a production-ready AI cast in days.</p>
+    <a href="intake.html" class="btn-primary">Start Your Project</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo"><img src="assets/calitoy-casting-logo.png" alt="Calitoy Casting" height="40"></a>
+        <p>AI-powered casting studio for film and movies. Photorealistic digital talent, voice cloning, and crowd generation.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="showcase.html">Showcase</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Digital Doubles</a></li>
+          <li><a href="services.html">Voice Cloning</a></li>
+          <li><a href="services.html">De-Aging</a></li>
+          <li><a href="services.html">Crowd Generation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get Started</h4>
+        <ul>
+          <li><a href="intake.html">Casting Brief</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="intake.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Calitoy Casting. All rights reserved.</p>
+      <div class="footer-network">
+        <a href="https://calitoy.com" target="_blank">calitoy.com</a>
+        <a href="https://calitoycore.com" target="_blank">calitoycore.com</a>
+        <a href="https://calitoymuse.com" target="_blank">calitoymuse.com</a>
+        <a href="https://kurced.com" target="_blank">kurced.com</a>
+        <a href="https://xcalitoy.com" target="_blank">xcalitoy.com</a>
+        <a href="https://jeremydeanmusic.com" target="_blank">jeremydeanmusic.com</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+
+<script id="calitoy-sitemenu-js">
+(function(){
+  document.addEventListener('click', function(e){
+    var bar = document.querySelector('.site-menu-bar');
+    if (!bar) return;
+    if (e.target.closest('.menu-arrow')) {
+      bar.classList.toggle('collapsed');
+      try { localStorage.setItem('calitoy-menu', bar.classList.contains('collapsed') ? 'c' : 'o'); } catch(_) {}
+    }
+  });
+  try {
+    var st = localStorage.getItem('calitoy-menu');
+    if (st === 'c') {
+      var bar = document.querySelector('.site-menu-bar');
+      if (bar) bar.classList.add('collapsed');
+    }
+  } catch(_) {}
+  var here = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.site-menu a').forEach(function(a){
+    var href = a.getAttribute('href') || '';
+    if (href === here) a.classList.add('active');
+  });
+})();
+</script>
+</body>
+</html>

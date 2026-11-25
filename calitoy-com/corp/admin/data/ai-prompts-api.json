@@ -1,0 +1,188 @@
+{
+  "metadata": {
+    "total_images": 30,
+    "providers": [
+      "openai",
+      "stability",
+      "leonardo"
+    ],
+    "output_directory": "assets/products/ai-generated"
+  },
+  "prompts": {
+    "lovelouder": {
+      "style": "Professional product photography, gold foil print on black heavyweight cotton, soft studio lighting, white background, 4K, photorealistic, e-commerce style",
+      "products": [
+        {
+          "id": "ll-001",
+          "name": "Love Louder Crest Tee",
+          "prompt": "Black heavyweight cotton t-shirt on invisible mannequin, gold foil Love Louder crest with rose and Calitoy signature centered on chest, soft studio lighting, white background"
+        },
+        {
+          "id": "ll-002",
+          "name": "Rose Signature Tee",
+          "prompt": "Black premium cotton t-shirt, gold foil rose with Calitoy script on left chest, soft shadows, white background"
+        },
+        {
+          "id": "ll-003",
+          "name": "Love Louder Wordmark",
+          "prompt": "White heavyweight t-shirt, gold foil LOVE LOUDER stacked text on center chest, premium quality, soft studio lighting"
+        },
+        {
+          "id": "ll-006",
+          "name": "Feel Louder Long Sleeve",
+          "prompt": "Black long sleeve shirt, gold foil FEEL LOUDER text running down left sleeve with small heart, soft lighting"
+        },
+        {
+          "id": "ll-008",
+          "name": "Create Louder Hoodie",
+          "prompt": "Black premium pullover hoodie, large gold foil CREATE LOUDER text on back, front view showing hood and kangaroo pocket"
+        },
+        {
+          "id": "ll-009",
+          "name": "Love Louder Tote",
+          "prompt": "Natural canvas tote bag, gold foil Love Louder crest, lifestyle photography, clean background"
+        },
+        {
+          "id": "ll-010",
+          "name": "Rose Gold Mug",
+          "prompt": "White ceramic mug 11oz, gold foil rose print, steam rising, coffee, morning light"
+        },
+        {
+          "id": "ll-011",
+          "name": "Live Louder Crewneck",
+          "prompt": "Black crewneck sweatshirt, gold foil LIVE LOUDER with heart accents, center chest"
+        },
+        {
+          "id": "ll-012",
+          "name": "Love Louder Beanie",
+          "prompt": "Black cuffed beanie, embroidered Love Louder crest in gold thread, front view"
+        },
+        {
+          "id": "ll-014",
+          "name": "Calitoy Script Tee",
+          "prompt": "Black t-shirt, gold foil Calitoy signature script, center chest, elegant"
+        }
+      ]
+    },
+    "kurced": {
+      "style": "Dark gothic streetwear photography, neon purple glow, black heavyweight cotton, moody lighting, cyber aesthetic",
+      "products": [
+        {
+          "id": "kur-001",
+          "name": "Kurced Crest Tee",
+          "prompt": "Black heavyweight t-shirt, Kurced crest with purple neon ring effect, gothic rose with cross, center chest, dark moody lighting"
+        },
+        {
+          "id": "kur-002",
+          "name": "Kurced Rose Signature",
+          "prompt": "Black premium t-shirt, gothic rose with Kurced wordmark below, purple neon glow effect"
+        },
+        {
+          "id": "kur-006",
+          "name": "Fall Louder Hoodie",
+          "prompt": "Black oversized hoodie, FALL LOUDER text with thorn vines on back, purple neon glow, front view"
+        },
+        {
+          "id": "kur-009",
+          "name": "Love Deeper Tee",
+          "prompt": "Black t-shirt, anatomical heart with barbed wire wrapped around, neon red glow effect"
+        },
+        {
+          "id": "kur-010",
+          "name": "Leave A Mark Snapback",
+          "prompt": "Black snapback cap, Kurced crest embroidered on front, purple thread, flat brim"
+        }
+      ]
+    },
+    "tarosyn": {
+      "style": "Celestial mystical photography, purple nebula, gold foil accents, ethereal lighting, spiritual aesthetic",
+      "products": [
+        {
+          "id": "tar-001",
+          "name": "Tarosyn Cosmic Crest",
+          "prompt": "Black premium t-shirt, Tarosyn cosmic crest with purple nebula ring, gold star compass"
+        },
+        {
+          "id": "tar-002",
+          "name": "Rose Compass Tee",
+          "prompt": "Black t-shirt, rose compass with crescent moon and directional stars, gold foil print"
+        },
+        {
+          "id": "tar-006",
+          "name": "You're A Star Hoodie",
+          "prompt": "Black pullover hoodie, large gold foil star with constellation pattern on back"
+        },
+        {
+          "id": "tar-010",
+          "name": "Sacred Geometry Poster",
+          "prompt": "Matte art print poster, Flower of Life sacred geometry in gold lines on black background"
+        },
+        {
+          "id": "tar-012",
+          "name": "Crystal Cluster Crewneck",
+          "prompt": "Black crewneck sweatshirt, amethyst and quartz crystal cluster print, magical glow"
+        }
+      ]
+    },
+    "wickedyouth": {
+      "style": "Bold streetwear photography, graffiti brush style, crown symbol, dramatic lighting, urban aesthetic",
+      "products": [
+        {
+          "id": "wy-001",
+          "name": "Wicked Youth Wordmark Tee",
+          "prompt": "Black heavyweight t-shirt, WICKED YOUTH brush script with paint drips, bold streetwear graphic"
+        },
+        {
+          "id": "wy-002",
+          "name": "WY Crown Circle",
+          "prompt": "Black premium t-shirt, WY monogram with crown inside circle, purple accent"
+        },
+        {
+          "id": "wy-006",
+          "name": "Built By The Wicked Hoodie",
+          "prompt": "Black oversized hoodie, BUILT BY THE WICKED text on back with crown graphic"
+        },
+        {
+          "id": "wy-009",
+          "name": "Crown Snapback",
+          "prompt": "Black snapback cap, 5-point crown embroidered on front, purple thread"
+        },
+        {
+          "id": "wy-012",
+          "name": "WY Tote",
+          "prompt": "Black canvas tote bag, WY monogram print, streetwear style"
+        }
+      ]
+    },
+    "endof8": {
+      "style": "Coastal lifestyle photography, surf culture, OB aesthetic, natural lighting, beach backgrounds",
+      "products": [
+        {
+          "id": "e8-001",
+          "name": "Endof8 Circle Logo",
+          "prompt": "Black t-shirt, Endof8 enso circle brush stroke with seagull silhouette, orange accent"
+        },
+        {
+          "id": "e8-002",
+          "name": "OB Pier Sunset",
+          "prompt": "Black t-shirt, Ocean Beach pier silhouette at sunset with orange sun, coastal photography"
+        },
+        {
+          "id": "e8-003",
+          "name": "Endof8 Wordmark",
+          "prompt": "White t-shirt, Endof8 brush script with large orange number 8, surf style"
+        },
+        {
+          "id": "e8-006",
+          "name": "Live Free Hoodie",
+          "prompt": "Black pullover hoodie, LIVE FREE text with wave graphic on back, surf culture"
+        },
+        {
+          "id": "e8-014",
+          "name": "Coastal Tote",
+          "prompt": "Natural canvas tote bag, OB pier silhouette print, beach lifestyle"
+        }
+      ]
+    }
+  }
+}

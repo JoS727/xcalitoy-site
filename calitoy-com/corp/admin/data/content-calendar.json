@@ -1,0 +1,134 @@
+{
+  "week_1": {
+    "monday": {
+      "duration": "15s",
+      "brand": "lovelouder",
+      "clip": "ll-15s-001",
+      "platform": "instagram_reels"
+    },
+    "tuesday": {
+      "duration": "15s",
+      "brand": "kurced",
+      "clip": "kur-15s-001",
+      "platform": "tiktok"
+    },
+    "wednesday": {
+      "duration": "30s",
+      "brand": "wickedyouth",
+      "clip": "wy-30s-001",
+      "platform": "youtube_shorts"
+    },
+    "thursday": {
+      "duration": "15s",
+      "brand": "tarosyn",
+      "clip": "tar-15s-001",
+      "platform": "instagram_reels"
+    },
+    "friday": {
+      "duration": "60s",
+      "brand": "endof8",
+      "clip": "e8-60s-001",
+      "platform": "youtube_shorts"
+    },
+    "saturday": {
+      "duration": "15s",
+      "brand": "lovelouder",
+      "clip": "ll-15s-002",
+      "platform": "tiktok"
+    },
+    "sunday": {
+      "duration": "15s",
+      "brand": "kurced",
+      "clip": "kur-15s-002",
+      "platform": "instagram_reels"
+    }
+  },
+  "week_2": {
+    "monday": {
+      "duration": "30s",
+      "brand": "lovelouder",
+      "clip": "ll-30s-001",
+      "platform": "youtube_shorts"
+    },
+    "tuesday": {
+      "duration": "15s",
+      "brand": "wickedyouth",
+      "clip": "wy-15s-001",
+      "platform": "tiktok"
+    },
+    "wednesday": {
+      "duration": "15s",
+      "brand": "endof8",
+      "clip": "e8-15s-001",
+      "platform": "instagram_reels"
+    },
+    "thursday": {
+      "duration": "60s",
+      "brand": "kurced",
+      "clip": "kur-60s-001",
+      "platform": "youtube_shorts"
+    },
+    "friday": {
+      "duration": "15s",
+      "brand": "tarosyn",
+      "clip": "tar-15s-001",
+      "platform": "tiktok"
+    },
+    "saturday": {
+      "duration": "30s",
+      "brand": "tarosyn",
+      "clip": "tar-30s-001",
+      "platform": "instagram_reels"
+    },
+    "sunday": {
+      "duration": "60s",
+      "brand": "lovelouder",
+      "clip": "ll-60s-001",
+      "platform": "youtube_shorts"
+    }
+  },
+  "week_3": {
+    "monday": {
+      "duration": "15s",
+      "brand": "lovelouder",
+      "clip": "ll-15s-003",
+      "platform": "tiktok"
+    },
+    "tuesday": {
+      "duration": "30s",
+      "brand": "kurced",
+      "clip": "kur-30s-001",
+      "platform": "instagram_reels"
+    },
+    "wednesday": {
+      "duration": "15s",
+      "brand": "wickedyouth",
+      "clip": "wy-15s-001",
+      "platform": "instagram_reels"
+    },
+    "thursday": {
+      "duration": "60s",
+      "brand": "wickedyouth",
+      "clip": "wy-60s-001",
+      "platform": "youtube_shorts"
+    },
+    "friday": {
+      "duration": "15s",
+      "brand": "endof8",
+      "clip": "e8-15s-001",
+      "platform": "tiktok"
+    },
+    "saturday": {
+      "duration": "30s",
+      "brand": "endof8",
+      "clip": "e8-30s-001",
+      "platform": "instagram_reels"
+    },
+    "sunday": {
+      "duration": "60s",
+      "brand": "tarosyn",
+      "clip": "tar-60s-001",
+      "platform": "youtube_shorts"
+    }
+  }
+}

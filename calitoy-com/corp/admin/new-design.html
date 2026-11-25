@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create New Design | CalitoyCorp Merch Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #141414;
+      --bg-tertiary: #1a1a1a;
+      --bg-card: #1f1f1f;
+      --border: #2a2a2a;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a0;
+      --text-muted: #666666;
+      --accent: #f4a261;
+      --accent-hover: #e89550;
+      --success: #4ade80;
+      --warning: #fbbf24;
+      --danger: #f87171;
+      --info: #60a5fa;
+      --calitoy: #f4a261;
+      --kurced: #ff006e;
+      --tarosyn: #c9b037;
+      --endof8: #00cec9;
+      --wickedyouth: #ff7675;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+    
+    .header {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+    
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      color: var(--bg-primary);
+    }
+    
+    .logo span { color: var(--text-secondary); font-weight: 500; }
+    
+    .back-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s;
+    }
+    
+    .back-link:hover { color: var(--text-primary); }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .page-header {
+      margin-bottom: 2rem;
+    }
+    
+    .page-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    
+    .page-subtitle {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+    
+    .builder-grid {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 2rem;
+    }
+    
+    .panel {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    
+    .panel-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--text-secondary);
+    }
+    
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: var(--text-primary);
+      font-size: 0.875rem;
+      transition: border-color 0.2s;
+    }
+    
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+    
+    .brand-selector {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.75rem;
+    }
+    
+    .brand-option {
+      padding: 1rem;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    
+    .brand-option:hover {
+      border-color: var(--text-muted);
+    }
+    
+    .brand-option.selected {
+      border-color: var(--accent);
+      background: rgba(244, 162, 97, 0.1);
+    }
+    
+    .brand-option.calitoy.selected { border-color: var(--calitoy); background: rgba(244, 162, 97, 0.1); }
+    .brand-option.kurced.selected { border-color: var(--kurced); background: rgba(255, 0, 110, 0.1); }
+    .brand-option.tarosyn.selected { border-color: var(--tarosyn); background: rgba(201, 176, 55, 0.1); }
+    .brand-option.endof8.selected { border-color: var(--endof8); background: rgba(0, 206, 201, 0.1); }
+    .brand-option.wickedyouth.selected { border-color: var(--wickedyouth); background: rgba(255, 118, 117, 0.1); }
+    
+    .brand-color {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      margin: 0 auto 0.5rem;
+    }
+    
+    .brand-color.calitoy { background: var(--calitoy); }
+    .brand-color.kurced { background: var(--kurced); }
+    .brand-color.tarosyn { background: var(--tarosyn); }
+    .brand-color.endof8 { background: var(--endof8); }
+    .brand-color.wickedyouth { background: var(--wickedyouth); }
+    
+    .brand-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    
+    .prompt-builder {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    
+    .prompt-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .prompt-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.375rem 0.75rem;
+      background: var(--bg-tertiary);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .prompt-tag:hover {
+      background: var(--border);
+    }
+    
+    .prompt-tag .remove {
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+    
+    .prompt-tag:hover .remove {
+      opacity: 1;
+    }
+    
+    .prompt-suggestions {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    
+    .suggestion-btn {
+      padding: 0.5rem 0.75rem;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+    }
+    
+    .suggestion-btn:hover {
+      background: var(--border);
+      color: var(--text-primary);
+    }
+    
+    .preview-panel {
+      position: sticky;
+      top: 100px;
+    }
+    
+    .preview-area {
+      aspect-ratio: 1;
+      background: var(--bg-tertiary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    
+    .preview-placeholder {
+      text-align: center;
+      color: var(--text-muted);
+    }
+    
+    .preview-placeholder svg {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+    
+    .generate-btn {
+      width: 100%;
+      padding: 1rem;
+      background: var(--accent);
+      color: var(--bg-primary);
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .generate-btn:hover {
+      background: var(--accent-hover);
+    }
+    
+    .generate-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .product-selector {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .product-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .product-card:hover {
+      border-color: var(--text-muted);
+    }
+    
+    .product-card.selected {
+      border-color: var(--accent);
+      background: rgba(244, 162, 97, 0.05);
+    }
+    
+    .product-checkbox {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--bg-primary);
+    }
+    
+    .product-card.selected .product-checkbox {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    
+    .product-info {
+      flex: 1;
+    }
+    
+    .product-name {
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+    
+    .product-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    
+    .product-price {
+      font-weight: 600;
+      color: var(--accent);
+    }
+    
+    .actions-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .actions-info {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+    
+    .info-value {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    
+    .actions-btns {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+    
+    .btn-secondary {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border-color: var(--border);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--bg-card);
+    }
+    
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg-primary);
+    }
+    
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+    
+    .section-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+    }
+    
+    .section-tab {
+      padding: 0.5rem 1rem;
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-radius: 6px;
+    }
+    
+    .section-tab:hover {
+      color: var(--text-primary);
+      background: var(--bg-tertiary);
+    }
+    
+    .section-tab.active {
+      color: var(--text-primary);
+      background: var(--bg-tertiary);
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    @media (max-width: 1024px) {
+      .builder-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .preview-panel {
+        position: static;
+      }
+      
+      .brand-selector {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <div class="logo-mark">CC</div>
+        <div>CALITOYCORP <span>/ NEW DESIGN</span></div>
+      </a>
+      <a href="index.html" class="back-link">← Back to Dashboard</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-title">Create New Design</h1>
+      <p class="page-subtitle">Build a new merch design with AI generation and product configuration</p>
+    </div>
+
+    <div class="builder-grid">
+      <div class="main-panel">
+        <div class="panel">
+          <div class="section-tabs">
+            <button class="section-tab active" data-tab="brand">1. Select Brand</button>
+            <button class="section-tab" data-tab="prompt">2. Build Prompt</button>
+            <button class="section-tab" data-tab="products">3. Configure Products</button>
+          </div>
+          
+          <!-- Brand Selection -->
+          <div class="tab-content active" id="brand-tab">
+            <div class="panel-title">Choose a Brand</div>
+            <div class="brand-selector">
+              <div class="brand-option calitoy" data-brand="calitoy" onclick="selectBrand('calitoy')">
+                <div class="brand-color calitoy"></div>
+                <div class="brand-label">Calitoy</div>
+              </div>
+              <div class="brand-option kurced" data-brand="kurced" onclick="selectBrand('kurced')">
+                <div class="brand-color kurced"></div>
+                <div class="brand-label">Kurced</div>
+              </div>
+              <div class="brand-option tarosyn" data-brand="tarosyn" onclick="selectBrand('tarosyn')">
+                <div class="brand-color tarosyn"></div>
+                <div class="brand-label">Tarosyn</div>
+              </div>
+              <div class="brand-option endof8" data-brand="endof8" onclick="selectBrand('endof8')">
+                <div class="brand-color endof8"></div>
+                <div class="brand-label">Endof8</div>
+              </div>
+              <div class="brand-option wickedyouth" data-brand="wickedyouth" onclick="selectBrand('wickedyouth')">
+                <div class="brand-color wickedyouth"></div>
+                <div class="brand-label">Wicked Youth</div>
+              </div>
+            </div>
+            
+            <div class="form-group" style="margin-top: 2rem;">
+              <label class="form-label">Design Name</label>
+              <input type="text" class="form-input" id="designName" placeholder="e.g., Coastal Sunset">
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Target Audience Note</label>
+              <input type="text" class="form-input" id="audienceNote" placeholder="Who is this design for?">
+            </div>
+          </div>
+          
+          <!-- Prompt Builder -->
+          <div class="tab-content" id="prompt-tab">
+            <div class="panel-title">AI Generation Prompt</div>
+            
+            <div class="prompt-builder">
+              <div class="prompt-tags" id="promptTags">
+                <!-- Tags will be added here -->
+              </div>
+              <textarea class="form-textarea" id="promptInput" placeholder="Describe your design... or use the suggestions below"></textarea>
+            </div>
+            
+            <div class="panel-title" style="margin-top: 1.5rem;">Quick Add Elements</div>
+            <div class="prompt-suggestions" id="promptSuggestions">
+              <!-- Suggestions will be populated based on brand -->
+            </div>
+            
+            <div class="panel-title" style="margin-top: 1.5rem;">Style Modifiers</div>
+            <div class="prompt-suggestions">
+              <button class="suggestion-btn" onclick="addToPrompt('minimal line art')">+ Minimal line art</button>
+              <button class="suggestion-btn" onclick="addToPrompt('bold graphic')">+ Bold graphic</button>
+              <button class="suggestion-btn" onclick="addToPrompt('vintage texture')">+ Vintage texture</button>
+              <button class="suggestion-btn" onclick="addToPrompt('photorealistic')">+ Photorealistic</button>
+              <button class="suggestion-btn" onclick="addToPrompt('geometric shapes')">+ Geometric shapes</button>
+              <button class="suggestion-btn" onclick="addToPrompt('hand drawn')">+ Hand drawn</button>
+              <button class="suggestion-btn" onclick="addToPrompt('screen print style')">+ Screen print style</button>
+              <button class="suggestion-btn" onclick="addToPrompt('sticker aesthetic')">+ Sticker aesthetic</button>
+            </div>
+          </div>
+          
+          <!-- Product Configuration -->
+          <div class="tab-content" id="products-tab">
+            <div class="panel-title">Select Products (10 core products available)</div>
+            <div class="product-selector" id="productSelector">
+              <!-- Products will be rendered here -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-panel">
+        <div class="panel">
+          <div class="panel-title">Live Preview</div>
+          <div class="preview-area" id="previewArea">
+            <div class="preview-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <path d="M21 15l-5-5L5 21"/>
+              </svg>
+              <div>Design preview will appear here</div>
+              <div style="font-size: 0.75rem; margin-top: 0.5rem;">Click "Generate Design" to create</div>
+            </div>
+          </div>
+          <button class="generate-btn" id="generateBtn" onclick="generateDesign()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 5v14M5 12h14"/>
+            </svg>
+            Generate Design
+          </button>
+          
+          <div style="margin-top: 1.5rem;">
+            <div class="panel-title">Selected Configuration</div>
+            <div id="configSummary" style="color: var(--text-secondary); font-size: 0.875rem; line-height: 1.6;">
+              <p>• No brand selected</p>
+              <p>• No products selected</p>
+              <p>• Prompt empty</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions-bar">
+    <div class="actions-info">
+      <div class="info-item">
+        <span>Brand:</span>
+        <span class="info-value" id="selectedBrand">None</span>
+      </div>
+      <div class="info-item">
+        <span>Products:</span>
+        <span class="info-value" id="selectedCount">0</span>
+      </div>
+      <div class="info-item">
+        <span>Est. Products:</span>
+        <span class="info-value" id="estProducts">0</span>
+      </div>
+    </div>
+    <div class="actions-btns">
+      <button class="btn btn-secondary" onclick="saveDraft()">Save Draft</button>
+      <button class="btn btn-primary" onclick="submitForApproval()">Submit for Approval</button>
+    </div>
+  </div>
+
+  <script src="data/merch-database.js"></script>
+  <script>
+    // State
+    let currentState = {
+      brand: null,
+      name: '',
+      prompt: '',
+      products: [],
+      audience: ''
+    };
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProducts();
+      setupTabs();
+    });
+    
+    // Tab switching
+    function setupTabs() {
+      document.querySelectorAll('.section-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.section-tab').forEach(t => t.classList.remove('active'));
+          document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+          
+          tab.classList.add('active');
+          document.getElementById(`${tab.dataset.tab}-tab`).classList.add('active');
+        });
+      });
+    }
+    
+    // Brand selection
+    function selectBrand(brand) {
+      currentState.brand = brand;
+      
+      document.querySelectorAll('.brand-option').forEach(opt => opt.classList.remove('selected'));
+      document.querySelector(`.brand-option[data-brand="${brand}"]`).classList.add('selected');
+      
+      document.getElementById('selectedBrand').textContent = BRANDS[brand].name;
+      updatePromptSuggestions(brand);
+      updateConfigSummary();
+    }
+    
+    // Update prompt suggestions based on brand
+    function updatePromptSuggestions(brand) {
+      const suggestions = {
+        calitoy: ['California coast', 'Golden sunset', 'Palm trees', 'Surf culture', 'Beach vibes', 'Coastal minimal'],
+        kurced: ['Neon gothic', 'Dark cathedral', 'Glitch effect', 'Thorn vines', 'Broken heart', 'Digital decay'],
+        tarosyn: ['Tarot card', 'Moon phases', 'Celestial', 'Crystal ball', 'Sacred geometry', 'Mystical hand'],
+        endof8: ['Ocean Beach pier', 'Sunset cliffs', 'Surf punk', 'Tide pools', 'Dog beach', 'OB locals'],
+        wickedyouth: ['Glossy lips', 'Highlighter glow', 'Beauty products', 'Mirror selfie', 'Skincare ritual', 'Makeup palette']
+      };
+      
+      const container = document.getElementById('promptSuggestions');
+      container.innerHTML = suggestions[brand].map(s => 
+        `<button class="suggestion-btn" onclick="addToPrompt('${s}')">+ ${s}</button>`
+      ).join('');
+    }
+    
+    // Add to prompt
+    function addToPrompt(text) {
+      const input = document.getElementById('promptInput');
+      if (input.value) {
+        input.value += ', ' + text;
+      } else {
+        input.value = text;
+      }
+      currentState.prompt = input.value;
+      updateConfigSummary();
+    }
+    
+    // Render products
+    function renderProducts() {
+      const container = document.getElementById('productSelector');
+      container.innerHTML = CORE_PRODUCTS.map(product => `
+        <div class="product-card" data-product="${product.id}" onclick="toggleProduct('${product.id}')">
+          <div class="product-checkbox" id="check-${product.id}"></div>
+          <div class="product-info">
+            <div class="product-name">${product.name}</div>
+            <div class="product-meta">${product.colors.length} colors • ${product.sizes.length} sizes</div>
+          </div>
+          <div class="product-price">$${calculateRetailPrice(product.basePrice).toFixed(2)}</div>
+        </div>
+      `).join('');
+    }
+    
+    // Toggle product selection
+    function toggleProduct(productId) {
+      const card = document.querySelector(`.product-card[data-product="${productId}"]`);
+      const checkbox = document.getElementById(`check-${productId}`);
+      
+      if (currentState.products.includes(productId)) {
+        currentState.products = currentState.products.filter(id => id !== productId);
+        card.classList.remove('selected');
+        checkbox.textContent = '';
+      } else {
+        currentState.products.push(productId);
+        card.classList.add('selected');
+        checkbox.textContent = '✓';
+      }
+      
+      document.getElementById('selectedCount').textContent = currentState.products.length;
+      document.getElementById('estProducts').textContent = currentState.products.length * 35; // ~35 variants per product
+      updateConfigSummary();
+    }
+    
+    // Calculate retail price
+    function calculateRetailPrice(basePrice) {
+      return Math.ceil(basePrice * 2.5 * 100) / 100;
+    }
+    
+    // Update config summary
+    function updateConfigSummary() {
+      const summary = document.getElementById('configSummary');
+      const brand = currentState.brand ? BRANDS[currentState.brand].name : 'No brand selected';
+      const products = currentState.products.length > 0 
+        ? `${currentState.products.length} products (${currentState.products.length * 35} variants)` 
+        : 'No products selected';
+      const prompt = currentState.prompt ? 'Prompt ready' : 'Prompt empty';
+      
+      summary.innerHTML = `
+        <p>• Brand: ${brand}</p>
+        <p>• ${products}</p>
+        <p>• ${prompt}</p>
+      `;
+    }
+    
+    // Generate design
+    function generateDesign() {
+      if (!currentState.brand) {
+        alert('Please select a brand first');
+        return;
+      }
+      if (!currentState.prompt) {
+        alert('Please enter a prompt');
+        return;
+      }
+      
+      const btn = document.getElementById('generateBtn');
+      btn.disabled = true;
+      btn.innerHTML = 'Generating...';
+      
+      // Simulate generation
+      setTimeout(() => {
+        document.getElementById('previewArea').innerHTML = `
+          <div style="text-align: center; padding: 2rem;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">✨</div>
+            <div style="font-weight: 600; margin-bottom: 0.5rem;">Design Generated!</div>
+            <div style="color: var(--text-secondary); font-size: 0.875rem;">
+              ${currentState.brand.toUpperCase()} / ${document.getElementById('designName').value || 'Untitled'}
+            </div>
+          </div>
+        `;
+        btn.disabled = false;
+        btn.innerHTML = `
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+          Regenerate
+        `;
+      }, 2000);
+    }
+    
+    // Save draft
+    function saveDraft() {
+      const draft = {
+        ...currentState,
+        name: document.getElementById('designName').value,
+        audience: document.getElementById('audienceNote').value,
+        savedAt: new Date().toISOString()
+      };
+      
+      // Save to localStorage
+      const drafts = JSON.parse(localStorage.getItem('designDrafts') || '[]');
+      drafts.push(draft);
+      localStorage.setItem('designDrafts', JSON.stringify(drafts));
+      
+      alert('Draft saved!');
+    }
+    
+    // Submit for approval
+    function submitForApproval() {
+      if (!currentState.brand) {
+        alert('Please select a brand');
+        return;
+      }
+      if (!document.getElementById('designName').value) {
+        alert('Please enter a design name');
+        return;
+      }
+      if (currentState.products.length === 0) {
+        alert('Please select at least one product');
+        return;
+      }
+      
+      const design = {
+        id: `${currentState.brand.slice(0, 3)}-${String(DESIGN_LIBRARY[currentState.brand].length + 1).padStart(3, '0')}`,
+        name: document.getElementById('designName').value,
+        prompt: document.getElementById('promptInput').value,
+        placement: 'center-chest',
+        colors: ['black-shirt-white-ink', 'white-shirt-black-ink'],
+        status: 'pending',
+        products: currentState.products,
+        audience: document.getElementById('audienceNote').value
+      };
+      
+      // Add to database
+      DESIGN_LIBRARY[currentState.brand].push(design);
+      
+      alert(`Design "${design.name}" submitted for approval!\n\nDesign ID: ${design.id}\nProducts: ${currentState.products.length}\nEst. variants: ${currentState.products.length * 35}`);
+      
+      // Redirect to dashboard
+      window.location.href = 'index.html';
+    }
+    
+    // Input listeners
+    document.getElementById('designName').addEventListener('input', updateConfigSummary);
+    document.getElementById('promptInput').addEventListener('input', (e) => {
+      currentState.prompt = e.target.value;
+      updateConfigSummary();
+    });
+  </script>
+</body>
+</html>

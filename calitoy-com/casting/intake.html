@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casting Brief - Calitoy Casting</title>
+<meta name="description" content="Submit your casting brief. Automated intake form for AI casting projects with production details, role requirements, and timeline.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.identity-nav { display: flex; flex: 1 1 100%; max-width: none; gap: 0; margin: 0.35rem 0 0; align-items: stretch; }
+.identity-nav a { flex: 1 1 0; text-align: center; text-decoration: none; white-space: nowrap;
+  color: rgba(255,255,255,0.62); font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+  padding: 0.5rem 0.3rem; border-left: 1px solid rgba(255,255,255,0.05); transition: color 200ms, background 200ms; }
+.identity-nav a:first-child { border-left: 0; }
+.identity-nav a:hover { color: #d8b46a; background: rgba(216,182,106,0.06); }
+.identity-nav a.active { color: #ff8a2a; background: rgba(255,138,42,0.10); box-shadow: inset 0 -2px 0 #ff8a2a; }
+@media (max-width: 480px) { .identity-nav a { font-size: 0.52rem; letter-spacing: 0.08em; padding: 0.45rem 0.12rem; } }
+</style>
+<style id="calitoy-sitemenu">
+.site-menu-bar{position:sticky;top:0;z-index:900;background:rgba(8,9,18,0.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(216,182,106,0.18);}
+.site-menu-head{display:flex;align-items:center;gap:.6rem;max-width:1200px;margin:0 auto;padding:.32rem .9rem;}
+.menu-arrow{background:none;border:1px solid rgba(216,182,106,.35);color:#d8b46a;width:26px;height:26px;border-radius:7px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.7rem;transition:transform .25s ease, background .2s;flex:none;}
+.menu-arrow:hover{background:rgba(216,182,106,.12);}
+.site-menu-bar.collapsed .menu-arrow{transform:rotate(-90deg);}
+.menu-label{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(228,196,116,.75);}
+.site-menu{display:flex;flex-wrap:nowrap;gap:0;margin-left:.4rem;overflow-x:auto;scrollbar-width:none;max-height:60px;transition:max-height .25s ease, opacity .2s;opacity:1;}
+.site-menu::-webkit-scrollbar{display:none;}
+.site-menu-bar.collapsed .site-menu{max-height:0;opacity:0;pointer-events:none;overflow:hidden;}
+.site-menu a{flex:none;color:rgba(255,255,255,.72);text-decoration:none;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;padding:.42rem .7rem;white-space:nowrap;border-left:1px solid rgba(216,182,106,.12);}
+.site-menu a:first-child{border-left:0;}
+.site-menu a:hover{color:#d8b46a;background:rgba(216,182,106,.06);}
+.site-menu a.active{color:#ff8a2a;box-shadow:inset 0 -2px 0 #ff8a2a;}
+@media (max-width:640px){.menu-label{display:none;}}
+</style>
+</head>
+<body>
+
+<header><nav class="identity-nav" aria-label="The five identities"><a href="https://calitoy.org">CREATIVE AGENCY</a><a href="https://xcalitoy.com">SONGWRITER</a><a href="https://josephcalitoy.com">CONSULTANT</a><a href="https://author.calitoy.com">AUTHOR</a><a href="https://art.calitoy.com">ARTIST</a></nav>
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/calitoy-casting-logo.png" alt="Calitoy Casting">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="showcase.html">Showcase</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <a href="intake.html" class="nav-cta active">Start Casting</a>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="site-menu-bar" id="site-menu-bar"><div class="site-menu-head"><button class="menu-arrow" aria-expanded="true" aria-label="Hide menu">▼</button><span class="menu-label">Menu</span><nav class="site-menu" aria-label="Site menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="showcase.html">Showcase</a><a href="about.html">About</a><a href="intake.html">Start Casting</a></nav></div></div>
+<div class="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="showcase.html">Showcase</a>
+  <a href="about.html">About</a>
+  <a href="intake.html" class="nav-cta">Start Casting</a>
+</div>
+
+<section class="hero" style="min-height: auto; padding: 80px 0 40px;">
+  <div class="hero-bg"></div>
+  <div class="container hero-content">
+    <p class="eyebrow">Automated Casting Brief</p>
+    <h1>Submit Your <span class="gold">Casting Brief</span></h1>
+    <p>Tell us about your production and casting needs. Our team will review your brief and respond within 24 hours with a tailored proposal and timeline.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="form-container">
+      <div id="form-message" class="form-message"></div>
+      <form id="intake-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Director, Producer, or Production Company" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@production.com" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="production_name">Production Name</label>
+          <input type="text" id="production_name" name="production_name" placeholder="Film, series, or project title" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="role_type">Role Type Needed</label>
+            <select id="role_type" name="role_type" required>
+              <option value="">Select role type</option>
+              <option value="digital-double">Digital Double</option>
+              <option value="voice-cloning">Voice Cloning</option>
+              <option value="background-talent">Background Talent</option>
+              <option value="de-aging">De-Aging</option>
+              <option value="face-replacement">Face Replacement</option>
+              <option value="crowd-generation">Crowd Generation</option>
+              <option value="full-cast">Full Production Cast</option>
+              <option value="multiple-services">Multiple Services</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="budget">Budget Range</label>
+            <select id="budget" name="budget" required>
+              <option value="">Select budget range</option>
+              <option value="under-2500">Under $2,500</option>
+              <option value="2500-5000">$2,500 - $5,000</option>
+              <option value="5000-15000">$5,000 - $15,000</option>
+              <option value="15000-50000">$15,000 - $50,000</option>
+              <option value="50000+">$50,000+</option>
+              <option value="retainer">Monthly Retainer</option>
+              <option value="discuss">Prefer to Discuss</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Project Details and Requirements</label>
+          <textarea id="message" name="message" placeholder="Describe your production, the roles you need cast, timeline, creative direction, and any specific requirements. Include the number of characters, scene context, and delivery format preferences." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn-primary" id="intake-submit" style="width: 100%;">Submit Casting Brief</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--bg-surface);">
+  <div class="container">
+    <p class="eyebrow">What Happens Next</p>
+    <h2 class="section-title">Our Process</h2>
+    <p class="section-subtitle">From brief to delivery in four steps.</p>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-number">01</div>
+        <h3>Review</h3>
+        <p>Our casting directors review your brief and assess feasibility, scope, and timeline within 24 hours.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">02</div>
+        <h3>Proposal</h3>
+        <p>You receive a tailored proposal with pricing, timeline, and a creative approach for your production.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">03</div>
+        <h3>Production</h3>
+        <p>Once approved, our AI team begins generating your cast. You receive progress updates at each milestone.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">04</div>
+        <h3>Delivery</h3>
+        <p>Production-ready assets delivered in your required formats with full usage rights and documentation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo"><img src="assets/calitoy-casting-logo.png" alt="Calitoy Casting" height="40"></a>
+        <p>AI-powered casting studio for film and movies. Photorealistic digital talent, voice cloning, and crowd generation.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="showcase.html">Showcase</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Digital Doubles</a></li>
+          <li><a href="services.html">Voice Cloning</a></li>
+          <li><a href="services.html">De-Aging</a></li>
+          <li><a href="services.html">Crowd Generation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get Started</h4>
+        <ul>
+          <li><a href="intake.html">Casting Brief</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="intake.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Calitoy Casting. All rights reserved.</p>
+      <div class="footer-network">
+        <a href="https://calitoy.com" target="_blank">calitoy.com</a>
+        <a href="https://calitoycore.com" target="_blank">calitoycore.com</a>
+        <a href="https://calitoymuse.com" target="_blank">calitoymuse.com</a>
+        <a href="https://kurced.com" target="_blank">kurced.com</a>
+        <a href="https://xcalitoy.com" target="_blank">xcalitoy.com</a>
+        <a href="https://jeremydeanmusic.com" target="_blank">jeremydeanmusic.com</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+
+<script id="calitoy-sitemenu-js">
+(function(){
+  document.addEventListener('click', function(e){
+    var bar = document.querySelector('.site-menu-bar');
+    if (!bar) return;
+    if (e.target.closest('.menu-arrow')) {
+      bar.classList.toggle('collapsed');
+      try { localStorage.setItem('calitoy-menu', bar.classList.contains('collapsed') ? 'c' : 'o'); } catch(_) {}
+    }
+  });
+  try {
+    var st = localStorage.getItem('calitoy-menu');
+    if (st === 'c') {
+      var bar = document.querySelector('.site-menu-bar');
+      if (bar) bar.classList.add('collapsed');
+    }
+  } catch(_) {}
+  var here = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.site-menu a').forEach(function(a){
+    var href = a.getAttribute('href') || '';
+    if (href === here) a.classList.add('active');
+  });
+})();
+</script>
+</body>
+</html>

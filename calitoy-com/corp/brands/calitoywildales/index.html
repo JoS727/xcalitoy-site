@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>California Wild Ales — Calitoy Core Merch (Test Account)</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0603;
+    --amber: #f59e0b;
+    --amber-deep: #b45309;
+    --cream: #f5f0e8;
+    --oak: #8b5a2b;
+    --card-bg: #14100a;
+    --border: #3a2a12;
+  }
+  body { background: var(--bg); color: var(--cream); font-family: 'Arial', sans-serif; min-height: 100vh; }
+
+  .test-banner {
+    background: repeating-linear-gradient(45deg, #7c2d12, #7c2d12 12px, #9a3412 12px, #9a3412 24px);
+    color: #ffedd5; text-align: center; font-size: 0.78rem; letter-spacing: 0.12em;
+    padding: 0.45rem 1rem; text-transform: uppercase; font-weight: 700;
+  }
+
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 2rem; background: #060402;
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+  .nav-logo span.barrel { font-size: 1.6rem; }
+  .nav-logo span.word { font-size: 1.15rem; font-weight: 900; color: var(--amber); letter-spacing: 0.06em; text-transform: uppercase; }
+  .cart-btn {
+    background: var(--amber); color: #1a1005; border: none;
+    padding: 0.5rem 1.2rem; border-radius: 6px; cursor: pointer;
+    font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem; font-weight: 700;
+  }
+  .cart-btn span { background: #1a1005; color: var(--amber); border-radius: 50%; width: 20px; height: 20px;
+    display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; }
+
+  .hero {
+    text-align: center; padding: 4rem 2rem 3rem;
+    background: linear-gradient(180deg, #1c1105 0%, var(--bg) 75%);
+    border-bottom: 2px solid var(--amber);
+  }
+  .hero-badge { font-size: 1.8rem; margin-bottom: 0.9rem; }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.6rem); color: var(--amber); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 900; }
+  .hero p { color: #d8c9a8; margin-top: 0.75rem; font-size: 1.05rem; max-width: 640px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+  .hero-meta { margin-top: 1.1rem; color: #8a7350; font-size: 0.85rem; letter-spacing: 0.05em; }
+  .hero-meta b { color: var(--oak); }
+
+  .pours {
+    display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; margin-top: 1.4rem;
+  }
+  .pours span {
+    padding: 0.35rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700;
+    border: 1px solid var(--border); background: rgba(245,158,11,0.08); color: var(--amber);
+  }
+
+  .section-title { text-align: center; padding: 2rem 1rem 1rem; font-size: 1rem; color: #d8c9a8; text-transform: uppercase; letter-spacing: 0.2em; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem; padding: 1rem 2rem 3rem; max-width: 1300px; margin: 0 auto;
+  }
+
+  .card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px; overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+    display: flex; flex-direction: column;
+  }
+  .card:hover { transform: translateY(-4px); border-color: var(--amber); }
+  .card-img {
+    background: linear-gradient(135deg, #221607 0%, #120c05 100%);
+    padding: 2rem; display: flex; align-items: center; justify-content: center;
+    min-height: 200px; font-size: 3.2rem;
+  }
+  .card-body { padding: 1.2rem; flex: 1; display: flex; flex-direction: column; gap: 0.6rem; }
+  .card-tag { font-size: 0.68rem; letter-spacing: 0.15em; color: #8a7350; text-transform: uppercase; font-weight: 700; }
+  .card-name { font-size: 1rem; font-weight: 700; color: var(--cream); text-transform: uppercase; letter-spacing: 0.04em; }
+  .card-desc { font-size: 0.8rem; color: #a08a63; line-height: 1.5; flex: 1; }
+  .card-price { font-size: 1.3rem; color: var(--amber); font-weight: 700; }
+  .size-select {
+    background: #221607; border: 1px solid var(--border); color: var(--cream);
+    padding: 0.4rem 0.6rem; border-radius: 6px; width: 100%; font-size: 0.9rem; cursor: pointer;
+  }
+  .add-btn {
+    margin-top: auto; background: var(--amber); color: #1a1005;
+    border: none; padding: 0.7rem; border-radius: 8px; cursor: pointer;
+    font-size: 0.95rem; font-weight: 700; transition: background 0.2s;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .add-btn:hover { background: #d97706; }
+
+  .cart-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 200; }
+  .cart-overlay.open { display: block; }
+  .cart-drawer {
+    position: fixed; right: 0; top: 0; bottom: 0; width: 360px; max-width: 95vw;
+    background: #14100a; border-left: 1px solid var(--border);
+    z-index: 300; display: flex; flex-direction: column; transform: translateX(100%);
+    transition: transform 0.3s;
+  }
+  .cart-drawer.open { transform: translateX(0); }
+  .cart-header { padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .cart-header h2 { color: var(--amber); font-size: 1.2rem; }
+  .close-cart { background: none; border: none; color: var(--cream); font-size: 1.5rem; cursor: pointer; }
+  .cart-items { flex: 1; overflow-y: auto; padding: 1rem 1.5rem; }
+  .cart-item { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  .cart-item-name { color: var(--cream); }
+  .cart-item-price { color: var(--amber); }
+  .cart-empty { color: #6b5638; text-align: center; margin-top: 2rem; }
+  .cart-footer { padding: 1.2rem 1.5rem; border-top: 1px solid var(--border); }
+  .cart-total { display: flex; justify-content: space-between; font-size: 1.1rem; margin-bottom: 1rem; }
+  .cart-total span:last-child { color: var(--amber); font-weight: 700; }
+  .checkout-btn {
+    width: 100%; background: var(--amber); color: #1a1005; border: none;
+    padding: 0.9rem; border-radius: 8px; font-size: 1rem; font-weight: 700;
+    cursor: pointer; text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .checkout-note { font-size: 0.72rem; color: #6b5638; text-align: center; margin-top: 0.6rem; letter-spacing: 0.04em; }
+
+  footer {
+    text-align: center; padding: 2.5rem 1rem;
+    border-top: 2px solid var(--amber); background: #060402;
+    color: #a08a63;
+  }
+  footer a { color: var(--amber); text-decoration: none; }
+  .foot-locations { font-size: 0.85rem; margin-top: 0.6rem; line-height: 1.7; }
+
+  @media (max-width: 600px) {
+    .grid { padding: 1rem; gap: 1rem; }
+    .hero { padding: 2.5rem 1rem 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="test-banner">⚠ Test Account — Founder Build · Calitoy Core Onboarding Demo · Not a live store</div>
+
+<nav>
+  <a class="nav-logo" href="../../index.html">
+    <span class="barrel">🛢️</span>
+    <span class="word">California Wild Ales</span>
+  </a>
+  <button class="cart-btn" onclick="openCart()">🛒 Cart <span id="cart-count">0</span></button>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">🍺 🛢️ 🍇</div>
+  <h1>California Wild Ales</h1>
+  <p>San Diego's home for wild fermentation — barrel-aged sours built slow in oak, blended with patience, and poured fresh in Ocean Beach since 2015.</p>
+  <div class="pours">
+    <span>Gose Loco</span>
+    <span>Fuzzy Peaches</span>
+    <span>Ozzy Oz-Orange</span>
+    <span>Midas Touch</span>
+    <span>14 Mile WC IPA</span>
+  </div>
+  <div class="hero-meta">OB TAPROOM · 4896 NEWPORT AVE &nbsp;·&nbsp; BARRELHOUSE · 3826 SHERMAN ST</div>
+</section>
+
+<p class="section-title">— Barrel House Collection —</p>
+
+<div class="grid" id="product-grid"></div>
+
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-header">
+    <h2>Your Cart</h2>
+    <button class="close-cart" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items">
+    <p class="cart-empty">Your cart is empty</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><span id="cart-total">$0</span></div>
+    <button class="checkout-btn">Checkout</button>
+    <p class="checkout-note">TEST ACCOUNT — checkout is disabled in this demo lane</p>
+  </div>
+</div>
+
+<footer>
+  <p><strong style="color:#f59e0b">California Wild Ales</strong> — Celebrate the Funk</p>
+  <p class="foot-locations">Ocean Beach · 4896 Newport Ave, San Diego, CA 92107<br>Barrelhouse &amp; Production · 3826 Sherman St, Midway / Point Loma</p>
+  <p style="margin-top:0.8rem;font-size:0.85rem;">Onboarded via <a href="../hub/index.html">CalitoyCorp</a> · <a href="../hub/index.html">All Brands</a> · <a href="https://californiawildales.com" target="_blank" rel="noreferrer">californiawildales.com ↗</a></p>
+</footer>
+
+<script>
+const products = [
+  { tag: "Barrel Aged · 12 mo", name: "Gose Loco Tee", desc: "Tequila-soaked Hungarian oak, Bearss limes, sea salt, agave — the fiesta in a pour, on your chest.", price: 34, img: "🛢️" },
+  { tag: "Pastry Sour", name: "Fuzzy Peaches Tee", desc: "Ridiculous amounts of peaches, bourbon Madagascar vanilla, cinnamon. Backyard BBQ certified.", price: 34, img: "🍑" },
+  { tag: "Blood Orange Sour", name: "Ozzy Oz-Orange Tee", desc: "Blood orange and cherry, 6% ABV, rock-poster energy for the funk faithful.", price: 34, img: "🍊" },
+  { tag: "Foeder Aged", name: "Midas Touch Tee", desc: "Golden sour × Brett saison. Patience turns to gold — gold ink on black.", price: 38, img: "🏆" },
+  { tag: "Barrelhouse Seal", name: "100 Barrels Crewneck", desc: "Our wall of oak and foeders, moody barrelhouse light, heavyweight fleece.", price: 62, img: "🛢️" },
+  { tag: "West Coast IPA", name: "14 Mile Hat", desc: "Clean, crisp, pine and citrus. Dad hat, embroidered mark.", price: 30, img: "🌱" },
+  { tag: "Back Print", name: "Wild Things of OB Hoodie", desc: "Where the wild things pour — painted creature, reclaimed wood texture, OB street art soul.", price: 72, img: "🐻" },
+  { tag: "Accessories", name: "Funk Sticker Pack", desc: "Barrels, brett cells, pier silhouettes, Gose Loco limes. Slap them on your growler.", price: 12, img: "✨" },
+  { tag: "Barrel Aged · 12 mo", name: "Gose Loco Poster", desc: "Vintage tequila-label art, 10×10 matte, limited test-account print.", price: 24, img: "🖼️" },
+  { tag: "OB Local · 92107", name: "Newport Ave Local Tee", desc: "Golden hour on the pier, tulip glass silhouette, sand and navy. For the regulars.", price: 34, img: "🌅" },
+];
+
+const sizes = ["S","M","L","XL","XXL"];
+let cart = [];
+
+function renderGrid() {
+  const grid = document.getElementById("product-grid");
+  grid.innerHTML = products.map((p, i) => `
+    <div class="card">
+      <div class="card-img">${p.img}</div>
+      <div class="card-body">
+        <span class="card-tag">${p.tag}</span>
+        <div class="card-name">${p.name}</div>
+        <div class="card-desc">${p.desc}</div>
+        <div class="card-price">$${p.price}</div>
+        <select class="size-select" id="size-${i}">
+          ${sizes.map(s => `<option>${s}</option>`).join("")}
+        </select>
+        <button class="add-btn" onclick="addToCart(${i})">Add to Cart</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function addToCart(i) {
+  const size = document.getElementById(`size-${i}`).value;
+  const p = products[i];
+  cart.push({ name: p.name, size, price: p.price });
+  updateCart();
+}
+
+function updateCart() {
+  document.getElementById("cart-count").textContent = cart.length;
+  const total = cart.reduce((s, i) => s + i.price, 0);
+  document.getElementById("cart-total").textContent = "$" + total;
+  const el = document.getElementById("cart-items");
+  if (!cart.length) { el.innerHTML = '<p class="cart-empty">Your cart is empty</p>'; return; }
+  el.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <span class="cart-item-name">${item.name} (${item.size})</span>
+      <span class="cart-item-price">$${item.price}</span>
+    </div>
+  `).join("");
+}
+
+function openCart() { document.getElementById("cart-drawer").classList.add("open"); document.getElementById("cart-overlay").classList.add("open"); }
+function closeCart() { document.getElementById("cart-drawer").classList.remove("open"); document.getElementById("cart-overlay").classList.remove("open"); }
+
+renderGrid();
+</script>
+</body>
+</html>

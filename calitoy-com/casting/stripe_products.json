@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Single Role Cast",
+    "product_id": "prod_VBg1cZjhhpxzBI",
+    "price_id": "price_1UBIfXISCKHDtOuFtr53JNz7"
+  },
+  {
+    "name": "Multi-Role Package (up to 5)",
+    "product_id": "prod_VBg1mgVKqAlB9n",
+    "price_id": "price_1UBIfXISCKHDtOuFhxt7vO07"
+  },
+  {
+    "name": "Full Production Cast",
+    "product_id": "prod_VBg1l9nlS0AQnE",
+    "price_id": "price_1UBIfXISCKHDtOuFRfgH9AXj"
+  },
+  {
+    "name": "Monthly Casting Retainer",
+    "product_id": "prod_VBg1ieevk9E7PP",
+    "price_id": "price_1UBIfXISCKHDtOuFmOPkwzn8"
+  },
+  {
+    "name": "Digital Double Creation",
+    "product_id": "prod_VBg1g1a1540Kk7",
+    "price_id": "price_1UBIfYISCKHDtOuFQjtqWzr3"
+  },
+  {
+    "name": "Voice Cloning Package",
+    "product_id": "prod_VBg1f30p1feFE4",
+    "price_id": "price_1UBIfYISCKHDtOuFfvym17rP"
+  }
+]

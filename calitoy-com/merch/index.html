@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calitoy | Official Merch Store</title>
+<meta name="description" content="Calitoy official merch store - 21 exclusive designs on 20 product types. Tees, hoodies, caps, mugs, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0908;
+  --bg-light: #141312;
+  --bg-card: #1a1918;
+  --gold: #c9a96e;
+  --gold-light: #e0c890;
+  --purple: #5c2d88;
+  --purple-light: #7a3da8;
+  --text: #e8e6e3;
+  --text-dim: #9a958f;
+  --border: #2a2825;
+  --radius: 8px;
+  --transition: 0.3s ease;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('assets/calitoy-brand-portrait.jpg') center / cover no-repeat;
+  filter: brightness(0.45);
+  z-index: 0;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10,9,8,0.6) 0%, rgba(10,9,8,0.4) 50%, rgba(10,9,8,0.95) 100%);
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+  max-width: 800px;
+}
+.hero h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-shadow: 0 0 40px rgba(201,169,110,0.3);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+.hero h1 .accent {
+  color: var(--purple-light);
+}
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: var(--text-dim);
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.02em;
+}
+.hero-cta {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: transparent;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: var(--transition);
+  border-radius: var(--radius);
+  text-decoration: none;
+}
+.hero-cta:hover {
+  background: var(--gold);
+  color: var(--bg);
+  box-shadow: 0 0 30px rgba(201,169,110,0.4);
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+.hero-stat {
+  text-align: center;
+}
+.hero-stat .num {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+.hero-stat .label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+}
+
+/* SECTION */
+.section {
+  padding: 5rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.section-header h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.section-header p {
+  color: var(--text-dim);
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+.step-badge {
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  background: var(--purple);
+  color: white;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+/* DESIGN GRID */
+.design-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.design-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.design-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(201,169,110,0.15);
+}
+.design-card.selected {
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(201,169,110,0.4);
+}
+.design-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+.design-card .design-name {
+  padding: 0.6rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.design-card.selected .design-name {
+  color: var(--gold);
+}
+.design-check {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 28px;
+  height: 28px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--bg);
+  font-weight: 700;
+}
+.design-card.selected .design-check {
+  display: flex;
+}
+
+/* PRODUCT GRID */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.2rem;
+}
+.product-card {
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+.product-card:hover {
+  border-color: var(--purple-light);
+  transform: translateY(-3px);
+}
+.product-card.selected {
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(201,169,110,0.3);
+}
+.product-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+.product-card .product-name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.3rem;
+}
+.product-card .product-price {
+  font-size: 0.9rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+.product-card .product-cat {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  margin-top: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* CHECKOUT BAR */
+.checkout-bar {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-light);
+  border-top: 2px solid var(--gold);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  z-index: 100;
+  flex-wrap: wrap;
+}
+.checkout-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.checkout-preview {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.checkout-preview img {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+.checkout-text {
+  font-size: 0.9rem;
+}
+.checkout-text .design-label {
+  color: var(--text-dim);
+}
+.checkout-text .design-value {
+  color: var(--gold);
+  font-weight: 600;
+}
+.checkout-btn {
+  padding: 0.9rem 2rem;
+  background: var(--gold);
+  border: none;
+  border-radius: var(--radius);
+  color: var(--bg);
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.checkout-btn:hover {
+  background: var(--gold-light);
+  box-shadow: 0 0 25px rgba(201,169,110,0.4);
+}
+.checkout-btn:disabled {
+  background: var(--border);
+  color: var(--text-dim);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.checkout-btn.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* PROGRESS */
+.progress {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.progress-step {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+.progress-step.active {
+  color: var(--gold);
+}
+.progress-step .dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+.progress-step.active .dot {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.progress-line {
+  width: 40px;
+  height: 2px;
+  background: var(--border);
+  margin: 0 0.3rem;
+}
+.progress-step.completed .dot {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+/* FEATURED */
+.featured {
+  padding: 4rem 1.5rem;
+  background: var(--bg-light);
+}
+.featured-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .featured-inner {
+    grid-template-columns: 1fr;
+  }
+}
+.featured img {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.featured-text h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  letter-spacing: 0.03em;
+}
+.featured-text p {
+  color: var(--text-dim);
+  font-size: 1.05rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+/* FOOTER */
+.footer {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+.footer a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .design-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+  .hero-stats {
+    gap: 1.5rem;
+  }
+  .checkout-bar {
+    flex-direction: column;
+    text-align: center;
+  }
+  .checkout-btn {
+    width: 100%;
+  }
+}
+
+/* NOTIFICATION */
+.notification {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 1rem 1.5rem;
+  background: var(--bg-card);
+  border: 2px solid var(--gold);
+  border-radius: var(--radius);
+  color: var(--text);
+  z-index: 999;
+  font-size: 0.9rem;
+  transform: translateX(120%);
+  transition: transform 0.4s ease;
+  max-width: 300px;
+}
+.notification.show {
+  transform: translateX(0);
+}
+.notification.error {
+  border-color: #e74c3c;
+}
+</style>
+<style>
+.identity-nav { display: flex; flex: 1 1 100%; max-width: none; gap: 0; margin: 0.35rem 0 0; align-items: stretch; }
+.identity-nav a { flex: 1 1 0; text-align: center; text-decoration: none; white-space: nowrap;
+  color: rgba(255,255,255,0.62); font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+  padding: 0.5rem 0.3rem; border-left: 1px solid rgba(255,255,255,0.05); transition: color 200ms, background 200ms; }
+.identity-nav a:first-child { border-left: 0; }
+.identity-nav a:hover { color: #d8b46a; background: rgba(216,182,106,0.06); }
+.identity-nav a.active { color: #ff8a2a; background: rgba(255,138,42,0.10); box-shadow: inset 0 -2px 0 #ff8a2a; }
+@media (max-width: 480px) { .identity-nav a { font-size: 0.52rem; letter-spacing: 0.08em; padding: 0.45rem 0.12rem; } }
+</style>
+<style id="calitoy-sitemenu">
+.site-menu-bar{position:sticky;top:0;z-index:900;background:rgba(8,9,18,0.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(216,182,106,0.18);}
+.site-menu-head{display:flex;align-items:center;gap:.6rem;max-width:1200px;margin:0 auto;padding:.32rem .9rem;}
+.menu-arrow{background:none;border:1px solid rgba(216,182,106,.35);color:#d8b46a;width:26px;height:26px;border-radius:7px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.7rem;transition:transform .25s ease, background .2s;flex:none;}
+.menu-arrow:hover{background:rgba(216,182,106,.12);}
+.site-menu-bar.collapsed .menu-arrow{transform:rotate(-90deg);}
+.menu-label{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(228,196,116,.75);}
+.site-menu{display:flex;flex-wrap:nowrap;gap:0;margin-left:.4rem;overflow-x:auto;scrollbar-width:none;max-height:60px;transition:max-height .25s ease, opacity .2s;opacity:1;}
+.site-menu::-webkit-scrollbar{display:none;}
+.site-menu-bar.collapsed .site-menu{max-height:0;opacity:0;pointer-events:none;overflow:hidden;}
+.site-menu a{flex:none;color:rgba(255,255,255,.72);text-decoration:none;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;padding:.42rem .7rem;white-space:nowrap;border-left:1px solid rgba(216,182,106,.12);}
+.site-menu a:first-child{border-left:0;}
+.site-menu a:hover{color:#d8b46a;background:rgba(216,182,106,.06);}
+.site-menu a.active{color:#ff8a2a;box-shadow:inset 0 -2px 0 #ff8a2a;}
+@media (max-width:640px){.menu-label{display:none;}}
+</style>
+</head>
+<body>
+<header style="position:relative;z-index:40"><nav class="identity-nav" aria-label="The five identities"><a href="https://calitoy.org">CREATIVE AGENCY</a><a href="https://xcalitoy.com">SONGWRITER</a><a href="https://josephcalitoy.com">CONSULTANT</a><a href="https://author.calitoy.com">AUTHOR</a><a href="https://art.calitoy.com">ARTIST</a></nav></header>
+<div class="site-menu-bar" id="site-menu-bar"><div class="site-menu-head"><button class="menu-arrow" aria-expanded="true" aria-label="Hide menu">▼</button><span class="menu-label">Menu</span><nav class="site-menu" aria-label="Site menu"><a href="/merch/merch.html">Shop</a><a href="/works/">Works</a><a href="/customs/">Customs</a><a href="/stamp/">Stamp</a></nav></div></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Calitoy <span class="accent">Merch</span></h1>
+    <p class="hero-subtitle">21 exclusive designs. 20 premium products. One iconic brand.<br>Design it your way.</p>
+    <a href="#shop" class="hero-cta">Start Designing</a>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num">21</div>
+        <div class="label">Designs</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">20</div>
+        <div class="label">Products</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">420</div>
+        <div class="label">Combos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section class="featured">
+  <div class="featured-inner">
+    <div class="featured-text">
+      <h3>The Brand</h3>
+      <p>Calitoy is more than a brand - it's a statement. Born from the streets, crafted with intention.</p>
+      <p>Every design tells a story. Every product carries the legacy. Choose your design, pick your product, wear it proud.</p>
+      <p style="color: var(--gold); font-weight: 500; margin-top: 1.5rem;">Printful fulfillment. Stripe checkout. Premium quality guaranteed.</p>
+    </div>
+    <div>
+      <img src="assets/calitoy-brand-model.jpg" alt="Calitoy brand model" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section class="section" id="shop">
+  <div class="section-header">
+    <span class="step-badge">Build Your Own</span>
+    <h2>Design Your Merch</h2>
+    <p>Pick a design, then choose your product. Checkout in seconds.</p>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress">
+    <div class="progress-step active" id="step1-indicator">
+      <span class="dot">1</span>
+      <span>Pick Design</span>
+    </div>
+    <div class="progress-line"></div>
+    <div class="progress-step" id="step2-indicator">
+      <span class="dot">2</span>
+      <span>Pick Product</span>
+    </div>
+  </div>
+
+  <!-- STEP 1: Design Selection -->
+  <div id="step1">
+    <div class="design-grid" id="design-grid"></div>
+  </div>
+
+  <!-- STEP 2: Product Selection -->
+  <div id="step2" style="display: none;">
+    <div style="text-align:center; margin-bottom: 1.5rem;">
+      <img id="selected-design-preview" src="" alt="Selected design" style="max-width: 200px; border-radius: 8px; border: 2px solid var(--gold); margin-bottom: 1rem;">
+      <p style="color: var(--text-dim); font-size: 0.9rem;">You selected: <span id="selected-design-name" style="color: var(--gold); font-weight: 600;"></span></p>
+      <button onclick="backToStep1()" style="background:none; border:none; color:var(--purple-light); cursor:pointer; font-size:0.9rem; margin-top:0.5rem; text-decoration: underline;">Change design</button>
+    </div>
+    <div class="product-grid" id="product-grid"></div>
+  </div>
+</section>
+
+<!-- CHECKOUT BAR -->
+<div class="checkout-bar" id="checkout-bar" style="display: none;">
+  <div class="checkout-info">
+    <div class="checkout-preview" id="checkout-preview"></div>
+    <div class="checkout-text" id="checkout-text"></div>
+  </div>
+  <button class="checkout-btn" id="checkout-btn" onclick="doCheckout()">Checkout</button>
+</div>
+
+<!-- NOTIFICATION -->
+<div class="notification" id="notification"></div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>Calitoy &copy; 2026 | <a href="https://merch.calitoy.com">merch.calitoy.com</a> | Printful fulfillment + Stripe checkout</p>
+</footer>
+
+<script>
+// 21 Brand Designs
+const DESIGNS = [
+  { id: 'brand-portrait', name: 'Brand Portrait', img: 'assets/calitoy-brand-portrait.jpg' },
+  { id: 'brand-model', name: 'Brand Model', img: 'assets/calitoy-brand-model.jpg' },
+  { id: 'collab-kills', name: 'Calitoy x Kills', img: 'assets/calitoy-collab-kills.jpg' },
+  { id: 'collab-muse-kills', name: 'Muse x Kills', img: 'assets/calitoy-collab-muse-kills.jpg' },
+  { id: 'lioness-album', name: 'Lioness Lost', img: 'assets/calitoy-lioness-album.jpg' },
+  { id: 'logo-gold-circle', name: 'Gold Circle Rose', img: 'assets/calitoy-logo-gold-circle.jpg' },
+  { id: 'logo-neon-metal', name: 'Chrome Neon Metal', img: 'assets/calitoy-logo-neon-metal.jpg' },
+  { id: 'logo-gold-sun', name: 'Gold Sun Emblem', img: 'assets/calitoy-logo-gold-sun.jpg' },
+  { id: 'logo-gold-rose', name: 'Gold Rose Script', img: 'assets/calitoy-logo-gold-rose.jpg' },
+  { id: 'logo-purple-sunflower', name: 'Purple Sunflower', img: 'assets/calitoy-logo-purple-sunflower.jpg' },
+  { id: 'logo-chrome-purple', name: 'Chrome Purple', img: 'assets/calitoy-logo-chrome-purple.jpg' },
+  { id: 'logo-purple-brush', name: 'Purple Brush', img: 'assets/calitoy-logo-purple-brush.jpg' },
+  { id: 'logo-purple-lotus', name: 'Purple Lotus', img: 'assets/calitoy-logo-purple-lotus.jpg' },
+  { id: 'logo-neon-purple', name: 'Neon Purple', img: 'assets/calitoy-logo-neon-purple.jpg' },
+  { id: 'logo-gold-emboss', name: 'Gold Emboss', img: 'assets/calitoy-logo-gold-emboss.jpg' },
+  { id: 'logo-muse-gold-rose', name: 'Muse Gold Rose', img: 'assets/calitoy-logo-muse-gold-rose.jpg' },
+  { id: 'logo-pink-3d', name: 'Pink 3D Rose', img: 'assets/calitoy-logo-pink-3d.jpg' },
+  { id: 'logo-gothic-7', name: 'Gothic Seven', img: 'assets/calitoy-logo-gothic-7.jpg' },
+  { id: 'logo-retro-7', name: 'Retro Seven', img: 'assets/calitoy-logo-retro-7.jpg' },
+  { id: 'logo-tattoo-7', name: 'Tattoo Seven', img: 'assets/calitoy-logo-tattoo-7.jpg' },
+  { id: 'logo-cali7-joy', name: 'CaliJoy Tattoo', img: 'assets/calitoy-logo-cali7-joy.jpg' },
+];
+
+// 20 Product Types with Stripe price IDs
+const PRODUCTS = [
+  { id: 'staple-tee', name: 'Unisex Staple Tee', price: 32, icon: 'T', cat: 'Tee', priceId: 'price_1UBZF0ISCKHDtOuFdpbfy1mT' },
+  { id: 'pullover-hoodie', name: 'Pullover Hoodie', price: 52, icon: 'H', cat: 'Hoodie', priceId: 'price_1UBZF1ISCKHDtOuFJrbgHsBJ' },
+  { id: 'heavy-blend-hoodie', name: 'Heavy Blend Hoodie', price: 48, icon: 'H', cat: 'Hoodie', priceId: 'price_1UBZF3ISCKHDtOuFgo1rBijC' },
+  { id: 'crew-sweatshirt', name: 'Crew Sweatshirt', price: 42, icon: 'S', cat: 'Sweatshirt', priceId: 'price_1UBZF4ISCKHDtOuF9k6gmPMa' },
+  { id: 'tank-top', name: 'Tank Top', price: 28, icon: 'T', cat: 'Tank', priceId: 'price_1UBZF5ISCKHDtOuF21aXYJFY' },
+  { id: 'long-sleeve-tee', name: 'Long Sleeve Tee', price: 36, icon: 'T', cat: 'Tee', priceId: 'price_1UBZF7ISCKHDtOuFbV0CNswZ' },
+  { id: 'tri-blend-tee', name: 'Tri-Blend Tee', price: 38, icon: 'T', cat: 'Tee', priceId: 'price_1UBZF8ISCKHDtOuFeBS54Pjr' },
+  { id: 'cuffed-beanie', name: 'Cuffed Beanie', price: 24, icon: 'B', cat: 'Beanie', priceId: 'price_1UBZF9ISCKHDtOuFknnrrUK7' },
+  { id: 'knit-beanie', name: 'Knit Beanie', price: 22, icon: 'B', cat: 'Beanie', priceId: 'price_1UBZFBISCKHDtOuF2Sc0KGFc' },
+  { id: 'snapback-cap', name: 'Snapback Cap', price: 28, icon: 'C', cat: 'Cap', priceId: 'price_1UBZFCISCKHDtOuFkDsadnGj' },
+  { id: 'classic-snapback', name: 'Classic Snapback', price: 30, icon: 'C', cat: 'Cap', priceId: 'price_1UBZFDISCKHDtOuFHMAgtEiT' },
+  { id: 'dad-hat', name: 'Classic Dad Hat', price: 28, icon: 'C', cat: 'Cap', priceId: 'price_1UBZFFISCKHDtOuFN6sB7OQ0' },
+  { id: 'white-mug', name: 'White Mug', price: 18, icon: 'M', cat: 'Mug', priceId: 'price_1UBZFGISCKHDtOuFDiYhCHKG' },
+  { id: 'black-mug', name: 'Black Mug', price: 18, icon: 'M', cat: 'Mug', priceId: 'price_1UBZFHISCKHDtOuFybGoTvmG' },
+  { id: 'eco-tote', name: 'Eco Tote Bag', price: 24, icon: 'T', cat: 'Tote', priceId: 'price_1UBZFJISCKHDtOuFhPLdLzA0' },
+  { id: 'stickers', name: 'Kiss-Cut Stickers', price: 8, icon: 'S', cat: 'Sticker', priceId: 'price_1UBZFKISCKHDtOuFVPw3SaBn' },
+  { id: 'beach-towel', name: 'Beach Towel', price: 35, icon: 'T', cat: 'Towel', priceId: 'price_1UBZFLISCKHDtOuFcdyyDNAw' },
+  { id: 'softstyle-tee', name: 'Basic Softstyle Tee', price: 28, icon: 'T', cat: 'Tee', priceId: 'price_1UBZFNISCKHDtOuFTIPFA04g' },
+  { id: 'joggers', name: 'Unisex Joggers', price: 38, icon: 'J', cat: 'Pants', priceId: 'price_1UBZFOISCKHDtOuFGS3wfx74' },
+  { id: 'long-sleeve-shirt', name: 'Long Sleeve Shirt', price: 34, icon: 'T', cat: 'Shirt', priceId: 'price_1UBZFQISCKHDtOuFjgDPzKGm' },
+];
+
+let selectedDesign = null;
+let selectedProduct = null;
+
+// Render designs
+function renderDesigns() {
+  const grid = document.getElementById('design-grid');
+  grid.innerHTML = DESIGNS.map((d, i) => `
+    <div class="design-card" data-design-id="${d.id}" onclick="selectDesign('${d.id}', ${i})">
+      <div class="design-check">&#10003;</div>
+      <img src="${d.img}" alt="${d.name}" loading="lazy">
+      <div class="design-name">${d.name}</div>
+    </div>
+  `).join('');
+}
+
+// Render products
+function renderProducts() {
+  const grid = document.getElementById('product-grid');
+  grid.innerHTML = PRODUCTS.map((p, i) => `
+    <div class="product-card" data-product-id="${p.id}" onclick="selectProduct('${p.id}', ${i})">
+      <span class="product-icon">${p.icon}</span>
+      <div class="product-name">${p.name}</div>
+      <div class="product-price">$${p.price}</div>
+      <div class="product-cat">${p.cat}</div>
+    </div>
+  `).join('');
+}
+
+function selectDesign(id, idx) {
+  selectedDesign = DESIGNS[idx];
+  document.querySelectorAll('.design-card').forEach(c => c.classList.remove('selected'));
+  document.querySelector(`[data-design-id="${id}"]`).classList.add('selected');
+  // Auto-advance to step 2
+  setTimeout(() => {
+    goToStep2();
+  }, 400);
+}
+
+function goToStep2() {
+  document.getElementById('step1').style.display = 'none';
+  document.getElementById('step2').style.display = 'block';
+  document.getElementById('step1-indicator').classList.remove('active');
+  document.getElementById('step1-indicator').classList.add('completed');
+  document.getElementById('step2-indicator').classList.add('active');
+  // Update preview
+  document.getElementById('selected-design-preview').src = selectedDesign.img;
+  document.getElementById('selected-design-name').textContent = selectedDesign.name;
+  // Scroll to product grid
+  document.getElementById('step2').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function backToStep1() {
+  document.getElementById('step1').style.display = 'block';
+  document.getElementById('step2').style.display = 'none';
+  document.getElementById('step1-indicator').classList.add('active');
+  document.getElementById('step1-indicator').classList.remove('completed');
+  document.getElementById('step2-indicator').classList.remove('active');
+  selectedProduct = null;
+  document.getElementById('checkout-bar').style.display = 'none';
+  document.querySelectorAll('.product-card').forEach(c => c.classList.remove('selected'));
+}
+
+function selectProduct(id, idx) {
+  selectedProduct = PRODUCTS[idx];
+  document.querySelectorAll('.product-card').forEach(c => c.classList.remove('selected'));
+  document.querySelector(`[data-product-id="${id}"]`).classList.add('selected');
+  // Show checkout bar
+  document.getElementById('checkout-bar').style.display = 'flex';
+  // Update checkout info
+  const preview = document.getElementById('checkout-preview');
+  preview.innerHTML = `<img src="${selectedDesign.img}" alt="Design">`;
+  document.getElementById('checkout-text').innerHTML =
+    `<span class="design-label">Design:</span> <span class="design-value">${selectedDesign.name}</span> | ` +
+    `<span class="design-label">Product:</span> <span class="design-value">${selectedProduct.name}</span> | ` +
+    `<span class="design-value">$${selectedProduct.price}</span>`;
+}
+
+function showNotification(msg, isError) {
+  const notif = document.getElementById('notification');
+  notif.textContent = msg;
+  notif.className = 'notification' + (isError ? ' error' : '');
+  notif.classList.add('show');
+  setTimeout(() => notif.classList.remove('show'), 4000);
+}
+
+async function doCheckout() {
+  if (!selectedDesign || !selectedProduct) {
+    showNotification('Please select a design and product', true);
+    return;
+  }
+  const btn = document.getElementById('checkout-btn');
+  btn.classList.add('loading');
+  btn.textContent = 'Processing...';
+
+  const designUrl = window.location.origin + '/' + selectedDesign.img;
+  const payload = {
+    type: 'checkout',
+    priceId: selectedProduct.priceId,
+    productName: selectedProduct.name + ' - ' + selectedDesign.name,
+    metadata: {
+      brand: 'calitoy',
+      fulfiller: 'printful',
+      designImage: designUrl,
+      designName: selectedDesign.name,
+      designId: selectedDesign.id,
+      productName: selectedProduct.name,
+      productType: selectedProduct.cat,
+    }
+  };
+
+  try {
+    const resp = await fetch('https://email-capture.calitoy.workers.dev', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!resp.ok) {
+      throw new Error('Checkout request failed: ' + resp.status);
+    }
+    const data = await resp.json();
+    if (data.url) {
+      window.location.href = data.url;
+    } else if (data.sessionId || data.id) {
+      showNotification('Checkout session created. Redirecting...', false);
+      setTimeout(() => {
+        window.location.href = 'https://checkout.stripe.com/c/pay/' + (data.sessionId || data.id);
+      }, 1500);
+    } else {
+      throw new Error('No checkout URL in response');
+    }
+  } catch (err) {
+    showNotification('Checkout error: ' + err.message, true);
+    btn.classList.remove('loading');
+    btn.textContent = 'Checkout';
+  }
+}
+
+// Init
+renderDesigns();
+renderProducts();
+</script>
+
+
+<script id="calitoy-sitemenu-js">
+(function(){
+  document.addEventListener('click', function(e){
+    var bar = document.querySelector('.site-menu-bar');
+    if (!bar) return;
+    if (e.target.closest('.menu-arrow')) {
+      bar.classList.toggle('collapsed');
+      try { localStorage.setItem('calitoy-menu', bar.classList.contains('collapsed') ? 'c' : 'o'); } catch(_) {}
+    }
+  });
+  try {
+    var st = localStorage.getItem('calitoy-menu');
+    if (st === 'c') {
+      var bar = document.querySelector('.site-menu-bar');
+      if (bar) bar.classList.add('collapsed');
+    }
+  } catch(_) {}
+  var here = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.site-menu a').forEach(function(a){
+    var href = a.getAttribute('href') || '';
+    if (href === here) a.classList.add('active');
+  });
+})();
+</script>
+</body>
+</html>

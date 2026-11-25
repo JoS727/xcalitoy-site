@@ -1,0 +1,256 @@
+/* ============================================================
+   360° PRODUCT VIEWER STYLES
+   ============================================================ */
+
+.viewer-360 {
+  position: relative;
+  background: #0a0a0a;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.viewer-container {
+  position: relative;
+  aspect-ratio: 1;
+  cursor: grab;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+}
+
+.viewer-container:active {
+  cursor: grabbing;
+}
+
+/* Video element */
+.viewer-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Image sequence */
+.viewer-images {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.viewer-images .frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.05s;
+  pointer-events: none;
+}
+
+.viewer-images .frame.active {
+  opacity: 1;
+}
+
+/* Controls */
+.viewer-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  background: rgba(0,0,0,0.8);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.control-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-btn:hover {
+  background: var(--accent, #C9A227);
+  color: #000;
+}
+
+.control-btn.play-pause {
+  width: 50px;
+  height: 50px;
+}
+
+.control-btn.play-pause .pause-icon {
+  display: none;
+}
+
+.control-btn.play-pause.playing .play-icon {
+  display: none;
+}
+
+.control-btn.play-pause.playing .pause-icon {
+  display: inline;
+}
+
+/* Rotation slider */
+.rotation-slider {
+  flex: 1;
+  padding: 0 10px;
+}
+
+.frame-slider {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+  outline: none;
+}
+
+.frame-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--accent, #C9A227);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.frame-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.frame-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--accent, #C9A227);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+/* Zoom controls */
+.zoom-controls {
+  display: flex;
+  gap: 8px;
+}
+
+/* Hint text */
+.viewer-hint {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  padding: 10px 20px;
+  background: rgba(0,0,0,0.7);
+  border-radius: 20px;
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.8);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.viewer-360:hover .viewer-hint {
+  opacity: 1;
+}
+
+/* Thumbnails */
+.viewer-thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+  background: rgba(0,0,0,0.5);
+}
+
+.viewer-thumbnails .thumb {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.1);
+  border: 2px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.6);
+  transition: all 0.2s;
+}
+
+.viewer-thumbnails .thumb:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.viewer-thumbnails .thumb.active {
+  border-color: var(--accent, #C9A227);
+  color: var(--accent, #C9A227);
+}
+
+/* Loading state */
+.viewer-360.loading::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.viewer-360.loading::after {
+  content: 'Loading 360° view...';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1rem;
+  z-index: 11;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .viewer-controls {
+    padding: 10px 15px;
+  }
+  
+  .control-btn {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .control-btn.play-pause {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .viewer-thumbnails .thumb {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .viewer-hint {
+    display: none;
+  }
+}
+
+/* Brand-specific accent colors */
+.viewer-360.brand-lovelouder { --accent: #C9A227; }
+.viewer-360.brand-kurced { --accent: #6B2C91; }
+.viewer-360.brand-tarosyn { --accent: #C9A227; }
+.viewer-360.brand-wickedyouth { --accent: #8B5CF6; }
+.viewer-360.brand-endof8 { --accent: #D2691E; }

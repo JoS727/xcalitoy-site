@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+            <circle cx="200" cy="200" r="180" fill="none" stroke="#C9A227" stroke-width="4"/>
+            <circle cx="200" cy="200" r="170" fill="none" stroke="#C9A227" stroke-width="1"/>
+            <text x="200" y="80" text-anchor="middle" fill="#C9A227" font-size="24" font-family="serif">LOVE</text>
+            <text x="200" y="340" text-anchor="middle" fill="#C9A227" font-size="24" font-family="serif">LOUDER</text>
+            <path d="M200 120 C160 160, 140 200, 200 260 C260 200, 240 160, 200 120" fill="none" stroke="#C9A227" stroke-width="3"/>
+            <text x="200" y="200" text-anchor="middle" fill="#C9A227" font-size="20" font-family="cursive">Calitoy</text>
+            <path d="M200 260 L200 300" stroke="#C9A227" stroke-width="2"/>
+            <path d="M190 300 L210 300 L200 320 Z" fill="#C9A227"/>
+        </svg>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarosyn — Official Merch</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #050508;
+    --purple: #4a1d96;
+    --gold: #d97706;
+    --white: #f0eefc;
+    --card-bg: #0e0b1a;
+    --border: #2a1660;
+  }
+  body { background: var(--bg); color: var(--white); font-family: 'Georgia', serif; min-height: 100vh; }
+
+  /* NAV */
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 2rem; background: #000;
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+  .nav-logo img { height: 44px; }
+  .nav-logo span { font-size: 1.4rem; font-weight: 700; color: var(--gold); letter-spacing: 0.1em; }
+  .cart-btn {
+    background: var(--purple); color: var(--white); border: none;
+    padding: 0.5rem 1.2rem; border-radius: 6px; cursor: pointer;
+    font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem;
+  }
+  .cart-btn span { background: var(--gold); color: #000; border-radius: 50%; width: 20px; height: 20px;
+    display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; }
+
+  /* HERO */
+  .hero {
+    text-align: center; padding: 4rem 2rem 3rem;
+    background: radial-gradient(ellipse at 50% 0%, #2a0d5e 0%, var(--bg) 65%);
+  }
+  .hero-logo { max-width: 220px; margin: 0 auto 1.5rem; display: block; }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; }
+  .hero p { color: #b8a9e0; margin-top: 0.75rem; font-size: 1.05rem; font-style: italic; }
+  .stars { color: var(--gold); font-size: 1.4rem; margin-bottom: 1rem; letter-spacing: 0.3em; }
+
+  /* GRID */
+  .section-title { text-align: center; padding: 2rem 1rem 1rem; font-size: 1.1rem; color: #a890d0; text-transform: uppercase; letter-spacing: 0.2em; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem; padding: 1rem 2rem 3rem; max-width: 1300px; margin: 0 auto;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+    display: flex; flex-direction: column;
+  }
+  .card:hover { transform: translateY(-4px); border-color: var(--purple); }
+  .card-img {
+    background: linear-gradient(135deg, #1a0840 0%, #0e0b1a 100%);
+    padding: 2rem; display: flex; align-items: center; justify-content: center;
+    min-height: 200px;
+  }
+  .card-img img { max-width: 130px; max-height: 130px; object-fit: contain; }
+  .card-body { padding: 1.2rem; flex: 1; display: flex; flex-direction: column; gap: 0.6rem; }
+  .card-name { font-size: 1.05rem; font-weight: 700; color: var(--white); }
+  .card-price { font-size: 1.25rem; color: var(--gold); font-weight: 700; }
+  .size-select {
+    background: #1a0840; border: 1px solid var(--border); color: var(--white);
+    padding: 0.4rem 0.6rem; border-radius: 6px; width: 100%; font-size: 0.9rem; cursor: pointer;
+  }
+  .add-btn {
+    margin-top: auto; background: var(--purple); color: var(--white);
+    border: none; padding: 0.7rem; border-radius: 8px; cursor: pointer;
+    font-size: 0.95rem; font-weight: 600; transition: background 0.2s;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .add-btn:hover { background: #5b2db8; }
+
+  /* CART DRAWER */
+  .cart-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 200; }
+  .cart-overlay.open { display: block; }
+  .cart-drawer {
+    position: fixed; right: 0; top: 0; bottom: 0; width: 360px; max-width: 95vw;
+    background: #0e0b1a; border-left: 1px solid var(--border);
+    z-index: 300; display: flex; flex-direction: column; transform: translateX(100%);
+    transition: transform 0.3s;
+  }
+  .cart-drawer.open { transform: translateX(0); }
+  .cart-header { padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .cart-header h2 { color: var(--gold); font-size: 1.2rem; }
+  .close-cart { background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
+  .cart-items { flex: 1; overflow-y: auto; padding: 1rem 1.5rem; }
+  .cart-item { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  .cart-item-name { color: var(--white); }
+  .cart-item-price { color: var(--gold); }
+  .cart-empty { color: #7060a0; text-align: center; margin-top: 2rem; font-style: italic; }
+  .cart-footer { padding: 1.2rem 1.5rem; border-top: 1px solid var(--border); }
+  .cart-total { display: flex; justify-content: space-between; font-size: 1.1rem; margin-bottom: 1rem; }
+  .cart-total span:last-child { color: var(--gold); font-weight: 700; }
+  .checkout-btn {
+    width: 100%; background: var(--gold); color: #000; border: none;
+    padding: 0.9rem; border-radius: 8px; font-size: 1rem; font-weight: 700;
+    cursor: pointer; text-transform: uppercase; letter-spacing: 0.08em;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 2.5rem 1rem;
+    border-top: 1px solid var(--border); background: #000;
+    color: #7060a0; font-style: italic;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .grid { padding: 1rem; gap: 1rem; }
+    .hero { padding: 2.5rem 1rem 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../../index.html">
+    <img src="../../assets/branding/png/All_Brand_Logos_PNG/Tarosyn/Brand_Color/Wordmark.png" alt="Tarosyn">
+  </a>
+  <button class="cart-btn" onclick="openCart()">🛒 Cart <span id="cart-count">0</span></button>
+</nav>
+
+<section class="hero">
+  <img class="hero-logo" src="../../assets/branding/png/All_Brand_Logos_PNG/Tarosyn/Brand_Color/Primary_Crest.png" alt="Tarosyn Crest">
+  <div class="stars">✦ ✧ ✦ ✧ ✦</div>
+  <h1>Tarosyn</h1>
+  <p>Celestial threads for cosmic minds — wear the mystery</p>
+</section>
+
+<p class="section-title">⊹ Official Merch Collection ⊹</p>
+
+<div class="grid" id="product-grid"></div>
+
+<!-- Cart -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-header">
+    <h2>Your Cart</h2>
+    <button class="close-cart" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items">
+    <p class="cart-empty">Your cart is empty</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><span id="cart-total">$0</span></div>
+    <button class="checkout-btn">Checkout</button>
+  </div>
+</div>
+
+<footer>
+  <p>✦ <strong style="color:#d97706">Tarosyn</strong> — Read the stars, wear the signs ✦</p>
+  <p style="margin-top:0.5rem;font-size:0.85rem;">Part of <a href="../hub/index.html">CalitoyCorp</a> · <a href="../hub/index.html">All Brands</a></p>
+</footer>
+
+<script>
+const products = [
+  { name: "Crest Tee", price: 40, img: "../../assets/branding/png/All_Brand_Logos_PNG/Tarosyn/Brand_Color/Primary_Crest.png" },
+  { name: "Moon Seal Hoodie", price: 76, img: "../../assets/branding/png/All_Brand_Logos_PNG/Tarosyn/Brand_Color/Moon_Seal.png" },
+  { name: "Rose Compass Tee", price: 38, img: "../../assets/branding/png/All_Brand_Logos_PNG/Tarosyn/Brand_Color/Rose_Compass.png" },
+  { name: "Wordmark Crewneck", price: 65, img: "../../assets/branding/png/All_Brand_Logos_PNG/Tarosyn/Brand_Color/Wordmark.png" },
+  { name: "Stamp Hat", price: 32, img: "../../assets/branding/png/All_Brand_Logos_PNG/Tarosyn/Brand_Color/Primary_Crest.png" },
+  { name: "Crystal Sticker Pack", price: 12, img: "../../assets/branding/png/All_Brand_Logos_PNG/Tarosyn/Brand_Color/Moon_Seal.png" },
+  { name: "Moon Seal Long Sleeve", price: 54, img: "../../assets/branding/png/All_Brand_Logos_PNG/Tarosyn/Brand_Color/Moon_Seal.png" },
+  { name: "Tarosyn Beanie", price: 28, img: "../../assets/branding/png/All_Brand_Logos_PNG/Tarosyn/Brand_Color/Primary_Crest.png" },
+  { name: "Compass Tote", price: 26, img: "../../assets/branding/png/All_Brand_Logos_PNG/Tarosyn/Brand_Color/Rose_Compass.png" },
+  { name: "Embroidery Hoodie", price: 80, img: "../../assets/branding/png/All_Brand_Logos_PNG/Tarosyn/Brand_Color/Primary_Crest.png" },
+];
+
+const sizes = ["S","M","L","XL","XXL"];
+let cart = [];
+
+function renderGrid() {
+  const grid = document.getElementById("product-grid");
+  grid.innerHTML = products.map((p, i) => `
+    <div class="card">
+      <div class="card-img"><img src="${p.img}" alt="${p.name}"></div>
+      <div class="card-body">
+        <div class="card-name">${p.name}</div>
+        <div class="card-price">$${p.price}</div>
+        <select class="size-select" id="size-${i}">
+          ${sizes.map(s => `<option>${s}</option>`).join("")}
+        </select>
+        <button class="add-btn" onclick="addToCart(${i})">Add to Cart</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function addToCart(i) {
+  const size = document.getElementById(`size-${i}`).value;
+  const p = products[i];
+  cart.push({ name: p.name, size, price: p.price });
+  updateCart();
+}
+
+function updateCart() {
+  document.getElementById("cart-count").textContent = cart.length;
+  const total = cart.reduce((s, i) => s + i.price, 0);
+  document.getElementById("cart-total").textContent = "$" + total;
+  const el = document.getElementById("cart-items");
+  if (!cart.length) { el.innerHTML = '<p class="cart-empty">Your cart is empty</p>'; return; }
+  el.innerHTML = cart.map((item, i) => `
+    <div class="cart-item">
+      <span class="cart-item-name">${item.name} (${item.size})</span>
+      <span class="cart-item-price">$${item.price}</span>
+    </div>
+  `).join("");
+}
+
+function openCart() { document.getElementById("cart-drawer").classList.add("open"); document.getElementById("cart-overlay").classList.add("open"); }
+function closeCart() { document.getElementById("cart-drawer").classList.remove("open"); document.getElementById("cart-overlay").classList.remove("open"); }
+
+renderGrid();
+</script>
+</body>
+</html>

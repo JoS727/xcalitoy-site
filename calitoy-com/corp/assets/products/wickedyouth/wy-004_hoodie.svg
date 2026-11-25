@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="fabric" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="15" stdDeviation="25" flood-opacity="0.4"/></filter>
+    <filter id="glow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="600" height="600" fill="#f5f5f5"/>
+  <path d="M180 100 Q220 60 250 80 L300 60 L350 80 Q380 60 420 100 L460 180 L430 200 L400 180 L400 520 Q300 540 200 520 L200 180 L170 200 L140 180 Z" fill="url(#fabric)" filter="url(#shadow)"/>
+  <path d="M250 80 Q300 20 350 80" fill="none" stroke="#1a1a1a" stroke-width="4"/>
+  <path d="M240 400 L360 400 L350 480 Q300 490 250 480 Z" fill="#151515"/>
+  <g transform="translate(300, 280)" filter="url(#glow)">
+    <text x="0" y="0" text-anchor="middle" fill="#8B5CF6" font-size="100" font-family="serif">👑</text>
+    <text x="0" y="60" text-anchor="middle" fill="#8B5CF6" font-size="16" font-family="sans-serif" letter-spacing="2">WICKEDYOUTH</text>
+  </g>
+  <text x="300" y="560" text-anchor="middle" fill="#666" font-size="12" font-family="sans-serif">WY X Mark</text>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+            <circle cx="200" cy="200" r="180" fill="none" stroke="#8B5CF6" stroke-width="4"/>
+            <path d="M200 60 L220 100 L260 100 L230 130 L240 170 L200 150 L160 170 L170 130 L140 100 L180 100 Z" fill="none" stroke="#8B5CF6" stroke-width="3"/>
+            <text x="200" y="220" text-anchor="middle" fill="#FFFFFF" font-size="48" font-family="sans-serif" font-weight="bold">WY</text>
+            <text x="200" y="320" text-anchor="middle" fill="#8B5CF6" font-size="32" font-family="sans-serif" font-weight="bold">WICKED</text>
+            <text x="200" y="355" text-anchor="middle" fill="#8B5CF6" font-size="32" font-family="sans-serif" font-weight="bold">YOUTH</text>
+        </svg>

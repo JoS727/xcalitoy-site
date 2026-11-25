@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+            <circle cx="200" cy="200" r="180" fill="none" stroke="#4A1A6B" stroke-width="3"/>
+            <circle cx="200" cy="200" r="170" fill="none" stroke="#C9A227" stroke-width="1"/>
+            <text x="200" y="100" text-anchor="middle" fill="#C9A227" font-size="42" font-family="serif" letter-spacing="8">TAROSYN</text>
+            <circle cx="200" cy="200" r="60" fill="none" stroke="#C9A227" stroke-width="2"/>
+            <path d="M200 140 L200 100" stroke="#C9A227" stroke-width="2"/>
+            <path d="M200 260 L200 300" stroke="#C9A227" stroke-width="2"/>
+            <path d="M140 200 L100 200" stroke="#C9A227" stroke-width="2"/>
+            <path d="M260 200 L300 200" stroke="#C9A227" stroke-width="2"/>
+            <circle cx="200" cy="200" r="8" fill="#C9A227"/>
+            <path d="M200 120 C220 140, 220 160, 200 180" fill="none" stroke="#C9A227" stroke-width="2"/>
+            <path d="M200 220 C180 240, 180 260, 200 280" fill="none" stroke="#C9A227" stroke-width="2"/>
+        </svg>

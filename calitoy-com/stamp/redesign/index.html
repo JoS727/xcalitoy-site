@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tarosyn Redesign Preview</title>
+<style>/* Redesign/src/design/tokens.css */
+.ts-redesign {
+  --tsr-canvas: #090611;
+  --tsr-surface: #140E22;
+  --tsr-elevated: #211630;
+  --tsr-amethyst: #38205B;
+  --tsr-lavender: #C9B5F6;
+  --tsr-gold: #D8B66A;
+  --tsr-gold-solar: #F2CF91;
+  --tsr-ember: #F17A43;
+  --tsr-text-primary: #F4F0FB;
+  --tsr-text-secondary: #D6CBE8;
+  --tsr-text-muted: #B6A8CD;
+  --tsr-success: #86C6A6;
+  --tsr-warning: #F2C078;
+  --tsr-error: #F18F9B;
+  --tsr-font-display: "Cinzel", serif;
+  --tsr-font-body: "Inter", sans-serif;
+  --tsr-display-lg: 34px;
+  --tsr-display-md: 32px;
+  --tsr-display-sm: 28px;
+  --tsr-display-leading: 1.15;
+  --tsr-body-lg: 16px;
+  --tsr-body-md: 14px;
+  --tsr-body-sm: 12px;
+  --tsr-body-leading: 1.5;
+  --tsr-space-1: 4px;
+  --tsr-space-2: 8px;
+  --tsr-space-3: 12px;
+  --tsr-space-4: 16px;
+  --tsr-space-6: 24px;
+  --tsr-space-8: 32px;
+  --tsr-space-12: 48px;
+  --tsr-radius-card: 20px;
+  --tsr-radius-sheet: 28px;
+  --tsr-header-h: 56px;
+  --tsr-tabbar-h: 64px;
+  --tsr-tabbar-h-plus-safe: calc(64px + env(safe-area-inset-bottom, 0px));
+  --tsr-orb-size: 52px;
+  --tsr-gutter: 16px;
+  --tsr-max-content-w: 560px;
+  --tsr-touch-min: 44px;
+  --tsr-action-primary: 52px;
+  --tsr-focus-ring: 2px;
+  --tsr-motion-feedback: 120ms;
+  --tsr-motion-transition: 220ms;
+  --tsr-motion-reveal: 500ms;
+  --tsr-z-canvas: 0;
+  --tsr-z-content: 10;
+  --tsr-z-cards: 20;
+  --tsr-z-chrome: 30;
+  --tsr-z-orb: 40;
+  --tsr-z-sheets: 50;
+  --tsr-z-modal: 60;
+  --tsr-z-toast: 70;
+  --tsr-currency-label: "Kuu$";
+  color: var(--tsr-text-primary);
+  background: var(--tsr-canvas);
+  font-family: var(--tsr-font-body);
+  font-size: var(--tsr-body-md);
+  line-height: var(--tsr-body-leading);
+  min-height: 100dvh;
+  overscroll-behavior-y: none;
+}
+@media (min-width: 431px) {
+  .ts-redesign {
+    --tsr-gutter: 20px;
+  }
+}
+@media (min-width: 768px) {
+  .ts-redesign {
+    --tsr-gutter: 24px;
+    --tsr-max-content-w: 720px;
+  }
+}
+@media (min-width: 1024px) {
+  .ts-redesign {
+    --tsr-max-content-w: 920px;
+  }
+}
+.ts-redesign .tsr-content-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  text-align: center;
+}
+.ts-redesign .tsr-card {
+  position: relative;
+  background: var(--tsr-surface);
+  border: 1px solid color-mix(in srgb, var(--tsr-gold) 45%, transparent);
+  border-radius: var(--tsr-radius-card);
+  overflow: hidden;
+}
+.ts-redesign .tsr-card-banner {
+  padding: 0 var(--tsr-space-4);
+  background: color-mix(in srgb, var(--tsr-gold) 16%, transparent);
+  border-block: 1px solid color-mix(in srgb, var(--tsr-gold) 55%, transparent);
+  color: var(--tsr-gold-solar);
+  font-family: var(--tsr-font-display);
+  font-size: var(--tsr-body-md);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.ts-redesign :is(button, a, input, textarea, select, [tabindex]):focus-visible {
+  outline: var(--tsr-focus-ring) solid var(--tsr-lavender);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.ts-redesign .tsr-touch {
+  min-width: var(--tsr-touch-min);
+  min-height: var(--tsr-touch-min);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ts-redesign *,
+  .ts-redesign *::before,
+  .ts-redesign *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transform: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+@keyframes tsr-orb-pulse {
+  from {
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--tsr-amethyst) 70%, transparent);
+  }
+  to {
+    box-shadow: 0 0 0 7px color-mix(in srgb, var(--tsr-amethyst) 25%, transparent);
+  }
+}
+@keyframes tsr-skeleton-fade {
+  from {
+    opacity: 0.45;
+  }
+  to {
+    opacity: 0.8;
+  }
+}
+
+/* Redesign/src/design/typography.css */
+.ts-redesign {
+  font-family: var(--tsr-font-body);
+  font-size: var(--tsr-body-md);
+  line-height: var(--tsr-body-leading);
+}
+.ts-redesign h1,
+.ts-redesign .tsr-display {
+  font-family: var(--tsr-font-display);
+  font-size: var(--tsr-display-lg);
+  line-height: var(--tsr-display-leading);
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  color: var(--tsr-text-primary);
+  margin: 0;
+}
+.ts-redesign h2,
+.ts-redesign .tsr-title {
+  font-family: var(--tsr-font-display);
+  font-size: var(--tsr-display-sm);
+  line-height: var(--tsr-display-leading);
+  color: var(--tsr-text-primary);
+  margin: 0;
+}
+.ts-redesign .tsr-gold-text {
+  color: var(--tsr-gold);
+}
+.ts-redesign .tsr-lavender-text {
+  color: var(--tsr-lavender);
+}
+.ts-redesign .tsr-muted {
+  color: var(--tsr-text-muted);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+}
+.ts-redesign {
+  min-inline-size: min-content;
+}
+.ts-redesign [data-text-scaling-safe] {
+  overflow-wrap: anywhere;
+}
+</style>
+</head>
+<body>
+<div id="redesign-root"></div>
+<script src="preview.js?v=4"></script>
+</body>
+</html>
