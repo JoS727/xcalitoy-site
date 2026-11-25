@@ -59,6 +59,15 @@
     .book-buy { font-size: 0.8rem; color: rgba(228,196,116,0.95); }
     .book-go { margin-top: 0.2rem; font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange); }
     .book-soon { opacity: 0.75; cursor: default; }
+    .book-pause { align-items: flex-start; }
+    .book-pause:hover { transform: none; }
+    .book-buy a, a.book-go { color: inherit; text-decoration: none; }
+    .book-buy a:hover, a.book-go:hover { text-decoration: underline; }
+    .direct-buy { display: flex; flex-direction: column; gap: 0.2rem; margin: 0.35rem 0 0.15rem; }
+    .direct-buy button { font: 700 0.82rem var(--display); padding: 0.65rem 0.9rem; min-height: 44px; border-radius: 12px; border: 0; cursor: pointer; background: linear-gradient(135deg, #e4c474, var(--orange)); color: #140c02; text-align: center; }
+    .direct-buy button:disabled { cursor: default; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.65); border: 1px dashed rgba(255,255,255,0.22); }
+    .direct-note { font-size: 0.68rem; color: rgba(255,255,255,0.5); }
+    .works-link { display: inline-block; margin-top: 1rem; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange); text-decoration: none; }
     .book-soon:hover { transform: none; border-color: var(--line); box-shadow: none; }
     .strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.55rem; margin-top: 2.4rem; }
     @media (max-width: 760px) { .strip { grid-template-columns: repeat(3, 1fr); } }
@@ -104,16 +113,21 @@
 
     <h2 class="row-title"><span class="n">01</span> The Shelf</h2>
     <div class="books">
-      <a class="book" href="https://www.amazon.com/dp/B0HQ5KVQDW" target="_blank" rel="noreferrer">
+      <div class="book book-pause" id="pause">
         <img src="https://calitoy.com/assets/pause-book-cover.jpg" alt="PAUSE. DON'T KILL YOURSELF — book cover" loading="lazy">
         <span class="book-copy">
           <span class="book-kind">Book One · Out Now</span>
           <span class="book-name">PAUSE. DON'T KILL YOURSELF</span>
           <span class="book-sub"><em>727 Things You HAVE to Do First</em> — a checklist for staying alive (for now).</span>
-          <span class="book-buy"><strong>Kindle $7.27</strong> · <strong>Paperback $17.27</strong></span>
-          <span class="book-go">Get it on Amazon ›</span>
+          <form class="direct-buy" method="POST" action="https://calitoy.com/api/checkout" data-sku="book-pause" data-label="Buy Direct — Digital $6.27">
+            <input type="hidden" name="sku" value="book-pause">
+            <button type="submit" disabled>Direct download coming soon</button>
+            <span class="direct-note">Buy Direct — Digital $6.27 · ebook from calitoy.com</span>
+          </form>
+          <span class="book-buy"><a href="https://www.amazon.com/dp/B0HQ5KVQDW" target="_blank" rel="noreferrer"><strong>Kindle $7.27</strong></a> · <a href="https://www.amazon.com/dp/B0HQ5KVQDW" target="_blank" rel="noreferrer"><strong>Paperback $17.27</strong></a></span>
+          <a class="book-go" href="https://www.amazon.com/dp/B0HQ5KVQDW" target="_blank" rel="noreferrer">Get it on Amazon ›</a>
         </span>
-      </a>
+      </div>
       <a class="book book-soon" href="mailto:books@calitoy.com?subject=Wolf%20Moon" aria-disabled="true">
         <img src="https://calitoy.com/assets/author-desk.jpg" alt="Wolf Moon — in editing" loading="lazy">
         <span class="book-copy">
@@ -144,6 +158,7 @@
         </span>
       </a>
     </div>
+    <a class="works-link" href="https://calitoy.com/works/">All works — music, books &amp; more on The Works ›</a>
 
     <h2 class="row-title"><span class="n">02</span> The Five Doors</h2>
     <div class="strip">
@@ -177,5 +192,18 @@
       }
     })();
   </script>
+<script id="works-direct">
+(function(){
+  // Same catalog + checkout as calitoy.com/works. On preview hosts, talk to the calitoy preview.
+  var base = /\.pages\.dev$/.test(location.hostname) ? 'https://works-preview.calitoy.pages.dev' : 'https://calitoy.com';
+  document.querySelectorAll('form.direct-buy').forEach(function(f){ f.action = base + '/api/checkout'; });
+  document.querySelectorAll('a.works-link').forEach(function(a){ a.href = base + '/works/'; });
+  fetch(base + '/api/availability').then(function(r){ return r.json(); }).then(function(d){
+    document.querySelectorAll('form.direct-buy').forEach(function(f){
+      if (d.available && d.available[f.dataset.sku]) { var b = f.querySelector('button'); b.disabled = false; b.textContent = f.dataset.label; }
+    });
+  }).catch(function(){});
+})();
+</script>
 </body>
 </html>
