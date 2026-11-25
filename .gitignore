@@ -6,3 +6,15 @@ dist/
 # Excluded: live site serves a secret here; never commit it
 calitoy-com/.well-known/or/
 calitoy-com/.wrangler/
+# Live copies of these contain a hardcoded Printful API key; never commit them
+calitoy-com/corp/admin/api/create-stores.py
+# Live copies of these contain a hardcoded Printful API key; never commit them
+calitoy-com/corp/admin/api/printful-integration.js
+# Live copies of these contain a hardcoded Printful API key; never commit them
+calitoy-com/corp/admin/api/printful-sync.js
+# Live copies of these contain a hardcoded Printful API key; never commit them
+calitoy-com/corp/admin/data/merch-database-v2.js
+# Live copies of these contain a hardcoded Printful API key; never commit them
+calitoy-com/corp/admin/scripts/generate-mockups.js
+# Live copies of these contain a hardcoded Printful API key; never commit them
+calitoy-com/corp/admin/scripts/generate-printful-mockups.js
